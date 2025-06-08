@@ -1,0 +1,1 @@
+conteudo exlicativo do faixabet
