@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formatador de Posts</title>
+    <style>
+        textarea { width: 100%; height: 200px; }
+        .output { background: #f0f0f0; padding: 15px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Republicador de Conteúdo</h1>
+    <form id="postForm">
+        <label>URL do Artigo Original:</label><br>
+        <input type="url" id="sourceUrl" placeholder="https://..." required><br><br>
+        
+        <label>Conteúdo para Republicar (cole aqui o texto):</label><br>
+        <textarea id="originalContent" required></textarea><br><br>
+        
+        <label>Seu Comentário/Analise:</label><br>
+        <textarea id="userComment"></textarea><br><br>
+        
+        <button type="button" onclick="formatPost()">Formatar Post</button>
+    </form>
+
+    <div class="output">
+        <h2>Pré-visualização do Post:</h2>
+        <div id="formattedOutput"></div>
+        <button onclick="copyToClipboard()">Copiar HTML</button>
+    </div>
+
+    <script>
+        function formatPost() {
+            const url = document.getElementById('sourceUrl').value;
+            const content = document.getElementById('originalContent').value;
+            const comment = document.getElementById('userComment').value;
+            const domain = new URL(url).hostname;
+
+            // Template da citação (personalizável)
+            const output = `
+                <blockquote>
+                    <h3>Leia o artigo completo em: <a href="${url}" target="_blank">${domain}</a></h3>
+                    ${content.replace(/\n/g, '<br>')}
+                    <footer><strong>Fonte:</strong> <a href="${url}">${domain}</a></footer>
+                </blockquote>
+                ${comment ? `<p><strong>Minha análise:</strong> ${comment}</p>` : ''}
+            `;
+
+            document.getElementById('formattedOutput').innerHTML = output;
+        }
+
+        function copyToClipboard() {
+            const content = document.getElementById('formattedOutput').innerHTML;
+            navigator.clipboard.writeText(content)
+                .then(() => alert("HTML copiado! Cole no seu CMS."));
+        }
+    </script>
+</body>
+</html>

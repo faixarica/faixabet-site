@@ -1,0 +1,42 @@
+<!-- Botão para abrir o modal -->
+<button onclick="document.getElementById('modalTermo').classList.remove('hidden')" class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow">
+  Ver Termo de Responsabilidade
+</button>
+
+<!-- Modal -->
+<div id="modalTermo" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-xl p-6 max-w-3xl w-full shadow-xl relative overflow-y-auto max-h-[90vh]">
+    <h2 class="text-2xl font-bold mb-4">Termo de Responsabilidade e Política de Privacidade</h2>
+    <p class="mb-4">
+      A <strong>FaixaBet</strong> é uma empresa especializada em <strong>análise estatística</strong> e <strong>educação financeira</strong>, focada na identificação de padrões em loterias brasileiras. Reforçamos que <strong>não somos uma casa de apostas</strong> e não promovemos qualquer tipo de jogo de azar.
+    </p>
+    <p class="mb-4">
+      Comercializamos planos mensais de acesso a ferramentas e relatórios estatísticos. Os planos são <strong>recorrentes</strong>, com renovação automática, podendo ser <strong>cancelados a qualquer momento</strong>.
+    </p>
+    <p class="mb-4">
+      As compras são processadas com segurança via <strong>Mercado Pago</strong>. Em conformidade com a <strong>LGPD (Lei nº 13.709/2018)</strong>:
+      <ul class="list-disc ml-6 mt-2">
+        <li>Não coletamos nem armazenamos dados sensíveis;</li>
+        <li>Usamos apenas nome, e-mail e CPF para emissão de nota e controle de acesso;</li>
+        <li>Você pode solicitar a exclusão dos seus dados a qualquer momento;</li>
+        <li>Garantimos confidencialidade e segurança no tratamento de dados.</li>
+      </ul>
+    </p>
+    <p class="mb-4">
+      Oferecemos garantia de reembolso conforme as regras do Código de Defesa do Consumidor.
+    </p>
+    <p class="mb-4">
+      Endereço: <strong>Av. Nações Unidas, nº 14.261</strong> | Operação 100% digital.
+    </p>
+    <p class="text-sm text-gray-600">
+      Ao continuar usando nossos serviços, você concorda com este termo.
+    </p>
+
+    <div class="flex justify-end mt-6">
+      <a href="/termo-faixabet.pdf" target="_blank" class="text-blue-600 underline mr-4">Baixar PDF</a>
+      <button onclick="document.getElementById('modalTermo').classList.add('hidden')" class="bg-gray-300 px-4 py-2 rounded-lg">
+        Fechar
+      </button>
+    </div>
+  </div>
+</div>
