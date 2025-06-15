@@ -359,7 +359,7 @@
       <div class="flex flex-col md:flex-row items-center">
         <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
           <h2 class="text-3xl md:text-4xl font-bold mb-6">
-            Utilize nosso <span class="text-green-400">Aplicação</span> exclusivo
+            Utilize nossa <span class="text-green-400">Aplicação</span> exclusiva
           </h2>
           <p class="text-gray-400 mb-6">
             Tenha acesso aos palpites, resultados e análises diretamente no seu celular. Receba notificações em tempo real e nunca perca uma oportunidade!
@@ -388,14 +388,14 @@
             <a href="#" class="bg-black text-white px-6 py-3 rounded-lg flex items-center">
               <i class="fab fa-apple text-2xl mr-2"></i>
               <div class="text-left">
-                <div class="text-xs">Baixar na</div>
+                <div class="text-xs">Em Breve na</div>
                 <div class="font-bold">App Store</div>
               </div>
             </a>
             <a href="#" class="bg-black text-white px-6 py-3 rounded-lg flex items-center">
               <i class="fab fa-google-play text-xl mr-2"></i>
               <div class="text-left">
-                <div class="text-xs">Disponível no</div>
+                <div class="text-xs">Em breve no</div>
                 <div class="font-bold">Google Play</div>
               </div>
             </a>
@@ -432,12 +432,39 @@
                         <div class="font-bold">R$ 2.450</div>
                       </div>
                     </div>
-                    
-                    <div class="text-center">
-                      <button class="btn-primary w-full py-3 rounded-xl font-bold">
-                        Ver todos os palpites
-                      </button>
-                    </div>
+                    <div class="text-center" id="palpiteSection">
+  <button 
+    class="btn-primary w-full py-3 rounded-xl font-bold" 
+    onclick="mostrarCadastroMensagem()"
+  >
+    Ver todos os palpites
+  </button>
+
+  <!-- Área para mensagem e botão de cadastro -->
+  <div id="mensagemCadastro" class="mt-6 hidden">
+    <p class="text-gray-300 text-lg mb-4">Cadastre-se para receber Palpites</p>
+    <button 
+      onclick="toggleForm()" 
+      class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-xl transition text-xl"
+    >
+      Cadastre-se
+    </button>
+  </div>
+</div>
+
+<script>
+  function mostrarCadastroMensagem() {
+    document.getElementById('mensagemCadastro').classList.remove('hidden');
+  }
+</script>
+
+
+
+
+
+
+
+                  
                   </div>
                 </div>
               </div>
