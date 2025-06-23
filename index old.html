@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<!-- incluir SEO-->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO BÁSICO -->
+  <title>FaixaBet | Palpites inteligentes para Lotofácil, Lotomania e mais</title>
+  <meta name="description" content="Receba palpites certeiros para jogos como Lotofácil, Lotomania e outras loterias. Usamos inteligência artificial para aumentar suas chances de vitória.">
+
+  <!-- SEO AVANÇADO -->
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="palpites lotofácil, palpites lotomania, jogar na loteria, estatísticas loteria, apostas inteligentes, IA para loteria, faixabet" />
+  <meta name="author" content="FaixaBet" />
+
+  <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+  <meta property="og:title" content="FaixaBet | Palpites inteligentes para Lotofácil e Lotomania" />
+  <meta property="og:description" content="Jogue com estratégia! Receba palpites baseados em dados reais e IA. Mais chances, mais vitórias." />
+  <meta property="og:image" content="https://faixabet.com.br/imagem-capa.png" />
+  <meta property="og:url" content="https://faixabet.com.br" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FaixaBet | Palpites inteligentes para Lotofácil e Lotomania" />
+  <meta name="twitter:description" content="Aumente suas chances com IA. Receba palpites confiáveis para loterias!" />
+  <meta name="twitter:image" content="https://faixabet.com.br/imagem-capa.png" />
+
+  <!-- Favicon (ajuste o caminho conforme o seu) -->
+  <link rel="icon" href="https://faixabet.com.br/favicon.ico" type="image/x-icon" />
+
+  <!-- Tailwind + Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("kehqgkI0qfH8Q4kEQ");
+    })();
+  </script>
+
+  <!-- Estilos adicionais -->
+  <style>
+    :root {
+      --primary: #0ea5e9;
+      --secondary: #10b981;
+      --accent: #f59e0b;
+    }
+    body {
+      scroll-behavior: smooth;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    }
+    .floating-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 100;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: white;
+      font-size: 24px;
+      transition: all 0.3s ease;
+    }
+    .floating-btn:hover {
+      transform: scale(1.1) translateY(-5px);
+    }
+    #formSection {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      transform-origin: top center;
+    }
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out;
+    }
+    .mobile-menu.active {
+      max-height: 500px;
+    }
+  </style>
+</head>
+
+<body class="gradient-bg text-white font-sans">
+
+  <!-- Menu Superior -->
+  <header class="fixed top-0 left-0 w-full bg-transparent z-50 transition-all duration-300">
+    <div class="container mx-auto px-4">
+      <nav class="flex justify-between items-center py-4">
+        <a href="#" class="text-2xl font-bold flex items-center">
+          <span class="text-blue-400">F</span><span class="text-green-400">a</span><span class="text-yellow-400">i</span><span class="text-blue-400">x</span><span class="text-green-400">a</span><span class="font-light">Bet</span>
+        </a>
+        
+        <!-- Menu Desktop -->
+        <div class="hidden md:flex space-x-8">
+          <a href="#hero" class="hover:text-blue-400 transition">Home</a>
+          <a href="#como-funciona" class="hover:text-green-400 transition">Como Funciona</a>
+          <a href="#planos" class="hover:text-yellow-400 transition">Planos</a>
+          <a href="#blog" class="hover:text-blue-400 transition">Blog</a>
+          <a href="#app" class="hover:text-green-400 transition">App Faixabet</a>
+          <button onclick="toggleForm(true)" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-xl transition">Cadastro</button>
+        </div>
+        
+        <!-- Botão Mobile -->
+        <button id="mobileMenuButton" class="md:hidden text-2xl">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+    </div>
+    
+    <!-- Menu Mobile -->
+    <div id="mobileMenu" class="mobile-menu bg-gray-900 md:hidden">
+      <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+        <a href="#hero" class="py-2 border-b border-gray-700 hover:text-blue-400">Home</a>
+        <a href="#como-funciona" class="py-2 border-b border-gray-700 hover:text-green-400">Como Funciona</a>
+        <a href="#planos" class="py-2 border-b border-gray-700 hover:text-yellow-400">Planos</a>
+        <a href="#blog" class="py-2 border-b border-gray-700 hover:text-blue-400">Blog</a>
+        <a href="#app" class="py-2 border-b border-gray-700 hover:text-green-400">App Faixabet</a>
+        <button onclick="toggleForm(true)" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-xl transition mt-4">Cadastro</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+<!--  <section id="hero" class="min-h-screen flex items-center justify-center px-6 pt-20 pb-10" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1519925610903-381054cc2a1c?q=80&w=1000') center/cover;"> -->
+<section id="hero" class="min-h-screen flex items-center justify-center px-6 pt-20 pb-10" 
+         style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('C:/Site-FaixaBet/assets/ceu-paisagem.jpg') center/cover;">
+    <div class="max-w-4xl text-center">
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">Palpites certeiros</span> direto da Faixa
+      </h1>
+      <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+        Receba previsões baseadas em dados reais e aumente suas chances de ganhar com análises inteligentes e seguras.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://wa.me/5511910435421" class="btn-primary text-white font-bold py-4 px-8 rounded-xl text-lg">
+          <i class="fab fa-whatsapp mr-2"></i> Receber Palpite Agora
+        </a>
+        <a href="https://faixabet4.streamlit.app/" class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition">
+          <i class="fas fa-chart-line mr-2"></i> Acessar FaixaBet
+        </a>
+      </div>
+      
+      <div class="mt-12 flex justify-center">
+        <div class="bg-gray-800 bg-opacity-70 p-4 rounded-xl max-w-md">
+          <div class="flex items-center justify-center mb-2">
+            <div class="flex -space-x-2">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full border-2 border-gray-800" alt="User">
+              <img src="https://randomuser.me/api/portraits/men/25.jpg" class="w-10 h-10 rounded-full border-2 border-gray-800" alt="User">
+              <img src="https://randomuser.me/api/portraits/women/46.jpg" class="w-10 h-10 rounded-full border-2 border-gray-800" alt="User">
+              <img src="https://randomuser.me/api/portraits/men/22.jpg" class="w-10 h-10 rounded-full border-2 border-gray-800" alt="User">
+              <img src="https://randomuser.me/api/portraits/women/30.jpg" class="w-10 h-10 rounded-full border-2 border-gray-800" alt="User">
+            </div>
+            <div class="ml-3 text-sm">
+              <span class="font-bold">+2.402</span> usuários ativos
+            </div>
+          </div>
+          <p class="text-sm italic text-gray-300">
+            "Com a FaixaBet aumentei meus ganhos em 78% no primeiro mês!"
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Como Funciona (conforme solicitado) -->
+  <section id="como-funciona" class="py-20 px-6 bg-gray-800 text-center">
+    <h2 class="text-3xl font-bold mb-12">Como Funciona</h2>
+    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div><h3 class="text-xl font-semibold mb-2">1. Escolha seu plano</h3><p>Grátis ou Premium, você decide o ritmo.</p></div>
+      <div><h3 class="text-xl font-semibold mb-2">2. Receba palpites</h3><p>Análises com base em estatísticas e histórico.</p></div>
+      <div><h3 class="text-xl font-semibold mb-2">3. Aposte com confiança</h3><p>Decida melhor, ganhe mais.</p></div>
+    </div>
+  </section>
+
+  <!-- Nossos Planos (conforme solicitado) -->
+  <section id="planos" class="py-20 px-6 bg-gray-900 text-center">
+    <h2 class="text-3xl font-bold mb-10">Nossos Planos</h2>
+
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div class="bg-gray-800 p-8 rounded-xl">
+        <h3 class="text-2xl font-bold mb-4">Free</h3>
+        <p class="mb-4">6 palpites por semana</p>
+        <p class="text-2xl font-extrabold text-green-400">R$ 0,00</p>
+      </div>
+      <div class="bg-gray-300 p-8 rounded-xl text-gray-900">
+        <h3 class="text-2xl font-bold mb-4">Silver</h3>
+        <p class="mb-4">até 18 palpites por semana</p>
+        <p class="text-2xl font-extrabold">R$ 6,99</p>
+      </div>
+      <div class="bg-yellow-500 p-8 rounded-xl text-gray-900">
+        <h3 class="text-2xl font-bold mb-4">Gold</h3>
+        <p class="mb-4">60 palpites por semana</p>
+        <p class="text-2xl font-extrabold">R$ 10,99</p>
+      </div>
+    </div>
+
+    <p class="mt-10 text-gray-400">Usuários ativos: <strong>2.350</strong> de 10.000 disponíveis</p>
+
+    <!-- Botão cadastro 
+    <div class="mt-16">
+      <button onclick="toggleForm()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-xl transition text-xl">
+        Cadastro
+      </button>
+    </div>
+  </section> -->
+
+<!-- Blog Section -->
+<section id="blog" class="py-20 px-6 bg-gray-900">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">
+      Últimas do <span class="text-blue-400">Blog</span>
+    </h2>
+    <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">
+      Dicas, estratégias e novidades para você ficar por dentro do mundo das apostas
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Post 1 -->
+      <div class="bg-gray-800 rounded-xl overflow-hidden">
+        <div class="h-48 bg-gradient-to-r from-blue-500 to-green-500"></div>
+        <div class="p-6">
+          <span class="text-green-400 text-sm">REPUBLICAÇÃO</span>
+          <h3 class="text-xl font-bold my-2">6 truques para ganhar na loteria que ninguém nunca te contou </h3>
+
+          <blockquote class="text-gray-300 text-sm border-l-4 border-green-400 pl-4">
+            Quem não quer ganhar na loteria e realizar todos os seus sonhos? Sabemos que a sorte desempenha um papel fundamental nos jogos de loteria, mas acreditamos que estratégias inteligentes e bem planejadas também podem aumentar suas chances de ganhar.<br><br>
+            Afinal, quanto mais e melhor você jogar, mais perto do prêmio você pode chegar! Então, confira as nossas dicas a seguir e aumente a sua sorte.
+          </blockquote>
+
+          <p class="text-gray-400 my-4">
+            <strong>Nossa análise:</strong> Usa linguagem de desejo universal ("realizar todos os seus sonhos") para criar expectativas irreais, típica de conteúdos sensacionalistas.
+          </p>
+
+          <h4 class="text-lg font-semibold mb-2">
+            Leia o artigo completo em:
+            <a href="https://selecoes.ig.com.br/cultura-lazer/6-truques-para-ganhar-na-loteria-que-ninguem-nunca-te-contou-vb/" target="_blank" class="text-blue-400 underline">
+              selecoes.ig.com.br
+            </a>
+          </h4>
+
+          <a href="https://selecoes.ig.com.br/cultura-lazer/6-truques-para-ganhar-na-loteria-que-ninguem-nunca-te-contou-vb/" target="_blank" class="text-blue-400 hover:text-blue-300 font-medium">
+            Ler mais →
+          </a>
+        </div>
+      </div>
+
+      <!-- Post 2 -->
+      <div class="bg-gray-800 rounded-xl overflow-hidden">
+        <div class="h-48 bg-gradient-to-r from-yellow-500 to-red-500"></div>
+        <div class="p-6">
+          <span class="text-green-400 text-sm">REPUBLICAÇÃO</span>
+          <h3 class="text-xl font-bold my-2">Análise com estatística descritiva para leigos</h3>
+
+          <blockquote class="text-gray-300 text-sm border-l-4 border-green-400 pl-4">
+            A estatística descritiva é um dos fundamentos mais básicos da análise de dados. Neste tutorial, vamos ver algumas das operações mais utilizadas para trabalhar com dados quantitativos. Aqui, vamos entender um pouco mais sobre o contexto básico de aplicação de cada uma de cada um dos seguintes tópicos:<br><br>Mínima e máxima<br>-Outliers<br>-Medidas de tendência central: média, mediana e moda<br>-Medidas de dispersão: desvio padrão e variação interquartil
+          </blockquote>
+
+          <p class="text-gray-400 my-4">
+            <strong>Nossa análise:</strong> O artigo estabelece um propósito bem definido: introduzir conceitos básicos de estatística descritiva para análise de dados quantitativos, funcionando como um guia introdutório.
+          </p>
+
+          <h4 class="text-lg font-semibold mb-2">
+            Leia o artigo completo em:
+            <a href="https://escoladedados.org/tutoriais/analise-com-estatistica-descritiva-para-leigos/"target="_blank" class="text-blue-400 underline">
+              selecoes.ig.com.br
+            </a>
+          </h4>
+
+          <a href="https://escoladedados.org/tutoriais/analise-com-estatistica-descritiva-para-leigos/"" target="_blank" class="text-blue-400 hover:text-blue-300 font-medium">
+            Ler mais →
+          </a>
+        </div>
+</div
+
+      <!-- Post 3 -->
+      <div class="bg-gray-800 rounded-xl overflow-hidden">
+        <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-500"></div>
+        <div class="p-6">
+          <span class="text-green-400 text-sm">NOVIDADES</span>
+          <h3 class="text-xl font-bold my-2">Novos recursos da plataforma</h3>
+          <p class="text-gray-400 mb-4">Conheça as últimas atualizações e melhorias do FaixaBet.</p>
+          <a href="#" class="text-blue-400 hover:text-blue-300 font-medium">Ler mais →</a>
+        </div>
+      </div>
+      </div>
+
+    <div class="text-center mt-12">
+      <a href="#blog" class="inline-block bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-xl transition">
+        Ver todos os artigos
+      </a>
+    </div>
+  </div>
+</section>
+
+
+  <!-- App Section -->
+  <section id="app" class="py-20 px-6 bg-gray-900 bg-opacity-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            Utilize nossa <span class="text-green-400">Aplicação</span> exclusiva
+          </h2>
+          <p class="text-gray-400 mb-6">
+            Tenha acesso aos palpites, resultados e análises diretamente no seu celular. Receba notificações em tempo real e nunca perca uma oportunidade!
+          </p>
+          <div class="space-y-4 mb-8">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center mr-3">
+                <i class="fas fa-bell"></i>
+              </div>
+              <p>Notificações instantâneas</p>
+            </div>
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center mr-3">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <p>Análises em tempo real</p>
+            </div>
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center mr-3">
+                <i class="fas fa-gift"></i>
+              </div>
+              <p>Conteúdo exclusivo para usuários</p>
+            </div>
+          </div>
+          <div class="flex space-x-4">
+            <a href="#" class="bg-black text-white px-6 py-3 rounded-lg flex items-center">
+              <i class="fab fa-apple text-2xl mr-2"></i>
+              <div class="text-left">
+                <div class="text-xs">Em Breve na</div>
+                <div class="font-bold">App Store</div>
+              </div>
+            </a>
+            <a href="#" class="bg-black text-white px-6 py-3 rounded-lg flex items-center">
+              <i class="fab fa-google-play text-xl mr-2"></i>
+              <div class="text-left">
+                <div class="text-xs">Em breve no</div>
+                <div class="font-bold">Google Play</div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="md:w-1/2 flex justify-center">
+          <div class="relative">
+            <div class="absolute -top-10 -right-10 w-64 h-64 bg-green-500 rounded-full opacity-10 blur-3xl"></div>
+            <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+            <div class="relative w-72">
+              <div class="bg-gray-800 border-2 border-gray-700 rounded-[40px] p-4 w-full h-[600px]">
+                <div class="bg-gray-900 h-full rounded-[32px] overflow-hidden relative">
+                  <div class="absolute top-0 left-0 w-full h-12 bg-gray-800 rounded-t-[32px] flex items-center justify-center">
+                    <div class="h-1 w-24 bg-gray-700 rounded"></div>
+                  </div>
+                  <div class="pt-16 px-4">
+                    <div class="text-center mb-8">
+                      <div class="text-2xl font-bold mb-1">FaixaBet</div>
+                      <div class="text-green-400">Seus palpites inteligentes</div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-blue-500 to-green-500 p-4 rounded-xl mb-4">
+                      <div class="font-bold mb-1">Palpite do Dia</div>
+                      <div class="text-sm">Lotofácil: 01, 02, 03, 04, 08,09, 10, 11, 13, 14, 17, 19 22, 21, 23</div>
+
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                      <div class="bg-gray-800 p-3 rounded-lg">
+                        <div class="text-xs text-gray-400">Probabilidade</div>
+                        <div class="font-bold">87%</div>
+                      </div>
+                      <div class="bg-gray-800 p-3 rounded-lg">
+                        <div class="text-xs text-gray-400">Retorno Esperado</div>
+                        <div class="font-bold">R$ 2.450</div>
+                      </div>
+                    </div>
+                    <div class="text-center" id="palpiteSection">
+  <button 
+    class="btn-primary w-full py-3 rounded-xl font-bold" 
+    onclick="mostrarCadastroMensagem()"
+  >
+    Ver todos os palpites
+  </button>
+
+  <!-- Área para mensagem e botão de cadastro -->
+  <div id="mensagemCadastro" class="mt-6 hidden">
+    <p class="text-gray-300 text-lg mb-4">Cadastre-se para receber Palpites</p>
+    <button 
+      onclick="toggleForm()" 
+      class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-xl transition text-xl"
+    >
+      Cadastre-se
+    </button>
+  </div>
+</div>
+
+<script>
+  function mostrarCadastroMensagem() {
+    document.getElementById('mensagemCadastro').classList.remove('hidden');
+  }
+</script>
+
+
+
+
+
+
+
+                  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulário (conforme solicitado) -->
+  <section id="formSection" class="py-20 px-6 bg-gray-800 max-w-3xl mx-auto rounded-2xl shadow-2xl mt-6 hidden opacity-0 scale-95">
+    <h2 class="text-3xl font-bold text-green-400 text-center mb-6" style="font-size: 110%;">Cadastro</h2>
+    <form onsubmit="enviarFormulario(event)" class="space-y-4">
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+
+      <div><label class="block mb-1">Nome Completo</label><input type="text" name="Nome Completo" required class="w-full p-2 rounded text-black" /></div>
+      <div><label class="block mb-1">Email</label><input type="email" name="Email" required class="w-full p-2 rounded text-black" /></div>
+      <div><label class="block mb-1">Celular/WhatsApp</label><input type="tel" name="Celular/WhatsApp" class="w-full p-2 rounded text-black" /></div>
+      <div><label class="block mb-1">Objetivo nas apostas</label>
+        <select name="Objetivo" class="w-full p-2 rounded text-black">
+          <option>Entretenimento</option>
+          <option>Aumentar Renda</option>
+          <option>Desafio & Realização</option>
+          <option>Outro</option>
+        </select>
+      </div>
+      <div><label class="block mb-1">Nível de experiência</label>
+        <select name="Experiência" class="w-full p-2 rounded text-black">
+          <option>Iniciante</option>
+          <option>Intermediário</option>
+          <option>Avançado</option>
+        </select>
+      </div>
+      <div><label class="block mb-1">Usa ferramentas de análise?</label>
+        <select name="Usa ferramentas?" class="w-full p-2 rounded text-black">
+          <option>Sim</option>
+          <option>Não</option>
+        </select>
+      </div>
+      <div><label class="block mb-1">Loterias favoritas</label>
+        <select name="Loterias favoritas" multiple class="w-full p-2 rounded text-black">
+          <option>Quina</option>
+          <option>Lotofácil</option>
+          <option>Dupla Sena</option>
+          <option>+Milionária</option>
+          <option>Lotomania</option>
+          <option>Timemania</option>
+          <option>Loteca</option>
+        </select>
+      </div>
+      <div><label class="block mb-1">Deseja receber dicas?</label>
+        <select name="Receber dicas?" class="w-full p-2 rounded text-black">
+          <option>Sim</option>
+          <option>Não</option>
+        </select>
+      </div>
+      <div><label class="block mb-1">Comentário ou dúvida:</label>
+        <textarea name="Comentários" rows="3" class="w-full p-2 rounded text-black"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Enviar</button>
+    </form>
+  </section>
+  
+<!-- Footer -->
+  <footer class="bg-gray-900 border-t border-gray-800 py-12 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-8 mb-8">
+      <div>
+        <h3 class="text-xl font-bold mb-4 flex items-center">
+          <span class="text-blue-400">F</span><span class="text-green-400">a</span><span class="text-yellow-400">i</span><span class="text-blue-400">x</span><span class="text-green-400">a</span><span class="font-light">Bet</span>
+        </h3>
+        <p class="text-gray-400 mb-4">
+          Palpites certeiros baseados em análise de dados para aumentar suas chances de ganhar.
+        </p>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-400 hover:text-blue-400"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-gray-400 hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-gray-400 hover:text-purple-500"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-gray-400 hover:text-red-500"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
+        <ul class="space-y-2">
+          <li><a href="index.html#hero" class="text-gray-400 hover:text-green-400">Home</a></li>
+          <li><a href="index.html#como-funciona" class="text-gray-400 hover:text-green-400">Como Funciona</a></li>
+          <li><a href="index.html#planos" class="text-gray-400 hover:text-green-400">Planos</a></li>
+          <li><a href="index.html#blog" class="text-gray-400 hover:text-green-400">Blog</a></li>
+          <li><a href="index.html#app" class="text-gray-400 hover:text-green-400">App</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Legal</h4>
+        <ul class="space-y-2">
+          <li><a href="termo.html" target="_blank" class="text-gray-400 hover:text-green-400">Termos de Uso e LGPD</a></li>
+          <li><a href="privacidade.html" target="_blank" class="text-gray-400 hover:text-green-400">Política de Privacidade</a></li>
+          <li><a href="responsabilidade.html" target="_blank" class="text-gray-400 hover:text-green-400">Responsabilidade</a></li>
+          <li><a href="index.html#faq" class="text-gray-400 hover:text-green-400">FAQ</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Contato</h4>
+        <ul class="space-y-2">
+          <li class="flex items-start">
+            <i class="fas fa-envelope text-green-400 mt-1 mr-2"></i>
+            <span class="text-gray-400">contato@faixabet.com</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fab fa-whatsapp text-green-400 mt-1 mr-2"></i>
+            <span class="text-gray-400">(11) 91043-5421</span>
+          </li>
+          <li class="flex items-start">
+            <i class="fas fa-map-marker-alt text-green-400 mt-1 mr-2"></i>
+            <span class="text-gray-400">São Paulo, SP</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+      <p>&copy; 2025 FaixaBet. Todos os direitos reservados.</p>
+      <p class="mt-2 text-sm">Este site destina-se a maiores de 18 anos. Jogue com responsabilidade.</p>
+    </div>
+  </div>
+  </footer>
+
+
+  <!-- Botão flutuante do WhatsApp -->
+  <a href="https://wa.me/5511910435421" class="floating-btn">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Botão de voltar ao topo -->
+  <a href="#hero" class="fixed bottom-24 right-6 w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white shadow-lg z-50 opacity-0 transition-opacity">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+  
+  <script>
+    // Menu mobile toggle
+    document.getElementById('mobileMenuButton').addEventListener('click', function() {
+      document.getElementById('mobileMenu').classList.toggle('active');
+    });
+    
+    // Botão voltar ao topo
+    window.addEventListener('scroll', function() {
+      const backToTop = document.querySelector('a[href="#hero"]');
+      if (window.scrollY > 300) {
+        backToTop.style.opacity = '1';
+      } else {
+        backToTop.style.opacity = '0';
+      }
+</body>
+</html>
