@@ -37,7 +37,7 @@
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
   <script>
     (function() {
-      emailjs.init("kehqgkI0qfH8Q4kEQ");
+      emailjs.init("kehqgkI0qfH8Q4kEQ"); 
     })();
   </script>
 
@@ -621,18 +621,20 @@
     }
     
     // Função para enviar o formulário
-    function enviarFormulario(event) {
-      event.preventDefault();
-      
-      // Envio usando EmailJS
-      emailjs.sendForm('2025-faixab-001', 'faixab_j816maq', event.target)
-        .then(function(response) {
-          alert('Cadastro realizado com sucesso! Entraremos em contato em breve.');
-          toggleForm(false);
-        }, function(error) {
-          alert('Ocorreu um erro. Por favor, tente novamente mais tarde.');
-        });
-    }
+function enviarFormulario(event) {
+  event.preventDefault();
+  
+  emailjs.sendForm('service_faixabet', '2025-faixab-001', event.target)
+    .then(function(response) {
+      alert('Cadastro realizado com sucesso! Entraremos em contato em breve.');
+      toggleForm(false);
+      event.target.reset(); // Limpa o formulário
+    }, function(error) {
+      alert('Ocorreu um erro. Por favor, tente novamente mais tarde.');
+      console.log('Erro:', error); // Mostra o erro no console para depuração
+    });
+}
+
   </script>
 </body>
 </html>
