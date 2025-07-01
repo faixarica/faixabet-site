@@ -402,7 +402,7 @@
                       </div>
                       <div class="bg-gray-800 p-3 rounded-lg">
                         <div class="text-xs text-gray-400">Retorno Esperado</div>
-                        <div class="font-bold">R$ 2.150</div>
+                        <div class="font-bold">R$ 1840</div>
                       </div>
                     </div>
                     <div class="text-center" id="palpiteSection">
@@ -420,7 +420,7 @@
                           onclick="toggleForm(true)" 
                           class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-xl transition text-xl"
                         >
-                          Cadastre-se
+                         Quero Participar
                         </button>
                       </div>
                     </div>
@@ -552,7 +552,7 @@
       </div>
       
       <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
-        <p>&copy; 2025 FaixaBet. Todos os direitos reservados.10.3</p>
+        <p>&copy; 2025 FaixaBet. Todos os direitos reservados.10.4</p>
         <p class="mt-2 text-sm">Este site destina-se a maiores de 18 anos. Se for apotar, seja responsável.</p>
       </div>
     </div>
@@ -567,74 +567,59 @@
   <a href="#hero" class="fixed bottom-24 right-6 w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-white shadow-lg z-50 opacity-0 transition-opacity">
     <i class="fas fa-arrow-up"></i>
   </a>
-  
-  <script>
-    // Menu mobile toggle
-    document.getElementById('mobileMenuButton').addEventListener('click', function() {
-      document.getElementById('mobileMenu').classList.toggle('active');
-    });
-    
-    // Botão voltar ao topo
-    window.addEventListener('scroll', function() {
-      const backToTop = document.querySelector('a[href="#hero"]');
-      if (window.scrollY > 300) {
-        backToTop.style.opacity = '1';
-      } else {
-        backToTop.style.opacity = '0';
-      }
-    });
-    
-    // Função para alternar o formulário
-    function toggleForm(show) {
-      const formSection = document.getElementById('formSection');
-      
-      if (show === true) {
-        formSection.classList.remove('hidden');
-        formSection.classList.remove('opacity-0');
-        formSection.classList.remove('scale-95');
-        formSection.classList.add('opacity-100');
-        formSection.classList.add('scale-100');
-        // Rolar para o formulário
-        formSection.scrollIntoView({ behavior: 'smooth' });
-      } else if (show === false) {
-        formSection.classList.add('opacity-0');
-        formSection.classList.add('scale-95');
-        formSection.classList.remove('opacity-100');
-        formSection.classList.remove('scale-100');
-        // Esconder após a animação
-        setTimeout(() => {
-          formSection.classList.add('hidden');
-        }, 300);
-      } else {
-        // Toggle se não for especificado
-        if (formSection.classList.contains('hidden')) {
-          toggleForm(true);
-        } else {
-          toggleForm(false);
-        }
-      }
-    }
-    
-    // Função para mostrar a mensagem de cadastro no app
-    function mostrarCadastroMensagem() {
-      document.getElementById('mensagemCadastro').classList.remove('hidden');
-    }
-    
-    // Função para enviar o formulário
-function enviarFormulario(event) {
-  event.preventDefault();
-  
-  emailjs.sendForm('service_faixabet', '2025-faixab-001', event.target)
-    .then(function(response) {
-      alert('Cadastro realizado com sucesso! Entraremos em contato em breve.');
-      toggleForm(false);
-      event.target.reset(); // Limpa o formulário
-    }, function(error) {
-      alert('Ocorreu um erro. Por favor, tente novamente mais tarde.');
-      console.log('Erro:', error); // Mostra o erro no console para depuração
-    });
-}
 
-  </script>
+<script>
+  // Menu mobile toggle
+  document.getElementById('mobileMenuButton').addEventListener('click', function() {
+    document.getElementById('mobileMenu').classList.toggle('active');
+  });
+
+  // Botão voltar ao topo
+  window.addEventListener('scroll', function() {
+    const backToTop = document.querySelector('a[href="#hero"]');
+    backToTop.style.opacity = window.scrollY > 300 ? '1' : '0';
+  });
+
+  // Alterna o formulário de cadastro
+  function toggleForm(show) {
+    const formSection = document.getElementById('formSection');
+    if (show) {
+      formSection.classList.remove('hidden', 'opacity-0', 'scale-95');
+      formSection.classList.add('opacity-100', 'scale-100');
+      formSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      formSection.classList.add('opacity-0', 'scale-95');
+      formSection.classList.remove('opacity-100', 'scale-100');
+      setTimeout(() => formSection.classList.add('hidden'), 300);
+    }
+  }
+
+  // Mostra mensagem no app simulando restrição ao conteúdo
+  function mostrarCadastroMensagem() {
+    document.getElementById('mensagemCadastro').classList.remove('hidden');
+  }
+
+  // Envia o formulário via EmailJS
+  function enviarFormulario(event) {
+    event.preventDefault();
+
+    emailjs.sendForm('faixabet2025-A', '2025-faixab-001', event.target)
+      .then(function(response) {
+        console.log('Sucesso:', response);
+        alert('Cadastro realizado com sucesso! Entraremos em contato em breve.');
+        toggleForm(false);
+        event.target.reset();
+      }, function(error) {
+        console.log('Erro:', error);
+        alert('Ocorreu um erro. Por favor, tente novamente mais tarde.');
+      });
+  }
+</script>
+
+
+
+
+
+
 </body>
 </html>
