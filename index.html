@@ -97,6 +97,21 @@
   </style>
 </head>
 
+<!-- POPUP de escolha de loteria -->
+<div id="popup-loteria" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+  <div class="bg-white text-gray-900 rounded-xl p-8 max-w-lg w-full text-center">
+    <h2 class="text-2xl font-bold mb-6">Qual Loteria Você Deseja Simular Com a IA da FaixaBet?</h2>
+    <div class="grid grid-cols-2 gap-4">
+      <button onclick="selecionarLoteria('Lotofacil')" class="bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-xl font-semibold">Lotofácil</button>
+      <button onclick="alertarIndisponivel('Lotomania')" class="bg-gray-800 hover:bg-gray-700 text-white py-3 px-4 rounded-xl font-semibold">Lotomania</button>
+      <button onclick="alertarIndisponivel('Quina')" class="bg-gray-800 hover:bg-gray-700 text-white py-3 px-4 rounded-xl font-semibold">Quina</button>
+      <button onclick="alertarIndisponivel('Mega-Sena')" class="bg-gray-800 hover:bg-gray-700 text-white py-3 px-4 rounded-xl font-semibold">Mega-Sena</button>
+      <button onclick="alertarIndisponivel('Loteca')" class="bg-gray-800 hover:bg-gray-700 text-white py-3 px-4 rounded-xl font-semibold">Loteca</button>
+    </div>
+  </div>
+</div>
+
+
 <body class="gradient-bg text-white font-sans">
 
   <!-- Menu Superior -->
@@ -147,27 +162,32 @@
       <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
         Receba Palpites Baseados em Dados Reais e aumente suas chances de ganhar com Análises Inteligentes e Seguras.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="https://wa.me/5511910435421" class="btn-primary text-white font-bold py-4 px-8 rounded-xl text-lg">
-          <i class="fab fa-whatsapp mr-2"></i> Receber Palpite Agora
-        </a>
-        <a href="https://faixabet4.streamlit.app/" class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition">
-          <i class="fas fa-chart-line mr-2"></i> Acessar FaixaBet
-        </a>
-      </div>
-      
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="https://wa.me/5511910435421" class="btn-primary text-white font-bold py-4 px-8 rounded-xl text-lg">
+         <i class="fab fa-whatsapp mr-2"></i> Receber Palpite Agora
+      </a>
+
+      <a href="https://faixabet4.streamlit.app/" class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition">
+        <i class="fas fa-chart-line mr-2"></i> Acessar FaixaBet
+       </a>
+
+       <a href="simulador-faixabet.html" target="_blank" class="bg-green-600 hover:bg-green-500 text-white font-bold py-4 px-8 rounded-xl text-lg transition">
+         <i class="fas fa-vial mr-2"></i> Testar c/ Simulador
+       </a>
+    </div>
+
       <div class="mt-12 flex justify-center">
         <div class="bg-gray-800 bg-opacity-70 p-4 rounded-xl max-w-md">
           <div class="flex items-center justify-center mb-2">
             <div class="flex -space-x-2">
-              <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full border-2 border-gray-800" alt="User">
+              <img src="https://randomuser.me/api/portraits/men/22.jpg" class="w-10 h-10 rounded-full border-2 border-gray-800" alt="User">
               <img src="https://randomuser.me/api/portraits/men/25.jpg" class="w-10 h-10 rounded-full border-2 border-gray-800" alt="User">
               <img src="https://randomuser.me/api/portraits/women/46.jpg" class="w-10 h-10 rounded-full border-2 border-gray-800" alt="User">
-              <img src="https://randomuser.me/api/portraits/men/22.jpg" class="w-10 h-10 rounded-full border-2 border-gray-800" alt="User">
               <img src="https://randomuser.me/api/portraits/women/30.jpg" class="w-10 h-10 rounded-full border-2 border-gray-800" alt="User">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full border-2 border-gray-800" alt="User">
             </div>
             <div class="ml-3 text-sm">
-              <span class="font-bold">+2.693</span> Usuários Ativos
+              <span class="font-bold">+2.715</span> Usuários Ativos
             </div>
           </div>
           <p class="text-sm italic text-gray-300">
@@ -226,7 +246,7 @@
     </div>
   </div>
 
-  <p class="mt-10 text-gray-400">Usuários ativos: <strong>2.693</strong> de 10.000 disponíveis</p>
+  <p class="mt-10 text-gray-400">Usuários ativos: <strong>2.715</strong> de 10.000 disponíveis</p>
 </section>
 
 
@@ -392,17 +412,17 @@
                     
                     <div class="bg-gradient-to-r from-blue-500 to-green-500 p-4 rounded-xl mb-4">
                       <div class="font-bold mb-1">Palpite do Dia</div>
-                      <div class="text-sm">Lotofácil: 02, 03, 04, 05, 08, 10, 11, 12, 13, 16, 18, 19, 23, 25, 25</div>
+                      <div class="text-sm">Lotofácil: 02, 04, 05, 08, 10, 12, 13,15, 16, 18, 19, 23, 25, 25</div>
                     </div>
                     
                     <div class="grid grid-cols-2 gap-4 mb-6">
                       <div class="bg-gray-800 p-3 rounded-lg">
                         <div class="text-xs text-gray-400">Probabilidade</div>
-                        <div class="font-bold">86%</div>
+                        <div class="font-bold">89%</div>
                       </div>
                       <div class="bg-gray-800 p-3 rounded-lg">
                         <div class="text-xs text-gray-400">Retorno Esperado</div>
-                        <div class="font-bold">R$ 1624</div>
+                        <div class="font-bold">R$ 1.668</div>
                       </div>
                     </div>
                     <div class="text-center" id="palpiteSection">
@@ -616,6 +636,37 @@
   }
 </script>
 
+<!-- ... (outro conteúdo do site) ... -->
+
+<!-- Script do popup de escolha de loteria -->
+<!-- ... (outro conteúdo do site) ... -->
+
+<!-- Script do popup de escolha de loteria -->
+<script>
+  // Exibe o popup só na primeira visita
+  window.addEventListener('DOMContentLoaded', () => {
+    if (!localStorage.getItem("popupLoteriaVisto")) {
+      document.getElementById("popup-loteria").classList.remove("hidden");
+    }
+  });
+
+  function selecionarLoteria(nome) {
+    if (nome === "Lotofacil") {
+      localStorage.setItem("popupLoteriaVisto", "true");
+      document.getElementById("popup-loteria").classList.add("hidden");
+    }
+  }
+
+  function alertarIndisponivel(loteria) {
+    alert(`${loteria} ainda não está disponível na versão atual. Em breve!`);
+  }
+</script>
+
+</body>
+</html>
+
+</body>
+</html>
 
 
 

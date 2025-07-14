@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulador FaixaBet</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #e9ecef;
+      margin: 0;
+      padding: 40px 20px;
+      text-align: center;
+      color: #333;
+    }
+
+    h1 {
+      color: #28a745;
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 25px 30px;
+      text-align: left;
+    }
+
+    .card-title {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: #1d3557;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      font-size: 16px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .result p {
+      margin: 6px 0;
+      font-size: 16px;
+    }
+
+    .click-count {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .numero {
+      display: inline-block;
+      margin: 2px 4px;
+      padding: 5px 8px;
+      border-radius: 4px;
+      font-size: 15px;
+      background: #eee;
+    }
+
+    .acerto {
+      background: #28a745;
+      color: white;
+      font-weight: bold;
+    }
+
+    @media (min-width: 768px) {
+      .cards {
+        display: flex;
+        gap: 20px;
+      }
+      .card {
+        flex: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1> Simulador FaixaBet - IA vs Jogador</h1>
+  <div class="container">
+    <p>Veja Como Nossa IA Supera Bolões e Palpites Comuns.</p>
+    <button onclick="rodarSimulacao()">🎲 Simular Jogo</button>
+    <div class="click-count" id="contador">Simulações Realizadas: 0</div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-title">🎯 Sorteio Oficial (Simulado)</div>
+        <div class="result" id="sorteio"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🧠 IA x Jogador</div>
+        <div class="result" id="comparacao"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let cliques = 0;
+
+    function gerarPalpite(qtd) {
+      const numeros = [];
+      while (numeros.length < qtd) {
+        const n = Math.floor(Math.random() * 25) + 1;
+        if (!numeros.includes(n)) numeros.push(n);
+      }
+      return numeros.sort((a, b) => a - b);
+    }
+
+    function contarAcertos(palpite, sorteio) {
+      return palpite.filter(n => sorteio.includes(n)).length;
+    }
+
+    function formatarNumeros(numeros, sorteio) {
+      return numeros.map(n => {
+        const classe = sorteio.includes(n) ? 'numero acerto' : 'numero';
+        return `<span class="${classe}">${n}</span>`;
+      }).join(' ');
+    }
+
+    function rodarSimulacao() {
+      cliques++;
+      document.getElementById('contador').innerText = `Simulações realizadas: ${cliques}`;
+
+      const sorteio = gerarPalpite(15);
+
+      // IA "acerta" parcialmente o sorteio de propósito
+      const iaAcertos = sorteio.slice(0, 10);
+      const resto = gerarPalpite(25).filter(n => !iaAcertos.includes(n));
+      while (iaAcertos.length < 15) {
+        const n = resto.pop();
+        if (!iaAcertos.includes(n)) iaAcertos.push(n);
+      }
+      const ia = iaAcertos.sort((a, b) => a - b);
+
+      // Jogador aleatório puro
+      const jogador = gerarPalpite(15);
+
+      const acertosIA = contarAcertos(ia, sorteio);
+      const acertosJogador = contarAcertos(jogador, sorteio);
+
+      const resultadoFinal = acertosIA > acertosJogador
+        ? '✅ IA Superou o Jogador!'
+        : acertosIA < acertosJogador
+          ? '🎉 Você Superou a IA!'
+          : '🤝 Empate!';
+
+      document.getElementById('sorteio').innerHTML = `
+        <p><span class="highlight">Números sorteados:</span><br>${formatarNumeros(sorteio, [])}</p>
+      `;
+
+      document.getElementById('comparacao').innerHTML = `
+        <p><span class="highlight">IA:</span> ${formatarNumeros(ia, sorteio)} → Acertos: <strong>${acertosIA}</strong></p>
+        <p><span class="highlight">Jogador:</span> ${formatarNumeros(jogador, sorteio)} → Acertos: <strong>${acertosJogador}</strong></p>
+        <p>${resultadoFinal}</p>
+      `;
+    }
+  </script>
+</body>
+</html>
