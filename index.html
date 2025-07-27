@@ -257,54 +257,110 @@
 
 <!-- Nossos Planos -->
 <section id="planos" class="py-20 px-6 bg-gray-900 text-center">
-  <h2 class="text-3xl font-bold mb-10">Nossos Planos</h2>
+  <div class="max-w-4xl mx-auto mb-12">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">Escolha Seu Plano e Aumente Suas Chances</h2>
+    <p class="text-gray-400">De iniciante a expert, temos a combinação perfeita de palpites para você.</p>
+  </div>
 
   <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
     <!-- Free -->
-    <div class="bg-gray-800 p-8 rounded-xl">
-      <h3 class="text-2xl font-bold mb-4">Free</h3>
-      <p class="mb-4">6 palpites por semana</p>
-      <p class="text-2xl font-extrabold text-green-400">R$ 0,00</p>
-      <div class="mt-4 text-sm text-gray-300">
-        <p><strong>Sorte Controlada:</strong> combinações equilibradas e aleatórias para começar sem custo.</p>
-        <p class="mt-2 italic">Exemplo: João testou o plano Free e acertou 11 pontos com um jogo simples.</p>
+    <div class="bg-gray-800 p-8 rounded-xl border border-gray-700 flex flex-col h-full"> <!-- Flex para altura total -->
+      <h3 class="text-2xl font-bold mb-2">Free</h3>
+      <p class="text-gray-400 mb-4 text-sm">Para começar sua jornada</p> <!-- Descrição curta -->
+      <p class="text-3xl font-extrabold text-green-400 my-4">R$ 0,00</p>
+      <ul class="text-left text-gray-300 space-y-2 mb-6 flex-grow"> <!-- Lista de benefícios -->
+        <li class="flex items-start">
+          <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          6 palpites por semana
+        </li>
+        <li class="flex items-start">
+          <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          Combinações aleatórias
+        </li>
+        <li class="flex items-start opacity-70"> <!-- Indicar limitação -->
+          <svg class="w-5 h-5 text-gray-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          Sem acesso à IA avançada
+        </li>
+      </ul>
+      <div class="mt-auto"> <!-- Empurra o CTA para o final -->
+        <a href="#registro" class="inline-block w-full py-3 px-4 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition duration-300">
+          Começar Grátis
+        </a>
+        <p class="mt-3 text-xs text-gray-500 italic">Exemplo: João acertou 11 pontos com um jogo simples.</p>
       </div>
     </div>
 
-    <!-- Silver -->
-    <div class="bg-gray-300 p-8 rounded-xl text-gray-900">
-      <h3 class="text-2xl font-bold mb-4">Silver</h3>
-      <p class="mb-4">até 18 palpites por semana</p>
-      <p class="text-2xl font-extrabold">R$ 5,99</p>
-      <div class="mt-4 text-sm text-gray-700">
-        <p><strong>Evolução Genética:</strong> algoritmos inteligentes que simulam e selecionam os melhores jogos.</p>
-        <p class="mt-2 italic">Exemplo: Carlos usou Silver e recebeu combinações com alta taxa de acertos de 13 pontos.</p>
+    <!-- Silver (Destacado) -->
+    <div class="relative bg-gray-200 p-8 rounded-xl text-gray-900 border-2 border-blue-400 transform md:scale-105 z-10 shadow-xl flex flex-col h-full"> <!-- Destaque visual -->
+      <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+        MAIS POPULAR
+      </div>
+      <h3 class="text-2xl font-bold mb-2">Silver</h3>
+      <p class="text-gray-700 mb-4 text-sm">Para jogadores regulares</p>
+      <p class="text-3xl font-extrabold my-4">R$ 5,99<span class="text-lg font-normal">/mês</span></p> <!-- /mês adicionado -->
+      <ul class="text-left text-gray-800 space-y-2 mb-6 flex-grow">
+        <li class="flex items-start">
+          <svg class="w-5 h-5 text-blue-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          <strong>Até 18 palpites por semana</strong> <!-- Destacar quantidade -->
+        </li>
+        <li class="flex items-start">
+          <svg class="w-5 h-5 text-blue-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          Algoritmos inteligentes de seleção
+        </li>
+        <li class="flex items-start">
+          <svg class="w-5 h-5 text-blue-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          Histórico de palpites
+        </li>
+         <li class="flex items-start">
+          <svg class="w-5 h-5 text-blue-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          Combinações com alta taxa de 13+ pontos <!-- Benefício mais claro -->
+        </li>
+      </ul>
+      <div class="mt-auto">
+        <a href="#registro" class="inline-block w-full py-3 px-4 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium rounded-lg transition duration-300 transform hover:scale-[1.02]">
+          Assinar Silver
+        </a>
+        <p class="mt-3 text-xs text-gray-600 italic">Exemplo: Carlos recebeu combinações com alta taxa de 13 pontos.</p>
       </div>
     </div>
 
     <!-- Gold -->
-    <div class="bg-yellow-500 p-8 rounded-xl text-gray-900">
-      <h3 class="text-2xl font-bold mb-4">Gold</h3>
-      <p class="mb-4">60 palpites por semana</p>
-      <p class="text-2xl font-extrabold">R$ 10,99</p>
-      <div class="mt-4 text-sm text-gray-800">
-        <p><strong>IA Profunda:</strong> usa inteligência artificial para aprender padrões reais e gerar jogos otimizados.</p>
-        <p class="mt-2 italic">Exemplo: Daniela ativou Gold e acertou 13 pontos duas vezes no mês!</p>
+    <div class="bg-yellow-400 p-8 rounded-xl text-gray-900 border border-yellow-500 flex flex-col h-full">
+      <h3 class="text-2xl font-bold mb-2">Gold</h3>
+      <p class="text-gray-800 mb-4 text-sm">Para quem busca o máximo</p>
+      <p class="text-3xl font-extrabold my-4">R$ 10,99<span class="text-lg font-normal">/mês</span></p>
+      <ul class="text-left text-gray-900 space-y-2 mb-6 flex-grow">
+        <li class="flex items-start">
+          <svg class="w-5 h-5 text-yellow-700 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          <strong>60 palpites por semana</strong> <!-- Destacar quantidade -->
+        </li>
+        <li class="flex items-start">
+          <svg class="w-5 h-5 text-yellow-700 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          <strong>IA Profunda</strong> com aprendizado contínuo
+        </li>
+        <li class="flex items-start">
+          <svg class="w-5 h-5 text-yellow-700 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          Foco em palpites para 14+ pontos <!-- Objetivo claro -->
+        </li>
+        <li class="flex items-start">
+          <svg class="w-5 h-5 text-yellow-700 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          Acesso a todos os modelos de IA
+        </li>
+      </ul>
+      <div class="mt-auto">
+        <a href="#registro" class="inline-block w-full py-3 px-4 bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-gray-900 font-bold rounded-lg transition duration-300 transform hover:scale-[1.02]">
+          Assinar Gold
+        </a>
+        <p class="mt-3 text-xs text-gray-800 italic font-medium">Exemplo: Daniela acertou 13 pontos duas vezes no mês!</p> <!-- Fonte em negrito para o exemplo -->
       </div>
     </div>
   </div>
 
-  <p class="mt-10 text-gray-400">Usuários ativos: <strong>2.801</strong> de 10.000 disponíveis</p>
+  <p class="mt-12 text-gray-400 flex items-center justify-center">
+    <svg class="w-5 h-5 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+    <span><strong>2.801</strong> usuários ativos de 10.000 disponíveis</span>
+  </p>
 </section>
-
-    <!-- Botão Quero Participar -->
-    <div class="mt-16">
-      <button onclick="toggleForm(true)" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-xl transition text-xl">
-        Quero Participar
-      </button>
-    </div>
-</section>
-
   <!-- Blog Section -->
   <section id="blog" class="py-20 px-6 bg-gray-900">
     <div class="max-w-6xl mx-auto">
