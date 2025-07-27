@@ -4,26 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simulador FaixaBet</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #28a745;
-      --primary-dark: #218838;
-      --secondary: #1d3557;
-      --background: #f8f9fa;
-      --card-bg: #ffffff;
-      --text: #333333;
-      --shadow: rgba(0, 0, 0, 0.1);
-      --highlight: #007bff;
-      --acerto-bg: #28a745;
+      --primary: #00d4ff; /* Azul elétrico */
+      --primary-dark: #00a2cc;
+      --secondary: #8a2be2; /* Índigo */
+      --accent: #ff2a6d; /* Rosa neon */
+      --background: #0f0c29; /* Azul escuro gradiente base */
+      --background-gradient: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      --card-bg: rgba(25, 25, 50, 0.8); /* Azul escuro translúcido */
+      --card-border: rgba(138, 43, 226, 0.3); /* Índigo suave */
+      --text: #e0e0ff;
+      --text-secondary: #a0a0c0;
+      --shadow: rgba(0, 0, 0, 0.5);
+      --highlight: #00ffcc; /* Ciano */
+      --acerto-bg: var(--accent);
       --acerto-text: #ffffff;
-      --numero-bg: #e9ecef;
-      --border-radius: 16px;
+      --numero-bg: rgba(100, 100, 150, 0.3);
+      --numero-border: rgba(138, 43, 226, 0.5);
+      --border-radius: 20px;
       --spacing-xs: 8px;
       --spacing-sm: 12px;
       --spacing-md: 16px;
       --spacing-lg: 24px;
       --spacing-xl: 32px;
+      --transition-fast: 0.2s ease;
+      --transition-normal: 0.4s ease;
+      --transition-slow: 0.8s ease;
     }
 
     * {
@@ -34,98 +42,175 @@
 
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: var(--background);
+      background: var(--background-gradient);
       color: var(--text);
       line-height: 1.6;
       padding: var(--spacing-md);
       min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* Efeito sutil de brilho */
+      background-attachment: fixed;
+      overflow-x: hidden; /* Evita rolagem horizontal */
+    }
+
+    /* Efeitos de brilho e partículas */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-image: 
+            radial-gradient(ellipse at 10% 20%, rgba(138, 43, 226, 0.15) 0%, transparent 30%),
+            radial-gradient(ellipse at 90% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 30%);
+        pointer-events: none; /* Permite interação com elementos abaixo */
+        z-index: -1;
     }
 
     .container {
       max-width: 1200px;
+      width: 100%;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
       gap: var(--spacing-lg);
+      align-items: center; /* Centraliza conteúdo no container */
     }
 
     header {
       text-align: center;
       padding: var(--spacing-md) 0;
+      width: 100%;
+      animation: fadeInDown 1s var(--transition-slow);
     }
 
     h1 {
       color: var(--primary);
-      font-size: 1.8rem;
+      font-size: 2.2rem;
       margin-bottom: var(--spacing-xs);
+      font-family: 'Orbitron', sans-serif; /* Fonte futurista para o título */
+      text-shadow: 0 0 10px rgba(0, 212, 255, 0.7); /* Brilho neon */
+      letter-spacing: 1px;
     }
 
     .subtitle {
-      color: var(--secondary);
-      font-size: 1rem;
-      opacity: 0.9;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
       max-width: 600px;
       margin: 0 auto;
+      animation: fadeIn 1s var(--transition-slow) both;
     }
 
     .main-button {
-      background-color: var(--primary);
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
       color: white;
-      font-size: 1.1rem;
-      font-weight: 500;
-      padding: var(--spacing-md) var(--spacing-lg);
+      font-size: 1.2rem;
+      font-weight: 700;
+      padding: var(--spacing-md) var(--spacing-xl);
       border: none;
       border-radius: 50px;
       cursor: pointer;
       margin: var(--spacing-md) auto;
       display: block;
-      box-shadow: 0 4px 12px var(--shadow);
-      transition: all 0.3s ease;
-      width: 90%;
-      max-width: 300px;
+      box-shadow: 0 6px 20px rgba(138, 43, 226, 0.4), 0 0 20px rgba(0, 212, 255, 0.3) inset;
+      transition: all var(--transition-normal);
+      width: 95%;
+      max-width: 350px;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      font-family: 'Roboto', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .main-button::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        transition: 0.5s;
+        z-index: -1;
     }
 
     .main-button:hover {
-      background-color: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 12px 25px rgba(138, 43, 226, 0.6), 0 0 25px rgba(0, 212, 255, 0.5) inset;
+    }
+
+    .main-button:hover::before {
+        left: 100%;
     }
 
     .main-button:active {
-      transform: translateY(0);
+        transform: translateY(0) scale(0.98);
+        box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4), 0 0 15px rgba(0, 212, 255, 0.3) inset;
     }
 
     .click-count {
       text-align: center;
-      font-size: 0.9rem;
-      color: #666;
+      font-size: 1rem;
+      color: var(--text-secondary);
       margin-bottom: var(--spacing-lg);
+      font-weight: 500;
+      animation: pulse 2s infinite;
+    }
+
+    .cards-container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-xl);
+        width: 100%;
+        align-items: center;
     }
 
     .card {
-      background-color: var(--card-bg);
+      background: var(--card-bg);
       border-radius: var(--border-radius);
-      box-shadow: 0 4px 12px var(--shadow);
+      box-shadow: 0 10px 30px var(--shadow), 0 0 20px rgba(138, 43, 226, 0.2) inset;
       padding: var(--spacing-lg);
       width: 100%;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      max-width: 800px; /* Limite de largura máxima */
+      transition: all var(--transition-normal);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(10px); /* Efeito de vidro fosco */
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+        content: '';
+        position: absolute;
+        top: -50%; left: -50%;
+        width: 200%; height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+        opacity: 0;
+        transition: opacity var(--transition-normal);
+        pointer-events: none;
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(138, 43, 226, 0.3) inset;
+    }
+
+    .card:hover::before {
+        opacity: 1;
     }
 
     .card-title {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       margin-bottom: var(--spacing-md);
       font-weight: 700;
-      color: var(--secondary);
+      color: var(--highlight);
       text-align: center;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: var(--spacing-xs);
+      font-family: 'Roboto', sans-serif;
+      text-shadow: 0 0 5px rgba(0, 255, 204, 0.5);
     }
 
     .result {
@@ -134,134 +219,211 @@
 
     .result p {
       margin: var(--spacing-sm) 0;
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
 
     .highlight {
       font-weight: 700;
       color: var(--highlight);
+      text-shadow: 0 0 3px rgba(0, 255, 204, 0.5);
     }
 
     .numero-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: var(--spacing-xs);
+      gap: calc(var(--spacing-xs) / 2);
       margin: var(--spacing-sm) 0;
+      perspective: 1000px; /* Para efeito 3D */
     }
 
     .numero {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      font-size: 0.9rem;
-      font-weight: 500;
-      background-color: var(--numero-bg);
+      font-size: 1rem;
+      font-weight: 700;
+      background: var(--numero-bg);
       color: var(--text);
+      border: 1px solid var(--numero-border);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: all var(--transition-fast);
+      cursor: default; /* Mostra que não é clicável */
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .numero::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: scale(0);
+        transition: transform 0.3s ease-out;
+        border-radius: 50%;
+        z-index: -1;
+    }
+
+    .numero:hover {
+        transform: scale(1.2) translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 0 0 10px var(--numero-border);
+        z-index: 2; /* Fica por cima */
+    }
+
+    .numero:hover::after {
+        transform: scale(2);
     }
 
     .acerto {
-      background-color: var(--acerto-bg);
+      background: var(--acerto-bg);
       color: var(--acerto-text);
-      font-weight: 700;
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 15px var(--accent);
+      animation: popIn 0.5s ease forwards;
+    }
+
+    .acerto:hover {
+        box-shadow: 0 0 20px var(--accent), 0 0 30px var(--accent);
     }
 
     .resultado-final {
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       font-weight: 700;
-      margin-top: var(--spacing-md);
-      padding: var(--spacing-sm);
+      margin-top: var(--spacing-lg);
+      padding: var(--spacing-md);
       border-radius: var(--border-radius);
+      text-align: center;
+      animation: fadeIn 0.8s ease-out;
+      border: 1px solid transparent;
+      background-clip: padding-box;
     }
 
     .vitoria-ia {
-      background-color: rgba(40, 167, 69, 0.1);
-      color: var(--primary);
+      background: rgba(255, 42, 109, 0.15);
+      color: var(--accent);
+      border-color: rgba(255, 42, 109, 0.3);
+      box-shadow: 0 0 15px rgba(255, 42, 109, 0.2);
     }
 
     .vitoria-jogador {
-      background-color: rgba(0, 123, 255, 0.1);
+      background: rgba(0, 255, 204, 0.15);
       color: var(--highlight);
+      border-color: rgba(0, 255, 204, 0.3);
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
     }
 
     .empate {
-      background-color: rgba(108, 117, 125, 0.1);
-      color: #6c757d;
+      background: rgba(138, 43, 226, 0.15);
+      color: var(--secondary);
+      border-color: rgba(138, 43, 226, 0.3);
+      box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
     }
 
     /* Layout para telas maiores */
     @media (min-width: 768px) {
       h1 {
-        font-size: 2.2rem;
+        font-size: 2.8rem;
       }
       
       .subtitle {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
       }
       
-      .cards-container {
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing-xl);
-      }
-      
-      .card.comparacao {
-        max-width: 800px;
-        margin: 0 auto;
-      }
-      
-      @media (min-width: 1024px) {
-        .cards-container {
-          flex-direction: column;
-        }
-        
-        .card.sorteio {
-          margin-bottom: var(--spacing-xl);
-        }
+      .main-button {
+        font-size: 1.3rem;
+        padding: var(--spacing-lg) var(--spacing-xl);
       }
       
       .numero {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
       }
     }
 
-    /* Animações */
+    /* Animações Personalizadas */
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
-    .card.animar {
-      animation: fadeIn 0.5s ease-out;
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
+
+    @keyframes popIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      70% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.7; }
+      50% { opacity: 1; }
+      100% { opacity: 0.7; }
+    }
+
+    /* Efeito de loading no botão */
+    .main-button:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .main-button.loading::after {
+        content: "";
+        position: absolute;
+        top: 50%; left: 50%;
+        width: 20px; height: 20px;
+        margin: -10px 0 0 -10px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>Simulador FaixaBet</h1>
+      <h1>🎲 Simulador FaixaBet</h1>
       <p class="subtitle">Veja Como Nossa IA Supera Bolões e Palpites Comuns</p>
     </header>
 
-    <button class="main-button" onclick="rodarSimulacao()">🔄 Gerar Nova Simulação</button>
+    <button class="main-button" id="simularBtn">
+        <span id="btnText">🔄 Gerar Nova Simulação</span>
+    </button>
     
     <div class="click-count" id="contador">Simulações Realizadas: 0</div>
 
     <div class="cards-container">
       <!-- Card Sorteio Oficial -->
-      <div class="card sorteio animar">
-        <div class="card-title">Sorteio Oficial (Simulado)</div>
+      <div class="card sorteio">
+        <div class="card-title">🎯 Sorteio Oficial (Simulado)</div>
         <div class="result" id="sorteio"></div>
       </div>
 
       <!-- Card Comparação (Centralizado) -->
-      <div class="card comparacao animar">
-        <div class="card-title">IA x Jogador</div>
+      <div class="card comparacao">
+        <div class="card-title">🧠 IA x Jogador</div>
         <div class="result" id="comparacao"></div>
       </div>
     </div>
@@ -269,6 +431,8 @@
 
   <script>
     let cliques = 0;
+    const btn = document.getElementById('simularBtn');
+    const btnText = document.getElementById('btnText');
 
     function gerarPalpite(qtd) {
       const numeros = [];
@@ -291,77 +455,104 @@
       }).join('');
     }
 
-    function rodarSimulacao() {
-      cliques++;
-      document.getElementById('contador').innerText = `Simulações Realizadas: ${cliques}`;
+    async function rodarSimulacao() {
+        // Feedback visual de carregamento
+        btn.disabled = true;
+        btn.classList.add('loading');
+        btnText.textContent = 'Processando...';
 
-      const sorteio = gerarPalpite(15);
+        // Pequeno atraso para o efeito visual
+        await new Promise(resolve => setTimeout(resolve, 600));
 
-      // Gera palpite da IA (com 10 números do sorteio + 5 aleatórios)
-      const iaAcertos = sorteio.slice(0, 10);
-      const resto = gerarPalpite(25).filter(n => !iaAcertos.includes(n));
-      while (iaAcertos.length < 15) {
-        const n = resto.pop();
-        if (n && !iaAcertos.includes(n)) iaAcertos.push(n);
-      }
-      const ia = iaAcertos.sort((a, b) => a - b);
+        cliques++;
+        document.getElementById('contador').innerText = `Simulações Realizadas: ${cliques}`;
 
-      const jogador = gerarPalpite(15);
+        const sorteio = gerarPalpite(15);
 
-      const acertosIA = contarAcertos(ia, sorteio);
-      const acertosJogador = contarAcertos(jogador, sorteio);
+        // Gera palpite da IA (com 10 números do sorteio + 5 aleatórios)
+        const iaAcertos = sorteio.slice(0, 10);
+        const resto = gerarPalpite(25).filter(n => !iaAcertos.includes(n));
+        while (iaAcertos.length < 15) {
+            const n = resto.pop();
+            if (n && !iaAcertos.includes(n)) iaAcertos.push(n);
+        }
+        const ia = iaAcertos.sort((a, b) => a - b);
 
-      let resultadoFinal = '';
-      let classeResultado = '';
-      
-      if (acertosIA > acertosJogador) {
-        resultadoFinal = 'IA Superou o Jogador! ✅';
-        classeResultado = 'vitoria-ia';
-      } else if (acertosIA < acertosJogador) {
-        resultadoFinal = '🎉 Você Superou a IA!';
-        classeResultado = 'vitoria-jogador';
-      } else {
-        resultadoFinal = '🤝 Empate!';
-        classeResultado = 'empate';
-      }
+        const jogador = gerarPalpite(15);
 
-      document.getElementById('sorteio').innerHTML = `
-        <div class="numero-container">
-          ${formatarNumeros(sorteio, [])}
-        </div>
-      `;
+        const acertosIA = contarAcertos(ia, sorteio);
+        const acertosJogador = contarAcertos(jogador, sorteio);
 
-      document.getElementById('comparacao').innerHTML = `
-        <p><span class="highlight">IA:</span></p>
-        <div class="numero-container">
-          ${formatarNumeros(ia, sorteio)}
-        </div>
-        <p>Acertos: <strong>${acertosIA}</strong></p>
+        let resultadoFinal = '';
+        let classeResultado = '';
         
-        <p style="margin-top: var(--spacing-lg);"><span class="highlight">Jogador:</span></p>
-        <div class="numero-container">
-          ${formatarNumeros(jogador, sorteio)}
-        </div>
-        <p>Acertos: <strong>${acertosJogador}</strong></p>
-        
-        <div class="resultado-final ${classeResultado}">
-          ${resultadoFinal}
-        </div>
-      `;
+        if (acertosIA > acertosJogador) {
+            resultadoFinal = '🤖 IA Superou o Jogador! ✅';
+            classeResultado = 'vitoria-ia';
+        } else if (acertosIA < acertosJogador) {
+            resultadoFinal = '🎉 Você Superou a IA!';
+            classeResultado = 'vitoria-jogador';
+        } else {
+            resultadoFinal = '🤝 Empate!';
+            classeResultado = 'empate';
+        }
 
-      // Adiciona animação
-      document.querySelectorAll('.card').forEach(card => {
-        card.classList.remove('animar');
-        // Força o reflow
-        void card.offsetWidth;
-        card.classList.add('animar');
-      });
+        document.getElementById('sorteio').innerHTML = `
+            <div class="numero-container">
+            ${formatarNumeros(sorteio, [])}
+            </div>
+        `;
+
+        document.getElementById('comparacao').innerHTML = `
+            <p><span class="highlight">🧠 IA:</span></p>
+            <div class="numero-container">
+            ${formatarNumeros(ia, sorteio)}
+            </div>
+            <p>Acertos: <strong>${acertosIA}</strong></p>
+            
+            <p style="margin-top: var(--spacing-lg);"><span class="highlight">👤 Jogador:</span></p>
+            <div class="numero-container">
+            ${formatarNumeros(jogador, sorteio)}
+            </div>
+            <p>Acertos: <strong>${acertosJogador}</strong></p>
+            
+            <div class="resultado-final ${classeResultado}">
+            ${resultadoFinal}
+            </div>
+        `;
+
+        // Remove a classe de animação e a readiciona para acionar novamente
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+        });
+
+        // Animação de entrada para os cards
+        setTimeout(() => {
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200); // Delay escalonado para cada card
+            });
+        }, 100);
+
+        // Restaura o botão
+        btn.disabled = false;
+        btn.classList.remove('loading');
+        btnText.textContent = '🔄 Gerar Nova Simulação';
     }
 
+
+    // Evento do botão
+    btn.addEventListener('click', rodarSimulacao);
+
     // Gera uma simulação inicial ao carregar a página
-    window.onload = function() {
-      setTimeout(rodarSimulacao, 500);
-    };
+    window.addEventListener('load', function() {
+        setTimeout(rodarSimulacao, 800);
+    });
   </script>
 </body>
 </html>
