@@ -197,16 +197,64 @@
       </div>
     </div>
   </section>
+  <!-- Seção Como Funciona -->
+  <section id="como-funciona" class="py-20 gradient-bg text-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Como a FaixaBet Funciona?</h2>
+        <p class="text-gray-300 max-w-2xl mx-auto">
+          Siga estes simples passos e comece a gerar palpites poderosos com nossa Inteligência Artificial.
+        </p>
+      </div>
 
-  <!-- Como Funciona -->
-  <section id="como-funciona" class="py-20 px-6 bg-gray-800 text-center">
-    <h2 class="text-3xl font-bold mb-12">Como Funciona</h2>
-    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-      <div><h3 class="text-xl font-semibold mb-2">1. Escolha seu plano</h3><p>Grátis, Silver ou Gold, você decide o ritmo.</p></div>
-      <div><h3 class="text-xl font-semibold mb-2">2. Receba palpites</h3><p>Análises com base em estatísticas e histórico.</p></div>
-      <div><h3 class="text-xl font-semibold mb-2">3. Jogue na Lotéria com confiança</h3><p>Decida melhor, ganhe mais.</p></div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Etapa 1 -->
+        <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20">
+          <div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-xl font-bold mb-4 flex-shrink-0">1</div>
+          <h3 class="text-xl font-semibold mb-2">Escolha seu Plano</h3>
+          <p class="text-gray-300">
+            <p class="text-gray-300">
+              Selecione entre <strong>Free</strong>, <strong>Silver</strong> ou <strong>Gold</strong>. Cada plano oferece benefícios e quantidades de palpites diferentes.
+            </p>
+          </p>
+        </div>
+
+        <!-- Etapa 2 -->
+        <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20">
+          <div class="w-16 h-16 rounded-full bg-secondary flex items-center justify-center text-xl font-bold mb-4 flex-shrink-0">2</div>
+          <h3 class="text-xl font-semibold mb-2">Registre-se</h3>
+          <p class="text-gray-300">
+            Crie sua conta com seus dados pessoais, nome de usuário e senha. É rápido e seguro.
+          </p>
+        </div>
+
+        <!-- Etapa 3 -->
+        <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20">
+          <div class="w-16 h-16 rounded-full bg-accent flex items-center justify-center text-xl font-bold mb-4 flex-shrink-0">3</div>
+          <h3 class="text-xl font-semibold mb-2">Acesse o App</h3>
+          <p class="text-gray-300">
+            Faça login e explore o painel do FaixaBet. Navegue pelas funcionalidades exclusivas do seu plano.
+          </p>
+        </div>
+
+        <!-- Etapa 4 -->
+        <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20">
+          <div class="w-16 h-16 rounded-full bg-purple-500 flex items-center justify-center text-xl font-bold mb-4 flex-shrink-0">4</div>
+          <h3 class="text-xl font-semibold mb-2">Gere seus Palpites</h3>
+          <p class="text-gray-300">
+            Utilize nossa IA para gerar palpites exclusivos. A quantidade disponível depende do seu plano assinado.
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="#planos" class="inline-block btn-primary text-white font-bold py-3 px-8 rounded-full">
+          Ver Planos Disponíveis
+        </a>
+      </div>
     </div>
   </section>
+
 <!-- Nossos Planos -->
 <section id="planos" class="py-20 px-6 bg-gray-900 text-center">
   <h2 class="text-3xl font-bold mb-10">Nossos Planos</h2>
@@ -249,14 +297,13 @@
   <p class="mt-10 text-gray-400">Usuários ativos: <strong>2.801</strong> de 10.000 disponíveis</p>
 </section>
 
-
     <!-- Botão Quero Participar -->
     <div class="mt-16">
       <button onclick="toggleForm(true)" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-xl transition text-xl">
         Quero Participar
       </button>
     </div>
-  </section>
+</section>
 
   <!-- Blog Section -->
   <section id="blog" class="py-20 px-6 bg-gray-900">
@@ -510,8 +557,109 @@
       <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Enviar</button>
     </form>
   </section>
+<!-- FAQ Acordeão Funcional -->
+<div class="gradient-bg text-white py-16 px-6 md:px-20">
+  <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-secondary">   Perguntas Frequentes (FAQ)</h2>
 
-  
+  <div class="max-w-4xl mx-auto text-lg leading-relaxed space-y-4">
+
+    <!-- Repetir para cada pergunta -->
+    <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
+      <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
+        1. A FaixaBet é um site de apostas?
+      </button>
+      <div class="faq-answer" style="display: none; margin-top: 10px;">
+        <p>Não. A FaixaBet não é uma casa de apostas. Somos uma plataforma de inteligência artificial para análise de loterias oficiais. O foco é gerar palpites com base em dados históricos e modelos de IA, e não intermediar apostas.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
+      <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
+        2. Como a FaixaBet melhora meus palpites na Lotofácil?
+      </button>
+      <div class="faq-answer" style="display: none; margin-top: 10px;">
+        <p>Nossa Inteligência Artificial, equipada com modelos neurais treinados diariamente, não chuta números. Ela aprende com cada resultado da Lotofácil, aprimorando continuamente sua capacidade de identificar padrões estatísticos significativos. Esse aprendizado poderoso é convertido em até 20 palpites exclusivos por usuário, cada um otimizado para visar os prestigiados 14 acertos ou mais, superando facilmente a eficácia da geração aleatória.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
+      <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
+        3. Qual a diferença da FaixaBet para os bolões?
+      </button>
+      <div class="faq-answer" style="display: none; margin-top: 10px;">
+        <p> Os bolões comuns são limitados pela combinação aleatória de números. A FaixaBet utiliza tecnologia de ponta em Inteligência Artificial (IA), especificamente modelos neurais treinados exclusivamente com os resultados oficiais da Lotofácil. Essa IA processa dados e identifica tendências de forma muito mais poderosa e precisa do que métodos tradicionais. E para transparência total, cada palpite gerado por nossos algoritmos fica salvo, permitindo que você consulte e valide os resultados futuramente."
+
+Escolha a opção que melhor se adapta ao tom do seu site! Todas elas destacam o uso de IA e modelos neurais como uma vantagem significativa sobre a aleatoriedade dos bolões.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
+      <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
+        4. A FaixaBet armazena meus palpites?
+      </button>
+      <div class="faq-answer" style="display: none; margin-top: 10px;">
+        <p>Sim! Todos os palpites ficam registrados na sua conta, funcionando como um repositório eterno de jogos e apostas feitas via IA.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
+      <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
+        5. Quais são os planos e limites?
+      </button>
+      <div class="faq-answer" style="display: none; margin-top: 10px;">
+        <p>Temos planos com 30 até 240 palpites/mês. O plano Free permite 15 dezenas, Silver vai até 17 e o Gold até 20 dezenas por volante. Mais liberdade e estratégia que bolões prontos.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
+      <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
+        6. Quais dados pessoais preciso informar?
+      </button>
+      <div class="faq-answer" style="display: none; margin-top: 10px;">
+        <p>Somente os essenciais: nome completo, e-mail, telefone e data de nascimento. Tudo armazenado com segurança.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
+      <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
+        7. O pagamento é seguro?
+      </button>
+      <div class="faq-answer" style="display: none; margin-top: 10px;">
+        <p>Sim! Usamos Stripe, a mesma solução utilizada por empresas como Amazon e Shopify. A cobrança é feita em ambiente seguro e criptografado.</p>
+      </div>
+    </div>
+
+    <!-- NOVAS PERGUNTAS AQUI -->
+
+    <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
+      <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
+        8. A FaixaBet vai funcionar com outras loterias além da Lotofácil?
+      </button>
+      <div class="faq-answer" style="display: none; margin-top: 10px;">
+        <p>Sim! Em breve, a plataforma terá suporte para Lotomania, Mega-Sena e Quina, com IA personalizada para cada tipo de jogo.</p>
+      </div>
+    </div>
+
+    <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
+      <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
+        9. A FaixaBet terá aplicativo para celular?
+      </button>
+      <div class="faq-answer" style="display: none; margin-top: 10px;">
+        <p>Não. A plataforma foi projetada 100% para web, com design responsivo. Funciona perfeitamente em celulares e tablets, sem necessidade de aplicativo.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function toggleAnswer(button) {
+    const answer = button.nextElementSibling;
+    const isOpen = answer.style.display === 'block';
+    document.querySelectorAll('.faq-answer').forEach(el => el.style.display = 'none');
+    answer.style.display = isOpen ? 'none' : 'block';
+  }
+</script>
 
 
   <!-- Footer -->
@@ -638,8 +786,6 @@
   }
 </script>
 
-<!-- ... (outro conteúdo do site) ... -->
-
 <!-- Script do popup de escolha de loteria -->
 <!-- ... (outro conteúdo do site) ... -->
 
@@ -663,6 +809,8 @@
     alert(`${loteria} ainda não está disponível na versão atual. Em breve!`);
   }
 </script>
+
+
 
 </body>
 </html>
