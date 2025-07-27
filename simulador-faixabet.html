@@ -33,6 +33,8 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       padding: 25px 30px;
       text-align: left;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .card-title {
@@ -88,10 +90,15 @@
       font-weight: bold;
     }
 
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
     @media (min-width: 768px) {
       .cards {
-        display: flex;
-        gap: 20px;
+        flex-direction: row;
       }
       .card {
         flex: 1;
@@ -106,12 +113,14 @@
     <button onclick="rodarSimulacao()">🎲 Simular Jogo</button>
     <div class="click-count" id="contador">Simulações Realizadas: 0</div>
 
-    <div class="cards">
-      <div class="card">
-        <div class="card-title">🎯 Sorteio Oficial (Simulado)</div>
-        <div class="result" id="sorteio"></div>
-      </div>
+    <!-- Card Sorteio Oficial isolado -->
+    <div class="card">
+      <div class="card-title">🎯 Sorteio Oficial (Simulado)</div>
+      <div class="result" id="sorteio"></div>
+    </div>
 
+    <!-- Cards IA x Jogador -->
+    <div class="cards">
       <div class="card">
         <div class="card-title">🧠 IA x Jogador</div>
         <div class="result" id="comparacao"></div>
@@ -148,7 +157,6 @@
 
       const sorteio = gerarPalpite(15);
 
-      // IA "acerta" parcialmente o sorteio de propósito
       const iaAcertos = sorteio.slice(0, 10);
       const resto = gerarPalpite(25).filter(n => !iaAcertos.includes(n));
       while (iaAcertos.length < 15) {
@@ -157,7 +165,6 @@
       }
       const ia = iaAcertos.sort((a, b) => a - b);
 
-      // Jogador aleatório puro
       const jogador = gerarPalpite(15);
 
       const acertosIA = contarAcertos(ia, sorteio);
