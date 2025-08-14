@@ -578,29 +578,52 @@
   </section>
 
   <!-- Formulário de Cadastro -->
- 
-    <!-- Formulário de Cadastro -->
-  <section id="formSection" class="py-20 px-6 bg-gray-800 max-w-3xl mx-auto rounded-2xl shadow-2xl mt-6 hidden opacity-0 scale-95">
-    <h2 class="text-3xl font-bold text-green-400 text-center mb-6" style="font-size: 110%;">Quero Participar</h2>
-    <form onsubmit="enviarFormulario(event)" class="space-y-4">
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_template" value="table" />
+<!-- Formulário de Cadastro -->
+<section id="formSection" class="py-20 px-6 bg-gray-800 max-w-3xl mx-auto rounded-2xl shadow-2xl mt-6 hidden opacity-0 scale-95">
+  <h2 class="text-3xl font-bold text-green-400 text-center mb-6" style="font-size: 110%;">Quero Participar</h2>
+  <form onsubmit="enviarFormulario(event)" class="space-y-4">
+    <input type="hidden" name="_captcha" value="false" />
+    <input type="hidden" name="_template" value="table" />
 
-      <div><label class="block mb-1">Nome Completo</label><input type="text" name="Nome Completo" required class="w-full p-2 rounded text-black" /></div>
-      <div><label class="block mb-1">Email</label><input type="email" name="Email" required class="w-full p-2 rounded text-black" /></div>
-      <div><label class="block mb-1">Celular/WhatsApp</label><input type="tel" name="Celular/WhatsApp" class="w-full p-2 rounded text-black" /></div>
-      <div><label class="block mb-1">Senha</label><input type="password" name="Senha" required class="w-full p-2 rounded text-black" /></div>
-      <div><label class="block mb-1">Data de Nascimento</label><input type="date" name="DataNascimento" class="w-full p-2 rounded text-black" /></div>
+    <div>
+      <label class="block mb-1">Nome Completo</label>
+      <input type="text" name="Nome Completo" required class="w-full p-2 rounded text-black" />
+    </div>
 
-      <div class="flex gap-2">
-        <button type="button" onclick="choosePlan('free')" class="flex-1 bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded">Plano Free</button>
-        <button type="button" onclick="choosePlan('silver')" class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">Plano Silver</button>
-        <button type="button" onclick="choosePlan('gold')" class="flex-1 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Plano Gold</button>
-      </div>
+    <div>
+      <label class="block mb-1">Nome de Usuário</label>
+      <input type="text" name="Username" required class="w-full p-2 rounded text-black" />
+    </div>
 
-      <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Finalizar Cadastro</button>
-    </form>
-  </section>
+    <div>
+      <label class="block mb-1">Email</label>
+      <input type="email" name="Email" required class="w-full p-2 rounded text-black" />
+    </div>
+
+    <div>
+      <label class="block mb-1">Celular/WhatsApp</label>
+      <input type="tel" name="Celular/WhatsApp" class="w-full p-2 rounded text-black" />
+    </div>
+
+    <div>
+      <label class="block mb-1">Senha</label>
+      <input type="password" name="Senha" required class="w-full p-2 rounded text-black" />
+    </div>
+
+    <div>
+      <label class="block mb-1">Data de Nascimento</label>
+      <input type="date" name="DataNascimento" class="w-full p-2 rounded text-black" />
+    </div>
+
+    <div class="flex gap-2">
+      <button type="button" onclick="choosePlan('free')" class="flex-1 bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded">Plano Free</button>
+      <button type="button" onclick="choosePlan('silver')" class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">Plano Silver</button>
+      <button type="button" onclick="choosePlan('gold')" class="flex-1 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Plano Gold</button>
+    </div>
+
+    <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Finalizar Cadastro</button>
+  </form>
+</section>
 
 <!-- FAQ Acordeão Funcional -->
 <div class="gradient-bg text-white py-16 px-6 md:px-20">
@@ -724,63 +747,66 @@ function choosePlan(planId, event) {
 
 async function enviarFormulario(event) {
   event.preventDefault();
+
   const form = event.target;
   const formData = new FormData(form);
 
   const payload = {
     full_name: formData.get('Nome Completo'),
+    username: formData.get('Username'), // novo campo
     birthdate: formData.get('DataNascimento') || formData.get('Data Nascimento'),
     email: formData.get('Email'),
     phone: formData.get('Celular/WhatsApp'),
     password: formData.get('Senha')
   };
 
-  if (!payload.email || !payload.password || !payload.full_name) {
-    alert('Nome, email e senha são obrigatórios.');
+  // Validação no cliente
+  if (!payload.username || !payload.email || !payload.password || !payload.full_name) {
+    alert('Nome completo, nome de usuário, email e senha são obrigatórios.');
     return;
   }
 
   try {
-    // 1) Criar usuário
+    // 1) Criar usuário no backend
     let res = await fetch(`${API_BASE}/register`, {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
+
     const j = await res.json();
     if (!res.ok) throw new Error(j.error || 'Erro ao cadastrar');
 
     const client_id = j.client_id;
 
     if (selectedPlan === 'free') {
-      // 2a) Ativar plano free
+      // 2a) Plano Free — ativa imediatamente
       let r2 = await fetch(`${API_BASE}/subscribe-free`, {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ client_id, plan: 'free' })
       });
       const ok2 = await r2.json();
       if (!r2.ok) throw new Error(ok2.error || 'Erro ao ativar plano grátis');
-
       alert('Plano Free ativado — bem-vindo!');
-      window.location.href = "https://faixab7.streamlit.app/";
-
+      window.location.href = '/dashboard';
     } else {
-      // 2b) Criar sessão Stripe
+      // 2b) Plano pago — criar sessão Stripe
       let r3 = await fetch(`${API_BASE}/create-checkout-session`, {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ client_id, plan: selectedPlan })
       });
       const j3 = await r3.json();
       if (!r3.ok || !j3.url) throw new Error(j3.error || 'Erro criando sessão de pagamento');
-      window.location = j3.url;
+      window.location = j3.url; // redireciona para Stripe Checkout
     }
   } catch (err) {
     console.error(err);
     alert('Erro: ' + err.message);
   }
 }
+
 </script>
 
 
