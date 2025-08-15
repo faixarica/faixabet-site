@@ -325,7 +325,7 @@
     <div class="container">
         <header>
             <h1 class="logo">FaixaBet</h1>
-            <p class="subtitle">A única plataforma que gera palpites de Loteria da Caixa com base em história e com IA do Mundo</p>
+            <p class="subtitle">A única plataforma que gera palpites de Loterias da Caixa com base em história e com IA do Mundo</p>
         </header>
 
         <section class="plans-section">
@@ -539,7 +539,7 @@
                     // Criar sessão Stripe para planos pagos
                     let stripeRes = await fetch(`${API_BASE}/create-checkout-session`, {
                         method: 'POST',
-                        headers: { 'Content-Type': 'account/json' },
+                        headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ 
                             client_id, 
                             plan: selectedPlan,
