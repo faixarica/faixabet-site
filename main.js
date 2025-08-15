@@ -1,7 +1,7 @@
 // ========================
 // Configuração inicial
 // ========================
-const API_BASE = "https://fb-v8.onrender.com/api"; // Ajuste se mudar o backend
+const API_BASE = "https://fb-v8.onrender.com/api"; // URL corrigida (sem espaços)
 let selectedPlan = null;
 
 // ========================
@@ -9,7 +9,7 @@ let selectedPlan = null;
 // ========================
 document.querySelectorAll("[data-plan]").forEach(btn => {
     btn.addEventListener("click", e => {
-        e.preventDefault(); // evita rolagem padrão do href="#registro"
+        e.preventDefault();
         
         selectedPlan = btn.getAttribute("data-plan")?.trim().toLowerCase();
 
@@ -87,7 +87,7 @@ async function enviarFormulario(event) {
             });
             const j3 = await r3.json();
             if (!r3.ok || !j3.url) throw new Error(j3.error || 'Erro criando sessão de pagamento');
-            window.location = j3.url; // redireciona para checkout Stripe
+            window.location.href = j3.url; // redireciona para checkout Stripe
         }
     } catch (err) {
         console.error(err);
