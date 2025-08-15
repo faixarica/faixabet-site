@@ -1,6 +1,7 @@
 // ========================
-// Configuração inicial
+// Configuração inicial 15/08/2025
 // ========================
+
 const API_BASE = "https://backend-v8.onrender.com/api"; // URL correta
 let selectedPlan = null;
 
@@ -87,14 +88,14 @@ async function enviarFormulario(event) {
 
         // 3) Fluxo por tipo de plano
         if (selectedPlan === 'free') {
-            console.log("🎁 Ativando plano Free...");
+            console.log("Ativando plano Free...");
             let r2 = await fetch(`${API_BASE}/process-free-plan`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ client_id, plan: 'free', email: payload.email })
             });
             const ok2 = await r2.json();
-            console.log("📦 Resposta plano free:", ok2);
+            console.log("Resposta plano free:", ok2);
             if (!r2.ok) throw new Error(ok2.error || 'Erro ao ativar plano Free');
             alert('Plano Free ativado — bem-vindo!');
             window.location.href = '/dashboard';
@@ -106,7 +107,7 @@ async function enviarFormulario(event) {
                 body: JSON.stringify({ client_id, plan: selectedPlan })
             });
             const j3 = await r3.json();
-            console.log("📦 Resposta Stripe:", j3);
+            console.log("Resposta Stripe:", j3);
             if (!r3.ok || !j3.url) throw new Error(j3.error || 'Erro criando sessão de pagamento');
             window.location.href = j3.url; // redireciona para checkout Stripe
         }
