@@ -291,19 +291,16 @@
       </ul>
       <div class="mt-auto"> <!-- Empurra o CTA para o final -->
         <!-- Free -->
-        <a href="#registro" data-plan="free" onclick="choosePlan('free')" class="...">Começar Grátis</a>
-
-        <!-- Silver -->
-        <a href="#registro" data-plan="silver" onclick="choosePlan('silver')" class="...">Assinar Silver</a>
-
-        <!-- Gold -->
-        <a href="#registro" data-plan="gold" onclick="choosePlan('gold')" class="...">Assinar Gold</a>
-
+        <a href="#" onclick="choosePlan('free', event)">Começar Grátis</a>
+        <!-- Silver 
+        <a href="#registro" data-plan="silver" onclick="choosePlan('silver')" class="...">Assinar Silver</a> -->
+        <a href="#" onclick="choosePlan('silver', event)">Assinar Silver</a>
+        <!-- Gold -->   
+        <a href="#" onclick="choosePlan('gold', event)">Assinar Gold</a>
         </a>
         <p class="mt-3 text-xs text-gray-500 italic">Exemplo: João acertou 11 números 4 vezes no mês com jogos simples.</p>
       </div>
     </div>
-
     <!-- Silver (Destacado) -->
     <div class="relative bg-gray-200 p-8 rounded-xl text-gray-900 border-2 border-blue-400 transform md:scale-105 z-10 shadow-xl flex flex-col h-full"> <!-- Destaque visual -->
       <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">
@@ -341,7 +338,6 @@
         <p class="mt-3 text-xs text-gray-600 italic">Exemplo: José recebeu combinações de alta taxa de 14 números.</p>
       </div>
     </div>
-
     <!-- Gold -->
     <div class="bg-yellow-400 p-8 rounded-xl text-gray-900 border border-yellow-500 flex flex-col h-full">
       <h3 class="text-2xl font-bold mb-2">Gold</h3>
@@ -577,7 +573,6 @@
     </div>
   </section>
 
-  <!-- Formulário de Cadastro -->
 <!-- Formulário de Cadastro -->
 <section id="formSection" class="py-20 px-6 bg-gray-800 max-w-3xl mx-auto rounded-2xl shadow-2xl mt-6 hidden opacity-0 scale-95">
   <h2 class="text-3xl font-bold text-green-400 text-center mb-6" style="font-size: 110%;">Quero Participar</h2>
@@ -587,32 +582,33 @@
 
     <div>
       <label class="block mb-1">Nome Completo</label>
-      <input type="text" name="Nome Completo" required class="w-full p-2 rounded text-black" />
+       <!--<input type="text" name="Nome Completo" required class="w-full p-2 rounded text-black" /> -->
+      <input type="text" name="full_name" placeholder="Nome Completo" required />
     </div>
-
     <div>
       <label class="block mb-1">Nome de Usuário</label>
-      <input type="text" name="Username" required class="w-full p-2 rounded text-black" />
+         <!--<input type="text" name="Username" required class="w-full p-2 rounded text-black" /> -->
+      <input type="text" name="username" placeholder="Username" required />
     </div>
-
     <div>
       <label class="block mb-1">Email</label>
-      <input type="email" name="Email" required class="w-full p-2 rounded text-black" />
+      <!-- <input type="email" name="Email" required class="w-full p-2 rounded text-black" /> -->
+      <input type="email" name="email" placeholder="Email" required />
     </div>
-
     <div>
       <label class="block mb-1">Celular/WhatsApp</label>
-      <input type="tel" name="Celular/WhatsApp" class="w-full p-2 rounded text-black" />
+      <!-- <input type="tel" name="Celular/WhatsApp" class="w-full p-2 rounded text-black" /> -->
+      <input type="text" name="phone" placeholder="Celular/WhatsApp" />
     </div>
-
     <div>
       <label class="block mb-1">Senha</label>
-      <input type="password" name="Senha" required class="w-full p-2 rounded text-black" />
+      <!-- <input type="password" name="Senha" required class="w-full p-2 rounded text-black" /> -->
+       <input type="password" name="password" placeholder="Senha" required />
     </div>
-
     <div>
       <label class="block mb-1">Data de Nascimento</label>
-      <input type="date" name="DataNascimento" class="w-full p-2 rounded text-black" />
+      <!-- <input type="date" name="DataNascimento" class="w-full p-2 rounded text-black" /> -->
+      <input type="date" name="birthdate" placeholder="Data de Nascimento" />
     </div>
 
     <div class="flex gap-2">
@@ -734,16 +730,20 @@ let selectedPlan = null;
 const API_BASE = "https://fb-v8.onrender.com/api"; // backend no Render
 
 function choosePlan(planId, event) {
-  if (event) event.preventDefault(); // impede comportamento padrão
+  if (event) event.preventDefault(); // evita scroll
   selectedPlan = planId;
+  document.getElementById("formSection").classList.remove("hidden");
+  document.getElementById("formSection").scrollIntoView({ behavior: "smooth" });
+}
 
+
+  // Mostra o formulário
   const formSection = document.getElementById("formSection");
   if (formSection) {
     formSection.classList.remove("hidden", "opacity-0", "scale-95");
     formSection.scrollIntoView({ behavior: "smooth" });
   }
 }
-
 
 async function enviarFormulario(event) {
   event.preventDefault();
@@ -752,13 +752,15 @@ async function enviarFormulario(event) {
   const formData = new FormData(form);
 
   const payload = {
-    full_name: formData.get('Nome Completo'),
-    username: formData.get('Username'), // novo campo
-    birthdate: formData.get('DataNascimento') || formData.get('Data Nascimento'),
-    email: formData.get('Email'),
-    phone: formData.get('Celular/WhatsApp'),
-    password: formData.get('Senha')
-  };
+  full_name: formData.get('full_name'),
+  username: formData.get('username'),
+  birthdate: formData.get('birthdate'),
+  email: formData.get('email'),
+  phone: formData.get('phone'),
+  password: formData.get('password'),
+  plan: selectedPlan
+};
+
 
   // Validação no cliente
   if (!payload.username || !payload.email || !payload.password || !payload.full_name) {
@@ -780,37 +782,33 @@ async function enviarFormulario(event) {
     const client_id = j.client_id;
 
     if (selectedPlan === 'free') {
-      // 2a) Plano Free — ativa imediatamente
-      let r2 = await fetch(`${API_BASE}/subscribe-free`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ client_id, plan: 'free' })
-      });
-      const ok2 = await r2.json();
-      if (!r2.ok) throw new Error(ok2.error || 'Erro ao ativar plano grátis');
-      alert('Plano Free ativado — bem-vindo!');
-      window.location.href = '/dashboard';
-    } else {
-      // 2b) Plano pago — criar sessão Stripe
-      let r3 = await fetch(`${API_BASE}/create-checkout-session`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ client_id, plan: selectedPlan })
-      });
-      const j3 = await r3.json();
-      if (!r3.ok || !j3.url) throw new Error(j3.error || 'Erro criando sessão de pagamento');
-      window.location = j3.url; // redireciona para Stripe Checkout
-    }
+  // ativa plano free
+  const r2 = await fetch(`${API_BASE}/subscribe-free`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ client_id })
+  });
+  const j2 = await r2.json();
+  if (!r2.ok) throw new Error(j2.error || 'Erro ao ativar plano Free');
+  alert('Plano Free ativado! Bem-vindo!');
+  window.location.href = '/dashboard';
+} else {
+  // planos pagos (Stripe)
+  const r3 = await fetch(`${API_BASE}/create-checkout-session`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ client_id, plan: selectedPlan })
+  });
+  const j3 = await r3.json();
+  if (!r3.ok || !j3.url) throw new Error(j3.error || 'Erro ao criar sessão de pagamento');
+  window.location = j3.url;
+}
   } catch (err) {
     console.error(err);
     alert('Erro: ' + err.message);
   }
 }
-
 </script>
-
-
-
   <!-- Footer -->
   <footer class="bg-gray-900 border-t border-gray-800 py-12 px-6">
     <div class="max-w-6xl mx-auto">
@@ -958,8 +956,6 @@ async function enviarFormulario(event) {
     alert(`${loteria} ainda não está disponível na versão atual. Em breve!`);
   }
 </script>
-
-
 
 </body>
 </html>
