@@ -470,97 +470,66 @@
             });
         });
 
-        // ========================
-        // Envio do formulário de cadastro
-        // ========================
-        async function enviarFormulario(event) {
-            event.preventDefault();
-            
-            // Mostrar loading
-            document.getElementById('loading').style.display = 'block';
-            document.querySelector('.submit-btn').disabled = true;
+      // ========================
+// Envio do formulário de cadastro
+// ========================
+async function enviarFormulario(event) {
+    event.preventDefault();
 
-            const form = event.target;
-            const formData = new FormData(form);
+    document.getElementById('loading').style.display = 'block';
+    document.querySelector('.submit-btn').disabled = true;
 
-            const payload = {
-                full_name: formData.get('full_name'),
-                username: formData.get('username'),
-                birthdate: formData.get('birthdate'),
-                email: formData.get('email'),
-                phone: formData.get('phone'),
-                password: formData.get('password'),
-                plan: selectedPlan
-            };
+    const form = event.target;
+    const formData = new FormData(form);
 
-            try {
-                // 1) Validar se o email já está cadastrado
-                let emailCheck = await fetch(`${API_BASE}/check-email`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: payload.email })
-                });
+    const payload = {
+        full_name: formData.get('full_name'),
+        username: formData.get('username'),
+        birthdate: formData.get('birthdate'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        password: formData.get('password'),
+        plan: selectedPlan
+    };
 
-                const emailResult = await emailCheck.json();
-                if (emailResult.exists) {
-                    throw new Error('Este email já está cadastrado. Faça login ou use outro email.');
-                }
+    try {
+        // 1) Validar email
+        let emailCheck = await fetch(`${API_BASE}/check-email`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: payload.email })
+        });
+        if (!emailCheck.ok) throw new Error(`Erro check-email (${emailCheck.status})`);
+        const emailResult = await emailCheck.json();
+        if (emailResult.exists) throw new Error('Este email já está cadastrado.');
 
-                // 2) Criar usuário no backend
-                let res = await fetch(`${API_BASE}/register`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
+        // 2) Usar endpoint unificado
+        let res = await fetch(`${API_BASE}/register-and-checkout`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
 
-                const j = await res.json();
-                if (!res.ok) throw new Error(j.error || 'Erro ao cadastrar');
-
-                const client_id = j.client_id;
-
-                // 3) Fluxo por tipo de plano
-                if (selectedPlan === 'free') {
-                    // Processar plano gratuito
-                    let freeRes = await fetch(`${API_BASE}/process-free-plan`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ 
-                            client_id, 
-                            plan: 'free',
-                            email: payload.email
-                        })
-                    });
-                    
-                    const freeResult = await freeRes.json();
-                    if (!freeRes.ok) throw new Error(freeResult.error || 'Erro ao processar plano gratuito');
-                    
-                    // Mostrar mensagem de sucesso
-                    showSuccessMessage();
-                } else {
-                    // Criar sessão Stripe para planos pagos
-                    let stripeRes = await fetch(`${API_BASE}/create-checkout-session`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ 
-                            client_id, 
-                            plan: selectedPlan,
-                            email: payload.email
-                        })
-                    });
-                    
-                    const stripeResult = await stripeRes.json();
-                    if (!stripeRes.ok || !stripeResult.url) throw new Error(stripeResult.error || 'Erro criando sessão de pagamento');
-                    
-                    // Redirecionar para checkout do Stripe
-                    window.location.href = stripeResult.url;
-                }
-            } catch (err) {
-                console.error(err);
-                alert('Erro: ' + err.message);
-                document.getElementById('loading').style.display = 'none';
-                document.querySelector('.submit-btn').disabled = false;
-            }
+        if (!res.ok) {
+            const text = await res.text();
+            throw new Error(`Erro backend: ${text}`);
         }
+
+        const data = await res.json();
+        if (data.checkout_url) {
+            window.location.href = data.checkout_url;
+        } else if (data.plan === 'free') {
+            showSuccessMessage();
+        } else {
+            throw new Error('Resposta inesperada do backend');
+        }
+    } catch (err) {
+        alert("Erro: " + err.message);
+        document.getElementById('loading').style.display = 'none';
+        document.querySelector('.submit-btn').disabled = false;
+    }
+}
+
 
         // ========================
         // Mostrar mensagem de sucesso
