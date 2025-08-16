@@ -72,45 +72,33 @@ async function enviarFormulario(event) {
             throw new Error('Este email já está cadastrado. Faça login ou use outro email.');
         }
 
-        // 2) Criar usuário no backend
-        console.log("🆕 Registrando usuário:", payload);
-        let res = await fetch(`${API_BASE}/register`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
+        // 2) Registrar usuário e iniciar checkout (novo endpoint unificado)
+        console.log("🆕 Registrando usuário e iniciando checkout:", payload);
+
+        const response = await fetch(`${API_BASE}/register-and-checkout`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
         });
 
-        const j = await res.json();
-        console.log("📦 Resposta registro:", j);
-        if (!res.ok) throw new Error(j.error || 'Erro ao cadastrar');
+        if (!response.ok) {
+          const text = await response.text(); // captura até erro em HTML
+          throw new Error(`Erro backend: ${text}`);
+        }
 
-        const client_id = j.client_id;
+        const data = await response.json();
+        console.log("📦 Resposta register-and-checkout:", data);
 
-        // 3) Fluxo por tipo de plano
-        if (selectedPlan === 'free') {
-            console.log("Ativando plano Free...");
-            let r2 = await fetch(`${API_BASE}/process-free-plan`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ client_id, plan: 'free', email: payload.email })
-            });
-            const ok2 = await r2.json();
-            console.log("Resposta plano free:", ok2);
-            if (!r2.ok) throw new Error(ok2.error || 'Erro ao ativar plano Free');
+        // Redireciona para o checkout ou confirma Free
+        if (data.checkout_url) {
+            window.location.href = data.checkout_url;
+        } else if (data.plan === 'free') {
             alert('Plano Free ativado — bem-vindo!');
             window.location.href = '/dashboard';
         } else {
-            console.log("💳 Criando sessão Stripe para plano:", selectedPlan);
-            let r3 = await fetch(`${API_BASE}/create-checkout-session`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ client_id, plan: selectedPlan })
-            });
-            const j3 = await r3.json();
-            console.log("Resposta Stripe:", j3);
-            if (!r3.ok || !j3.url) throw new Error(j3.error || 'Erro criando sessão de pagamento');
-            window.location.href = j3.url; // redireciona para checkout Stripe
+            throw new Error('Resposta inesperada do backend');
         }
+
     } catch (err) {
         console.error("❌ Erro no cadastro:", err);
         alert('Erro: ' + err.message);
