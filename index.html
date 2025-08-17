@@ -470,7 +470,8 @@
             });
         });
 
-      // ========================
+
+// ========================
 // Envio do formulário de cadastro
 // ========================
 async function enviarFormulario(event) {
@@ -503,7 +504,7 @@ async function enviarFormulario(event) {
         const emailResult = await emailCheck.json();
         if (emailResult.exists) throw new Error('Este email já está cadastrado.');
 
-        // 2) Usar endpoint unificado
+        // 2) Criar usuário + checkout
         let res = await fetch(`${API_BASE}/register-and-checkout`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -516,19 +517,50 @@ async function enviarFormulario(event) {
         }
 
         const data = await res.json();
-        if (data.checkout_url) {
-            window.location.href = data.checkout_url;
-        } else if (data.plan === 'free') {
+
+        // Plano Free → já ativado
+        if (data.userId && !data.sessionId) {
             showSuccessMessage();
-        } else {
-            throw new Error('Resposta inesperada do backend');
+            return;
         }
+
+        // Plano Pago → redirecionar para Stripe Checkout
+        if (data.sessionId) {
+            const stripe = Stripe("SEU_STRIPE_PUBLIC_KEY"); // <-- substitua pela chave publishable
+            const { error } = await stripe.redirectToCheckout({ sessionId: data.sessionId });
+            if (error) {
+                throw new Error(error.message);
+            }
+        }
+
+        throw new Error('Resposta inesperada do backend');
     } catch (err) {
         alert("Erro: " + err.message);
         document.getElementById('loading').style.display = 'none';
         document.querySelector('.submit-btn').disabled = false;
     }
 }
+
+async function confirmarPagamento() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get("session_id");
+    if (!sessionId) return;
+
+    try {
+        let res = await fetch(`${API_BASE}/payment-success?session_id=${sessionId}`);
+        const data = await res.json();
+
+        if (data.error) {
+            document.getElementById("successMessage").innerHTML = "<p>⚠️ Pagamento não confirmado.</p>";
+        } else {
+            showSuccessMessage();
+        }
+    } catch (err) {
+        console.error("Erro ao confirmar pagamento:", err);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", confirmarPagamento);
 
 
         // ========================
@@ -558,5 +590,14 @@ async function enviarFormulario(event) {
             }
         });
     </script>
+        ...
+    <footer>
+        <p>FaixaBet © 2023 - Todos os direitos reservados</p>
+    </footer>
+</div>
+
+<script>
+   // === várias funções (API_BASE, enviarFormulario, showSuccessMessage, etc)
+</script>
 </body>
 </html>
