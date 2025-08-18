@@ -98,7 +98,9 @@ async function enviarFormulario(event) {
     }
 
     const data = await res.json();
-
+    // 👉 Adicione este log:
+    console.log("Session response do backend:", data);
+    
     // Plano Free → já ativado
     if (data.userId && !data.sessionId) {
       showSuccessMessage();
