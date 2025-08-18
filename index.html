@@ -526,7 +526,7 @@ async function enviarFormulario(event) {
 
         // Plano Pago → redirecionar para Stripe Checkout
         if (data.sessionId) {
-            const stripe = Stripe("SEU_STRIpk_test_51Re2DKIpXMhrGyhuO23NL4GjVPRRdYbgZUzQCJjOf1xLth6nlinQ3Jnfe9zJ72gs5oskswKC0ne14aTZbGxkDWCP00IaJlOVyfPE_PUBLIC_KEY"); // <-- substitua pela chave publishable
+            const stripe = Stripe("pk_test_51Re2DKIpXMhrGyhuO23NL4GjVPRRdYbgZUzQCJjOf1xLth6nlinQ3Jnfe9zJ72gs5oskswKC0ne14aTZbGxkDWCP00IaJlOVyf"); // <-- substitua pela chave publishable
             const { error } = await stripe.redirectToCheckout({ sessionId: data.sessionId });
             if (error) {
                 throw new Error(error.message);
