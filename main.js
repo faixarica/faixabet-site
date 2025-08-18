@@ -96,27 +96,29 @@ async function enviarFormulario(event) {
       const text = await res.text();
       throw new Error(`Erro backend: ${text}`);
     }
+const data = await res.json();
+console.log("Session response do backend:", data);
 
-    const data = await res.json();
-    // 👉 Adicione este log:
-    console.log("Session response do backend:", data);
-    
-    // Plano Free → já ativado
-    if (data.userId && !data.sessionId) {
-      showSuccessMessage();
-      return;
-    }
+// Plano Free → já ativado
+if (data.userId && !data.sessionId) {
+  showSuccessMessage();
+  return;
+}
 
-    // Plano Pago → redirecionar para Stripe Checkout
-    if (data.sessionId) {
-      const stripe = await getStripe();
-      const { error } = await stripe.redirectToCheckout({
-        sessionId: data.sessionId,
-      });
-      if (error) throw new Error(error.message);
-      return;
-    }
+// Plano Pago → redirecionar para Stripe Checkout
+if (data.sessionId) {
+  const stripe = await getStripe(); // garante que veio do backend
+  const { error } = await stripe.redirectToCheckout({
+    sessionId: data.sessionId,
+  });
+  if (error) throw new Error(error.message);
+  return;
+}
 
+// Se chegou aqui, algo veio fora do esperado:
+throw new Error("Resposta inesperada do backend");
+
+  // Se chegou aqui, algo veio fora do esperado:
     throw new Error("Resposta inesperada do backend");
   } catch (err) {
     alert("Erro: " + err.message);
