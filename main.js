@@ -151,7 +151,7 @@ function showSuccessMessage() {
 
 document.getElementById("accessApp")?.addEventListener("click", function () {
   // ajuste para a URL real da sua aplicação
-  window.location.href = "https://faixab7.streamlit.app.onrender.com";
+  window.location.href = "https://faixab7.streamlit.app";
 });
 
 document.addEventListener("DOMContentLoaded", () => {
