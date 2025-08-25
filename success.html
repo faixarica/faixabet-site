@@ -1,11 +1,102 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pagamento Sucesso</title>
-  <script src="main.js"></script>
+  <style>
+    :root { --blue-100: #e6f4ff; --blue-600: #1d4ed8; --gray-700: #334155; }
+    body {
+      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: #f5f7fb; display: grid; place-items: center; min-height: 100vh; color: var(--gray-700);
+    }
+    .card {
+      width: min(560px, 92vw);
+      background: var(--blue-100);
+      border-radius: 18px;
+      padding: 24px 22px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.08);
+      border: 1px solid rgba(29,78,216,.12);
+    }
+    .title {
+      margin: 0 0 8px; font-size: 1.4rem; font-weight: 700; color: var(--blue-600);
+    }
+    .status { margin: 6px 0 14px; font-size: 1rem; }
+    .timer { font-weight: 600; }
+    .actions { margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn {
+      appearance: none; border: 0; padding: 10px 14px; border-radius: 12px;
+      background: var(--blue-600); color: #fff; cursor: pointer; text-decoration: none;
+      font-weight: 600;
+    }
+    .btn.secondary { background: #0f172a; }
+    .muted { opacity: .8; font-size: .95rem; }
+  </style>
 </head>
-<body onload="confirmPayment()">
-  <h2 id="status">Confirmando pagamento...</h2>
+<body>
+  <div class="card" role="status" aria-live="polite">
+    <h1 class="title">Pagamento Sucesso</h1>
+    <p id="status" class="status">Confirmando pagamento...</p>
+    <p id="countdownWrap" class="muted" style="display:none;">
+      Redirecionando em <span id="countdown" class="timer">5</span>s...
+    </p>
+    <div class="actions">
+      <a class="btn" id="goApp" href="https://faixab7.streamlit.app">Ir para o app</a>
+      <a class="btn secondary" href="/">Voltar ao início</a>
+    </div>
+  </div>
+
+  <script>
+  (async () => {
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get("session_id");
+
+    const statusEl = document.getElementById("status");
+    const countdownWrap = document.getElementById("countdownWrap");
+    const countdownEl = document.getElementById("countdown");
+
+    if (!sessionId) {
+      statusEl.textContent = "session_id ausente na URL. Não foi possível confirmar o pagamento.";
+      return;
+    }
+
+    try {
+      const res = await fetch(
+        `https://backend-v8.onrender.com/api/payment-success?session_id=${encodeURIComponent(sessionId)}`
+      );
+      const data = await res.json();
+
+      if (!res.ok) {
+        statusEl.textContent = data?.error || "Falha ao confirmar pagamento.";
+        return;
+      }
+
+      if (data.status === "complete") {
+        statusEl.textContent = "Pagamento confirmado! Seu plano foi ativado com sucesso 🎉";
+        // inicia o temporizador de 5s
+        countdownWrap.style.display = "block";
+        let t = 5;
+        const tick = () => {
+          countdownEl.textContent = t;
+          if (t <= 0) {
+            // defina aqui seu destino preferido (app ou home)
+            window.location.href = "https://faixab7.streamlit.app";
+            return;
+          }
+          t -= 1;
+          setTimeout(tick, 1000);
+        };
+        tick();
+      } else if (data.status === "pending") {
+        statusEl.textContent = "Pagamento ainda não confirmado. Aguarde alguns instantes e atualize a página.";
+      } else {
+        statusEl.textContent = "Resposta inesperada do servidor.";
+      }
+    } catch (e) {
+      console.error("Erro ao confirmar pagamento:", e);
+      statusEl.textContent = "Erro de rede ao confirmar pagamento. Tente novamente.";
+    }
+  })();
+  </script>
 </body>
 </html>
