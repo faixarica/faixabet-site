@@ -91,6 +91,7 @@
 </style>
 
 </meta></head>
+
 <!-- POPUP de escolha de loteria -->
 <div class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden" id="popup-loteria">
 <div class="bg-white text-gray-900 rounded-xl p-8 max-w-lg w-full text-center">
@@ -186,6 +187,7 @@
 </div>
 </div>
 </section>
+
 <!-- Seção Como Funciona -->
 <section class="py-20 gradient-bg text-white" id="como-funciona">
 <div class="container mx-auto px-4">
@@ -243,192 +245,340 @@
 
 <!-- BEGIN: Integrated Plans/Form from A -->
 <div id="faixa-module">
+<!-- CSS plan_section-->
 <style id="faixa-module-styles">
-#faixa-module .plans-section {background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);}
-#faixa-module .section-title {text-align: center;
-            font-size: 2rem;
-            margin-bottom: 30px;
-            color: #4ade80;}
-#faixa-module .plans-container {display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;}
-#faixa-module .plan-card {background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 30px;
-            width: 280px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            cursor: pointer;}
-#faixa-module .plan-card:hover {transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);}
-#faixa-module .plan-card.selected {border-color: #4ade80;
-            background: rgba(74, 222, 128, 0.1);}
-#faixa-module .plan-free:hover {border-color: #94a3b8;}
-#faixa-module .plan-silver:hover {border-color: #fbbf24;}
-#faixa-module .plan-gold:hover {border-color: #fbbf24;}
-#faixa-module .plan-name {font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;}
-#faixa-module .plan-price {font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 20px;}
-#faixa-module .plan-features {list-style: none;
-            margin-bottom: 25px;
-            text-align: left;}
-#faixa-module .plan-features li {padding: 8px 0;
-            display: flex;
-            align-items: center;}
-#faixa-module .plan-features li:before {content: "✓";
-            color: #4ade80;
-            font-weight: bold;
-            margin-right: 10px;}
-#faixa-module .btn {padding: 12px 25px;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            width: 100%;}
-#faixa-module .btn-free {background: #94a3b8;
-            color: #1e293b;}
-#faixa-module .btn-silver {background: #fbbf24;
-            color: #1e293b;}
-#faixa-module .btn-gold {background: #fbbf24;
-            color: #1e293b;}
-#faixa-module .btn:hover {transform: scale(1.05);}
-#faixa-module .form-section {background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            display: none;}
-#faixa-module .form-section.active {display: block;
-            animation: fadeIn 0.5s ease;}
-#faixa-module .form-title {text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            color: #4ade80;}
-#faixa-module .form-grid {display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 25px;}
-#faixa-module .form-group {margin-bottom: 20px;}
-#faixa-module .form-label {display: block;
-            margin-bottom: 8px;
-            font-weight: 500;}
-#faixa-module .form-input {width: 100%;
-            padding: 15px;
-            border-radius: 10px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            background: rgba(0, 0, 0, 0.2);
-            color: white;
-            font-size: 1rem;
-            transition: border-color 0.3s;}
-#faixa-module .form-input:focus {outline: none;
-            border-color: #4ade80;}
-#faixa-module .form-row .form-group {flex: 1;}
-#faixa-module .submit-btn {background: linear-gradient(45deg, #4ade80, #22d3ee);
-            color: #1e293b;
-            padding: 15px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.3s ease;}
-#faixa-module .submit-btn:hover {transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);}
-#faixa-module .loading {display: none;
-            text-align: center;
-            padding: 20px;}
-#faixa-module .spinner {border: 4px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top: 4px solid #4ade80;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;}
-#faixa-module .success-message {text-align: center;
-            padding: 40px;
-            display: none;}
-#faixa-module .success-icon {font-size: 4rem;
-            color: #4ade80;
-            margin-bottom: 20px;}
-#faixa-module .success-title {font-size: 2rem;
-            margin-bottom: 20px;
-            color: #4ade80;}
-#faixa-module .success-text {font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;}
-#faixa-module .plans-container {flex-direction: column;
-                align-items: center;}
-#faixa-module .form-grid {grid-template-columns: 1fr;}
+/* Seção de planos */
+#faixa-module .plans-section {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+#faixa-module .section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #4ade80;
+}
+
+/* Container de planos - agora em linha por padrão */
+#faixa-module .plans-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    flex-direction: row; /* Corrigido: antes estava como column */
+    align-items: stretch; /* Garante alinhamento vertical */
+}
+
+/* Card de plano */
+#faixa-module .plan-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 30px;
+    width: 280px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column; /* Para alinhar conteúdo */
+    justify-content: space-between; /* Distribui conteúdo uniformemente */
+    height: 100%; /* Ocupa altura total */
+}
+
+#faixa-module .plan-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+#faixa-module .plan-card.selected {
+    border-color: #4ade80;
+    background: rgba(74, 222, 128, 0.1);
+}
+
+#faixa-module .plan-free:hover {
+    border-color: #94a3b8;
+}
+
+#faixa-module .plan-silver:hover {
+    border-color: #fbbf24;
+}
+
+#faixa-module .plan-gold:hover {
+    border-color: #fbbf24;
+}
+
+/* Título do plano */
+#faixa-module .plan-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* Preço */
+#faixa-module .plan-price {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    flex-shrink: 0; /* Evita colapso */
+}
+
+/* Lista de benefícios */
+#faixa-module .plan-features {
+    list-style: none;
+    margin-bottom: 25px;
+    text-align: left;
+    flex-grow: 1; /* Ocupa espaço disponível */
+}
+
+#faixa-module .plan-features li {
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+}
+
+#faixa-module .plan-features li:before {
+    content: "✓";
+    color: #4ade80;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Botão */
+#faixa-module .btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    width: 100%;
+    margin-top: auto; /* Empurra para o fundo */
+}
+
+#faixa-module .btn:hover {
+    transform: scale(1.05);
+}
+
+#faixa-module .btn-free {
+    background: #94a3b8;
+    color: #1e293b;
+}
+
+#faixa-module .btn-silver {
+    background: #fbbf24;
+    color: #1e293b;
+}
+
+#faixa-module .btn-gold {
+    background: #fbbf24;
+    color: #1e293b;
+}
+
+/* Seção do formulário */
+#faixa-module .form-section {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: none;
+}
+
+#faixa-module .form-section.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+#faixa-module .form-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    color: #4ade80;
+}
+
+#faixa-module .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+#faixa-module .form-group {
+    margin-bottom: 20px;
+}
+
+#faixa-module .form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+#faixa-module .form-input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+#faixa-module .form-input:focus {
+    outline: none;
+    border-color: #4ade80;
+}
+
+#faixa-module .form-row .form-group {
+    flex: 1;
+}
+
+#faixa-module .submit-btn {
+    background: linear-gradient(45deg, #4ade80, #22d3ee);
+    color: #1e293b;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+#faixa-module .submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+#faixa-module .loading {
+    display: none;
+    text-align: center;
+    padding: 20px;
+}
+
+#faixa-module .spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid #4ade80;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+#faixa-module .success-message {
+    text-align: center;
+    padding: 40px;
+    display: none;
+}
+
+#faixa-module .success-icon {
+    font-size: 4rem;
+    color: #4ade80;
+    margin-bottom: 20px;
+}
+
+#faixa-module .success-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #4ade80;
+}
+
+#faixa-module .success-text {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
-            .plans-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
+    #faixa-module .plans-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #faixa-module .plan-card {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    #faixa-module .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
 </style>
+
 <section class="plans-section">
-            <h2 class="section-title">Escolha seu Plano</h2>
-            <div class="plans-container">
-                <div class="plan-card plan-free" data-plan="free">
-                    <h3 class="plan-name">Plano Free</h3>
-                    <div class="plan-price">R$ 0,00</div>
-                    <ul class="plan-features">
-                        <li>Palpites básicos</li>
-                        <li>Acesso limitado</li>
-                        <li>6 palpites por semana</li>
-                        <li>Sem suporte prioritário</li>
-                    </ul>
-                    <button class="btn btn-free" data-plan="free">Escolher Plano</button>
-                </div>
+    <h2 class="section-title">Escolha seu Plano</h2>
+    <div class="plans-container">
+        <div class="plan-card plan-free" data-plan="free">
+            <h3 class="plan-name">Plano Free</h3>
+            <div class="plan-price">R$ 0,00</div>
+            <ul class="plan-features">
+                <li>6 palpites por semana</li>
+                <li>Acesso limitado</li>
+                <li>Combinações aleatórias</li>
+               
+                </li>Histórico dos Palpites</li>
+                <li>Validação de Palpites</li>
+                <li>Sem suporte prioritário</li>
+                <li>Sem acesso à IA avançada</li>
+            </ul>
+            <button class="btn btn-free" data-plan="free">Escolher Plano</button>
+        </div>
 
-                <div class="plan-card plan-silver" data-plan="silver">
-                    <h3 class="plan-name">Plano Silver</h3>
-                    <div class="plan-price">R$ 5,99<span>/mês</span></div>
-                    <ul class="plan-features">
-                        <li>Palpites avançados</li>
-                        <li>Acesso completo</li>
-                        <li>Suporte por email</li>
-                        <li>30  palpites por semana</li>
-                        <li>Atualizações semanais</li>
-                    </ul>
-                    <button class="btn btn-silver" data-plan="silver">Escolher Plano</button>
-                </div>
+        <div class="plan-card plan-silver" data-plan="silver">
+            <h3 class="plan-name">Plano Silver</h3>
+            <div class="plan-price">R$ 5,99<span>/mês</span></div>
+            <ul class="plan-features">
+                <li>Até 30 Palpites por semana</li>
+                <li>Algoritmos inteligentes de seleção</li>
+                <li>Histórico de Palpites</li>
+                <li>Validação de Palpites</li>
+                <li>Combinações com alta taxa de 13+ números</li>
+                <li>Suporte por email</li>
+            </ul>
+            <button class="btn btn-silver" data-plan="silver">Escolher Plano</button>
+        </div>
 
-                <div class="plan-card plan-gold" data-plan="gold">
-                    <h3 class="plan-name">Plano Gold</h3>
-                    <div class="plan-price">R$ 10,99<span>/mês</span></div>
-                    <ul class="plan-features">
-                        <li>Palpites premium</li>
-                        <li>Acesso ilimitado</li>
-                        <li>Suporte 24/7</li>
-                        <li>Atualizações diárias</li>
-                        <li>60 palpites por semana</li>
-                        <li>Relatórios personalizados</li>
-                    </ul>
-                    <button class="btn btn-gold" data-plan="gold">Escolher Plano</button>
-                </div>
-            </div>
-        </section>
+        <div class="plan-card plan-gold" data-plan="gold">
+            <h3 class="plan-name">Plano Gold</h3>
+            <div class="plan-price">R$ 10,99<span>/mês</span></div>
+            <ul class="plan-features">
+                <li>78 Palpites por semana</li>
+                <li>Acesso ilimitado</li>
+                <li>IA com aprendizado contínuo</li>
+                <li>Atualizações diárias</li>
+                <li>Foco em Palpites para 14+ números</li>
+                <li>Acesso a todos os modelos de IA</li>
+                <li>Suporte 24/7</li>
 
+            </ul>
+            <button class="btn btn-gold" data-plan="gold">Escolher Plano</button>
+        </div>
+    </div>
+</section>
         <!-- FORM -->
         <section class="form-section" id="formSection">
             <h2 class="form-title">Complete seu Cadastro</h2>
@@ -483,8 +633,6 @@
         </section>
 </div>
 <!-- END: Integrated Plans/Form from A -->
-
-
 
 <!-- Blog Section -->
 <section class="py-20 px-6 bg-gray-900" id="blog">
@@ -1015,7 +1163,7 @@ Todas elas destacam o uso de IA e modelos neurais como uma vantagem significativ
   </div>
   </div>
   <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
-  <p>© 2025 FaixaBet. Todos os direitos reservados.10.4</p>
+  <p>© 2025 FaixaBet. Todos os direitos reservados.11</p>
   <p class="mt-2 text-sm">Este site destina-se a maiores de 18 anos. Se for apotar, seja responsável.</p>
   </div>
   </div>
