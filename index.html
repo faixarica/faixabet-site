@@ -40,6 +40,11 @@
 
   <!-- Estilos adicionais -->
   <style>
+    .plan-card.selected {
+      border: 2px solid #00FF7F; /* ou qualquer cor que combine com seu design */
+      box-shadow: 0 0 20px rgba(0, 255, 127, 0.4);
+    }
+
     :root{
       --primary:#0ea5e9; --secondary:#10b981; --accent:#f59e0b;
     }
@@ -132,53 +137,92 @@
 
     footer{ text-align:center; padding:30px 0; opacity:.7; font-size:.9rem; }
 
-    @media (max-width:768px){
+    @media (max-width:750px){
       .plans-container{ flex-direction:column; align-items:center; }
       .form-grid{ grid-template-columns:1fr; }
     }
+    .form-title{
+      color:#ffffff !important;              /* garante branco */
+      font-family:'Poppins', sans-serif;     /* usa Poppins */
+      font-weight:500;
+      font-size:2.10rem;                     /* ajuste de tamanho (desktop) */
+      text-align:center;
+      margin-bottom:1rem;
+    }
+    @media (max-width: 768px){
+      .form-title{ font-size:1.6rem; }       /* responsivo */
+    }
+
+      /* deixa o botão full e com Poppins */
+      .submit-btn{
+        color:#ffffff !important;              /* garante branco */
+        font-family:'Poppins';
+        font-size:1.6rem;
+        width:100%;
+        display:block;
+      }
+ 
+</style>
+
   </style>
 </head>
 
 <body class="gradient-bg text-white font-sans">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Header -->
-  <header class="fixed top-0 left-0 w-full bg-transparent z-50 transition-all duration-300">
-    <div class="container mx-auto px-4">
-      <nav class="flex justify-between items-center py-4">
-        <a href="#" class="text-2xl font-bold flex items-center">
-          <span class="text-blue-400">F</span><span class="text-green-400">a</span><span class="text-yellow-400">i</span><span class="text-blue-400">x</span><span class="text-green-400">a</span><span class="font-light">Bet</span>
-        </a>
-        <!-- Menu Desktop -->
-        <div class="hidden md:flex space-x-8">
-          <a href="#hero" class="hover:text-blue-400 transition">Home</a>
-          <a href="#como-funciona" class="hover:text-green-400 transition">Como Funciona</a>
-          <a href="#planos" class="hover:text-yellow-400 transition">Planos</a>
-          <a href="#blog" class="hover:text-blue-400 transition">Blog</a>
-          <a href="#app" class="hover:text-green-400 transition">App Faixabet</a>
-          <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-xl transition" onclick="toggleForm(true)">Quero Participar</button>
-        </div>
-        <!-- Botão Mobile -->
-        <button class="md:hidden text-2xl" id="mobileMenuButton"><i class="fas fa-bars"></i></button>
-      </nav>
-    </div>
-    <!-- Menu Mobile -->
-    <div class="mobile-menu bg-gray-900 md:hidden" id="mobileMenu">
-      <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
-        <a href="#hero" class="py-2 border-b border-gray-700 hover:text-blue-400">Home</a>
-        <a href="#como-funciona" class="py-2 border-b border-gray-700 hover:text-green-400">Como Funciona</a>
-        <a href="#planos" class="py-2 border-b border-gray-700 hover:text-yellow-400">Planos</a>
-        <a href="#blog" class="py-2 border-b border-gray-700 hover:text-blue-400">Blog</a>
-        <a href="#app" class="py-2 border-b border-gray-700 hover:text-green-400">App Faixabet</a>
-        <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-xl transition mt-4" onclick="toggleForm(true)">Quero Participar</button>
-      </div>
-    </div>
-  </header>
+<!-- Header -->
+<header class="fixed top-0 left-0 w-full bg-gray-900/90 backdrop-blur-sm z-50 transition-all duration-300 min-h-[80px]">
+  <div class="container mx-auto px-4">
+    <nav class="flex justify-between items-center py-6">
+      <!-- Logo -->
+      <a href="#" class="text-3xl font-bold flex items-center" style="font-family: 'Poppins', sans-serif;">
+        <span class="text-blue-300">F</span>
+        <span class="text-green-300">a</span>
+        <span class="text-yellow-300">i</span>
+        <span class="text-blue-300">x</span>
+        <span class="text-green-600">a</span>
+        <span class="font-light">Bet</span>
+      </a>
+
+     <!-- Menu Desktop -->
+<div class="hidden md:flex space-x-6 text-lg" style="font-family: 'Poppins', sans-serif;">
+  <a href="#hero" class="text-white font-normal hover:text-green-300 transition">Home</a>
+  <a href="#como-funciona" class="text-white font-normal hover:text-green-300 transition">Como Funciona</a>
+  <a href="#planos" class="text-white font-normal hover:text-green-300 transition">Planos</a>
+  <a href="#blog" class="text-white font-normal hover:text-green-300 transition">Blog</a>
+  <a href="#app" class="text-white font-normal hover:text-green-300 transition">App Faixabet</a>
+  <button class="bg-green-500 hover:bg-green-300 text-white font-bold py-2 px-4 rounded-xl transition"
+            onclick="toggleForm(true)">
+      Quero Participar
+    </button></div>
+
+      <!-- Botão Mobile -->
+      <button class="md:hidden text-3xl text-white" id="mobileMenuButton"><i class="fas fa-bars"></i></button>
+    </nav>
+  </div>
+
+  <!-- Menu Mobile -->
+  <div class="mobile-menu bg-gray-900 md:hidden" id="mobileMenu">
+    <div class="container mx-auto px-4 py-4 flex flex-col space-y-4 text-lg" style="font-family: 'Poppins', sans-serif;">
+      <a href="#hero" class="py-2 border-b border-gray-700 text-white hover:text-green-400">Home</a>
+      <a href="#como-funciona" class="py-2 border-b border-gray-700 text-white hover:text-green-400">Como Funciona</a>
+      <a href="#planos" class="py-2 border-b border-gray-700 text-white hover:text-green-400">Planos</a>
+      <a href="#blog" class="py-2 border-b border-gray-700 text-white hover:text-green-400">Blog</a>
+      <a href="#app" class="py-2 border-b border-gray-700 text-white hover:text-green-400">App Faixabet</a>
+      <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-xl transition mt-4" onclick="toggleForm(true)">Quero Participar</button>
+    </  <button class="bg-green-500 hover:bg-green-300 text-white font-bold py-2 px-4 rounded-xl transition"
+            onclick="toggleForm(true)">
+      Quero Participar
+    </button></div>>
+  </div>
+</header>
+
 
   <!-- Hero -->
   <section id="hero" class="min-h-screen flex items-center justify-center px-6 pt-24 pb-10"
-    style="background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url('assets/ceu-paisagem.jpg') center/cover;">
+    style="background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url('assets/ceu-paisagem.jpg') center/cover;">
     <div class="max-w-4xl text-center">
-      <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+      <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">Palpites Certeiros</span> Direto da Faixa
       </h1>
       <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
@@ -208,7 +252,7 @@
             </div>
             <div class="ml-3 text-sm"><span class="font-bold">+3.034</span> Usuários</div>
           </div>
-          <p class="text-sm italic text-gray-300">
+          <p class="text-sm italic text-gray-200">
             "Usando os Palpites da FaixaBet melhorei meus acertos em 90% no primeiro mês!"
           </p>
         </div>
@@ -230,7 +274,8 @@
         <!-- Etapa 1 -->
         <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20">
           <div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-xl font-bold mb-4 flex-shrink-0">1</div>
-          <h3 class="text-xl font-semibold mb-2">Escolha seu Plano</h3>
+          <h3 class="text-xl font-semibold mb-2">Planos feitos para você apostar com mais inteligência</h3>
+          <small class="text-gray-400">Selecione o plano que libera os recursos ideais para sua estratégia.</small> 
           <p class="text-gray-300">Selecione entre <strong>Free</strong>, <strong>Silver</strong> ou <strong>Gold</strong>. Cada plano oferece benefícios e quantidades de Palpites diferentes.</p>
         </div>
         <!-- Etapa 2 -->
@@ -263,7 +308,15 @@
 
   <!-- Planos (mantendo a lógica original) -->
   <section id="planos" class="plans-section container-original">
-    <h2 class="section-title">Escolha seu Plano</h2>
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        Mais chances, mais controle, mais resultados
+      </h2>
+      <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+        Escolha o plano que desbloqueia os recursos certos para sua jornada de apostas.
+      </p>
+    </div>
+
     <div class="plans-container">
       <!-- Free -->
       <div class="plan-card plan-free" data-plan="free">
@@ -311,7 +364,7 @@
           <li>4 Loterias disponíveis</li>
           <li>Atualizações diárias</li>
           <li>Suporte 24x7</li>
-          <li>Relatórios premium + gráficos extras</li>
+          <li>Relatórios gráficos extras</li>
           <li>Ranking exclusivo entre jogadores</li>
           <li>Notificações de resultados</li>
         </ul>
@@ -319,6 +372,7 @@
     </div>
   </section>
 
+ 
   <!-- Blog Section -->
   <section class="py-20 px-6 bg-gray-900" id="blog">
     <div class="max-w-6xl mx-auto">
@@ -500,11 +554,11 @@
     </div>
   </div>
 
-  <script>
-    function mostrarCadastroMensagem() {
-      document.getElementById('mensagemCadastro').classList.remove('hidden');
-    }
-  </script>
+                      <script>
+                        function mostrarCadastroMensagem() {
+                          document.getElementById('mensagemCadastro').classList.remove('hidden');
+                        }
+                      </script>
                    
                     </div>
                   </div>
@@ -516,90 +570,134 @@
       </div>
     </section>
 
-  <!-- App (placeholder para link do menu) -->
-  <section id="app" class="py-20">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-6">App Faixabet</h2>
-      <a href="https://faixab7.streamlit.app/" class="btn-primary inline-block text-white font-bold py-3 px-8 rounded-xl">
-        Abrir o App Agora
-      </a>
-    </div>
-  </section>
+    <!-- App (placeholder para link do menu) -->
+    <section id="app" class="py-20">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-6">App Faixabet</h2>
+        <a href="https://faixab7.streamlit.app/" class="btn-primary inline-block text-white font-bold py-3 px-8 rounded-xl">
+          Abrir o App Agora
+        </a>
+      </div>
+    </section>
 
-  <!-- Formulário -->
-  <section id="formSection" class="form-section">
-    <h2 class="form-title">Finalizar Cadastro com Segurança</h2>
-    <form id="registerForm">
-      <div class="form-grid">
-        <div class="form-group">
-          <label class="form-label">Nome Completo *</label>
-          <input type="text" name="full_name" class="form-input" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Nome de Usuário *</label>
-          <input type="text" name="username" class="form-input" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Email *</label>
-          <input type="email" name="email" class="form-input" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Celular/WhatsApp</label>
-          <input type="tel" name="phone" class="form-input">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Senha *</label>
-          <input type="password" name="password" class="form-input" required>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Data de Nascimento</label>
-          <input type="date" name="birthdate" class="form-input">
+    <!-- Formulário -->
+    <section id="formSection" class="form-section">
+      <div class="container mx-auto max-w-[1100px] px-4">
+        <h2 class="form-title">Finalizar Cadastro com Segurança</h2>
+
+        <form id="registerForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Nome Completo *</label>
+              <input name="full_name" type="text" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nome de Usuário *</label>
+              <input name="username" type="text" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email *</label>
+              <input name="email" type="email" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Celular/WhatsApp</label>
+              <input name="phone" type="tel" class="form-input">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Senha *</label>
+              <input name="password" type="password" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Data de Nascimento</label>
+              <input name="birthdate" type="date" class="form-input">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Plano Selecionado</label>
+            <input type="text" id="selectedPlan" class="form-input" readonly>
+          </div>
+
+          <button type="submit"
+            class="submit-btn bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-xl transition text-2xl">
+            Ativar Meu Plano Agora
+          </button>
+        </form>
+
+        <div class="loading" id="loading">
+          <div class="spinner"></div>
+          <p>Processando seu cadastro e pagamento...</p>
         </div>
       </div>
+    </section>
 
-      <div class="form-group">
-        <label class="form-label">Plano Selecionado</label>
-        <input type="text" id="selectedPlan" class="form-input" readonly>
-      </div>
 
-      <button type="submit" class="submit-btn">'Ativar Meu Plano Agora'</button>
-    </form>
+    <!-- Sucesso -->
+    <section id="successMessage" class="success-message">
+      <div class="success-icon">🎉</div>
+      <h2 class="success-title">Parabéns!</h2>
+      <p class="success-text">Você está na única Plataforma que gera palpites de Loteria da Caixa com base em história e com IA do Mundo.</p>
+      <button class="btn btn-gold" id="accessApp">Acessar a Plataforma</button>
+    </section>
 
-    <div id="loading" class="loading">
-      <div class="spinner"></div>
-      <p>Processando seu cadastro e pagamento...</p>
-    </div>
-  </section>
-
-  <!-- Sucesso -->
-  <section id="successMessage" class="success-message">
-    <div class="success-icon">🎉</div>
-    <h2 class="success-title">Parabéns!</h2>
-    <p class="success-text">Você está na única Plataforma que gera palpites de Loteria da Caixa com base em história e com IA do Mundo.</p>
-    <button class="btn btn-gold" id="accessApp">Acessar a Plataforma</button>
-  </section>
-
-  <!-- Lógica adicional pequena p/ menu e formulário (não conflita com main.js) -->
-  <script>
-    // Menu mobile
-    const mobileBtn = document.getElementById('mobileMenuButton');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if(mobileBtn && mobileMenu){
-      mobileBtn.addEventListener('click', ()=> mobileMenu.classList.toggle('active'));
-      mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=> mobileMenu.classList.remove('active')));
-    }
-
-    // toggleForm só se não existir (evita conflito com main.js)
-    if(!window.toggleForm){
-      window.toggleForm = function(show){
-        const sec = document.getElementById('formSection');
-        if(!sec) return;
-        if(show){ sec.classList.add('active'); sec.scrollIntoView({behavior:'smooth'}); }
-        else{ sec.classList.remove('active'); }
+    <!-- Lógica adicional pequena p/ menu e formulário (não conflita com main.js) -->
+    <script>
+      // Menu mobile
+      const mobileBtn = document.getElementById('mobileMenuButton');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if(mobileBtn && mobileMenu){
+        mobileBtn.addEventListener('click', ()=> mobileMenu.classList.toggle('active'));
+        mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=> mobileMenu.classList.remove('active')));
       }
+
+      // toggleForm só se não existir (evita conflito com main.js)
+     if (!window.toggleForm) {
+  window.toggleForm = function(show) {
+    const sec = document.getElementById('formSection');
+    if (!sec) return;
+
+    if (show) {
+      // Verifica se o usuário selecionou um plano
+      const selectedPlan = document.getElementById('selectedPlan').value;
+      if (!selectedPlan) {
+        alert('Por favor, selecione um plano antes de prosseguir.');
+        return;
+      }
+
+      sec.classList.add('active');
+      sec.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      sec.classList.remove('active');
     }
-  </script>
-   <!-- Footer -->
+  }
+}
+  // Função para selecionar plano
+    function selectPlan(planName) {
+      // Preenche o input do formulário
+      document.getElementById('selectedPlan').value = planName;
+
+      // Marca visualmente o plano selecionado
+      document.querySelectorAll('.plan-card').forEach(card => {
+        card.classList.remove('selected');
+      });
+      const selectedCard = document.querySelector(`.plan-card[data-plan="${planName.toLowerCase()}"]`);
+      if (selectedCard) selectedCard.classList.add('selected');
+
+      // Mostra o formulário
+      toggleForm(true);
+    }
+
+    // Adiciona evento aos botões
+    document.querySelectorAll('.plans-container .btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const plan = button.getAttribute('data-plan');
+        selectPlan(plan.charAt(0).toUpperCase() + plan.slice(1)); // "Silver", "Gold", etc.
+      });
+    });
+
+    </script>
+    <!-- Footer -->
     <footer class="bg-gray-900 border-t border-gray-800 py-12 px-6">
         <div class="max-w-6xl mx-auto">
         <div class="grid md:grid-cols-4 gap-8 mb-8">
