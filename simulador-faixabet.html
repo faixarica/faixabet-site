@@ -3,16 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simulador FaixaBet</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
-  <style>
+
+ <style>
     :root {
       --primary: #00d4ff; /* Azul elétrico */
       --primary-dark: #00a2cc;
       --secondary: #8a2be2; /* Índigo */
       --accent: #ff2a6d; /* Rosa neon */
       --background: #0f0c29; /* Azul escuro gradiente base */
-      --background-gradient: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      --background-gradient: linear-gradient(135deg, #34314d 0%, #4f46ad 50%, #414157 100%);
       --card-bg: rgba(25, 25, 50, 0.8); /* Azul escuro translúcido */
       --card-border: rgba(138, 43, 226, 0.3); /* Índigo suave */
       --text: #e0e0ff;
@@ -398,14 +397,71 @@
     @keyframes spin {
         to { transform: rotate(360deg); }
     }
+    <style>
+  .logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 40px;
+  }
+  .novo-numero {
+    background-color: #f59e0b !important;
+    color: white !important;
+    border-color: #d97706 !important;
+    box-shadow: 0 0 12px #f59e0b;
+  }
+  .resultado-final {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+}
+.logo-header {
+  height: 50px;       /* +10% */
+  display: block;
+  margin: 0 0 10px 0; /* mantém alinhada à esquerda */
+}
+/* Cor para números normais (não sorteados) */
+.numero {
+  background-color: #374151; /* cinza escuro */
+  color: #d1d5db;            /* cinza claro */
+  border: 1px solid #4b5563;
+}
+
+/* Cor para números que saíram no sorteio */
+.numero.acerto {
+  background-color: #2563eb; /* azul */
+  color: #fff;
+  border: 1px solid #1e40af;
+}
+
+/* Cor para novos números em relação ao anterior */
+.numero.novo-numero {
+  background-color: #86efac !important; /* bg-green-300 */
+  color: #065f46 !important;
+  border: 1px solid #34d399;
+  box-shadow: 0 0 10px #6ee7b7;
+}
+
+/* Explicação curta no título */
+.nota-explicativa {
+  font-size: 12px;
+  color: #9ca3af;
+  margin: 4px 0 0;
+}
 
   </style>
 </head>
+
 <body>
   <div class="container">
     <header>
-      <h1>🎲 Simulador FaixaBet</h1>
-      <p class="subtitle">Veja Como Nossa IA Supera Bolões e Palpites Comuns</p>
+      <img src="logo.png" alt="fAIxaBet" class="logo-header">
+      <h1>Simulador Palpites</h1>
+      <p class="subtitle">Veja Como Nossa AI Supera Bolões e Palpites Comuns</p>
     </header>
 
     <button class="main-button" id="simularBtn">
@@ -417,20 +473,68 @@
     <div class="cards-container">
       <!-- Card Sorteio Oficial -->
       <div class="card sorteio">
-        <div class="card-title">🎯 Sorteio Oficial (Simulado)</div>
+        <div class="card-title">
+          🎯 Sorteio Oficial (Simulado)
+        </div>
+        <p class="nota-explicativa">🔎 Os números em <span style="color:#22c55e;font-weight:bold;">verde</span> são novos em relação ao sorteio anterior.</p>
         <div class="result" id="sorteio"></div>
       </div>
 
       <!-- Card Comparação (Centralizado) -->
       <div class="card comparacao">
-        <div class="card-title">🧠 IA x Jogador</div>
+        <div class="card-title">🧠 <span class="label-branco">AI</span> versus <span class="label-branco">Jogador</span></div>
         <div class="result" id="comparacao"></div>
       </div>
     </div>
   </div>
 
+  <style>
+    .label-branco {
+      color: white;
+      font-weight: bold;
+    }
+
+    .logo-header {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      height: 50px; /* +10% */
+    }
+
+    /* números padrão (cinza) */
+    .numero {
+      background-color: #374151;
+      color: #d1d5db;
+      border: 1px solid #4b5563;
+    }
+
+    /* acertos (verde) */
+    .numero.acerto {
+      background-color: #22c55e !important; /* bg-green-500 */
+      color: #fff !important;
+      border-color: #16a34a !important;
+      box-shadow: 0 0 8px #22c55e;
+    }
+
+    /* novos números no sorteio */
+    .numero.novo-numero {
+      background-color: #86efac !important; /* bg-green-300 */
+      color: #065f46 !important;
+      border: 1px solid #34d399;
+      box-shadow: 0 0 10px #6ee7b7;
+    }
+
+    .nota-explicativa {
+      font-size: 12px;
+      color: #9ca3af;
+      margin: 4px 0 8px;
+    }
+  </style>
+
   <script>
     let cliques = 0;
+    let ultimoSorteio = []; // guarda o último resultado para comparar
+
     const btn = document.getElementById('simularBtn');
     const btnText = document.getElementById('btnText');
 
@@ -447,10 +551,13 @@
       return palpite.filter(n => sorteio.includes(n)).length;
     }
 
-    function formatarNumeros(numeros, sorteio) {
+    function formatarNumeros(numeros, sorteio, anteriores = []) {
       return numeros.map(n => {
         const isAcerto = sorteio.includes(n);
-        const classe = isAcerto ? 'numero acerto' : 'numero';
+        const isNovo = anteriores.length && !anteriores.includes(n); // só marca "novo" no sorteio oficial
+        let classe = 'numero';
+        if (isAcerto) classe += ' acerto';
+        if (isNovo) classe += ' novo-numero';
         return `<div class="${classe}">${n}</div>`;
       }).join('');
     }
@@ -461,7 +568,6 @@
         btn.classList.add('loading');
         btnText.textContent = 'Processando...';
 
-        // Pequeno atraso para o efeito visual
         await new Promise(resolve => setTimeout(resolve, 600));
 
         cliques++;
@@ -487,24 +593,27 @@
         let classeResultado = '';
         
         if (acertosIA > acertosJogador) {
-            resultadoFinal = '🤖 IA Superou o Jogador! ✅';
+            resultadoFinal = '<span style="color:white">🤖 AI Superou o Jogador! ✅</span>';
             classeResultado = 'vitoria-ia';
         } else if (acertosIA < acertosJogador) {
-            resultadoFinal = '🎉 Você Superou a IA!';
+            resultadoFinal = '<span style="color:white">🎉 Você Superou a AI!</span>';
             classeResultado = 'vitoria-jogador';
         } else {
-            resultadoFinal = '🤝 Empate!';
+            resultadoFinal = '<span style="color:white">🤝 Empate!</span>';
             classeResultado = 'empate';
         }
 
+        // Sorteio oficial: destaca os novos números
         document.getElementById('sorteio').innerHTML = `
             <div class="numero-container">
-            ${formatarNumeros(sorteio, [])}
+            ${formatarNumeros(sorteio, [], ultimoSorteio)}
             </div>
         `;
+        ultimoSorteio = sorteio;
 
+        // Comparação IA vs Jogador: verde apenas os acertos
         document.getElementById('comparacao').innerHTML = `
-            <p><span class="highlight">🧠 IA:</span></p>
+            <p><span class="highlight">🧠 AI:</span></p>
             <div class="numero-container">
             ${formatarNumeros(ia, sorteio)}
             </div>
@@ -521,38 +630,35 @@
             </div>
         `;
 
-        // Remove a classe de animação e a readiciona para acionar novamente
+        // Animação nos cards
         const cards = document.querySelectorAll('.card');
         cards.forEach(card => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(20px)';
         });
 
-        // Animação de entrada para os cards
         setTimeout(() => {
             cards.forEach((card, index) => {
                 setTimeout(() => {
                     card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
                     card.style.opacity = '1';
                     card.style.transform = 'translateY(0)';
-                }, index * 200); // Delay escalonado para cada card
+                }, index * 200);
             });
         }, 100);
 
-        // Restaura o botão
         btn.disabled = false;
         btn.classList.remove('loading');
         btnText.textContent = '🔄 Gerar Nova Simulação';
     }
 
-
-    // Evento do botão
     btn.addEventListener('click', rodarSimulacao);
 
-    // Gera uma simulação inicial ao carregar a página
     window.addEventListener('load', function() {
         setTimeout(rodarSimulacao, 800);
     });
   </script>
 </body>
+
+
 </html>
