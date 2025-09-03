@@ -30,7 +30,7 @@ document.querySelectorAll("[data-plan]").forEach((el) => {
     selectedPlan = plan.toLowerCase();
 
     // Atualizar UI
-    document.querySelectorAll(".plan-card").forEach((card) => card.classList.remove("selected"));
+    document.querySelectorAll(".plan-card").forEach((const planoKey = card) => card.classList.remove("selected"));
     const selectedCard = el.closest(".plan-card");
     if (selectedCard) selectedCard.classList.add("selected");
 
@@ -62,7 +62,7 @@ async function enviarFormulario(event) {
     email: formData.get("email"),
     phone: formData.get("phone"),
     password: formData.get("password"),
-    plan: selectedPlan,
+    plan: selectedPlan?.toLowerCase(), // garante lowercase sempre
   };
 
   try {
