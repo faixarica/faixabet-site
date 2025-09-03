@@ -103,14 +103,12 @@ async function enviarFormulario(event) {
       showSuccessMessage();
       return;
     }
+  // Plano Pago → redirecionar para Stripe
+  if (data.checkoutUrl) {
+    window.location.href = data.checkoutUrl; // redireciona direto
+    return;
+  }
 
-    // Plano Pago → redirecionar para Stripe
-    if (data.sessionId) {
-      const stripe = await getStripe();
-      const { error } = await stripe.redirectToCheckout({ sessionId: data.sessionId });
-      if (error) throw new Error(error.message);
-      return;
-    }
 
     // Se nada acima, algo está errado
     throw new Error("Resposta inesperada do backend");
