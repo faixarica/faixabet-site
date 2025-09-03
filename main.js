@@ -17,7 +17,6 @@ async function getStripe() {
   stripeInstance = Stripe(data.publishableKey);
   return stripeInstance;
 }
-
 // ========================
 // Seleção de plano
 // ========================
@@ -30,18 +29,22 @@ document.querySelectorAll("[data-plan]").forEach((el) => {
     selectedPlan = plan.toLowerCase();
 
     // Atualizar UI
-    document.querySelectorAll(".plan-card").forEach((const planoKey = card) => card.classList.remove("selected"));
+    document.querySelectorAll(".plan-card").forEach((card) => {
+      card.classList.remove("selected");
+    });
     const selectedCard = el.closest(".plan-card");
     if (selectedCard) selectedCard.classList.add("selected");
 
     // Mostrar formulário
-    document.getElementById("formSection").classList.add("active");
+    const formSection = document.getElementById("formSection");
+    formSection.classList.add("active");
     document.getElementById("selectedPlan").value =
       selectedPlan.charAt(0).toUpperCase() + selectedPlan.slice(1);
 
-    document.getElementById("formSection").scrollIntoView({ behavior: "smooth" });
+    formSection.scrollIntoView({ behavior: "smooth" });
   });
 });
+
 
 // ========================
 // Envio do formulário
