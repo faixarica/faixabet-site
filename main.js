@@ -99,16 +99,16 @@ async function enviarFormulario(event) {
     const data = await res.json();
 
     // Plano Free → ativado
-    if (data.userId && !data.sessionId) {
+    if (data.userId && !data.checkoutUrl) {
       showSuccessMessage();
       return;
     }
-  // Plano Pago → redirecionar para Stripe
-  if (data.checkoutUrl) {
-    window.location.href = data.checkoutUrl; // redireciona direto
-    return;
-  }
 
+    // Plano Pago → redirecionar para Stripe
+    if (data.checkoutUrl) {
+      window.location.href = data.checkoutUrl; // redireciona direto
+      return;
+    }
 
     // Se nada acima, algo está errado
     throw new Error("Resposta inesperada do backend");
