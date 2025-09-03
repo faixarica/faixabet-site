@@ -122,22 +122,38 @@ async function enviarFormulario(event) {
 // ========================
 // Confirmar pagamento (feedback visual)
 // ========================
+// Confirmar pagamento (feedback visual)
+// ========================
 async function confirmarPagamento() {
   const urlParams = new URLSearchParams(window.location.search);
-  const sessionId = urlParams.get("session_id");
-  if (!sessionId) return;
+  const success = urlParams.get("success"); // stripe adiciona ?success=true no success_url
+  const canceled = urlParams.get("canceled"); // stripe adiciona ?canceled=true no cancel_url
 
-  try {
-    const res = await fetch(`${API_BASE}/payment-success?session_id=${encodeURIComponent(sessionId)}`);
-    if (!res.ok) throw new Error("Não foi possível confirmar pagamento");
-    const data = await res.json();
-    if (data?.status === "complete") {
-      showSuccessMessage();
-    } else {
-      document.getElementById("successMessage").innerHTML = "<p>⚠️ Pagamento não confirmado.</p>";
+  if (success) {
+    try {
+      // backend deve validar o pagamento (ex: pelo customer ou subscription)
+      const res = await fetch(`${API_BASE}/payment-success`, {
+        method: "GET",
+        credentials: "include" // garante cookies/session
+      });
+
+      if (!res.ok) throw new Error("Não foi possível confirmar pagamento");
+      const data = await res.json();
+
+      if (data?.status === "complete") {
+        showSuccessMessage();
+      } else {
+        document.getElementById("successMessage").innerHTML =
+          "<p>⚠️ Pagamento não confirmado.</p>";
+      }
+    } catch (err) {
+      console.error("Erro ao confirmar pagamento:", err);
     }
-  } catch (err) {
-    console.error("Erro ao confirmar pagamento:", err);
+  }
+
+  if (canceled) {
+    document.getElementById("successMessage").innerHTML =
+      "<p>❌ Pagamento cancelado.</p>";
   }
 }
 
