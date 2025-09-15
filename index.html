@@ -228,45 +228,84 @@
     </div>
   </header>
 
-  <!-- Hero -->
-<section id="hero" class="min-h-screen flex items-center justify-center px-4 sm:px-6 pt-20 sm:pt-24 pb-10"
-  style="background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url('assets/ceu-paisagem.jpg') center/cover;">
-  <div class="max-w-4xl text-center">
+  <!-- Hero (com slider + subtítulo responsivo) -->
+  <section id="hero" class="min-h-screen flex items-center justify-center px-4 sm:px-6 pt-20 sm:pt-24 pb-10"
+    style="background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url('assets/ceu-paisagem.jpg') center/cover;">
+    <div class="max-w-4xl text-center">
 
-    <!-- Slider -->
-    <div class="swiper mySwiper mb-8">
-      <div class="swiper-wrapper">
-
-        <!-- Slide 1 -->
-        <div class="swiper-slide">
-          <h1 class="text-2xl sm:text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">
-              Palpites Certeiros
-            </span> Direto da fAIxa
-          </h1>
-        </div>
-
-        <!-- Slide 2 -->
-        <div class="swiper-slide">
-          <h1 class="text-2xl sm:text-4xl md:text-6xl font-bold mb-6 leading-tight text-gray-100">
-            Nunca foi tão fácil ganhar na <span class="text-green-400">Lotofácil</span>
-          </h1>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="swiper-slide">
-          <h1 class="text-2xl sm:text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            <span class="text-blue-300">Transforme Dados</span> em Sorte com 
-            <span class="text-green-400">Inteligência Artificial</span>
-          </h1>
+      <!-- Slider (títulos já responsivos) -->
+      <div class="swiper mySwiper mb-6 sm:mb-8">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide px-2">
+            <h1 class="text-xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6 leading-snug sm:leading-tight text-center">
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">Palpites Certeiros</span> Direto da fAIxa
+            </h1>
+          </div>
+          <div class="swiper-slide px-2">
+            <h1 class="text-xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6 leading-snug sm:leading-tight text-center text-gray-100">
+              Nunca foi tão fácil ganhar na <span class="text-green-400">Lotofácil</span>
+            </h1>
+          </div>
+          <div class="swiper-slide px-2">
+            <h1 class="text-xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6 leading-snug sm:leading-tight text-center">
+              <span class="text-blue-300">Transforme Dados</span> em Sorte com <span class="text-green-400">Inteligência Artificial</span>
+            </h1>
+          </div>
         </div>
       </div>
+
+      <!-- Subtítulo RESPONSIVO (use este) -->
+      <p class="mx-auto max-w-xl px-3 text-sm sm:text-base md:text-lg lg:text-xl leading-snug sm:leading-relaxed text-gray-100 break-words"
+        style="-webkit-hyphens:auto; -ms-hyphens:auto; hyphens:auto;">
+        Crie palpites baseados em dados e triplique suas chances de <strong>GANHAR</strong> com análise inteligente.
+      </p>
+
+      <!-- Botões Principais (mantidos responsivos) -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mt-6 mb-8">
+        <a href="simulador-faixabet.html" target="_blank"
+          class="w-full sm:w-auto bg-green-600 hover:bg-green-500 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl text-base sm:text-lg transition flex items-center justify-center">
+          <i class="fas fa-vial mr-2"></i> Utilize nosso Simulador
+        </a>
+        <button id="openModalBtn"
+          class="w-full sm:w-auto bg-green-700 hover:bg-green-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl text-base sm:text-lg transition flex items-center justify-center">
+          <i class="fab fa-whatsapp mr-2"></i> Gere palpite exclusivo agora!
+        </button>
+      </div>
+
+      <a href="#planos" class="inline-block text-blue-100 hover:text-green-300 text-xs sm:text-sm font-medium transition underline">
+        Já decidiu? Escolha seu plano e acesse o app
+      </a>
     </div>
+  </section>
+
+  <!-- CSS extra (colocar no seu arquivo CSS ou dentro de <style>) -->
+  <style>
+    .swiper { width:100%; height:auto !important; }
+    .swiper-slide { display:flex; justify-content:center; align-items:center; text-align:center; padding:0 0.5rem; }
+    /* Opcional: força melhor quebra em iOS/Android */
+    html[lang="pt-BR"] p { -webkit-hyphens:auto; -ms-hyphens:auto; hyphens:auto; }
+  </style>
+
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      loop: true,
+      autoplay: { delay: 3000, disableOnInteraction: false },
+      effect: "fade",
+      fadeEffect: { crossFade: true },
+    });
+  </script>
 
     <!-- Subtítulo -->
-    <p class="text-base sm:text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-gray-100">
-      Crie Palpites Baseados em Dados e triplique suas chances de GANHAR com Análise Inteligente.
+    <p class="text-sm sm:text-lg md:text-xl lg:text-2xl leading-relaxed sm:leading-normal md:leading-snug mb-6 sm:mb-8 max-w-xl mx-auto px-3 text-gray-100 text-center">
+      Crie <span class="font-semibold text-green-300">Palpites Baseados em Dados</span> 
+      e triplique suas chances de 
+      <br class="block sm:hidden"> <!-- Força quebra apenas no mobile -->
+      <span class="text-blue-300">GANHAR</span> com Análise Inteligente.
     </p>
+
 
     <!-- Botões Principais -->
     <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -294,14 +333,16 @@
 
 <style>
   .swiper {
-    width: 100%;
-    height: auto;
-  }
-  .swiper-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  width: 100%;
+  height: auto !important; /* força altura flexível */
+}
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* garante centralização */
+}
+
 </style>
 
 <script>
