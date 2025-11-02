@@ -1,664 +1,281 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>fAIxaBet — Simulador AI</title>
 
- <style>
-    :root {
-      --primary: #00d4ff; /* Azul elétrico */
-      --primary-dark: #00a2cc;
-      --secondary: #8a2be2; /* Índigo */
-      --accent: #ff2a6d; /* Rosa neon */
-      --background: #0f0c29; /* Azul escuro gradiente base */
-      --background-gradient: linear-gradient(135deg, #34314d 0%, #4f46ad 50%, #414157 100%);
-      --card-bg: rgba(25, 25, 50, 0.8); /* Azul escuro translúcido */
-      --card-border: rgba(138, 43, 226, 0.3); /* Índigo suave */
-      --text: #e0e0ff;
-      --text-secondary: #a0a0c0;
-      --shadow: rgba(0, 0, 0, 0.5);
-      --highlight: #00ffcc; /* Ciano */
-      --acerto-bg: var(--accent);
-      --acerto-text: #ffffff;
-      --numero-bg: rgba(100, 100, 150, 0.3);
-      --numero-border: rgba(138, 43, 226, 0.5);
-      --border-radius: 20px;
-      --spacing-xs: 8px;
-      --spacing-sm: 12px;
-      --spacing-md: 16px;
-      --spacing-lg: 24px;
-      --spacing-xl: 32px;
-      --transition-fast: 0.2s ease;
-      --transition-normal: 0.4s ease;
-      --transition-slow: 0.8s ease;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: var(--background-gradient);
-      color: var(--text);
-      line-height: 1.6;
-      padding: var(--spacing-md);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      /* Efeito sutil de brilho */
-      background-attachment: fixed;
-      overflow-x: hidden; /* Evita rolagem horizontal */
-    }
-
-    /* Efeitos de brilho e partículas */
-    body::before {
-        content: "";
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background-image: 
-            radial-gradient(ellipse at 10% 20%, rgba(138, 43, 226, 0.15) 0%, transparent 30%),
-            radial-gradient(ellipse at 90% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 30%);
-        pointer-events: none; /* Permite interação com elementos abaixo */
-        z-index: -1;
-    }
-
-    .container {
-      max-width: 1200px;
-      width: 100%;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-lg);
-      align-items: center; /* Centraliza conteúdo no container */
-    }
-
-    header {
-      text-align: center;
-      padding: var(--spacing-md) 0;
-      width: 100%;
-      animation: fadeInDown 1s var(--transition-slow);
-    }
-
-    h1 {
-      color: var(--primary);
-      font-size: 2.2rem;
-      margin-bottom: var(--spacing-xs);
-      font-family: 'Orbitron', sans-serif; /* Fonte futurista para o título */
-      text-shadow: 0 0 10px rgba(0, 212, 255, 0.7); /* Brilho neon */
-      letter-spacing: 1px;
-    }
-
-    .subtitle {
-      color: var(--text-secondary);
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin: 0 auto;
-      animation: fadeIn 1s var(--transition-slow) both;
-    }
-
-    .main-button {
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      color: white;
-      font-size: 1.2rem;
-      font-weight: 700;
-      padding: var(--spacing-md) var(--spacing-xl);
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      margin: var(--spacing-md) auto;
-      display: block;
-      box-shadow: 0 6px 20px rgba(138, 43, 226, 0.4), 0 0 20px rgba(0, 212, 255, 0.3) inset;
-      transition: all var(--transition-normal);
-      width: 95%;
-      max-width: 350px;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-      font-family: 'Roboto', sans-serif;
-      letter-spacing: 1px;
-    }
-
-    .main-button::before {
-        content: '';
-        position: absolute;
-        top: 0; left: -100%;
-        width: 100%; height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-        transition: 0.5s;
-        z-index: -1;
-    }
-
-    .main-button:hover {
-        transform: translateY(-5px) scale(1.02);
-        box-shadow: 0 12px 25px rgba(138, 43, 226, 0.6), 0 0 25px rgba(0, 212, 255, 0.5) inset;
-    }
-
-    .main-button:hover::before {
-        left: 100%;
-    }
-
-    .main-button:active {
-        transform: translateY(0) scale(0.98);
-        box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4), 0 0 15px rgba(0, 212, 255, 0.3) inset;
-    }
-
-    .click-count {
-      text-align: center;
-      font-size: 1rem;
-      color: var(--text-secondary);
-      margin-bottom: var(--spacing-lg);
-      font-weight: 500;
-      animation: pulse 2s infinite;
-    }
-
-    .cards-container {
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing-xl);
-        width: 100%;
-        align-items: center;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: var(--border-radius);
-      box-shadow: 0 10px 30px var(--shadow), 0 0 20px rgba(138, 43, 226, 0.2) inset;
-      padding: var(--spacing-lg);
-      width: 100%;
-      max-width: 800px; /* Limite de largura máxima */
-      transition: all var(--transition-normal);
-      border: 1px solid var(--card-border);
-      backdrop-filter: blur(10px); /* Efeito de vidro fosco */
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-        content: '';
-        position: absolute;
-        top: -50%; left: -50%;
-        width: 200%; height: 200%;
-        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-        opacity: 0;
-        transition: opacity var(--transition-normal);
-        pointer-events: none;
-    }
-
-    .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(138, 43, 226, 0.3) inset;
-    }
-
-    .card:hover::before {
-        opacity: 1;
-    }
-
-    .card-title {
-      font-size: 1.4rem;
-      margin-bottom: var(--spacing-md);
-      font-weight: 700;
-      color: var(--highlight);
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--spacing-xs);
-      font-family: 'Roboto', sans-serif;
-      text-shadow: 0 0 5px rgba(0, 255, 204, 0.5);
-    }
-
-    .result {
-      text-align: center;
-    }
-
-    .result p {
-      margin: var(--spacing-sm) 0;
-      font-size: 1.1rem;
-    }
-
-    .highlight {
-      font-weight: 700;
-      color: var(--highlight);
-      text-shadow: 0 0 3px rgba(0, 255, 204, 0.5);
-    }
-
-    .numero-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: calc(var(--spacing-xs) / 2);
-      margin: var(--spacing-sm) 0;
-      perspective: 1000px; /* Para efeito 3D */
-    }
-
-    .numero {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      font-size: 1rem;
-      font-weight: 700;
-      background: var(--numero-bg);
-      color: var(--text);
-      border: 1px solid var(--numero-border);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      transition: all var(--transition-fast);
-      cursor: default; /* Mostra que não é clicável */
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .numero::after {
-        content: '';
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background-color: rgba(255, 255, 255, 0.1);
-        transform: scale(0);
-        transition: transform 0.3s ease-out;
-        border-radius: 50%;
-        z-index: -1;
-    }
-
-    .numero:hover {
-        transform: scale(1.2) translateY(-3px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 0 0 10px var(--numero-border);
-        z-index: 2; /* Fica por cima */
-    }
-
-    .numero:hover::after {
-        transform: scale(2);
-    }
-
-    .acerto {
-      background: var(--acerto-bg);
-      color: var(--acerto-text);
-      border-color: rgba(255, 255, 255, 0.5);
-      box-shadow: 0 0 15px var(--accent);
-      animation: popIn 0.5s ease forwards;
-    }
-
-    .acerto:hover {
-        box-shadow: 0 0 20px var(--accent), 0 0 30px var(--accent);
-    }
-
-    .resultado-final {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-top: var(--spacing-lg);
-      padding: var(--spacing-md);
-      border-radius: var(--border-radius);
-      text-align: center;
-      animation: fadeIn 0.8s ease-out;
-      border: 1px solid transparent;
-      background-clip: padding-box;
-    }
-
-    .vitoria-ia {
-      background: rgba(255, 42, 109, 0.15);
-      color: var(--accent);
-      border-color: rgba(255, 42, 109, 0.3);
-      box-shadow: 0 0 15px rgba(255, 42, 109, 0.2);
-    }
-
-    .vitoria-jogador {
-      background: rgba(0, 255, 204, 0.15);
-      color: var(--highlight);
-      border-color: rgba(0, 255, 204, 0.3);
-      box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
-    }
-
-    .empate {
-      background: rgba(138, 43, 226, 0.15);
-      color: var(--secondary);
-      border-color: rgba(138, 43, 226, 0.3);
-      box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
-    }
-
-    /* Layout para telas maiores */
-    @media (min-width: 768px) {
-      h1 {
-        font-size: 2.8rem;
-      }
-      
-      .subtitle {
-        font-size: 1.2rem;
-      }
-      
-      .main-button {
-        font-size: 1.3rem;
-        padding: var(--spacing-lg) var(--spacing-xl);
-      }
-      
-      .numero {
-        width: 45px;
-        height: 45px;
-        font-size: 1.1rem;
-      }
-    }
-
-    /* Animações Personalizadas */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes popIn {
-      0% { transform: scale(0.8); opacity: 0; }
-      70% { transform: scale(1.1); }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    @keyframes pulse {
-      0% { opacity: 0.7; }
-      50% { opacity: 1; }
-      100% { opacity: 0.7; }
-    }
-
-    /* Efeito de loading no botão */
-    .main-button:disabled {
-        opacity: 0.7;
-        cursor: not-allowed;
-        transform: none;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
-
-    .main-button.loading::after {
-        content: "";
-        position: absolute;
-        top: 50%; left: 50%;
-        width: 20px; height: 20px;
-        margin: -10px 0 0 -10px;
-        border: 3px solid rgba(255, 255, 255, 0.3);
-        border-top-color: #fff;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-        to { transform: rotate(360deg); }
-    }
-    <style>
-  .logo {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    height: 40px;
+<style>
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg,#34314d 0%,#4f46ad 50%,#414157 100%);
+    color: #e0e0ff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 24px 16px;
   }
-  .novo-numero {
-    background-color: #f59e0b !important;
-    color: white !important;
-    border-color: #d97706 !important;
-    box-shadow: 0 0 12px #f59e0b;
+
+  .container {
+    max-width: 1000px;
+    width: 100%;
+    text-align: center;
   }
-  .resultado-final {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.2);
-  color: #fff;
-  font-weight: bold;
-  padding: 10px;
-  border-radius: 8px;
-  text-align: center;
-}
-.logo-header {
-  height: 50px;       /* +10% */
-  display: block;
-  margin: 0 0 10px 0; /* mantém alinhada à esquerda */
-}
-/* Cor para números normais (não sorteados) */
-.numero {
-  background-color: #374151; /* cinza escuro */
-  color: #d1d5db;            /* cinza claro */
-  border: 1px solid #4b5563;
-}
 
-/* Cor para números que saíram no sorteio */
-.numero.acerto {
-  background-color: #2563eb; /* azul */
-  color: #fff;
-  border: 1px solid #1e40af;
-}
+  /* --- Header com logo --- */
+  .logo-faixabet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: -1px;
+    text-decoration: none;
+    margin-bottom: 14px;
+  }
 
-/* Cor para novos números em relação ao anterior */
-.numero.novo-numero {
-  background-color: #86efac !important; /* bg-green-300 */
-  color: #065f46 !important;
-  border: 1px solid #34d399;
-  box-shadow: 0 0 10px #6ee7b7;
-}
+  .logo-faixabet span { display: inline-block; transition: transform 0.3s ease; }
+  .logo-faixabet:hover span { transform: translateY(-2px); }
+  .text-white-400 { color: #fff; }
+  .text-purple-400 { color: #c084fc; }
+  .text-yellow-400 { color: #facc15; }
+  .text-blue-400 { color: #60a5fa; }
+  .text-green-600 { color: #16a34a; }
 
-/* Explicação curta no título */
-.nota-explicativa {
-  font-size: 12px;
-  color: #9ca3af;
-  margin: 4px 0 0;
-}
+  h1 {
+    color:#00d4ff;
+    text-shadow:0 0 10px rgba(0,212,255,.7);
+    font-family:'Orbitron',sans-serif;
+  }
 
-  </style>
+  /* --- Botões principais --- */
+  .buttons-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .main-button {
+    background: linear-gradient(90deg,#00d4ff,#8a2be2);
+    border: none;
+    border-radius: 50px;
+    padding: 14px 28px;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(138,43,226,.5);
+    transition: all .3s ease;
+    flex: 1 1 220px;
+    min-width: 180px;
+  }
+  .main-button:hover { transform: scale(1.05); }
+
+  .click-count {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: #a0a0c0;
+    animation: pulse 2s infinite;
+  }
+
+  /* --- Cards --- */
+  .card {
+    background: rgba(25,25,50,.8);
+    border: 1px solid rgba(138,43,226,.3);
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.4);
+  }
+  .card-title { color:#00ffcc; font-weight:700; margin-bottom:10px; }
+  .numero-container { display:flex; flex-wrap:wrap; justify-content:center; gap:5px; margin-top:10px; }
+  .numero {
+    width:40px;height:40px;border-radius:50%;
+    display:flex;justify-content:center;align-items:center;
+    background-color:#374151;color:#d1d5db;
+    border:1px solid #4b5563;font-weight:700;
+    transition:transform .2s;
+  }
+  .numero:hover{transform:scale(1.2);}
+  .acerto{background-color:#22c55e!important;color:#fff!important;box-shadow:0 0 8px #22c55e;}
+  .novo-numero{background-color:#86efac!important;color:#065f46!important;box-shadow:0 0 10px #6ee7b7;}
+  .resultado-final{margin-top:15px;font-weight:bold;}
+  .vitoria-ia{color:#ff2a6d;}
+  .vitoria-jogador{color:#00ffcc;}
+  .empate{color:#a78bfa;}
+
+  /* --- Modal --- */
+  .modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);display:none;justify-content:center;align-items:center;z-index:1000;}
+  .modal-content{background:#1f1b3a;padding:25px;border-radius:12px;max-width:400px;width:90%;color:#fff;text-align:center;box-shadow:0 0 20px rgba(0,212,255,.4);}
+  .modal-content input{width:100%;padding:10px;border:1px solid #555;border-radius:6px;margin-top:10px;margin-bottom:16px;font-size:1rem;}
+  .modal-content button{background:linear-gradient(90deg,#00d4ff,#8a2be2);border:none;border-radius:50px;padding:10px 20px;color:#fff;font-weight:700;cursor:pointer;}
+
+  /* --- Animações --- */
+  @keyframes pulse { 0%{opacity:.7}50%{opacity:1}100%{opacity:.7} }
+
+  @keyframes fadeInGlow {
+    0% { opacity: 0; transform: scale(0.9); box-shadow: 0 0 0px rgba(255,255,255,0); }
+    60% { opacity: 1; transform: scale(1.02); box-shadow: 0 0 15px rgba(0,212,255,0.6); }
+    100% { transform: scale(1); box-shadow: 0 0 10px rgba(138,43,226,0.5); }
+  }
+  .animate-glow { animation: fadeInGlow 1.3s ease forwards; }
+
+  /* --- Responsividade --- */
+  @media (max-width:600px){
+    .buttons-row{flex-direction:column;align-items:center;}
+    .main-button{width:100%;max-width:300px;}
+  }
+</style>
 </head>
 
 <body>
-  <div class="container">
-    <header>
-      <img src="logo.png" alt="fAIxaBet" class="logo-header">
-      <h1>Simulador Palpites</h1>
-      <p class="subtitle">Veja Como Nossa AI Supera Bolões e Palpites Comuns</p>
-    </header>
+<div class="container">
 
-    <button class="main-button" id="simularBtn">
-        <span id="btnText">🔄 Gerar Nova Simulação</span>
-    </button>
-    
-    <div class="click-count" id="contador">Simulações Realizadas: 0</div>
+  <!-- Logo fAIxaBet (redireciona ao site principal) -->
+  <a href="https://faixabet.com.br" class="logo-faixabet">
+    <span class="text-white-400">f</span>
+    <span class="text-purple-400">A</span>
+    <span class="text-yellow-400">I</span>
+    <span class="text-blue-400">x</span>
+    <span class="text-green-600">a</span>
+    <span class="font-light">Bet</span>
+  </a>
 
-    <div class="cards-container">
-      <!-- Card Sorteio Oficial -->
-      <div class="card sorteio">
-        <div class="card-title">
-          🎯 Sorteio Oficial (Simulado)
-        </div>
-        <p class="nota-explicativa">🔎 Os números em <span style="color:#22c55e;font-weight:bold;">verde</span> são novos em relação ao sorteio anterior.</p>
-        <div class="result" id="sorteio"></div>
-      </div>
+  <h1>Simulador de Palpites IA</h1>
+  <p>Compare o desempenho da nossa Inteligência Artificial com um jogador comum.</p>
 
-      <!-- Card Comparação (Centralizado) -->
-      <div class="card comparacao">
-        <div class="card-title">🧠 <span class="label-branco">AI</span> versus <span class="label-branco">Jogador</span></div>
-        <div class="result" id="comparacao"></div>
-      </div>
-    </div>
+  <!-- Botões -->
+  <div class="buttons-row">
+    <button class="main-button" id="simularBtn">🔄 Gerar Nova Simulação</button>
+    <button class="main-button" id="enviarEmailBtn" style="display:none;">📩 Enviar por E-mail</button>
   </div>
 
-  <style>
-    .label-branco {
-      color: white;
-      font-weight: bold;
-    }
+  <div class="click-count" id="contador">Simulações Realizadas: 0</div>
+  <div id="cards"></div>
+</div>
 
-    .logo-header {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      height: 50px; /* +10% */
-    }
+<!-- Modal -->
+<div class="modal" id="emailModal">
+  <div class="modal-content">
+    <h3>📨 Enviar palpite por e-mail</h3>
+    <p>Informe seu e-mail para receber este resultado.</p>
+    <input type="email" id="emailInput" placeholder="seuemail@exemplo.com" required />
+    <button onclick="enviarEmail()">Enviar</button>
+    <div id="emailMsg" style="margin-top:10px;font-size:.9rem;"></div>
+  </div>
+</div>
 
-    /* números padrão (cinza) */
-    .numero {
-      background-color: #374151;
-      color: #d1d5db;
-      border: 1px solid #4b5563;
-    }
+<script>
+let cliques=0;
+let ultimoSorteio=[]; 
+let ultimoPalpiteAI=[], ultimoPalpiteJogador=[];
 
-    /* acertos (verde) */
-    .numero.acerto {
-      background-color: #22c55e !important; /* bg-green-500 */
-      color: #fff !important;
-      border-color: #16a34a !important;
-      box-shadow: 0 0 8px #22c55e;
-    }
+function gerarPalpite(qtd=15){
+  const nums=[];
+  while(nums.length<qtd){
+    const n=Math.floor(Math.random()*25)+1;
+    if(!nums.includes(n)) nums.push(n);
+  }
+  return nums.sort((a,b)=>a-b);
+}
+function contarAcertos(palpite,sorteio){return palpite.filter(n=>sorteio.includes(n)).length;}
+function formatarNumeros(numeros,sorteio,anteriores=[]){
+  return numeros.map(n=>{
+    const isAcerto=sorteio.includes(n);
+    const isNovo=anteriores.length && !anteriores.includes(n);
+    let cls='numero';
+    if(isAcerto) cls+=' acerto';
+    if(isNovo) cls+=' novo-numero';
+    return `<div class="${cls}">${String(n).padStart(2,'0')}</div>`;
+  }).join('');
+}
 
-    /* novos números no sorteio */
-    .numero.novo-numero {
-      background-color: #86efac !important; /* bg-green-300 */
-      color: #065f46 !important;
-      border: 1px solid #34d399;
-      box-shadow: 0 0 10px #6ee7b7;
-    }
+async function rodarSimulacao(){
+  cliques++;
+  document.getElementById('contador').innerText=`Simulações Realizadas: ${cliques}`;
+  const sorteio=gerarPalpite(15);
 
-    .nota-explicativa {
-      font-size: 12px;
-      color: #9ca3af;
-      margin: 4px 0 8px;
-    }
-  </style>
+  // IA: 10 do sorteio + 5 aleatórios
+  const iaAcertos=sorteio.slice(0,10);
+  const resto=gerarPalpite(25).filter(n=>!iaAcertos.includes(n));
+  while(iaAcertos.length<15) iaAcertos.push(resto.pop());
+  const ia=iaAcertos.sort((a,b)=>a-b);
+  const jogador=gerarPalpite(15);
 
-  <script>
-    let cliques = 0;
-    let ultimoSorteio = []; // guarda o último resultado para comparar
+  ultimoPalpiteAI=ia; ultimoPalpiteJogador=jogador; ultimoSorteio=sorteio;
 
-    const btn = document.getElementById('simularBtn');
-    const btnText = document.getElementById('btnText');
+  const acertosIA=contarAcertos(ia,sorteio);
+  const acertosJogador=contarAcertos(jogador,sorteio);
 
-    function gerarPalpite(qtd) {
-      const numeros = [];
-      while (numeros.length < qtd) {
-        const n = Math.floor(Math.random() * 25) + 1;
-        if (!numeros.includes(n)) numeros.push(n);
-      }
-      return numeros.sort((a, b) => a - b);
-    }
+  let resultado='',classe='';
+  if(acertosIA>acertosJogador){resultado='🤖 AI Superou o Jogador! ✅';classe='vitoria-ia';}
+  else if(acertosIA<acertosJogador){resultado='🎉 Você Superou a AI!';classe='vitoria-jogador';}
+  else{resultado='🤝 Empate!';classe='empate';}
 
-    function contarAcertos(palpite, sorteio) {
-      return palpite.filter(n => sorteio.includes(n)).length;
-    }
+  document.getElementById('cards').innerHTML=`
+    <div class="card">
+      <div class="card-title">🎯 Sorteio Oficial (Simulado)</div>
+      <div class="numero-container">${formatarNumeros(sorteio,[],ultimoSorteio)}</div>
+    </div>
+    <div class="card">
+      <div class="card-title">🧠 AI</div>
+      <div class="numero-container">${formatarNumeros(ia,sorteio)}</div>
+      <p>Acertos: <strong>${acertosIA}</strong></p>
+    </div>
+    <div class="card">
+      <div class="card-title">👤 Jogador Comum</div>
+      <div class="numero-container">${formatarNumeros(jogador,sorteio)}</div>
+      <p>Acertos: <strong>${acertosJogador}</strong></p>
+      <div class="resultado-final ${classe}">${resultado}</div>
+    </div>
+  `;
 
-    function formatarNumeros(numeros, sorteio, anteriores = []) {
-      return numeros.map(n => {
-        const isAcerto = sorteio.includes(n);
-        const isNovo = anteriores.length && !anteriores.includes(n); // só marca "novo" no sorteio oficial
-        let classe = 'numero';
-        if (isAcerto) classe += ' acerto';
-        if (isNovo) classe += ' novo-numero';
-        return `<div class="${classe}">${n}</div>`;
-      }).join('');
-    }
+  const emailBtn = document.getElementById('enviarEmailBtn');
+  emailBtn.style.display='inline-block';
+  emailBtn.classList.add('animate-glow');
+  setTimeout(()=>emailBtn.classList.remove('animate-glow'),2500);
+}
 
-    async function rodarSimulacao() {
-        // Feedback visual de carregamento
-        btn.disabled = true;
-        btn.classList.add('loading');
-        btnText.textContent = 'Processando...';
+document.getElementById('simularBtn').addEventListener('click',rodarSimulacao);
+window.addEventListener('load',()=>setTimeout(rodarSimulacao,500));
 
-        await new Promise(resolve => setTimeout(resolve, 600));
+document.getElementById('enviarEmailBtn').addEventListener('click',()=>{
+  document.getElementById('emailModal').style.display='flex';
+});
 
-        cliques++;
-        document.getElementById('contador').innerText = `Simulações Realizadas: ${cliques}`;
+async function enviarEmail(){
+  const email=document.getElementById('emailInput').value.trim();
+  const msgBox=document.getElementById('emailMsg');
+  if(!email){msgBox.textContent='⚠️ Digite um e-mail válido.';return;}
 
-        const sorteio = gerarPalpite(15);
-
-        // Gera palpite da IA (com 10 números do sorteio + 5 aleatórios)
-        const iaAcertos = sorteio.slice(0, 10);
-        const resto = gerarPalpite(25).filter(n => !iaAcertos.includes(n));
-        while (iaAcertos.length < 15) {
-            const n = resto.pop();
-            if (n && !iaAcertos.includes(n)) iaAcertos.push(n);
-        }
-        const ia = iaAcertos.sort((a, b) => a - b);
-
-        const jogador = gerarPalpite(15);
-
-        const acertosIA = contarAcertos(ia, sorteio);
-        const acertosJogador = contarAcertos(jogador, sorteio);
-
-        let resultadoFinal = '';
-        let classeResultado = '';
-        
-        if (acertosIA > acertosJogador) {
-            resultadoFinal = '<span style="color:white">🤖 AI Superou o Jogador! ✅</span>';
-            classeResultado = 'vitoria-ia';
-        } else if (acertosIA < acertosJogador) {
-            resultadoFinal = '<span style="color:white">🎉 Você Superou a AI!</span>';
-            classeResultado = 'vitoria-jogador';
-        } else {
-            resultadoFinal = '<span style="color:white">🤝 Empate!</span>';
-            classeResultado = 'empate';
-        }
-
-        // Sorteio oficial: destaca os novos números
-        document.getElementById('sorteio').innerHTML = `
-            <div class="numero-container">
-            ${formatarNumeros(sorteio, [], ultimoSorteio)}
-            </div>
-        `;
-        ultimoSorteio = sorteio;
-
-        // Comparação IA vs Jogador: verde apenas os acertos
-        document.getElementById('comparacao').innerHTML = `
-            <p><span class="highlight">🧠 AI:</span></p>
-            <div class="numero-container">
-            ${formatarNumeros(ia, sorteio)}
-            </div>
-            <p>Acertos: <strong>${acertosIA}</strong></p>
-            
-            <p style="margin-top: var(--spacing-lg);"><span class="highlight">👤 Jogador:</span></p>
-            <div class="numero-container">
-            ${formatarNumeros(jogador, sorteio)}
-            </div>
-            <p>Acertos: <strong>${acertosJogador}</strong></p>
-            
-            <div class="resultado-final ${classeResultado}">
-            ${resultadoFinal}
-            </div>
-        `;
-
-        // Animação nos cards
-        const cards = document.querySelectorAll('.card');
-        cards.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-        });
-
-        setTimeout(() => {
-            cards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, index * 200);
-            });
-        }, 100);
-
-        btn.disabled = false;
-        btn.classList.remove('loading');
-        btnText.textContent = '🔄 Gerar Nova Simulação';
-    }
-
-    btn.addEventListener('click', rodarSimulacao);
-
-    window.addEventListener('load', function() {
-        setTimeout(rodarSimulacao, 800);
+  msgBox.textContent='⏳ Enviando...';
+  try{
+    const payload={email, sorteio:ultimoSorteio, ai:ultimoPalpiteAI, jogador:ultimoPalpiteJogador};
+    const res = await fetch("https://backend-faixabet.onrender.com/send_palpite", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(payload)
     });
-  </script>
+
+    const data = await res.json();
+    msgBox.textContent = data.status === "ok"
+      ? "✅ Palpite enviado com sucesso!"
+      : "❌ Erro ao enviar: " + (data.message || "Falha desconhecida.");
+  }catch(e){
+    console.error(e);
+    msgBox.textContent = "⚠️ Erro de conexão. Tente novamente.";
+  }
+  setTimeout(()=>document.getElementById('emailModal').style.display='none',2500);
+}
+
+window.addEventListener('click',e=>{
+  if(e.target.id==='emailModal') e.target.style.display='none';
+});
+</script>
 </body>
-
-
 </html>

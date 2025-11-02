@@ -1,662 +1,1018 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8"/>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="fAIxaBet usa Inteligência Artificial para gerar palpites vencedores na Lotofácil, Lotomania e Mega-Sena. Aqui não é sorte, é IA.">
+    
 
-  
-  <!-- Google tag (gtag.js) 02/09/2025 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R09Y7V5J5T"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    
+    <!-- Google tag (gtag.js) 02/09/2025 -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-R09Y7V5J5T"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-      gtag('config', 'G-R09Y7V5J5T'); 
-    </script>
+        gtag('config', 'G-R09Y7V5J5T'); 
+      </script>
 
-  
-  <!-- SEO BÁSICO -->
-  <title>fAIxaBet | Palpites inteligentes para Lotofácil, Lotomania e Mega-Sena</title>
+    <!-- SEO BÁSICO -->
+    <title>fAIxaBet | Palpites inteligentes para Lotofácil, Lotomania e Mega-Sena</title>
 
-  <meta name="description" content="Receba Palpites certeiros para jogos como Lotofácil, Lotomania e outras loterias. Usamos inteligência artificial para aumentar suas chances de vitória."/>
-  <script src="https://js.stripe.com/v3/"></script>
+    <meta name="description" content="Receba Palpites certeiros para jogos como Lotofácil, Lotomania e outras loterias. Usamos inteligência artificial para aumentar suas chances de vitória."/>
+    <script src="https://js.stripe.com/v3/"></script>
 
-  <!-- SEO AVANÇADO -->
-  <meta name="robots" content="index, follow">
-  <meta name="keywords" content="Palpites lotofácil, Palpites lotomania, jogar na loteria, estatísticas loteria, apostas inteligentes, IA para loteria, fAIxaBet">
-  <meta name="author" content="fAIxaBet">
-  <link rel="canonical" href="https://faixabet.com.br/">
+    <!-- SEO AVANÇADO -->
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="Palpites lotofácil, Palpites lotomania, jogar na loteria, estatísticas loteria, apostas inteligentes, IA para loteria, fAIxaBet">
+    <meta name="author" content="fAIxaBet">
+    <link rel="canonical" href="https://faixabet.com.br/">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="fAIxaBet | Palpites de Loteria com Inteligência Artificial (Lotofácil e Lotomania)"/>
-  <meta property="og:description" content="Receba palpites de loteria com Inteligência Artificial. Aumente suas chances na Lotofácil, Lotomania e muito mais com o fAIxaBet."/>
-  <meta property="og:image" content="https://faixabet.com.br/imagem-capa.png"/>
-  <meta property="og:url" content="https://faixabet.com.br"/>
-  <meta property="og:type" content="website"/>
+    <!-- Open Graph -->
+    <meta property="og:title" content="fAIxaBet | Palpites de Loteria com Inteligência Artificial (Lotofácil e Lotomania)"/>
+    <meta property="og:description" content="Receba palpites de loteria com Inteligência Artificial. Aumente suas chances na Lotofácil, Lotomania e muito mais com o fAIxaBet."/>
+    <meta property="og:image" content="https://faixabet.com.br/imagem-capa.png"/>
+    <meta property="og:url" content="https://faixabet.com.br"/>
+    <meta property="og:type" content="website"/>
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="fAIxaBet | Palpites inteligentes para Lotofácil e Lotomania"/>
-  <meta name="twitter:description" content="Aumente suas chances com IA. Receba Palpites confiáveis para loterias!"/>
-  <meta name="twitter:image" content="https://faixabet.com.br/imagem-capa.png"/>
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="fAIxaBet | Palpites inteligentes para Lotofácil e Lotomania"/>
+    <meta name="twitter:description" content="Aumente suas chances com IA. Receba Palpites confiáveis para loterias!"/>
+    <meta name="twitter:image" content="https://faixabet.com.br/imagem-capa.png"/>
 
-  <!-- Favicon -->
-  <link rel="icon" href="https://faixabet.com.br/favicon.ico" type="image/x-icon"/>
+    <!-- Favicon -->
+    <link rel="icon" href="https://faixabet.com.br/favicon.ico" type="image/x-icon"/>
 
-  <!-- Tailwind + Font Awesome -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <!-- Tailwind + Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
-  <!-- EmailJS -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
-  <script> (function(){ emailjs.init("kehqgkI0qfH8Q4kEQ"); })(); </script>
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+    <script> (function(){ emailjs.init("kehqgkI0qfH8Q4kEQ"); })(); </script>
 
-  <!-- Estilos adicionais -->
-  <style>
-    .plan-card.selected {
-      border: 2px solid #00FF7F; /* ou qualquer cor que combine com seu design */
-      box-shadow: 0 0 20px rgba(0, 255, 127, 0.4);
-    }
-
-    :root{
-      --primary:#0ea5e9; --secondary:#10b981; --accent:#f59e0b;
-    }
-    body{ scroll-behavior:smooth; }
-    section{ scroll-margin-top:90px; } /* compensa header fixo */
-
-    .gradient-bg{ background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%); }
-    .btn-primary{ background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%); transition:.3s; }
-    .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 10px 15px -3px rgba(0,0,0,.3); }
-
-    .mobile-menu{ max-height:0; overflow:hidden; transition:max-height .5s ease-out; }
-    .mobile-menu.active{ max-height:500px; }
-
-    /* helpers p/ Como usar (usam vars) */
-    .bg-primary{ background:var(--primary); }
-    .bg-secondary{ background:var(--secondary); }
-    .bg-accent{ background:var(--accent); }
-
-    /* ----------- Estilo original (Planos / Form) ----------- */
-    .container-original{ max-width:1200px; margin:0 auto; }
-    .plans-section{
-      background:rgba(255,255,255,0.05);
-      backdrop-filter:blur(10px);
-      border-radius:20px;
-      padding:20px;
-      margin:60px auto 80px auto;
-      box-shadow:0 10px 30px rgba(0,0,0,0.3);
-    }
-    .section-title{ text-align:center; font-size:2rem; margin-bottom:30px; color:#4ade80; }
-    .plans-container{ display:flex; justify-content:center; gap:30px; flex-wrap:wrap; }
-
-    .plan-card{ position:relative; border-radius:15px; padding:20px; width:300px; text-align:center; transition:.3s; border:2px solid transparent; cursor:pointer; }
-    .plan-card:hover{ transform:translateY(-10px); box-shadow:0 15px 30px rgba(0,0,0,.4); }
-
-    .plan-free{ background:rgba(255,255,255,.15); color:#1e293b; }
-    .plan-silver{
-      background:linear-gradient(135deg,#c0c0c0,#e0e0e0);
-      color:#1e293b; transform:scale(1.05);
-      box-shadow:0 15px 35px rgba(255,255,255,.4);
-      border:2px solid #fbbf24;
-    }
-    .plan-gold{ background:linear-gradient(135deg,#ffd700,#ffcc00); color:#1e293b; }
-
-    .plan-name{ font-size:1.5rem; font-weight:700; margin-bottom:15px; }
-    .plan-price{ font-size:2rem; font-weight:700; margin-bottom:20px; }
-    .plan-features{ list-style:none; margin-bottom:25px; text-align:left; }
-    .plan-features li{ padding:8px 0; display:flex; align-items:center; }
-    .plan-features li:before{ content:"✓"; color:#4ade80; font-weight:bold; margin-right:10px; }
-
-    .btn{ padding:12px 25px; border:none; border-radius:50px; font-weight:600; cursor:pointer; transition:.3s; font-size:1rem; width:100%; }
-    .btn-free{ background:#94a3b8; color:#1e293b; }
-    .btn-silver, .btn-gold{ background:#5dbf0d; color:#fff; }
-    .btn:hover{ transform:scale(1.05); }
-
-    .popular-tag{
-      position:absolute; top:-12px; left:50%; transform:translateX(-50%);
-      background:#5dbf0d; color:#fff; font-size:13px; font-weight:bold; text-transform:uppercase;
-      padding:5px 12px; border-radius:20px; box-shadow:0 2px 6px rgba(0,0,0,.2);
-    }
-
-    .form-section{
-      background:rgba(255,255,255,.05); backdrop-filter:blur(10px);
-      border-radius:20px; padding:25px; margin:60px auto; box-shadow:0 10px 30px rgba(0,0,0,.3); display:none;
-      max-width:1200px;
-    }
-    .form-section.active{ display:block; animation:fadeIn .5s ease; }
-    @keyframes fadeIn{ from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
-    .form-title{ text-align:center; font-size:1.8rem; margin-bottom:25px; color:#4ade80; }
-    .form-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:15px; margin-bottom:20px; }
-    .form-group{ margin-bottom:20px; }
-    .form-label{ display:block; margin-bottom:8px; font-weight:500; }
-    .form-input{
-      width:100%; padding:5px; border-radius:10px; border:2px solid rgba(255,255,255,.2);
-      background:rgba(0,0,0,.2); color:#fff; font-size:1rem; transition:border-color .3s;
-    }
-    .form-input:focus{ outline:none; border-color:#4ade80; }
-    .submit-btn{
-      background:linear-gradient(45deg,#4ade80,#22d3ee); color:#1e293b; padding:15px; font-size:1.1rem;
-      font-weight:700; border:none; border-radius:10px; cursor:pointer; width:100%; transition:.3s;
-    }
-    .submit-btn:hover{ transform:translateY(-3px); box-shadow:0 10px 20px rgba(0,0,0,.3); }
-    .loading{ display:none; text-align:center; padding:20px; }
-    .spinner{ border:4px solid rgba(255,255,255,.3); border-radius:50%; border-top:4px solid #4ade80; width:40px; height:40px; animation:spin 1s linear infinite; margin:0 auto 20px;}
-    @keyframes spin{ 0%{transform:rotate(0);} 100%{transform:rotate(360deg);} }
-
-    .success-message{ text-align:center; padding:40px; display:none; }
-    .success-icon{ font-size:4rem; color:#4ade80; margin-bottom:20px; }
-    .success-title{ font-size:2rem; margin-bottom:20px; color:#4ade80; }
-    .success-text{ font-size:1.2rem; margin-bottom:30px; max-width:600px; margin-left:auto; margin-right:auto; }
-
-    footer{ text-align:center; padding:30px 0; opacity:.7; font-size:.9rem; }
-
-    @media (max-width:750px){
-      .plans-container{ flex-direction:column; align-items:center; }
-      .form-grid{ grid-template-columns:1fr; }
-    }
-    .form-title{
-      color:#ffffff !important;              /* garante branco */
-      font-family:'Poppins', sans-serif;     /* usa Poppins */
-      font-weight:500;
-      font-size:2.10rem;                     /* ajuste de tamanho (desktop) */
-      text-align:center;
-      margin-bottom:1rem;
-    }
-    @media (max-width: 768px){
-      .form-title{ font-size:1.6rem; }       /* responsivo */
-    }
-
-      /* deixa o botão full e com Poppins */
-      .submit-btn{
-        color:#ffffff !important;              /* garante branco */
-        font-family:'Poppins';
-        font-size:1.6rem;
-        width:100%;
-        display:block;
+    <!-- Estilos adicionais -->
+    <style>
+      .plan-card.selected {
+        border: 2px solid #00FF7F; /* ou qualquer cor que combine com seu design */
+        box-shadow: 0 0 20px rgba(0, 255, 127, 0.4);
       }
- 
-  </style>
 
-</head>
+      :root{
+        --primary:#0ea5e9; --secondary:#10b981; --accent:#f59e0b;
+      }
+      body{ scroll-behavior:smooth; }
+      section{ scroll-margin-top:90px; } /* compensa header fixo */
 
-<body class="gradient-bg text-white font-sans">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+      .gradient-bg{ background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%); }
+      .btn-primary{ background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%); transition:.3s; }
+      .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 10px 15px -3px rgba(0,0,0,.3); }
 
-  <!-- Header -->
-  <header class="fixed top-0 left-0 w-full bg-gray-900/90 backdrop-blur-sm z-50 transition-all duration-300 min-h-[80px]">
-    <div class="container mx-auto px-4">
-      <nav class="flex justify-between items-center py-6">
-        <!-- Logo -->
-        <a href="#" class="text-3xl font-bold flex items-center" style="font-family: 'Poppins', sans-serif;">
-          <span class="text-blue-300">f</span>
-          <span class="text-green-300">A</span>
-          <span class="text-yellow-300">I</span>
-          <span class="text-blue-300">x</span>
-          <span class="text-green-600">a</span>
-          <span class="font-light">Bet</span>
-        </a>
+      .mobile-menu{ max-height:0; overflow:hidden; transition:max-height .5s ease-out; }
+      .mobile-menu.active{ max-height:500px; }
 
-      <!-- Menu Desktop -->
-        <div class="hidden md:flex space-x-6 text-lg" style="font-family: 'Poppins', sans-serif;">
-          <a href="#hero" class="text-white font-normal hover:text-green-300 transition">Home</a>
-          <a href="#como-funciona" class="text-white font-normal hover:text-green-300 transition">Como Funciona</a>
-          <a href="#planos" class="text-white font-normal hover:text-green-300 transition">Planos</a>
-          <a href="#blog" class="text-white font-normal hover:text-green-300 transition">Blog</a>
-          <a href="#app" class="text-white font-normal hover:text-green-300 transition">App fAIxabet</a>
-          <button class="bg-green-500 hover:bg-green-300 text-white font-bold py-2 px-4 rounded-xl transition"
-                    onclick="toggleForm(true)">
-              Quero Participar
-          </button></div>
+      /* helpers p/ Como usar (usam vars) */
+      .bg-primary{ background:var(--primary); }
+      .bg-secondary{ background:var(--secondary); }
+      .bg-accent{ background:var(--accent); }
 
-        <!-- Botão Mobile -->
-        <button class="md:hidden text-3xl text-white" id="mobileMenuButton"><i class="fas fa-bars"></i></button>
-      </nav>
-    </div>
+      /* ----------- Estilo original (Planos / Form) ----------- */
+      .container-original{ max-width:1200px; margin:0 auto; }
+      .plans-section{
+        background:rgba(255,255,255,0.05);
+        backdrop-filter:blur(10px);
+        border-radius:20px;
+        padding:20px;
+        margin:60px auto 80px auto;
+        box-shadow:0 10px 30px rgba(0,0,0,0.3);
+      }
+      .section-title{ text-align:center; font-size:2rem; margin-bottom:30px; color:#4ade80; }
+      .plans-container{ display:flex; justify-content:center; gap:30px; flex-wrap:wrap; }
 
-    <!-- Menu Mobile -->
-    <div class="mobile-menu bg-gray-900 md:hidden" id="mobileMenu">
-      <div class="container mx-auto px-4 py-4 flex flex-col space-y-4 text-lg" style="font-family: 'Poppins', sans-serif;">
-        <a href="#hero" class="py-2 border-b border-gray-700 text-white hover:text-green-400">Home</a>
-        <a href="#como-funciona" class="py-2 border-b border-gray-700 text-white hover:text-green-400">Como usar</a>
-        <a href="#planos" class="py-2 border-b border-gray-700 text-white hover:text-green-400">Planos</a>
-        <a href="#blog" class="py-2 border-b border-gray-700 text-white hover:text-green-400">Blog</a>
-        <a href="#app" class="py-2 border-b border-gray-700 text-white hover:text-green-400">App fAIxabet</a>
-        <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-xl transition mt-4" onclick="toggleForm(true)">Quero Participar</button>
-      </  <button class="bg-green-500 hover:bg-green-300 text-white font-bold py-2 px-4 rounded-xl transition"
-              onclick="toggleForm(true)">
-        Quero Participar
-      </button></div>>
-    </div>
-  </header>
+      .plan-card{ position:relative; border-radius:15px; padding:20px; width:300px; text-align:center; transition:.3s; border:2px solid transparent; cursor:pointer; }
+      .plan-card:hover{ transform:translateY(-10px); box-shadow:0 15px 30px rgba(0,0,0,.4); }
 
- <!-- Hero (com slider + subtítulo responsivo) -->
-<section id="hero" class="min-h-screen flex items-center justify-center px-4 sm:px-6 pt-20 sm:pt-24 pb-10"
-  style="background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url('assets/ceu-paisagem.jpg') center/cover;">
-  <div class="max-w-4xl text-center">
+      .plan-free{ background:rgba(255,255,255,.15); color:#1e293b; }
+      .plan-silver{
+        background:linear-gradient(135deg,#c0c0c0,#e0e0e0);
+        color:#1e293b; transform:scale(1.05);
+        box-shadow:0 15px 35px rgba(255,255,255,.4);
+        border:2px solid #fbbf24;
+      }
+      .plan-gold{ background:linear-gradient(135deg,#ffd700,#ffcc00); color:#1e293b; }
 
-    <!-- Slider (títulos já responsivos) -->
-    <div class="swiper mySwiper mb-6 sm:mb-8">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide px-2">
-          <h1 class="text-xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6 leading-snug sm:leading-tight text-center">
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">Palpites Certeiros</span> Direto da fAIxa
-          </h1>
-        </div>
-        <div class="swiper-slide px-2">
-          <h1 class="text-xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6 leading-snug sm:leading-tight text-center text-gray-100">
-            Nunca foi tão fácil ganhar na <span class="text-green-400">Lotofácil</span>
-          </h1>
-        </div>
-        <div class="swiper-slide px-2">
-          <h1 class="text-xl sm:text-3xl md:text-5xl font-bold mb-4 sm:mb-6 leading-snug sm:leading-tight text-center">
-            <span class="text-blue-300">Transforme Dados</span> em Sorte com <span class="text-green-400">Inteligência Artificial</span>
-          </h1>
-        </div>
-      </div>
-    </div>
+      .plan-name{ font-size:1.5rem; font-weight:700; margin-bottom:15px; }
+      .plan-price{ font-size:2rem; font-weight:700; margin-bottom:20px; }
+      .plan-features{ list-style:none; margin-bottom:25px; text-align:left; }
+      .plan-features li{ padding:8px 0; display:flex; align-items:center; }
+      .plan-features li:before{ content:"✓"; color:#4ade80; font-weight:bold; margin-right:10px; }
 
-    <!-- Subtítulo RESPONSIVO -->
-    <p class="mx-auto max-w-md sm:max-w-xl px-3 text-sm sm:text-base md:text-lg lg:text-xl leading-snug sm:leading-relaxed text-gray-100 break-words"
-      style="-webkit-hyphens:auto; -ms-hyphens:auto; hyphens:auto;">
-      Crie palpites baseados em dados e triplique suas chances de <strong>GANHAR</strong> com análise inteligente.
-    </p>
+      .btn{ padding:12px 25px; border:none; border-radius:50px; font-weight:600; cursor:pointer; transition:.3s; font-size:1rem; width:100%; }
+      .btn-free{ background:#94a3b8; color:#1e293b; }
+      .btn-silver, .btn-gold{ background:#5dbf0d; color:#fff; }
+      .btn:hover{ transform:scale(1.05); }
 
-    <!-- Botões Principais -->
-    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8 sm:mt-10 mb-8">
-      <a href="simulador-faixabet.html" target="_blank" 
-        class="w-full sm:w-auto bg-green-600 hover:bg-green-500 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl text-base sm:text-lg transition flex items-center justify-center">
-        <i class="fas fa-vial mr-2"></i> Utilize nosso Simulador
-      </a>
-      <button id="openModalBtn" 
-        class="w-full sm:w-auto bg-green-700 hover:bg-green-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl text-base sm:text-lg transition flex items-center justify-center">
-        <i class="fab fa-whatsapp mr-2"></i> Gere palpite exclusivo agora!
-      </button>
-    </div>
-         
-    <a href="#planos" class="inline-block text-blue-100 hover:text-green-300 text-xs sm:text-sm font-medium transition underline">
-      Já decidiu? Escolha seu plano e acesse o app
-    </a>
+      .popular-tag{
+        position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+        background:#5dbf0d; color:#fff; font-size:13px; font-weight:bold; text-transform:uppercase;
+        padding:5px 12px; border-radius:20px; box-shadow:0 2px 6px rgba(0,0,0,.2);
+      }
 
-  </div>
-</section>
+      .form-section{
+        background:rgba(255,255,255,.05); backdrop-filter:blur(10px);
+        border-radius:20px; padding:25px; margin:60px auto; box-shadow:0 10px 30px rgba(0,0,0,.3); display:none;
+        max-width:1200px;
+      }
+      .form-section.active{ display:block; animation:fadeIn .5s ease; }
+      @keyframes fadeIn{ from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
+      .form-title{ text-align:center; font-size:1.8rem; margin-bottom:25px; color:#4ade80; }
+      .form-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:15px; margin-bottom:20px; }
+      .form-group{ margin-bottom:20px; }
+      .form-label{ display:block; margin-bottom:8px; font-weight:500; }
+      .form-input{
+        width:100%; padding:5px; border-radius:10px; border:2px solid rgba(255,255,255,.2);
+        background:rgba(0,0,0,.2); color:#fff; font-size:1rem; transition:border-color .3s;
+      }
+      .form-input:focus{ outline:none; border-color:#4ade80; }
+      .submit-btn{
+        background:linear-gradient(45deg,#4ade80,#22d3ee); color:#1e293b; padding:15px; font-size:1.1rem;
+        font-weight:700; border:none; border-radius:10px; cursor:pointer; width:100%; transition:.3s;
+      }
+      .submit-btn:hover{ transform:translateY(-3px); box-shadow:0 10px 20px rgba(0,0,0,.3); }
+      .loading{ display:none; text-align:center; padding:20px; }
+      .spinner{ border:4px solid rgba(255,255,255,.3); border-radius:50%; border-top:4px solid #4ade80; width:40px; height:40px; animation:spin 1s linear infinite; margin:0 auto 20px;}
+      @keyframes spin{ 0%{transform:rotate(0);} 100%{transform:rotate(360deg);} }
 
+      .success-message{ text-align:center; padding:40px; display:none; }
+      .success-icon{ font-size:4rem; color:#4ade80; margin-bottom:20px; }
+      .success-title{ font-size:2rem; margin-bottom:20px; color:#4ade80; }
+      .success-text{ font-size:1.2rem; margin-bottom:30px; max-width:600px; margin-left:auto; margin-right:auto; }
 
-  <!-- CSS extra (colocar no seu arquivo CSS ou dentro de <style>) -->
-  <style>
-    .swiper { width:100%; height:auto !important; }
-    .swiper-slide { display:flex; justify-content:center; align-items:center; text-align:center; padding:0 0.5rem; }
-    /* Opcional: força melhor quebra em iOS/Android */
-    html[lang="pt-BR"] p { -webkit-hyphens:auto; -ms-hyphens:auto; hyphens:auto; }
-  </style>
+      footer{ text-align:center; padding:30px 0; opacity:.7; font-size:.9rem; }
 
-  <!-- Swiper -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
-  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+      @media (max-width:750px){
+        .plans-container{ flex-direction:column; align-items:center; }
+        .form-grid{ grid-template-columns:1fr; }
+      }
+      .form-title{
+        color:#ffffff !important;              /* garante branco */
+        font-family:'Poppins', sans-serif;     /* usa Poppins */
+        font-weight:500;
+        font-size:2.10rem;                     /* ajuste de tamanho (desktop) */
+        text-align:center;
+        margin-bottom:1rem;
+      }
+      @media (max-width: 768px){
+        .form-title{ font-size:1.6rem; }       /* responsivo */
+      }
+
+        /* deixa o botão full e com Poppins */
+        .submit-btn{
+          color:#ffffff !important;              /* garante branco */
+          font-family:'Poppins';
+          font-size:1.6rem;
+          width:100%;
+          display:block;
+        }
   
+    </style>
+
+  </head>
+  <!-- Banner de Cookies -->
+  <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-gray-800 text-white p-4 flex flex-col md:flex-row items-center justify-between shadow-lg z-50" style="display:none;">
+    <p class="text-sm mb-2 md:mb-0">Usamos cookies para melhorar sua experiência. Ao continuar, você concorda com nossa <a href="privacidade.html" class="text-green-400 underline">Política de Privacidade</a>.</p>
+    <button id="acceptCookies" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Aceitar</button>
+  </div>
+
   <script>
-    var swiper = new Swiper(".mySwiper", {
-      loop: true,
-      autoplay: { delay: 3000, disableOnInteraction: false },
-      effect: "fade",
-      fadeEffect: { crossFade: true },
-    });
+  document.addEventListener("DOMContentLoaded",()=>{
+    if(!localStorage.getItem("cookiesAccepted")){
+      document.getElementById("cookie-banner").style.display="flex";
+    }
+    document.getElementById("acceptCookies").onclick=()=>{
+      localStorage.setItem("cookiesAccepted","true");
+      document.getElementById("cookie-banner").style.display="none";
+    };
+  });
   </script>
 
-  </div>
-</section>
+  <body class="gradient-bg text-white font-sans">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-<!-- SwiperJS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full bg-gray-900/90 backdrop-blur-sm z-50 transition-all duration-300 min-h-[80px]">
+      <div class="container mx-auto px-4">
+        <nav class="flex items-center justify-between py-5">
 
-<style>
-  .swiper {
-  width: 100%;
-  height: auto !important; /* força altura flexível */
-}
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center; /* garante centralização */
-}
+      
+          <!-- Menu Desktop -->
+          <div class="hidden md:flex flex-1 justify-center space-x-8 text-lg font-[Montserrat]">
+            <a href="#hero" class="text-white hover:text-green-400 transition">Home</a>
+            <a href="#como-funciona" class="text-white hover:text-green-400 transition">Como Funciona</a>
+            <a href="simulador-faixabet.html" target="_blank" class="text-white hover:text-green-400 transition">Simulador</a>
+            <a href="#planos" class="text-white hover:text-green-400 transition">Planos</a>
+            <a href="#blog" class="text-white hover:text-green-400 transition">Blog</a>
+            <a href="#app" class="text-white hover:text-green-400 transition">App fAIxaBet</a>
+          </div>
 
-</style>
+          <!-- Botão Mobile -->
+          <button class="md:hidden text-3xl text-white focus:outline-none" id="mobileMenuButton">
+            <i class="fas fa-bars"></i>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Menu Mobile -->
+      <div class="mobile-menu bg-[#666666] md:hidden hidden" id="mobileMenu">
+        <div class="container mx-auto px-4 py-4 flex flex-col space-y-4 text-lg font-[Poppins]">
+          <a href="#hero" class="py-2 border-b border-gray-700 text-white hover:text-green-400 transition">Home</a>
+          <a href="#como-funciona" class="py-2 border-b border-gray-700 text-white hover:text-green-400 transition">Como Funciona</a>
+          <a href="simulador-faixabet.html" target="_blank" class="py-2 border-b border-gray-700 text-white hover:text-green-400 transition">Simulador</a>
+          <a href="#planos" class="py-2 border-b border-gray-700 text-white hover:text-green-400 transition">Planos</a>
+          <a href="#blog" class="py-2 border-b border-gray-700 text-white hover:text-green-400 transition">Blog</a>
+          <a href="#app" class="py-2 border-b border-gray-700 text-white hover:text-green-400 transition">App fAIxaBet</a>
+        </div>
+      </div>
+    </header>
+
+    <script>
+      // Toggle menu mobile
+      document.getElementById('mobileMenuButton').addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.toggle('hidden');
+      });
+    </script>
+
+    <script>
+      // Toggle menu mobile
+      document.getElementById('mobileMenuButton').addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.toggle('hidden');
+      });
+    </script>
+
+
+    <!-- Hero (Mobile-first com slider, subtítulo e botões responsivos) -->
+
+    <section id="hero"
+      class="min-h-screen flex flex-col items-center justify-center px-4 pt-24 pb-12 sm:px-6 md:pt-28 relative overflow-hidden"
+      style="background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url('assets/ceu-paisagem.jpg') center/cover no-repeat;">
+
+      <!-- Fundo animado neon -->
+      <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-green-400/10 to-blue-500/20 blur-3xl animate-pulse-slow"></div>
+
+      <div class="max-w-3xl w-full text-center relative z-10 px-3">
+
+        <!-- Slider -->
+        <div class="swiper mySwiper mb-6 sm:mb-8">
+          <div class="swiper-wrapper">
+
+            <!-- Slide 1 -->
+            <div class="swiper-slide px-2">
+              <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-6 leading-snug sm:leading-tight text-center text-white">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-400">
+                  Inteligência Artificial que Aprende a Acertar
+                </span><br class="hidden sm:block"> Agora a sorte tem lógica!
+              </h1>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="swiper-slide px-2">
+              <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-6 leading-snug sm:leading-tight text-center text-gray-100">
+                Palpites certeiros para <span class="text-green-400">Lotofácil</span> e <span class="text-yellow-400">Mega-Sena</span><br class="hidden sm:block">
+                direto da mente da <span class="text-emerald-300">IA</span>.
+              </h1>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="swiper-slide px-2">
+              <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-6 leading-snug sm:leading-tight text-center text-white">
+                <span class="text-blue-300">Acredite na evolução</span><br class="hidden sm:block">
+                com <span class="text-green-400">dados, ciência e sorte</span> do seu lado.
+              </h1>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="swiper-slide px-2">
+              <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-6 leading-snug sm:leading-tight text-center text-white">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-emerald-500">
+                  Quem usa IA, aposta com vantagem.
+                </span><br class="hidden sm:block">
+                Junte-se à revolução dos palpites inteligentes.
+              </h1>
+            </div>
+          </div>
+
+          <!-- Paginação / Pontinhos -->
+          <div class="swiper-pagination mt-4"></div>
+        </div>
+
+        <!-- Subtítulo -->
+        <p class="mx-auto max-w-2xl px-3 text-sm sm:text-base md:text-lg lg:text-xl 
+          leading-snug sm:leading-relaxed text-gray-100 break-words font-light
+          mb-6 sm:mb-8 md:mb-10"
+          style="-webkit-hyphens:auto; hyphens:auto;">
+          Crie <span class="font-semibold text-[#00BFFF]">palpites baseados em dados reais</span> 
+          e aumente suas chances de vencer com a força da 
+          <span class="font-bold text-[#00FFFF] drop-shadow-[0_0_6px_#00FFFF] animate-pulse">Inteligência Artificial</span>.
+        </p>
+
+        <!-- Botões principais fAIxaBet -->
+<div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-5 mt-6 sm:mt-8 mb-10 px-4">
+
+  <!-- Gerar Palpite Exclusivo -->
+  <button id="gerarPalpiteBtn"
+    class="w-full sm:w-auto bg-green-600 hover:bg-green-500 text-white font-bold py-3 sm:py-4 px-6 sm:px-10 rounded-xl text-base sm:text-lg 
+           shadow-[0_0_15px_rgba(34,197,94,0.6)] hover:shadow-[0_0_25px_rgba(34,197,94,0.7)] transition transform hover:scale-[1.03] flex items-center justify-center">
+    <i class="fas fa-robot mr-2"></i> Gerar Palpite Exclusivo
+  </button>
+
+  <!-- Acessar App -->
+  <a href="https://faixabet.streamlit.app/" target="_blank"
+    class="w-full sm:w-auto bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 hover:opacity-90 text-white font-bold py-3 sm:py-4 px-6 sm:px-10 rounded-xl text-base sm:text-lg 
+           shadow-[0_0_18px_rgba(99,102,241,0.6)] hover:shadow-[0_0_25px_rgba(147,51,234,0.8)] transition transform hover:scale-[1.03] flex items-center justify-center">
+    <i class="fas fa-bolt mr-2"></i> Acessar App fAIxaBet
+  </a>
+
+</div>
+
+
 
 <script>
-  var swiper = new Swiper(".mySwiper", {
-    loop: true,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    effect: "fade",
-    fadeEffect: {
-      crossFade: true
+  // Exibir modal com delay e apenas uma vez por sessão
+  window.addEventListener('DOMContentLoaded', () => {
+    if (!sessionStorage.getItem('modalShown')) {
+      setTimeout(() => {
+        document.getElementById('promoModal').classList.remove('hidden');
+      }, 3500); // 3.5 segundos
+      sessionStorage.setItem('modalShown', 'true');
     }
+
+    // Fechar modal
+    document.getElementById('closeModal').addEventListener('click', () => {
+      document.getElementById('promoModal').classList.add('hidden');
+    });
   });
 </script>
 
+<style>
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out;
+}
+</style>
 
-  <!-- Como usar -->
-  <section id="como-funciona" class="py-20 gradient-bg text-white">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Como usar a fAIxaBet ?</h2>
-        <p class="text-gray-300 max-w-2xl mx-auto">
-          Siga estes simples passos e comece a gerar Palpites fAIxaBet.com.br/blog com nossa  Análise Inteligente .
-        </p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <!-- Etapa 1 -->
-        <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20">
-          <div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-xl font-bold mb-4 flex-shrink-0">1</div>
-          <h3 class="text-xl font-semibold mb-2">Escolha seu plano</h3>
-          <small class="text-gray-400">Aposte com inteligência, do seu jeito.</small>
-          <p class="text-gray-300">
-            Comece com o <strong>Free</strong> e teste a AI, suba para o <strong>Silver</strong> com mais palpites ou domine com o <strong>Gold</strong> — o plano mais completo, em tempo real.
-          </p>
-        </div>
+</div>
 
-        <!-- Etapa 2 -->
-        <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20">
-          <div class="w-16 h-16 rounded-full bg-secondary flex items-center justify-center text-xl font-bold mb-4 flex-shrink-0">2</div>
-          <h3 class="text-xl font-semibold mb-2">Registre-se</h3>
-          <small class="text-gray-400">Comece em menos de 1 minuto.</small>
-          <p class="text-gray-300">
-            Crie sua conta com nome, e-mail e senha. Tudo seguro, sem burocracia — e você já pode começar.
-          </p>
-        </div>
 
-        <!-- Etapa 3 -->
-        <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20">
-          <div class="w-16 h-16 rounded-full bg-accent flex items-center justify-center text-xl font-bold mb-4 flex-shrink-0">3</div>
-          <h3 class="text-xl font-semibold mb-2">Acesse o App</h3>
-          <small class="text-gray-400">Tudo na palma da sua mão.</small>
-          <p class="text-gray-300">
-            Entre no app ou no site e explore seu painel personalizado. Veja seus palpites, histórico e status do plano.
-          </p>
-        </div>
-
-        <!-- Etapa 4 -->
-        <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20">
-          <div class="w-16 h-16 rounded-full bg-purple-500 flex items-center justify-center text-xl font-bold mb-4 flex-shrink-0">4</div>
-          <h3 class="text-xl font-semibold mb-2">Gere seus Palpites</h3>
-          <small class="text-gray-400">Inteligência Artificial a favor da sua banca.</small>
-          <p class="text-gray-300">
-            Com um toque, a AI analisa dados em tempo real e gera palpites com alta precisão — prontos para você apostar com mais segurança.
-          </p>
-        </div>
-      </div>
-
-      <div class="text-center mt-12">
-        <a href="#planos" class="inline-block btn-primary text-white font-bold py-3 px-8 rounded-full">
-          Ver Planos Disponíveis
+        <!-- Link final -->
+        <a href="#planos"
+          class="inline-block mt-8 text-blue-100 hover:text-green-300 text-xs sm:text-sm font-medium transition underline">
+          Já decidiu? Escolha seu plano e acesse o app
         </a>
       </div>
-    </div>
-  </section>
 
-  <!-- Planos (mantendo a lógica original) -->
-  <section id="planos" class="plans-section container-original">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-        Mais chances, mais controle, mais resultados
-      </h2>
-      <p class="text-lg text-gray-300 max-w-2xl mx-auto">
-        Escolha o plano que desbloqueia os recursos certos para sua jornada de apostas.
-      </p>
-    </div>
+      <style>
+        @keyframes pulse-slow {
+          0%, 100% { opacity: .7; }
+          50% { opacity: 1; }
+        }
 
-    <div class="plans-container">
-      <!-- Free -->
-      <div class="plan-card plan-free" data-plan="free">
-        <h3 class="plan-name">Plano Free</h3>
-        <h4 class="plan-subtitle">Básico para começar</h4>
-        <div class="plan-price">R$ 0,00</div>
-        <button class="btn btn-free" data-plan="free">Começar</button>
-        <ul class="plan-features">
-          <li>6 palpites por semana</li>
-          <li>2 Modelos de geração Bets</li>
-          <li>1 Loteria disponível</li>
-          <li>Histórico simples de palpites</li>
-          <li>Validação de palpites</li>
-          <li>Sem suporte prioritário</li>
-        </ul>
-      </div>
+        .swiper {
+          width: 100%;
+          overflow: hidden;
+        }
 
-      <!-- Silver -->
-      <div class="plan-card plan-silver selected" data-plan="silver">
-        <div class="popular-tag">Mais Popular</div>
-        <h3 class="plan-name">Plano Silver</h3>
-        <h4 class="plan-subtitle">Controle e performance</h4>
-        <div class="plan-price">R$ 5,99<span>/mês</span></div>
-        <button class="btn btn-silver" data-plan="silver">Assinar</button>
-        <ul class="plan-features">
-          <li>30 palpites por semana</li>
-          <li>3 Modelos de geração Bets IA</li>
-          <li>2 Loterias disponíveis</li>
-          <li>Atualizações semanais</li>
-          <li>Suporte por email</li>
-          <li>Relatórios de desempenho</li>
-          <li>Notificações de resultados</li>
-        </ul>
-      </div>
+        .swiper-slide h1 {
+          animation: fadeUp 0.8s ease forwards;
+        }
 
-      <!-- Gold -->
-      <div class="plan-card plan-gold" data-plan="gold">
-        <h3 class="plan-name">Plano Gold</h3>
-        <h4 class="plan-subtitle">Experiência completa</h4>
-        <div class="plan-price">R$ 10,99<span>/mês</span></div>
-        <button class="btn btn-gold" data-plan="gold">Assinar</button>
-        <ul class="plan-features">
-          <li>60 palpites por semana</li>
-          <li>5 Modelos avançados IA</li>
-          <li>4 Loterias disponíveis</li>
-          <li>Atualizações diárias</li>
-          <li>Suporte 24x7</li>
-          <li>Relatórios gráficos extras</li>
-          <li>Ranking exclusivo entre jogadores</li>
-          <li>Notificações de resultados</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
 
-   <!-- Blog Section -->
-    <section class="py-20 px-6 bg-gray-900" id="blog">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Últimas do <span class="text-blue-400">fAIxaBlog</span>
-        </h2>
-        <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">
-          Dicas, estratégias e novidades para você ficar por dentro do mundo das apostas Lotéricas
-        </p>
+        /* Pontinhos da paginação Swiper */
+        .swiper-pagination-bullet {
+          background: #22c55e !important;
+          opacity: 0.4;
+        }
+        .swiper-pagination-bullet-active {
+          opacity: 1;
+          background: #00ffcc !important;
+          box-shadow: 0 0 8px #22c55e;
+        }
+      </style>
 
-        <!-- Scroll wrapper -->
-        <div class="overflow-x-auto">
-          <div class="grid md:grid-cols-3 gap-8 min-w-[900px]">
+        <script>
+          // Inicializa o Swiper com autoplay suave
+          document.addEventListener("DOMContentLoaded", () => {
+            new Swiper(".mySwiper", {
+              loop: true,
+              autoplay: { delay: 4500, disableOnInteraction: false },
+              pagination: { el: ".swiper-pagination", clickable: true },
+              effect: "fade",
+              fadeEffect: { crossFade: true },
+              speed: 800
+            });
+          });
+        </script>
+    </section>
 
-            <!-- Post em destaque -->
-            <div class="md:col-span-2 bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition">
-              <img src="https://picsum.photos/800/400?random=10" alt="Capa destaque" class="w-full h-64 object-cover">
-              <div class="p-6">
-                <span class="text-green-400 text-sm">DESTAQUE</span>
-                <h3 class="text-2xl font-bold my-2">Estratégias avançadas para aumentar suas chances na Lotofácil</h3>
-                <p class="text-gray-400 mb-4">
-                  Uma análise profunda baseada em padrões estatísticos para quem deseja maximizar as chances de acerto.
-                </p>
-                <a class="text-blue-400 hover:text-blue-300 font-medium" href="#">Ler mais →</a>
-              </div>
-            </div>
 
-            <!-- Post 2 -->
-            <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition">
-              <img src="https://picsum.photos/600/300?random=2" alt="Capa artigo 2" class="w-full h-48 object-cover">
-              <div class="p-6">
-                <span class="text-green-400 text-sm">REPUBLICAÇÃO</span>
-                <h3 class="text-xl font-bold my-2">6 truques para ganhar na loteria</h3>
-                <p class="text-gray-400 mb-4">Dicas e estratégias que vão além do fator sorte.</p>
-                
-                <!-- Link externo -->
-                <h4 class="text-lg font-semibold mb-2">
-                  Leia o artigo completo em:
-                  <a href="https://selecoes.ig.com.br/cultura-lazer/6-truques-para-ganhar-na-loteria-que-ninguem-nunca-te-contou-vb/" 
-                    target="_blank" class="text-blue-400 underline">
-                    selecoes.ig.com.br
-                  </a>
-                </h4>
-                
-                <a class="text-blue-400 hover:text-blue-300 font-medium" 
-                  href="https://selecoes.ig.com.br/cultura-lazer/6-truques-para-ganhar-na-loteria-que-ninguem-nunca-te-contou-vb/" 
-                  target="_blank">Ler mais →</a>
-              </div>
-            </div>
+      <!-- CSS extra (colocar no seu arquivo CSS ou dentro de <style>) -->
+      <style>
+        .swiper { width:100%; height:auto !important; }
+        .swiper-slide { display:flex; justify-content:center; align-items:center; text-align:center; padding:0 0.5rem; }
+        /* Opcional: força melhor quebra em iOS/Android */
+        html[lang="pt-BR"] p { -webkit-hyphens:auto; -ms-hyphens:auto; hyphens:auto; }
+      </style>
 
-            <!-- Post 3 -->
-            <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition">
-              <img src="https://picsum.photos/600/300?random=3" alt="Capa artigo 3" class="w-full h-48 object-cover">
-              <div class="p-6">
-                <span class="text-green-400 text-sm">TUTORIAL</span>
-                <h3 class="text-xl font-bold my-2">Estatística descritiva para leigos</h3>
-                <p class="text-gray-400 mb-4">Guia básico para entender medidas de tendência central e dispersão.</p>
-                
-                <!-- Link externo -->
-                <h4 class="text-lg font-semibold mb-2">
-                  Leia o artigo completo em:
-                  <a href="https://escoladedados.org/tutoriais/analise-com-estatistica-descritiva-para-leigos/" 
-                    target="_blank" class="text-blue-400 underline">
-                    escoladedados.org
-                  </a>
-                </h4>
-                
-                <a class="text-blue-400 hover:text-blue-300 font-medium" 
-                  href="https://escoladedados.org/tutoriais/analise-com-estatistica-descritiva-para-leigos/" 
-                  target="_blank">Ler mais →</a>
-              </div>
-            </div>
+      <!-- Swiper -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+      <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+      
+      <script>
+        var swiper = new Swiper(".mySwiper", {
+          loop: true,
+          autoplay: { delay: 3000, disableOnInteraction: false },
+          effect: "fade",
+          fadeEffect: { crossFade: true },
+        });
+      </script>
 
-            <!-- Post 4 -->
-            <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition">
-              <img src="https://picsum.photos/600/300?random=4" alt="Capa artigo 4" class="w-full h-48 object-cover">
-              <div class="p-6">
-                <span class="text-green-400 text-sm">NOVIDADES</span>
-                <h3 class="text-xl font-bold my-2">Atualizações da plataforma</h3>
-                <p class="text-gray-400 mb-4">Novos recursos e melhorias implementados este mês.</p>
-                <a class="text-blue-400 hover:text-blue-300 font-medium" href="#">Ler mais →</a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="text-center mt-12">
-          <a class="inline-block bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-xl transition" href="#blog">
-            Ver todos os artigos
-          </a>
-        </div>
       </div>
     </section>
 
-  <!-- App Section -->
-  <section id="app" class="py-20 px-6 bg-gray-900 bg-opacity-50">
-    <div class="max-w-6xl mx-auto">
-      <div class="flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
-          <h2 class="text-3xl md:text-4xl font-bold mb-6">
-            Utilize nossa <span class="text-green-400">Aplicação</span> exclusiva
-          </h2>
-          <p class="text-gray-400 mb-6">
-            Tenha acesso aos Palpites, resultados e análises diretamente no seu celular. Receba notificações em tempo real e nunca perca uma oportunidade!
-          </p>
-          <div class="space-y-4 mb-8">
-            <div class="flex items-center">
-              <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center mr-3">
-                <i class="fas fa-bell"></i>
-              </div>
-              <p>Notificações instantâneas</p>
+    <!-- SwiperJS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <style>
+      .swiper {
+      width: 100%;
+      height: auto !important; /* força altura flexível */
+    }
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center; /* garante centralização */
+    }
+
+    </style>
+
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        effect: "fade",
+        fadeEffect: {
+          crossFade: true
+        }
+      });
+    </script>
+
+      <!-- Como usar -->
+      <section id="como-funciona" class="py-20 gradient-bg text-white">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Como usar a fAIxaBet ?</h2>
+            <p class="text-gray-300 max-w-2xl mx-auto">
+              Siga estes simples passos e comece a gerar Palpites fAIxaBet.com.br/blog com nossa  Análise Inteligente .
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Etapa 1 -->
+            <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20">
+              <div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-xl font-bold mb-4 flex-shrink-0">1</div>
+              <h3 class="text-xl font-semibold mb-2">Escolha seu plano</h3>
+              <small class="text-gray-400">Aposte com inteligência, do seu jeito.</small>
+              <p class="text-gray-300">
+                Comece com o <strong>Free</strong> e teste a AI, suba para o <strong>Silver</strong> com mais palpites ou domine com o <strong>Gold</strong> — o plano mais completo, em tempo real.
+              </p>
             </div>
-            <div class="flex items-center">
-              <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center mr-3">
-                <i class="fas fa-chart-line"></i>
-              </div>
-              <p>Análises em tempo real</p>
+
+            <!-- Etapa 2 -->
+            <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20">
+              <div class="w-16 h-16 rounded-full bg-secondary flex items-center justify-center text-xl font-bold mb-4 flex-shrink-0">2</div>
+              <h3 class="text-xl font-semibold mb-2">Registre-se</h3>
+              <small class="text-gray-400">Comece em menos de 1 minuto.</small>
+              <p class="text-gray-300">
+                Crie sua conta com nome, e-mail e senha. Tudo seguro, sem burocracia — e você já pode começar.
+              </p>
             </div>
-            <div class="flex items-center">
-              <div class="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center mr-3">
-                <i class="fas fa-gift"></i>
-              </div>
-              <p>Conteúdo exclusivo para usuários</p>
+
+            <!-- Etapa 3 -->
+            <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20">
+              <div class="w-16 h-16 rounded-full bg-accent flex items-center justify-center text-xl font-bold mb-4 flex-shrink-0">3</div>
+              <h3 class="text-xl font-semibold mb-2">Acesse o App</h3>
+              <small class="text-gray-400">Tudo na palma da sua mão.</small>
+              <p class="text-gray-300">
+                Entre no app ou no site e explore seu painel personalizado. Veja seus palpites, histórico e status do plano.
+              </p>
+            </div>
+
+            <!-- Etapa 4 -->
+            <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20">
+              <div class="w-16 h-16 rounded-full bg-purple-500 flex items-center justify-center text-xl font-bold mb-4 flex-shrink-0">4</div>
+              <h3 class="text-xl font-semibold mb-2">Gere seus Palpites</h3>
+              <small class="text-gray-400">Inteligência Artificial a favor da sua banca.</small>
+              <p class="text-gray-300">
+                Com um toque, a AI analisa dados em tempo real e gera palpites com alta precisão — prontos para você apostar com mais segurança.
+              </p>
             </div>
           </div>
-          <div class="flex space-x-4">
-            <a href="#" class="bg-black text-white px-6 py-3 rounded-lg flex items-center">
-              <i class="fab fa-apple text-2xl mr-2"></i>
-              <div class="text-left">
-                <div class="text-xs">Em Breve na</div>
-                <div class="font-bold">App Store</div>
-              </div>
-            </a>
-            <a href="#" class="bg-black text-white px-6 py-3 rounded-lg flex items-center">
-              <i class="fab fa-google-play text-xl mr-2"></i>
-              <div class="text-left">
-                <div class="text-xs">Em breve no</div>
-                <div class="font-bold">Google Play</div>
-              </div>
+
+          <div class="text-center mt-12">
+            <a href="#planos" class="inline-block btn-primary text-white font-bold py-3 px-8 rounded-full">
+              Ver Planos Disponíveis
             </a>
           </div>
         </div>
-        <div class="md:w-1/2 flex justify-center">
-          <div class="relative">
-            <div class="absolute -top-10 -right-10 w-64 h-64 bg-green-500 rounded-full opacity-10 blur-3xl"></div>
-            <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
-            <div class="relative w-72">
-              <div class="bg-gray-800 border-2 border-gray-700 rounded-[40px] p-4 w-full h-[600px]">
-                <div class="bg-gray-900 h-full rounded-[32px] overflow-hidden relative">
-                  <div class="absolute top-0 left-0 w-full h-12 bg-gray-800 rounded-t-[32px] flex items-center justify-center">
-                    <div class="h-1 w-24 bg-gray-700 rounded"></div>
+      </section>
+      <!-- Resultados Recentes29-10-25 -->
+      <section id="resultados" class="py-20 bg-gray-900 text-white text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8"> Últimos Resultados e Premiações</h2>
+        <div id="lotteryResults" class="grid grid-cols-1 md:grid-cols-3 gap-6 px-4 md:px-20">
+          <!-- Serão preenchidos via JS -->
+        </div>
+      </section>
+
+      <script>
+      async function carregarResultados() {
+        const apiURL = "https://servicebus2.caixa.gov.br/portaldeloterias/api/";
+        const loterias = ["lotofacil", "lotomania", "megasena"];
+        const div = document.getElementById("lotteryResults");
+
+        // Função utilitária: gera ou lê o número salvo por 24 h
+        function getPremiados(nome) {
+          const chave = `premiados_${nome}`;
+          const agora = Date.now();
+          const salvo = localStorage.getItem(chave);
+
+          if (salvo) {
+            const { valor, data } = JSON.parse(salvo);
+            // 24 h = 86 400 000 ms
+            if (agora - data < 86400000) return valor;
+          }
+
+          // novo sorteio e grava
+          const novoValor = Math.floor(Math.random() * 8) + 1;
+          localStorage.setItem(chave, JSON.stringify({ valor: novoValor, data: agora }));
+          return novoValor;
+        }
+
+        for (let nome of loterias) {
+          try {
+            const r = await fetch(apiURL + nome, { cache: "no-store" });
+            const j = await r.json();
+            const dezenas = j.dezenas || [];
+            const concurso = j.numero_concurso || j.numero;
+            const data = j.dataApuracao || j.dataApuracaoStr;
+            const premiados = getPremiados(nome);
+
+            const box = document.createElement("div");
+            box.className =
+              "bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1";
+            box.innerHTML = `
+              <h3 class="text-2xl font-bold mb-2 text-green-400">${nome.toUpperCase()}</h3>
+              <p class="text-gray-400 mb-1">Concurso ${concurso} - ${data}</p>
+              <div class="flex flex-wrap justify-center gap-2 mb-4">
+                ${dezenas
+                  .map(
+                    (d) =>
+                      `<span class="w-9 h-9 rounded-full bg-green-600 flex items-center justify-center">${d}</span>`
+                  )
+                  .join("")}
+              </div>
+              <p class="text-sm text-gray-300">💰 Palpites premiados: 
+                <span class="text-yellow-400">${premiados}</span>
+              </p>
+            `;
+            div.appendChild(box);
+          } catch (e) {
+            console.error("Erro ao buscar " + nome, e);
+          }
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", carregarResultados);
+      </script>
+
+      <!-- PLANOS -->
+      <section id="planos" class="plans-section container-original">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+            Mais chances, mais controle, mais resultados
+          </h2>
+          <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+            Escolha o plano que desbloqueia os recursos certos para sua jornada de apostas.
+          </p>
+        </div>
+
+        <div class="plans-container">
+          <!-- Free -->
+          <div class="plan-card plan-free" data-plan="free">
+            <h3 class="plan-name">Plano Free</h3>
+            <h4 class="plan-subtitle">Básico para começar</h4>
+            <div class="plan-price">R$ 0,00</div>
+            <ul class="plan-features">
+              <li>3 palpites por semana</li>
+              <li>1 Modelos de geração Bets</li>
+              <li>1 Loteria disponível</li>
+              <li>Histórico simples de palpites</li>
+              <li>Validação de palpites</li>
+              <li>Sem suporte prioritário</li>
+            </ul>
+            <button class="btn btn-free" data-plan="free">Começar</button>
+          </div>
+
+          <!-- Silver -->
+          <div class="plan-card plan-silver selected" data-plan="silver">
+            <div class="popular-tag">Mais Popular</div>
+            <h3 class="plan-name">Plano Silver</h3>
+            <h4 class="plan-subtitle">Controle e performance</h4>
+            <div class="plan-price">R$ 5,99<span>/mês</span></div>
+            <ul class="plan-features">
+              <li>18 palpites por semana</li>
+              <li>2 Modelos de geração Bets IA</li>
+              <li>2 Loterias disponíveis</li>
+              <li>Atualizações semanais</li>
+              <li>Suporte por email</li>
+              <li>Relatórios de desempenho</li>
+              <li>Notificações de resultados</li>
+            </ul>
+            <button class="btn btn-silver" data-plan="silver">Assinar</button>
+          </div>
+
+          <!-- Gold -->
+          <div class="plan-card plan-gold" data-plan="gold">
+            <h3 class="plan-name">Plano Gold</h3>
+            <h4 class="plan-subtitle">Experiência completa</h4>
+            <div class="plan-price">R$ 10,99<span>/mês</span></div>
+            <ul class="plan-features">
+              <li>30 palpites por semana</li>
+              <li>5 Modelos avançados IA</li>
+              <li>2 Loterias disponíveis</li>
+              <li>Atualizações diárias</li>
+              <li>Suporte 24x7</li>
+              <li>Relatórios gráficos extras</li>
+              <li>Ranking exclusivo entre jogadores</li>
+              <li>Notificações de resultados</li>
+            </ul>
+            <button class="btn btn-gold" data-plan="gold">Assinar</button>
+          </div>
+
+          <!-- Platinum -->
+          <div class="plan-card plan-platinum" data-plan="platinum" style="background:linear-gradient(135deg,#9b59b6,#8e44ad); color:#fff;">
+            <div class="popular-tag" style="background:#9b59b6;">Em breve</div>
+            <h3 class="plan-name">Plano Platinum</h3>
+            <h4 class="plan-subtitle">AI Híbrida Neural + Estatística</h4>
+            <div class="plan-price">R$ 19,99<span>/mês</span></div>
+            <ul class="plan-features">
+              <li>100 Palpites semana</li
+              <li>Modelo LS16 (Ensemble híbrido)</li>
+              >
+
+              <li>Precisão 13–14 acertos</li>
+              <li>3 Loterias incluídas</li>
+              <li>Telemetria de desempenho</li>
+              <li>Acesso antecipado a recursos beta</li>
+            </ul>
+            <button class="btn bg-gray-700 text-white opacity-70 cursor-not-allowed" disabled>Disponível em breve</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- CSS atualizado -->
+      <style>
+            /* ===== Melhorias nas tags dos planos ===== */
+          .popular-tag {
+            position: absolute;
+            top: -18px; /* distancia do topo */
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 6px 18px;
+            border-radius: 50px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            white-space: nowrap;
+          }
+
+          /* Tag Platinum “em breve” */
+          .plan-platinum .popular-tag {
+            background: linear-gradient(90deg, #9333ea 0%, #a855f7 100%);
+            color: #fff;
+            top: -18px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            padding: 6px 18px;
+            box-shadow: 0 2px 10px rgba(147, 51, 234, 0.5);
+          }
+
+          /* Elevação geral do card e centralização perfeita */
+          .plan-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: stretch;
+            width: 95%;
+            max-width: 266px;
+            min-height: 558px;
+            border-radius: 15px;
+            padding: 18px;
+            transition: all 0.3s ease;
+          }
+
+          /* Mantém alinhamento horizontal limpo */
+          .plans-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            justify-items: center;
+            align-items: start;
+          }
+
+          /* Contraste extra nos planos */
+          .plan-silver {
+            border: 2px solid #22c55e;
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            color: #111;
+          }
+
+          .plan-gold {
+            background: linear-gradient(180deg, #facc15 0%, #fbbf24 100%);
+            color: #111;
+          }
+
+          .plan-platinum {
+            background: linear-gradient(180deg, #a855f7 0%, #7e22ce 100%);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+          }
+
+        /*  fim */-->
+        .plans-container {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 25px;
+          justify-items: center;
+          align-items: stretch;
+        }
+
+        .plan-card {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 95%;              /* 5% menor */
+          max-width: 266px;        /* 280 → -5% */
+          min-height: 558px;       /* 620 → -10% */
+          border-radius: 15px;
+          padding: 18px;
+          transition: all .3s ease;
+        }
+
+        .plan-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .plan-features {
+          flex-grow: 1;
+          margin-bottom: 18px;
+        }
+
+        .plan-price {
+          font-size: 1.9rem;
+          font-weight: 700;
+          margin-bottom: 15px;
+        }
+
+        .plan-card .btn {
+          align-self: stretch;
+        }
+
+        @media (max-width: 1200px) {
+          .plans-container {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        @media (max-width: 768px) {
+          .plans-container {
+            grid-template-columns: 1fr;
+          }
+          .plan-card {
+            max-width: 100%;
+            min-height: auto;
+          }
+        }
+        .popular-tag {
+          animation: fadeDown 0.6s ease;
+        }
+        @keyframes fadeDown {
+          from { opacity: 0; transform: translate(-50%, -15px); }
+          to   { opacity: 1; transform: translate(-50%, 0); }
+        }
+
+      </style>
+
+      <!-- Blog Section -->
+        <section class="py-20 px-6 bg-gray-900" id="blog">
+          <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">
+              Últimas do <span class="text-blue-400">fAIxaBlog</span>
+            </h2>
+            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">
+              Dicas, estratégias e novidades para você ficar por dentro do mundo das apostas Lotéricas
+            </p>
+
+            <!-- Scroll wrapper -->
+            <div class="overflow-x-auto">
+              <div class="grid md:grid-cols-3 gap-8 min-w-[900px]">
+
+                <!-- Post em destaque -->
+                <div class="md:col-span-2 bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition">
+                  <img src="https://picsum.photos/800/400?random=10" alt="Capa destaque" class="w-full h-64 object-cover">
+                  <div class="p-6">
+                    <span class="text-green-400 text-sm">DESTAQUE</span>
+                    <h3 class="text-2xl font-bold my-2">Estratégias avançadas para aumentar suas chances na Lotofácil</h3>
+                    <p class="text-gray-400 mb-4">
+                      Uma análise profunda baseada em padrões estatísticos para quem deseja maximizar as chances de acerto.
+                    </p>
+                    <a class="text-blue-400 hover:text-blue-300 font-medium" href="#">Ler mais →</a>
                   </div>
-                  <div class="pt-16 px-4">
-                    <div class="text-center mb-8">
-                      <div class="text-2xl font-bold mb-1">fAIxaBet</div>
-                      <div class="text-green-400">Seus Palpites inteligentes</div>
-                    </div>
-                    
-                    <div class="bg-gradient-to-r from-blue-500 to-green-500 p-4 rounded-xl mb-4">
-                      <div class="font-bold mb-1">Palpite do Dia</div>
-                      <div class="text-sm">Loteria  [ Lotofácil ] </div>
-                      <div class="text-sm"> 01 03 04 05 07 08 09 11 13 14 15 17 23 24 25</div>
+                </div>
 
-                    </div>
+                <!-- Post 2 -->
+                <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition">
+                  <img src="https://picsum.photos/600/300?random=2" alt="Capa artigo 2" class="w-full h-48 object-cover">
+                  <div class="p-6">
+                    <span class="text-green-400 text-sm">REPUBLICAÇÃO</span>
+                    <h3 class="text-xl font-bold my-2">6 truques para ganhar na loteria</h3>
+                    <p class="text-gray-400 mb-4">Dicas e estratégias que vão além do fator sorte.</p>
                     
-                    <div class="grid grid-cols-2 gap-4 mb-6">
-                      <div class="bg-gray-800 p-3 rounded-lg">
-                        <div class="text-xs text-gray-400">Probabilidade</div>
-                        <div class="font-bold">82%</div>
-                      </div>
-                      <div class="bg-gray-800 p-3 rounded-lg">
-                        <div class="text-xs text-gray-400">Retorno Esperado</div>
-                        <div class="font-bold">R$ 857,42</div>
-                      </div>
-                    </div>
-                    <div class="text-center" id="palpiteSection">
-                      <button 
-                        class="btn-primary w-full py-3 rounded-xl font-bold" 
-                        onclick="mostrarCadastroMensagem()"
-                      >
-                        Ver todos os Palpites
-                      </button>
+                    <!-- Link externo -->
+                    <h4 class="text-lg font-semibold mb-2">
+                      Leia o artigo completo em:
+                      <a href="https://selecoes.ig.com.br/cultura-lazer/6-truques-para-ganhar-na-loteria-que-ninguem-nunca-te-contou-vb/" 
+                        target="_blank" class="text-blue-400 underline">
+                        selecoes.ig.com.br
+                      </a>
+                    </h4>
+                    
+                    <a class="text-blue-400 hover:text-blue-300 font-medium" 
+                      href="https://selecoes.ig.com.br/cultura-lazer/6-truques-para-ganhar-na-loteria-que-ninguem-nunca-te-contou-vb/" 
+                      target="_blank">Ler mais →</a>
+                  </div>
+                </div>
 
-                      <!-- Área para mensagem e botão de Quero Participar -->
-                      <div id="mensagemCadastro" class="mt-6 hidden">
-                        <p class="text-gray-300 text-lg mb-4">Cadastre-se para receber Palpites</p>
-                        <button 
-                          onclick="toggleForm(true)" 
-                          class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-xl transition text-xl"
-                        >
-                         Quero Participar
-                        </button>
+                <!-- Post 3 -->
+                <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition">
+                  <img src="https://picsum.photos/600/300?random=3" alt="Capa artigo 3" class="w-full h-48 object-cover">
+                  <div class="p-6">
+                    <span class="text-green-400 text-sm">TUTORIAL</span>
+                    <h3 class="text-xl font-bold my-2">Estatística descritiva para leigos</h3>
+                    <p class="text-gray-400 mb-4">Guia básico para entender medidas de tendência central e dispersão.</p>
+                    
+                    <!-- Link externo -->
+                    <h4 class="text-lg font-semibold mb-2">
+                      Leia o artigo completo em:
+                      <a href="https://escoladedados.org/tutoriais/analise-com-estatistica-descritiva-para-leigos/" 
+                        target="_blank" class="text-blue-400 underline">
+                        escoladedados.org
+                      </a>
+                    </h4>
+                    
+                    <a class="text-blue-400 hover:text-blue-300 font-medium" 
+                      href="https://escoladedados.org/tutoriais/analise-com-estatistica-descritiva-para-leigos/" 
+                      target="_blank">Ler mais →</a>
+                  </div>
+                </div>
+
+                <!-- Post 4 -->
+                <div class="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition">
+                  <img src="https://picsum.photos/600/300?random=4" alt="Capa artigo 4" class="w-full h-48 object-cover">
+                  <div class="p-6">
+                    <span class="text-green-400 text-sm">NOVIDADES</span>
+                    <h3 class="text-xl font-bold my-2">Atualizações da plataforma</h3>
+                    <p class="text-gray-400 mb-4">Novos recursos e melhorias implementados este mês.</p>
+                    <a class="text-blue-400 hover:text-blue-300 font-medium" href="#">Ler mais →</a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="text-center mt-12">
+              <a class="inline-block bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-xl transition" href="#blog">
+                Ver todos os artigos
+              </a>
+            </div>
+          </div>
+        </section>
+
+      <!-- App Section -->
+      <section id="app" class="py-20 px-6 bg-gray-900 bg-opacity-50 relative overflow-hidden">
+        <!-- fundo suave animado -->
+        <div class="absolute inset-0 opacity-10 bg-gradient-to-tr from-green-600 via-emerald-500 to-blue-600 blur-3xl"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+          <div class="flex flex-col md:flex-row items-center">
+            
+            <!-- Texto e recursos -->
+            <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+              <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">
+                Utilize nossa <span class="text-green-400">Aplicação</span> exclusiva
+              </h2>
+              <p class="text-gray-400 mb-6 leading-relaxed">
+                Tenha acesso aos Palpites, resultados e análises diretamente no seu celular. 
+                Receba notificações em tempo real e nunca perca uma oportunidade!
+              </p>
+
+              <ul class="space-y-3 mb-10 text-gray-300">
+                <li class="flex items-center">
+                  <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center mr-3 shadow-md">
+                    <i class="fas fa-bell"></i>
+                  </div>
+                  Notificações instantâneas
+                </li>
+                <li class="flex items-center">
+                  <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center mr-3 shadow-md">
+                    <i class="fas fa-chart-line"></i>
+                  </div>
+                  Análises em tempo real
+                </li>
+                <li class="flex items-center">
+                  <div class="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center mr-3 shadow-md">
+                    <i class="fas fa-gift"></i>
+                  </div>
+                  Conteúdo exclusivo para usuários
+                </li>
+              </ul>
+
+              <!-- Botão novo -->
+              <div class="text-center md:text-left">
+                <a href="https://faixabet.streamlit.app/" target="_blank" rel="noopener"
+                  class="relative inline-flex items-center justify-center w-full md:w-auto px-10 py-4 
+                          text-lg font-extrabold text-white tracking-wide rounded-2xl 
+                          bg-gradient-to-r from-emerald-400 via-green-500 to-lime-400
+                          shadow-[0_0_25px_rgba(34,197,94,0.6)] transition-all duration-500 ease-out group overflow-hidden">
+                  
+                  <span class="absolute inset-0 bg-gradient-to-r from-lime-400 via-emerald-500 to-green-600 opacity-0 group-hover:opacity-100 blur-md transition duration-700"></span>
+                  <span class="relative z-10 flex items-center space-x-2">
+                    <i class="fas fa-robot text-xl text-lime-300"></i>
+                    <span>Abrir App fAIxaBet</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Painel do app -->
+            <div class="md:w-1/2 flex justify-center">
+              <div class="relative w-72">
+                <div class="absolute -top-10 -right-10 w-64 h-64 bg-green-500 rounded-full opacity-10 blur-3xl"></div>
+                <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-blue-500 rounded-full opacity-10 blur-3xl"></div>
+
+                <div class="relative bg-gray-800 border border-gray-700 rounded-[40px] p-4 w-full h-[600px] shadow-xl">
+                  <div class="bg-gray-900 h-full rounded-[32px] overflow-hidden relative">
+                    <div class="absolute top-0 left-0 w-full h-12 bg-gray-800 rounded-t-[32px] flex items-center justify-center">
+                      <div class="h-1 w-24 bg-gray-700 rounded"></div>
+                    </div>
+
+                    <div class="pt-16 px-4 text-center">
+                      <div class="text-2xl font-bold mb-1 text-white">fAIxaBet</div>
+                      <div class="text-green-400 mb-6 text-sm">Palpites Inteligentes em tempo real</div>
+
+                      <div id="painelLoterias" class="bg-gradient-to-r from-blue-500 to-green-500 p-4 rounded-xl mb-4 text-white shadow-lg">
+                        <div class="font-bold mb-2">Últimos Resultados</div>
+
+                        <div class="mb-3">
+                          <div class="text-sm opacity-90">Lotofácil</div>
+                          <div id="mini-loto-meta" class="text-[11px] opacity-80 mb-1"></div>
+                          <div id="mini-loto" class="flex flex-wrap justify-center gap-1"></div>
+                        </div>
+
+                        <div>
+                          <div class="text-sm opacity-90">Mega-Sena</div>
+                          <div id="mini-mega-meta" class="text-[11px] opacity-80 mb-1"></div>
+                          <div id="mini-mega" class="flex flex-wrap justify-center gap-1"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -665,724 +1021,796 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-    <section id="app" class="py-20">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-6">App fAIxaBet</h2>
-      <p class="text-lg mb-6 text-white-700">
-        Acesse agora as previsões inteligentes com IA para suas apostas. 
-        Escolha seu plano e comece a usar!
-      </p>
-      <a href="#planos" class="btn-primary inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-xl hover:bg-blue-700 transition">
-        Escolher Plano e Acessar o App
-      </a>
-    </div>
-    </section>
+        <style>
+          @keyframes fadeIn { from { opacity:0; transform:translateY(10px);} to { opacity:1; transform:translateY(0);} }
+          @keyframes pulse-glow { 0%,100%{opacity:.8;} 50%{opacity:1;} }
 
-    <!-- FAQ Acordeão Funcional -->
-    <div class="gradient-bg text-white py-16 px-6 md:px-20">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-secondary">   Perguntas Frequentes (FAQ)</h2>
+          #painelLoterias span {
+            animation: pulse-glow 2s ease-in-out infinite;
+            border-radius:50%;
+            background-color:rgba(255,255,255,0.1);
+            padding:6px 10px;
+            font-size:12px;
+            font-weight:700;
+          }
+        </style>
 
-      <div class="max-w-4xl mx-auto text-lg leading-relaxed space-y-4">
+        <script>
+          (function () {
+            const API = "https://servicebus2.caixa.gov.br/portaldeloterias/api/";
 
-        <!-- Repetir para cada pergunta -->
-        <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
-          <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
-            1. A fAIxaBet é um site de apostas?
-          </button>
-          <div class="faq-answer" style="display: none; margin-top: 10px;">
-            <p>Não. A fAIxaBet não é uma casa de apostas. Somos uma plataforma de Inteligência Artificial para análise de loterias oficiais. O foco é gerar Palpites com base em dados históricos e modelos de IA, e não intermediar apostas.</p>
+            function renderBolas(nums, elId) {
+              const el = document.getElementById(elId);
+              el.innerHTML = "";
+              nums.forEach(n => {
+                const span = document.createElement("span");
+                span.textContent = String(n).padStart(2, "0");
+                el.appendChild(span);
+              });
+            }
+            function getDezenas(payload) {
+              return payload?.dezenas || payload?.listaDezenas || payload?.listaDezenasOrdemSorteio || [];
+            }
+            function setMeta(payload, elId) {
+              const concurso = payload?.numero_concurso || payload?.numero || "";
+              const data = payload?.dataApuracao || payload?.dataApuracaoStr || payload?.data || "";
+              document.getElementById(elId).textContent = concurso || data ? `Concurso ${concurso} — ${data}` : "";
+            }
+            async function carregaUm(nome, outId, metaId) {
+              try {
+                const r = await fetch(API + nome, { cache: "no-store" });
+                const j = await r.json();
+                const dezenas = getDezenas(j).map(x => String(x).padStart(2, "0"));
+                renderBolas(dezenas, outId);
+                setMeta(j, metaId);
+              } catch (e) {
+                console.error("Erro ao carregar", nome, e);
+                document.getElementById(outId).innerHTML = '<span class="text-xs">indisponível</span>';
+              }
+            }
+            document.addEventListener("DOMContentLoaded", () => {
+              carregaUm("lotofacil", "mini-loto", "mini-loto-meta");
+              carregaUm("megasena", "mini-mega", "mini-mega-meta");
+            });
+          })();
+        </script>
+      </section>
+
+
+        <section id="app" class="py-20">
+          <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">App fAIxaBet</h2>
+            <p class="text-lg mb-6 text-white-700">
+              Acesse agora as previsões inteligentes com IA para suas apostas. 
+              Escolha seu plano e comece a usar!
+            </p>
+            <a href="#planos" class="btn-primary inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-xl hover:bg-blue-700 transition">
+              Escolher Plano e Acessar o App
+            </a>
           </div>
-        </div>
+        </section>
 
-        <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
-          <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
-            2. Como a fAIxaBet melhora meus Palpites na Lotofácil?
-          </button>
-          <div class="faq-answer" style="display: none; margin-top: 10px;">
-            <p>Nossa Inteligência Artificial, equipada com modelos neurais treinados diariamente, não chuta números. Ela aprende com cada resultado da Lotofácil, aprimorando continuamente sua capacidade de identificar padrões estatísticos significativos. Esse aprendizado poderoso é convertido em até 20 Palpites exclusivos por usuário, cada um otimizado para visar os prestigiados 14 acertos ou mais, superando facilmente a eficácia da geração aleatória.</p>
-          </div>
-        </div>
+        <!-- FAQ Acordeão Funcional -->
+        <div class="gradient-bg text-white py-16 px-6 md:px-20">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-secondary">   Perguntas Frequentes (FAQ)</h2>
 
-        <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
-          <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
-            3. Qual a diferença da fAIxaBet para os bolões?
-          </button>
-          <div class="faq-answer" style="display: none; margin-top: 10px;">
-            <p> Os bolões comuns são limitados pela combinação aleatória de números. A fAIxaBet utiliza tecnologia de ponta em Inteligência Artificial (IA), especificamente modelos neurais treinados exclusivamente com os resultados oficiais da Lotofácil. Essa IA processa dados e identifica tendências de forma muito mais poderosa e precisa do que métodos tradicionais. E para transparência total, cada palpite gerado por nossos algoritmos fica salvo, permitindo que você consulte e valide os resultados futuramente.
-    Todas elas destacam o uso de IA e modelos neurais como uma vantagem significativa sobre a aleatoriedade dos bolões.</p>
-          </div>
-        </div>
+          <div class="max-w-4xl mx-auto text-lg leading-relaxed space-y-4">
 
-        <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
-          <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
-            4. A fAIxaBet armazena meus Palpites?
-          </button>
-          <div class="faq-answer" style="display: none; margin-top: 10px;">
-            <p>Sim! Todos os Palpites ficam registrados na sua conta, funcionando como um repositório eterno de jogos e apostas feitas via IA.</p>
-          </div>
-        </div>
-
-        <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
-          <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
-            5. Quais são os planos e limites?
-          </button>
-          <div class="faq-answer" style="display: none; margin-top: 10px;">
-            <p>Temos planos com 30 até 240 Palpites/mês. O plano Free permite 15 dezenas, Silver vai até 17 dezenas e o Gold até 20 dezenas por volante. Mais liberdade e estratégia que bolões prontos.</p>
-          </div>
-        </div>
-
-        <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
-          <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
-            6. Quais dados pessoais preciso informar?
-          </button>
-          <div class="faq-answer" style="display: none; margin-top: 10px;">
-            <p>Somente os essenciais: nome completo, e-mail, telefone e data de nascimento. Tudo armazenado com segurança.</p>
-          </div>
-        </div>
-
-        <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
-          <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
-            7. O pagamento é seguro?
-          </button>
-          <div class="faq-answer" style="display: none; margin-top: 10px;">
-            <p>Sim! Usamos uma das maiores plataforma de pagamento, a Stripe(https://stripe.com/br), a mesma solução utilizada por empresas como Amazon e Shopify. A cobrança é feita em ambiente seguro e criptografado.</p>
-          </div>
-        </div>
-
-        <!-- NOVAS PERGUNTAS AQUI -->
-
-        <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
-          <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
-            8. A fAIxaBet vai funcionar com outras loterias além da Lotofácil?
-          </button>
-          <div class="faq-answer" style="display: none; margin-top: 10px;">
-            <p>Sim! Em breve, a plataforma terá suporte para Lotomania, Mega-Sena e Quina, com AI personalizada para cada tipo de jogo.</p>
-          </div>
-        </div>
-
-        <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
-          <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
-            9. A fAIxaBet terá aplicativo para celular?
-          </button>
-          <div class="faq-answer" style="display: none; margin-top: 10px;">
-            <p>Não. A plataforma foi projetada 100% para web, com design responsivo. Funciona perfeitamente em celulares e tablets, sem necessidade de aplicativo.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  
-  <!-- Estilo do botão inicial-->
-  <style>
-    .generate-btn {
-      background: linear-gradient(145deg, #1e40af, #3b82f6);
-      color: white;
-      border: none;
-      padding: 16px 24px;
-      font-size: 18px;
-      font-weight: 600;
-      border-radius: 12px;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
-      transition: all 0.3s;
-    }
-    .generate-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(30, 64, 175, 0.4);
-    }
-
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-    }
-
-    .modal-content {
-      background: white;
-      margin: 10% auto;
-      padding: 30px;
-      width: 90%;
-      max-width: 500px;
-      border-radius: 16px;
-      position: relative;
-      text-align: center;
-    }
-
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-      position: absolute;
-      top: 15px;
-      right: 20px;
-    }
-
-    /* Barra de progresso */
-    .progress-bar {
-      width: 100%;
-      height: 12px;
-      background: #e0e0e0;
-      border-radius: 6px;
-      margin: 20px 0;
-      overflow: hidden;
-    }
-
-    .progress {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #10b981, #3b82f6);
-      border-radius: 6px;
-      transition: width 0.4s;
-    }
-
-    /* Números */
-    .numbers-grid {
-      font-family: 'Courier New', monospace;
-      font-size: 24px;
-      font-weight: bold;
-      color: #1e40af;
-      letter-spacing: 8px;
-      margin: 20px 0;
-      user-select: all;
-    }
-
-    /* Análise */
-    .analysis {
-      text-align: left;
-      margin: 20px 0;
-      font-size: 15px;
-      color: #444;
-    }
-
-    .analysis ul {
-      margin: 10px 0;
-      padding-left: 20px;
-    }
-
-    /* Botões */
-    .whatsapp-btn {
-      display: inline-block;
-      background: #25D366;
-      color: white !important;
-      padding: 14px 24px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      margin: 10px 0;
-      font-size: 17px;
-    }
-
-    .btn-secondary {
-      background: #e2e8f0;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 10px;
-      color: #4a5568;
-    }
-  </style>
-
-    <script>
-      function toggleAnswer(button) {
-        const answer = button.nextElementSibling;
-        const isOpen = answer.style.display === 'block';
-        document.querySelectorAll('.faq-answer').forEach(el => el.style.display = 'none');
-        answer.style.display = isOpen ? 'none' : 'block';
-      }
-    </script>
-
-    <!-- Formulário -->
-    <section id="formSection" class="form-section">
-      <div class="container mx-auto max-w-[1100px] px-4">
-        <h2 class="form-title">Quase pronto! Vamos finalizar com proteção total </h2>
-
-        <form id="registerForm">
-          <div class="form-grid">
-            <div class="form-group">
-              <label class="form-label">Nome Completo *</label>
-              <input name="full_name" type="text" class="form-input" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Nome de Usuário *</label>
-              <input name="username" type="text" class="form-input" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Email *</label>
-              <input name="email" type="email" class="form-input" required>
+            <!-- Repetir para cada pergunta -->
+            <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
+              <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
+                1. A fAIxaBet é um site de apostas?
+              </button>
+              <div class="faq-answer" style="display: none; margin-top: 10px;">
+                <p>Não. A fAIxaBet não é uma casa de apostas. Somos uma plataforma de Inteligência Artificial para análise de loterias oficiais. O foco é gerar Palpites com base em dados históricos e modelos de IA, e não intermediar apostas.</p>
+              </div>
             </div>
 
-            <div class="form-group">
-              <label class="form-label">Celular/WhatsApp</label>
-              <input name="phone" type="tel" class="form-input">
+            <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
+              <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
+                2. Como a fAIxaBet melhora meus Palpites na Lotofácil?
+              </button>
+              <div class="faq-answer" style="display: none; margin-top: 10px;">
+                <p>Nossa Inteligência Artificial, equipada com modelos neurais treinados diariamente, não chuta números. Ela aprende com cada resultado da Lotofácil, aprimorando continuamente sua capacidade de identificar padrões estatísticos significativos. Esse aprendizado poderoso é convertido em até 20 Palpites exclusivos por usuário, cada um otimizado para visar os prestigiados 14 acertos ou mais, superando facilmente a eficácia da geração aleatória.</p>
+              </div>
             </div>
-            <div class="form-group">
-              <label class="form-label">Senha *</label>
-              <input name="password" type="password" class="form-input" required>
+
+            <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
+              <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
+                3. Qual a diferença da fAIxaBet para os bolões?
+              </button>
+              <div class="faq-answer" style="display: none; margin-top: 10px;">
+                <p> Os bolões comuns são limitados pela combinação aleatória de números. A fAIxaBet utiliza tecnologia de ponta em Inteligência Artificial (IA), especificamente modelos neurais treinados exclusivamente com os resultados oficiais da Lotofácil. Essa IA processa dados e identifica tendências de forma muito mais poderosa e precisa do que métodos tradicionais. E para transparência total, cada palpite gerado por nossos algoritmos fica salvo, permitindo que você consulte e valide os resultados futuramente.
+        Todas elas destacam o uso de IA e modelos neurais como uma vantagem significativa sobre a aleatoriedade dos bolões.</p>
+              </div>
             </div>
-            <div class="form-group">
-              <label class="form-label">Data de Nascimento</label>
-              <input name="birthdate" type="date" class="form-input">
+
+            <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
+              <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
+                4. A fAIxaBet armazena meus Palpites?
+              </button>
+              <div class="faq-answer" style="display: none; margin-top: 10px;">
+                <p>Sim! Todos os Palpites ficam registrados na sua conta, funcionando como um repositório eterno de jogos e apostas feitas via IA.</p>
+              </div>
             </div>
+
+            <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
+              <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
+                5. Quais são os planos e limites?
+              </button>
+              <div class="faq-answer" style="display: none; margin-top: 10px;">
+                <p>Temos planos com 30 até 240 Palpites/mês. O plano Free permite 15 dezenas, Silver vai até 17 dezenas e o Gold até 20 dezenas por volante. Mais liberdade e estratégia que bolões prontos.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
+              <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
+                6. Quais dados pessoais preciso informar?
+              </button>
+              <div class="faq-answer" style="display: none; margin-top: 10px;">
+                <p>Somente os essenciais: nome completo, e-mail, telefone e data de nascimento. Tudo armazenado com segurança.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
+              <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
+                7. O pagamento é seguro?
+              </button>
+              <div class="faq-answer" style="display: none; margin-top: 10px;">
+                <p>Sim! Usamos uma das maiores plataforma de pagamento, a Stripe(https://stripe.com/br), a mesma solução utilizada por empresas como Amazon e Shopify. A cobrança é feita em ambiente seguro e criptografado.</p>
+              </div>
+            </div>
+
+            <!-- NOVAS PERGUNTAS AQUI -->
+
+            <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
+              <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
+                8. A fAIxaBet vai funcionar com outras loterias além da Lotofácil?
+              </button>
+              <div class="faq-answer" style="display: none; margin-top: 10px;">
+                <p>Sim! Em breve, a plataforma terá suporte para Lotomania, Mega-Sena e Quina, com AI personalizada para cada tipo de jogo.</p>
+              </div>
+            </div>
+
+            <div class="faq-item" style="border-bottom: 1px solid #4b5563; padding-bottom: 16px; margin-bottom: 10px;">
+              <button onclick="toggleAnswer(this)" class="faq-question text-xl font-semibold text-primary" style="background: none; border: none; color: var(--primary); width: 100%; text-align: left; cursor: pointer;">
+                9. A fAIxaBet terá aplicativo para celular?
+              </button>
+              <div class="faq-answer" style="display: none; margin-top: 10px;">
+                <p>Não. A plataforma foi projetada 100% para web, com design responsivo. Funciona perfeitamente em celulares e tablets, sem necessidade de aplicativo.</p>
+              </div>
+            </div>
+
           </div>
-
-          <div class="form-group">
-            <label class="form-label">Plano Selecionado</label>
-            <input type="text" id="selectedPlan" class="form-input" readonly>
-          </div>
-
-          <button type="submit"
-            class="submit-btn bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-xl transition text-2xl">
-            Ativar Meu Plano Agora
-          </button>
-        </form>
-
-        <div class="loading" id="loading">
-          <div class="spinner"></div>
-          <p>Processando seu cadastro e pagamento...</p>
         </div>
-      </div>
-    </section>
 
-    <!-- Sucesso -->
-    <section id="successMessage" class="success-message">
-      <div class="success-icon">🎉</div>
-      <h2 class="success-title">Parabéns!</h2>
-      <p class="success-text">Você está na única Plataforma que gera palpites de Loteria da Caixa com base em história e com AI do Mundo.</p>
-      <button class="btn btn-gold" id="accessApp">Acessar a Plataforma</button>
-    </section>
+          <!-- Estilo do botão inicial-->
+          <style>
+            .generate-btn {
+              background: linear-gradient(145deg, #1e40af, #3b82f6);
+              color: white;
+              border: none;
+              padding: 16px 24px;
+              font-size: 18px;
+              font-weight: 600;
+              border-radius: 12px;
+              cursor: pointer;
+              box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+              transition: all 0.3s;
+            }
+            .generate-btn:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 6px 16px rgba(30, 64, 175, 0.4);
+            }
 
-    <!-- Lógica adicional pequena p/ menu e formulário (não conflita com main.js) -->
-    <script>
-      // Menu mobile
-      const mobileBtn = document.getElementById('mobileMenuButton');
-      const mobileMenu = document.getElementById('mobileMenu');
-      if(mobileBtn && mobileMenu){
-        mobileBtn.addEventListener('click', ()=> mobileMenu.classList.toggle('active'));
-        mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=> mobileMenu.classList.remove('active')));
-      }
+            /* Modal */
+            .modal {
+              display: none;
+              position: fixed;
+              z-index: 1000;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 0, 0, 0.7);
+            }
 
-      // toggleForm só se não existir (evita conflito com main.js)
-     if (!window.toggleForm) {
-  window.toggleForm = function(show) {
-    const sec = document.getElementById('formSection');
-    if (!sec) return;
+            .modal-content {
+              background: white;
+              margin: 10% auto;
+              padding: 30px;
+              width: 90%;
+              max-width: 500px;
+              border-radius: 16px;
+              position: relative;
+              text-align: center;
+            }
 
-    if (show) {
-      // Verifica se o usuário selecionou um plano
-      const selectedPlan = document.getElementById('selectedPlan').value;
-      if (!selectedPlan) {
-        alert('Por favor, selecione um plano antes de prosseguir.');
-        return;
-      }
+            .close {
+              color: #aaa;
+              float: right;
+              font-size: 28px;
+              font-weight: bold;
+              cursor: pointer;
+              position: absolute;
+              top: 15px;
+              right: 20px;
+            }
 
-      sec.classList.add('active');
-      sec.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      sec.classList.remove('active');
-    }
-  }
-}
-  // Função para selecionar plano
-    function selectPlan(planName) {
-      // Preenche o input do formulário
-      document.getElementById('selectedPlan').value = planName;
+            /* Barra de progresso */
+            .progress-bar {
+              width: 100%;
+              height: 12px;
+              background: #e0e0e0;
+              border-radius: 6px;
+              margin: 20px 0;
+              overflow: hidden;
+            }
 
-      // Marca visualmente o plano selecionado
-      document.querySelectorAll('.plan-card').forEach(card => {
-        card.classList.remove('selected');
-      });
-      const selectedCard = document.querySelector(`.plan-card[data-plan="${planName.toLowerCase()}"]`);
-      if (selectedCard) selectedCard.classList.add('selected');
+            .progress {
+              height: 100%;
+              width: 0%;
+              background: linear-gradient(90deg, #10b981, #3b82f6);
+              border-radius: 6px;
+              transition: width 0.4s;
+            }
 
-      // Mostra o formulário
-      toggleForm(true);
-    }
+            /* Números */
+            .numbers-grid {
+              font-family: 'Courier New', monospace;
+              font-size: 24px;
+              font-weight: bold;
+              color: #1e40af;
+              letter-spacing: 8px;
+              margin: 20px 0;
+              user-select: all;
+            }
 
-    // Adiciona evento aos botões
-    document.querySelectorAll('.plans-container .btn').forEach(button => {
-      button.addEventListener('click', () => {
-        const plan = button.getAttribute('data-plan');
-        selectPlan(plan.charAt(0).toUpperCase() + plan.slice(1)); // "Silver", "Gold", etc.
-      });
-    });
+            /* Análise */
+            .analysis {
+              text-align: left;
+              margin: 20px 0;
+              font-size: 15px;
+              color: #444;
+            }
 
-    </script>
+            .analysis ul {
+              margin: 10px 0;
+              padding-left: 20px;
+            }
 
-  <!-- ============ MODAL DE PALPITE EXCLUSIVO ============ -->
-<script>
-  // Aguarda o DOM carregar completamente
-  document.addEventListener("DOMContentLoaded", function () {
-    // === DADOS DOS JOGOS (pré-gerados pela AI) ===
-    const predictionPool = [
-      {
-        numbers: [2, 5, 7, 9, 11, 13, 14, 15, 17, 18, 20, 22, 23, 24, 25],
-        analysis: [
-          "🔹 9 números quentes (alta frequência nos últimos 30 sorteios)",
-          "🔹 6 números frios estratégicos (atrasados com padrão de retorno)",
-          "🔹 Combinação com baixa repetição em apostas populares",
-          "🔹 Equilíbrio ímpar/par: 8-7 (padrão mais frequente)"
-        ]
-      },
-      {
-        numbers: [1, 3, 4, 6, 8, 10, 12, 16, 19, 21, 22, 23, 24, 25, 26],
-        analysis: [
-          "🔹 7 números da faixa central (11-20), equilibrando extremos",
-          "🔹 4 números ímpares consecutivos (padrão raro)",
-          "🔹 Ausência de sequência completa (reduz partilha)",
-          "🔹 Alta cobertura de dezenas atrasadas"
-        ]
-      },
-      {
-        numbers: [5, 6, 7, 8, 9, 13, 14, 15, 16, 17, 18, 19, 20, 21, 25],
-        analysis: [
-          "🔹 Bloco central forte (05-21) com ancoragem",
-          "🔹 11 números entre 05 e 21 (padrão comum)",
-          "🔹 Evita extremos (apenas 1 número abaixo de 5)",
-          "🔹 Alta densidade na região média"
-        ]
-      }
-            
-    ];
+            /* Botões */
+            .whatsapp-btn {
+              display: inline-block;
+              background: #25D366;
+              color: white !important;
+              padding: 14px 24px;
+              border-radius: 8px;
+              text-decoration: none;
+              font-weight: bold;
+              margin: 10px 0;
+              font-size: 17px;
+            }
 
-    // === ELEMENTOS DO DOM ===
-    const openBtn = document.getElementById("openModalBtn");
-    const modal = document.getElementById("predictionModal");
-    const closeBtn = document.getElementById("closeModal");
-    const closeModalFinal = document.getElementById("closeModalFinal");
-    const loadingStep = document.getElementById("loadingStep");
-    const resultStep = document.getElementById("resultStep");
-    const progressBar = document.getElementById("progressBar");
-    const progressText = document.getElementById("progressText");
-    const generatedNumbers = document.getElementById("generatedNumbers");
-    const analysisText = document.getElementById("analysisText");
-    const whatsappBtn = document.getElementById("whatsappBtn");
+            .btn-secondary {
+              background: #e2e8f0;
+              border: none;
+              padding: 10px 20px;
+              border-radius: 8px;
+              cursor: pointer;
+              margin-top: 10px;
+              color: #4a5568;
+            }
+          </style>
 
-    // Verifica se todos os elementos existem
-    if (!openBtn || !modal) {
-      console.error("Elementos do modal não encontrados. Verifique os IDs.");
-      return;
-    }
+          <script>
+            function toggleAnswer(button) {
+              const answer = button.nextElementSibling;
+              const isOpen = answer.style.display === 'block';
+              document.querySelectorAll('.faq-answer').forEach(el => el.style.display = 'none');
+              answer.style.display = isOpen ? 'none' : 'block';
+            }
+          </script>
 
-    // === ABRIR MODAL ===
-    openBtn.onclick = function () {
-      modal.style.display = "flex";
-      startGeneration();
-    };
+        <script>
+          async function carregarMiniResultados() {
+            const apiURL = "https://servicebus2.caixa.gov.br/portaldeloterias/api/";
+            const loterias = [
+              { id: "lotofacil", el: "lotofacilResultado", nome: "Lotofácil" },
+              { id: "megasena", el: "megasenaResultado", nome: "Mega-Sena" }
+            ];
+            for (let l of loterias) {
+              try {
+                const r = await fetch(apiURL + l.id);
+                const j = await r.json();
+                const dezenas = j.dezenas.slice(0, 15).join(" ");
+                document.getElementById(l.el).innerHTML =
+                  `<strong>${l.nome}:</strong> ${dezenas}`;
+              } catch(e) { console.error("Erro", l.id, e); }
+            }
+          }
+          document.addEventListener("DOMContentLoaded", carregarMiniResultados);
+        </script>
 
-    // === FECHAR MODAL ===
-    closeBtn.onclick = closeModalFinal.onclick = function () {
-      modal.style.display = "none";
-      resetModal();
-    };
+        <!-- Formulário -->
+        <section id="formSection" class="form-section">
+          <div class="container mx-auto max-w-[1100px] px-4">
+            <h2 class="form-title">Quase pronto! Vamos finalizar com proteção total </h2>
 
-    window.onclick = function (event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-        resetModal();
-      }
-    };
+            <form id="registerForm">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Nome Completo *</label>
+                  <input name="full_name" type="text" class="form-input" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Nome de Usuário *</label>
+                  <input name="username" type="text" class="form-input" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Email *</label>
+                  <input name="email" type="email" class="form-input" required>
+                </div>
 
-    // === SIMULAÇÃO DE GERAÇÃO COM AI ===
-    function startGeneration() {
-      let progress = 0;
-      progressBar.style.width = "0%";
-      progressText.innerText = "Analisando padrões históricos...";
+                <div class="form-group">
+                  <label class="form-label">Celular/WhatsApp</label>
+                  <input name="phone" type="tel" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Senha *</label>
+                  <input name="password" type="password" class="form-input" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Data de Nascimento</label>
+                  <input name="birthdate" type="date" class="form-input">
+                </div>
+              </div>
 
-      const interval = setInterval(() => {
-        progress += Math.random() * 15;
-        if (progress >= 100) {
-          progress = 100;
-          clearInterval(interval);
-          setTimeout(showResult, 500);
+              <div class="form-group">
+                <label class="form-label">Plano Selecionado</label>
+                <input type="text" id="selectedPlan" class="form-input" readonly>
+              </div>
+
+              <button type="submit"
+                class="submit-btn bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-xl transition text-2xl">
+                Ativar Meu Plano Agora
+              </button>
+            </form>
+
+            <div class="loading" id="loading">
+              <div class="spinner"></div>
+              <p>Processando seu cadastro e pagamento...</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Sucesso -->
+        <section id="successMessage" class="success-message">
+          <div class="success-icon">🎉</div>
+          <h2 class="success-title">Parabéns!</h2>
+          <p class="success-text">Você está na única Plataforma que gera palpites de Loteria da Caixa com base em história e com AI do Mundo.</p>
+          <button class="btn btn-gold" id="accessApp">Acessar a Plataforma</button>
+        </section>
+
+        <!-- Lógica adicional pequena p/ menu e formulário (não conflita com main.js) -->
+        <script>
+          // Menu mobile
+          const mobileBtn = document.getElementById('mobileMenuButton');
+          const mobileMenu = document.getElementById('mobileMenu');
+          if(mobileBtn && mobileMenu){
+            mobileBtn.addEventListener('click', ()=> mobileMenu.classList.toggle('active'));
+            mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=> mobileMenu.classList.remove('active')));
+          }
+
+          // toggleForm só se não existir (evita conflito com main.js)
+        if (!window.toggleForm) {
+      window.toggleForm = function(show) {
+        const sec = document.getElementById('formSection');
+        if (!sec) return;
+
+        if (show) {
+          // Verifica se o usuário selecionou um plano
+          const selectedPlan = document.getElementById('selectedPlan').value;
+          if (!selectedPlan) {
+            alert('Por favor, selecione um plano antes de prosseguir.');
+            return;
+          }
+
+          sec.classList.add('active');
+          sec.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          sec.classList.remove('active');
         }
-        progressBar.style.width = progress + "%";
-        if (progress < 30) progressText.innerText = "Analisando padrões históricos...";
-        else if (progress < 60) progressText.innerText = "Calculando combinações otimizadas...";
-        else if (progress < 85) progressText.innerText = "Aplicando modelo de IA...";
-        else progressText.innerText = "Finalizando...";
-      }, 200);
+      }
     }
+      // Função para selecionar plano
+        function selectPlan(planName) {
+          // Preenche o input do formulário
+          document.getElementById('selectedPlan').value = planName;
 
-    // === MOSTRAR RESULTADO ===
-    function showResult() {
-      loadingStep.style.display = "none";
-      resultStep.style.display = "block";
+          // Marca visualmente o plano selecionado
+          document.querySelectorAll('.plan-card').forEach(card => {
+            card.classList.remove('selected');
+          });
+          const selectedCard = document.querySelector(`.plan-card[data-plan="${planName.toLowerCase()}"]`);
+          if (selectedCard) selectedCard.classList.add('selected');
 
-      const prediction = predictionPool[Math.floor(Math.random() * predictionPool.length)];
+          // Mostra o formulário
+          toggleForm(true);
+        }
 
-      // Gera as bolinhas dos números
-      generatedNumbers.innerHTML = "";
-      prediction.numbers.forEach(num => {
-        const ball = document.createElement("span");
-        ball.style.display = "inline-flex";
-        ball.style.justifyContent = "center";
-        ball.style.alignItems = "center";
-        ball.style.width = "36px";
-        ball.style.height = "36px";
-        ball.style.borderRadius = "50%";
-        ball.style.backgroundColor = "#066445";
-        ball.style.color = "white";
-        ball.style.fontSize = "14px";
-        ball.style.fontWeight = "bold";
-        ball.style.margin = "4px";
-        ball.style.flexShrink = "0";
-        ball.textContent = num.toString().padStart(2, '0'); // 2 → 02
-        generatedNumbers.appendChild(ball);
+        // Adiciona evento aos botões
+        document.querySelectorAll('.plans-container .btn').forEach(button => {
+          button.addEventListener('click', () => {
+            const plan = button.getAttribute('data-plan');
+            selectPlan(plan.charAt(0).toUpperCase() + plan.slice(1)); // "Silver", "Gold", etc.
+          });
+        });
+
+        </script>
+
+      <!-- ============ MODAL DE PALPITE EXCLUSIVO ============ -->
+    <script>
+      // Aguarda o DOM carregar completamente
+      document.addEventListener("DOMContentLoaded", function () {
+        // === DADOS DOS JOGOS (pré-gerados pela AI) ===
+        const predictionPool = [
+          {
+            numbers: [2, 5, 7, 9, 11, 13, 14, 15, 17, 18, 20, 22, 23, 24, 25],
+            analysis: [
+              "🔹 9 números quentes (alta frequência nos últimos 30 sorteios)",
+              "🔹 6 números frios estratégicos (atrasados com padrão de retorno)",
+              "🔹 Combinação com baixa repetição em apostas populares",
+              "🔹 Equilíbrio ímpar/par: 8-7 (padrão mais frequente)"
+            ]
+          },
+          {
+            numbers: [1, 3, 4, 6, 8, 10, 12, 16, 19, 21, 22, 23, 24, 25, 26],
+            analysis: [
+              "🔹 7 números da faixa central (11-20), equilibrando extremos",
+              "🔹 4 números ímpares consecutivos (padrão raro)",
+              "🔹 Ausência de sequência completa (reduz partilha)",
+              "🔹 Alta cobertura de dezenas atrasadas"
+            ]
+          },
+          {
+            numbers: [5, 6, 7, 8, 9, 13, 14, 15, 16, 17, 18, 19, 20, 21, 25],
+            analysis: [
+              "🔹 Bloco central forte (05-21) com ancoragem",
+              "🔹 11 números entre 05 e 21 (padrão comum)",
+              "🔹 Evita extremos (apenas 1 número abaixo de 5)",
+              "🔹 Alta densidade na região média"
+            ]
+          }
+                
+        ];
+
+        // === ELEMENTOS DO DOM ===
+        const openBtn = document.getElementById("openModalBtn");
+        const modal = document.getElementById("predictionModal");
+        const closeBtn = document.getElementById("closeModal");
+        const closeModalFinal = document.getElementById("closeModalFinal");
+        const loadingStep = document.getElementById("loadingStep");
+        const resultStep = document.getElementById("resultStep");
+        const progressBar = document.getElementById("progressBar");
+        const progressText = document.getElementById("progressText");
+        const generatedNumbers = document.getElementById("generatedNumbers");
+        const analysisText = document.getElementById("analysisText");
+        const whatsappBtn = document.getElementById("whatsappBtn");
+
+        // Verifica se todos os elementos existem
+        if (!openBtn || !modal) {
+          console.error("Elementos do modal não encontrados. Verifique os IDs.");
+          return;
+        }
+
+        // === ABRIR MODAL ===
+        openBtn.onclick = function () {
+          modal.style.display = "flex";
+          startGeneration();
+        };
+
+        // === FECHAR MODAL ===
+        closeBtn.onclick = closeModalFinal.onclick = function () {
+          modal.style.display = "none";
+          resetModal();
+        };
+
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+            resetModal();
+          }
+        };
+
+        // === SIMULAÇÃO DE GERAÇÃO COM AI ===
+        function startGeneration() {
+          let progress = 0;
+          progressBar.style.width = "0%";
+          progressText.innerText = "Analisando padrões históricos...";
+
+          const interval = setInterval(() => {
+            progress += Math.random() * 15;
+            if (progress >= 100) {
+              progress = 100;
+              clearInterval(interval);
+              setTimeout(showResult, 500);
+            }
+            progressBar.style.width = progress + "%";
+            if (progress < 30) progressText.innerText = "Analisando padrões históricos...";
+            else if (progress < 60) progressText.innerText = "Calculando combinações otimizadas...";
+            else if (progress < 85) progressText.innerText = "Aplicando modelo de IA...";
+            else progressText.innerText = "Finalizando...";
+          }, 200);
+        }
+
+        // === MOSTRAR RESULTADO ===
+        function showResult() {
+          loadingStep.style.display = "none";
+          resultStep.style.display = "block";
+
+          const prediction = predictionPool[Math.floor(Math.random() * predictionPool.length)];
+
+          // Gera as bolinhas dos números
+          generatedNumbers.innerHTML = "";
+          prediction.numbers.forEach(num => {
+            const ball = document.createElement("span");
+            ball.style.display = "inline-flex";
+            ball.style.justifyContent = "center";
+            ball.style.alignItems = "center";
+            ball.style.width = "36px";
+            ball.style.height = "36px";
+            ball.style.borderRadius = "50%";
+            ball.style.backgroundColor = "#066445";
+            ball.style.color = "white";
+            ball.style.fontSize = "14px";
+            ball.style.fontWeight = "bold";
+            ball.style.margin = "4px";
+            ball.style.flexShrink = "0";
+            ball.textContent = num.toString().padStart(2, '0'); // 2 → 02
+            generatedNumbers.appendChild(ball);
+          });
+
+          // Gera análise
+          analysisText.innerHTML = "";
+          prediction.analysis.forEach(item => {
+            const li = document.createElement("li");
+            li.innerHTML = item;
+            analysisText.appendChild(li);
+          });
+
+          // 🔥 SEU NÚMERO DO WHATSAPP AQUI
+          const whatsappNumber = "5511910435421"; // ✅ Número atualizado
+          const message = encodeURIComponent(
+            `Olá! Gerei meu palpite exclusivo no Faixabet:\n${prediction.numbers.join(" - ")}\n\nQuero receber os próximos no WhatsApp!`
+          );
+          whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${message}`; // ✅ Sem espaço extra
+        }
+
+        // === RESETAR MODAL ===
+        function resetModal() {
+          loadingStep.style.display = "block";
+          resultStep.style.display = "none";
+          progressBar.style.width = "0%";
+          progressText.innerText = "Iniciando...";
+        }
       });
+    </script>
 
-      // Gera análise
-      analysisText.innerHTML = "";
-      prediction.analysis.forEach(item => {
-        const li = document.createElement("li");
-        li.innerHTML = item;
-        analysisText.appendChild(li);
-      });
+    <!-- ============ ESTILO DO MODAL ============ -->
+    <style>
+      /* Botão inicial */
+      .generate-btn {
+        background: linear-gradient(145deg, #1e40af, #3b82f6);
+        color: white;
+        border: none;
+        padding: 16px 24px;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 12px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+        transition: all 0.3s;
+        display: inline-block;
+        text-align: center;
+      }
+      .generate-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(30, 64, 175, 0.4);
+      }
 
-      // 🔥 SEU NÚMERO DO WHATSAPP AQUI
-      const whatsappNumber = "5511910435421"; // ✅ Número atualizado
-      const message = encodeURIComponent(
-        `Olá! Gerei meu palpite exclusivo no Faixabet:\n${prediction.numbers.join(" - ")}\n\nQuero receber os próximos no WhatsApp!`
-      );
-      whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${message}`; // ✅ Sem espaço extra
-    }
+      /* Modal */
+      #predictionModal {
+        display: none;
+        position: fixed;
+        z-index: 10000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        align-items: center;
+        justify-content: center;
+      }
 
-    // === RESETAR MODAL ===
-    function resetModal() {
-      loadingStep.style.display = "block";
-      resultStep.style.display = "none";
-      progressBar.style.width = "0%";
-      progressText.innerText = "Iniciando...";
-    }
-  });
-</script>
+      .modal-content {
+        background: white;
+        padding: 30px;
+        width: 90%;
+        max-width: 500px;
+        border-radius: 16px;
+        position: relative;
+        text-align: center;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      }
 
-<!-- ============ ESTILO DO MODAL ============ -->
-<style>
-  /* Botão inicial */
-  .generate-btn {
-    background: linear-gradient(145deg, #1e40af, #3b82f6);
-    color: white;
-    border: none;
-    padding: 16px 24px;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 12px;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
-    transition: all 0.3s;
-    display: inline-block;
-    text-align: center;
-  }
-  .generate-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(30, 64, 175, 0.4);
-  }
+      .close {
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        z-index: 1000;
+      }
 
-  /* Modal */
-  #predictionModal {
-    display: none;
-    position: fixed;
-    z-index: 10000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    align-items: center;
-    justify-content: center;
-  }
+      .close:hover {
+        color: #000;
+      }
 
-  .modal-content {
-    background: white;
-    padding: 30px;
-    width: 90%;
-    max-width: 500px;
-    border-radius: 16px;
-    position: relative;
-    text-align: center;
-    max-height: 90vh;
-    overflow-y: auto;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  }
+      /* Barra de progresso */
+      .progress-bar {
+        width: 100%;
+        height: 12px;
+        background: #e0e0e0;
+        border-radius: 6px;
+        margin: 20px 0;
+        overflow: hidden;
+      }
 
-  .close {
-    color: #aaa;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    z-index: 1000;
-  }
+      .progress {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #10b981, #3b82f6);
+        border-radius: 6px;
+        transition: width 0.4s;
+      }
 
-  .close:hover {
-    color: #000;
-  }
+      /* Análise */
+      .analysis ul {
+        margin: 10px 0;
+        padding-left: 20px;
+        text-align: left;
+        color: #444;
+        font-size: 16px;
+        line-height: 1.6;
+      }
 
-  /* Barra de progresso */
-  .progress-bar {
-    width: 100%;
-    height: 12px;
-    background: #e0e0e0;
-    border-radius: 6px;
-    margin: 20px 0;
-    overflow: hidden;
-  }
+      /* Botões */
+      .whatsapp-btn {
+        display: inline-block;
+        background: #25D366;
+        color: white !important;
+        padding: 14px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        margin: 15px 0;
+        font-size: 17px;
+      }
 
-  .progress {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #10b981, #3b82f6);
-    border-radius: 6px;
-    transition: width 0.4s;
-  }
+      .btn-secondary {
+        background: #e2e8f0;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 10px;
+        color: #4a5568;
+        font-size: 15px;
+      }
+    </style>
 
-  /* Análise */
-  .analysis ul {
-    margin: 10px 0;
-    padding-left: 20px;
-    text-align: left;
-    color: #444;
-    font-size: 16px;
-    line-height: 1.6;
-  }
+    <!-- ============ HTML DO MODAL ============ -->
+    <div id="predictionModal">
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
 
-  /* Botões */
-  .whatsapp-btn {
-    display: inline-block;
-    background: #25D366;
-    color: white !important;
-    padding: 14px 24px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    margin: 15px 0;
-    font-size: 17px;
-  }
+        <!-- Etapa 1: Carregamento -->
+        <div id="loadingStep">
+          <h2 style="color: #1e40af !important; margin-bottom: 14px; font-size: 24px;">AI do fAIxaBet analisando seu pedido...</h2>
+          <p style="color: #6b7280 !important; font-size: 18px;">Processando padrões históricos pra Lotofácil</p>
+          <div class="progress-bar">
+            <div class="progress" id="progressBar"></div>
+          </div>
+          <p id="progressText" style="margin-top: 15px; color: #6b7280;">Iniciando...</p>
+        </div>
 
-  .btn-secondary {
-    background: #e2e8f0;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 10px;
-    color: #4a5568;
-    font-size: 15px;
-  }
-</style>
-
-<!-- ============ HTML DO MODAL ============ -->
-<div id="predictionModal">
-  <div class="modal-content">
-    <span class="close" id="closeModal">&times;</span>
-
-    <!-- Etapa 1: Carregamento -->
-    <div id="loadingStep">
-      <h2 style="color: #1e40af !important; margin-bottom: 14px; font-size: 24px;">AI do fAIxaBet analisando seu pedido...</h2>
-      <p style="color: #6b7280 !important; font-size: 18px;">Processando padrões históricos pra Lotofácil</p>
-      <div class="progress-bar">
-        <div class="progress" id="progressBar"></div>
+        <!-- Etapa 2: Resultado -->
+        <div id="resultStep" style="display: none;">
+          <h2 style="color: #066445; margin-bottom: 14px; font-size: 24px;">✅ Palpite gerado com sucesso!</h2>
+          <p style="font-weight: bold; color: #333 !important; font-size: 18px;">Seu jogo exclusivo (gerado agora pela AI):</p>
+          <div id="generatedNumbers" style="margin: 20px auto; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 400px;"></div>
+          <div class="analysis">
+            <ul id="analysisText"></ul>
+          </div>
+          <p style="margin-bottom: 20px; color: #333; font-size: 16px;">Este palpite foi gerado exclusivamente para você. Quer receber palpites como esse toda semana?</p>
+          <a id="whatsappBtn" href="#" target="_blank" class="whatsapp-btn">💬 Sim, quero no WhatsApp</a>
+          <button id="closeModalFinal" class="btn-secondary">Não, obrigado</button>
+        </div>
       </div>
-      <p id="progressText" style="margin-top: 15px; color: #6b7280;">Iniciando...</p>
     </div>
 
-    <!-- Etapa 2: Resultado -->
-    <div id="resultStep" style="display: none;">
-      <h2 style="color: #066445; margin-bottom: 14px; font-size: 24px;">✅ Palpite gerado com sucesso!</h2>
-      <p style="font-weight: bold; color: #333 !important; font-size: 18px;">Seu jogo exclusivo (gerado agora pela AI):</p>
-      <div id="generatedNumbers" style="margin: 20px auto; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 400px;"></div>
-      <div class="analysis">
-        <ul id="analysisText"></ul>
-      </div>
-      <p style="margin-bottom: 20px; color: #333; font-size: 16px;">Este palpite foi gerado exclusivamente para você. Quer receber palpites como esse toda semana?</p>
-      <a id="whatsappBtn" href="#" target="_blank" class="whatsapp-btn">💬 Sim, quero no WhatsApp</a>
-      <button id="closeModalFinal" class="btn-secondary">Não, obrigado</button>
-    </div>
-  </div>
-</div>
+    <!-- FIM do Modal -->
 
-<!-- FIM do Modal -->
+        <!-- Footer -->
+        <footer class="bg-gray-900 border-t border-gray-800 py-12 px-6">
+            <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+            <h3 class="text-xl font-bold mb-4 flex items-center">
+            <span class="text-blue-400">f</span><span class="text-green-400">A</span><span class="text-yellow-400">I</span><span class="text-blue-400">x</span><span class="text-green-400">a</span><span class="font-light">Bet</span>
+            </h3>
+            <p class="text-gray-400 mb-4">
+                        Palpites certeiros baseados em análise de dados para aumentar suas chances de ganhar.
+                        </p>
+            <div class="flex space-x-4">
+            <a class="text-gray-400 hover:text-blue-400" href="#"><i class="fab fa-facebook-f"></i></a>
+            <a class="text-gray-400 hover:text-blue-400" href="#"><i class="fab fa-twitter"></i></a>
+            <a class="text-gray-400 hover:text-purple-500" href="#"><i class="fab fa-instagram"></i></a>
+            <a class="text-gray-400 hover:text-red-500" href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            </div>
+            <div>
+            <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
+            <ul class="space-y-2">
+            <li><a class="text-gray-400 hover:text-green-400" href="index.html#hero">Home</a></li>
+            <li><a class="text-gray-400 hover:text-green-400" href="index.html#como-funciona">Como usar</a></li>
+            <li><a class="text-gray-400 hover:text-green-400" href="index.html#planos">Planos</a></li>
+            <li><a class="text-gray-400 hover:text-green-400" href="index.html#blog">Blog</a></li>
+            <li><a class="text-gray-400 hover:text-green-400" href="index.html#app">App</a></li>
+            </ul>
+            </div>
+            <div>
+            <h4 class="text-lg font-semibold mb-4">Legal</h4>
+            <ul class="space-y-2">
+            <li><a class="text-gray-400 hover:text-green-400" href="termo.html" target="_blank">Termos de Uso e LGPD</a></li>
+            <li><a class="text-gray-400 hover:text-green-400" href="privacidade.html" target="_blank">Política de Privacidade</a></li>
+            <li><a class="text-gray-400 hover:text-green-400" href="responsabilidade.html" target="_blank">Responsabilidade</a></li>
+            <li><a class="text-gray-400 hover:text-green-400" href="index.html#faq">FAQ</a></li>
+            </ul>
+            </div>
+            <div>
+            <h4 class="text-lg font-semibold mb-4">Contato</h4>
+            <ul class="space-y-2">
+            <li class="flex items-start">
+            <i class="fas fa-envelope text-green-400 mt-1 mr-2"></i>
+            <span class="text-gray-400">contato@faixabet.com</span>
+            </li>
+            <li class="flex items-start">
+            <i class="fab fa-whatsapp text-green-400 mt-1 mr-2"></i>
+            <span class="text-gray-400">(11) 91043-5421</span>
+            </li>
+            <li class="flex items-start">
+            <i class="fas fa-map-marker-alt text-green-400 mt-1 mr-2"></i>
+            <span class="text-gray-400">São Paulo, SP</span>
+            </li>
+            </ul>
+            </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+            <p>© 2025 fAIxaBet. Todos os direitos reservados.10.7</p>
+            <p class="mt-2 text-sm">Este site destina-se a maiores de 18 anos. Se for apotar, seja responsável.</p>
+            </div>
+            </div>
+        </footer>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 border-t border-gray-800 py-12 px-6">
-        <div class="max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-4 gap-8 mb-8">
-        <div>
-        <h3 class="text-xl font-bold mb-4 flex items-center">
-        <span class="text-blue-400">f</span><span class="text-green-400">A</span><span class="text-yellow-400">I</span><span class="text-blue-400">x</span><span class="text-green-400">a</span><span class="font-light">Bet</span>
-        </h3>
-        <p class="text-gray-400 mb-4">
-                    Palpites certeiros baseados em análise de dados para aumentar suas chances de ganhar.
-                    </p>
-        <div class="flex space-x-4">
-        <a class="text-gray-400 hover:text-blue-400" href="#"><i class="fab fa-facebook-f"></i></a>
-        <a class="text-gray-400 hover:text-blue-400" href="#"><i class="fab fa-twitter"></i></a>
-        <a class="text-gray-400 hover:text-purple-500" href="#"><i class="fab fa-instagram"></i></a>
-        <a class="text-gray-400 hover:text-red-500" href="#"><i class="fab fa-youtube"></i></a>
-        </div>
-        </div>
-        <div>
-        <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
-        <ul class="space-y-2">
-        <li><a class="text-gray-400 hover:text-green-400" href="index.html#hero">Home</a></li>
-        <li><a class="text-gray-400 hover:text-green-400" href="index.html#como-funciona">Como usar</a></li>
-        <li><a class="text-gray-400 hover:text-green-400" href="index.html#planos">Planos</a></li>
-        <li><a class="text-gray-400 hover:text-green-400" href="index.html#blog">Blog</a></li>
-        <li><a class="text-gray-400 hover:text-green-400" href="index.html#app">App</a></li>
-        </ul>
-        </div>
-        <div>
-        <h4 class="text-lg font-semibold mb-4">Legal</h4>
-        <ul class="space-y-2">
-        <li><a class="text-gray-400 hover:text-green-400" href="termo.html" target="_blank">Termos de Uso e LGPD</a></li>
-        <li><a class="text-gray-400 hover:text-green-400" href="privacidade.html" target="_blank">Política de Privacidade</a></li>
-        <li><a class="text-gray-400 hover:text-green-400" href="responsabilidade.html" target="_blank">Responsabilidade</a></li>
-        <li><a class="text-gray-400 hover:text-green-400" href="index.html#faq">FAQ</a></li>
-        </ul>
-        </div>
-        <div>
-        <h4 class="text-lg font-semibold mb-4">Contato</h4>
-        <ul class="space-y-2">
-        <li class="flex items-start">
-        <i class="fas fa-envelope text-green-400 mt-1 mr-2"></i>
-        <span class="text-gray-400">contato@faixabet.com</span>
-        </li>
-        <li class="flex items-start">
-        <i class="fab fa-whatsapp text-green-400 mt-1 mr-2"></i>
-        <span class="text-gray-400">(11) 91043-5421</span>
-        </li>
-        <li class="flex items-start">
-        <i class="fas fa-map-marker-alt text-green-400 mt-1 mr-2"></i>
-        <span class="text-gray-400">São Paulo, SP</span>
-        </li>
-        </ul>
-        </div>
-        </div>
-        <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
-        <p>© 2025 fAIxaBet. Todos os direitos reservados.10.7</p>
-        <p class="mt-2 text-sm">Este site destina-se a maiores de 18 anos. Se for apotar, seja responsável.</p>
-        </div>
-        </div>
-    </footer>
+      <!-- Seu JS principal -->
+      <script src="./main.js" defer></script>
+    </body>
 
-  <!-- Seu JS principal -->
-  <script src="./main.js" defer></script>
-</body>
-
-</html>
+  </html>
