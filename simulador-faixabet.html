@@ -136,15 +136,7 @@
 <body>
 <div class="container">
 
-  <!-- Logo fAIxaBet (redireciona ao site principal) -->
-  <a href="https://faixabet.com.br" class="logo-faixabet">
-    <span class="text-white-400">f</span>
-    <span class="text-purple-400">A</span>
-    <span class="text-yellow-400">I</span>
-    <span class="text-blue-400">x</span>
-    <span class="text-green-600">a</span>
-    <span class="font-light">Bet</span>
-  </a>
+
 
   <h1>Simulador de Palpites IA</h1>
   <p>Compare o desempenho da nossa Inteligência Artificial com um jogador comum.</p>
@@ -256,7 +248,7 @@ async function enviarEmail(){
   msgBox.textContent='⏳ Enviando...';
   try{
     const payload={email, sorteio:ultimoSorteio, ai:ultimoPalpiteAI, jogador:ultimoPalpiteJogador};
-    const res = await fetch("https://backend-faixabet.onrender.com/send_palpite", {
+    const res = await fetch("https://backend-v8.onrender.com/send_palpite", {
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify(payload)
