@@ -5,9 +5,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="fAIxaBet usa Inteligência Artificial para gerar palpites vencedores na Lotofácil, Lotomania e Mega-Sena. Aqui não é sorte, é IA.">
-    
-
-    
+       
     <!-- Google tag (gtag.js) 02/09/2025 -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-R09Y7V5J5T"></script>
       <script>
@@ -206,13 +204,13 @@
     <header class="fixed top-0 left-0 w-full bg-gray-900/90 backdrop-blur-sm z-50 transition-all duration-300 min-h-[80px]">
       <div class="container mx-auto px-4">
         <nav class="flex items-center justify-between py-5">
-<!-- Logo --> <a href="#" class="text-3xl font-bold flex items-center space-x-1" style="font-family: 'Montserrat Alternates', sans-serif;"> 
-  <span class="text-white-400">f</span>
-   <span class="text-purple-400">A</span>
-   <span class="text-yellow-400">I</span> 
-  <span class="text-blue-400">x</span> 
-  <span class="text-green-600">a</span>
-   <span class="font-light">Bet</span> </a>
+    <!-- Logo --> <a href="#" class="text-3xl font-bold flex items-center space-x-1" style="font-family: 'Montserrat Alternates', sans-serif;"> 
+      <span class="text-white-400">f</span>
+      <span class="text-purple-400">A</span>
+      <span class="text-yellow-400">I</span> 
+      <span class="text-blue-400">x</span> 
+      <span class="text-green-600">a</span>
+      <span class="font-light">Bet</span> </a>
       
           <!-- Menu Desktop -->
           <div class="hidden md:flex flex-1 justify-center space-x-8 text-lg font-[Montserrat]">
@@ -244,14 +242,7 @@
       </div>
     </header>
 
-    <script>
-      // Toggle menu mobile
-      document.getElementById('mobileMenuButton').addEventListener('click', () => {
-        document.getElementById('mobileMenu').classList.toggle('hidden');
-      });
-    </script>
-
-    <script>
+     <script>
       // Toggle menu mobile
       document.getElementById('mobileMenuButton').addEventListener('click', () => {
         document.getElementById('mobileMenu').classList.toggle('hidden');
@@ -325,54 +316,54 @@
         </p>
 
         <!-- Botões principais fAIxaBet -->
-<div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-5 mt-6 sm:mt-8 mb-10 px-4">
+        <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-5 mt-6 sm:mt-8 mb-10 px-4">
 
-  <!-- Gerar Palpite Exclusivo -->
-  <button id="gerarPalpiteBtn"
-    class="w-full sm:w-auto bg-green-600 hover:bg-green-500 text-white font-bold py-3 sm:py-4 px-6 sm:px-10 rounded-xl text-base sm:text-lg 
-           shadow-[0_0_15px_rgba(34,197,94,0.6)] hover:shadow-[0_0_25px_rgba(34,197,94,0.7)] transition transform hover:scale-[1.03] flex items-center justify-center">
-    <i class="fas fa-robot mr-2"></i> Gerar Palpite Exclusivo
-  </button>
+      <!-- Gerar Palpite Exclusivo -->
+      <button id="gerarPalpiteBtn"
+        class="w-full sm:w-auto bg-green-600 hover:bg-green-500 text-white font-bold py-3 sm:py-4 px-6 sm:px-10 rounded-xl text-base sm:text-lg 
+              shadow-[0_0_15px_rgba(34,197,94,0.6)] hover:shadow-[0_0_25px_rgba(34,197,94,0.7)] transition transform hover:scale-[1.03] flex items-center justify-center">
+        <i class="fas fa-robot mr-2"></i> Gerar Palpite Exclusivo
+      </button>
 
-  <!-- Acessar App -->
-  <a href="https://faixabet.streamlit.app/" target="_blank"
-    class="w-full sm:w-auto bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 hover:opacity-90 text-white font-bold py-3 sm:py-4 px-6 sm:px-10 rounded-xl text-base sm:text-lg 
-           shadow-[0_0_18px_rgba(99,102,241,0.6)] hover:shadow-[0_0_25px_rgba(147,51,234,0.8)] transition transform hover:scale-[1.03] flex items-center justify-center">
-    <i class="fas fa-bolt mr-2"></i> Acessar App fAIxaBet
-  </a>
+      <!-- Acessar App -->
+      <a href="https://faixabet.streamlit.app/" target="_blank"
+        class="w-full sm:w-auto bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 hover:opacity-90 text-white font-bold py-3 sm:py-4 px-6 sm:px-10 rounded-xl text-base sm:text-lg 
+              shadow-[0_0_18px_rgba(99,102,241,0.6)] hover:shadow-[0_0_25px_rgba(147,51,234,0.8)] transition transform hover:scale-[1.03] flex items-center justify-center">
+        <i class="fas fa-bolt mr-2"></i> Acessar App fAIxaBet
+      </a>
 
-</div>
+    </div>
 
 
 
-<script>
-  // Exibir modal com delay e apenas uma vez por sessão
-  window.addEventListener('DOMContentLoaded', () => {
-    if (!sessionStorage.getItem('modalShown')) {
-      setTimeout(() => {
-        document.getElementById('promoModal').classList.remove('hidden');
-      }, 3500); // 3.5 segundos
-      sessionStorage.setItem('modalShown', 'true');
+    <script>
+      // Exibir modal com delay e apenas uma vez por sessão
+      window.addEventListener('DOMContentLoaded', () => {
+        if (!sessionStorage.getItem('modalShown')) {
+          setTimeout(() => {
+            document.getElementById('promoModal').classList.remove('hidden');
+          }, 3500); // 3.5 segundos
+          sessionStorage.setItem('modalShown', 'true');
+        }
+
+        // Fechar modal
+        document.getElementById('closeModal').addEventListener('click', () => {
+          document.getElementById('promoModal').classList.add('hidden');
+        });
+      });
+    </script>
+
+    <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
+    .animate-fadeIn {
+      animation: fadeIn 0.6s ease-out;
+    }
+    </style>
 
-    // Fechar modal
-    document.getElementById('closeModal').addEventListener('click', () => {
-      document.getElementById('promoModal').classList.add('hidden');
-    });
-  });
-</script>
-
-<style>
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-fadeIn {
-  animation: fadeIn 0.6s ease-out;
-}
-</style>
-
-</div>
+    </div>
 
 
         <!-- Link final -->
@@ -428,7 +419,6 @@
           });
         </script>
     </section>
-
 
       <!-- CSS extra (colocar no seu arquivo CSS ou dentro de <style>) -->
       <style>
@@ -553,64 +543,64 @@
       </section>
 
       <script>
-      async function carregarResultados() {
-        const apiURL = "https://servicebus2.caixa.gov.br/portaldeloterias/api/";
-        const loterias = ["lotofacil", "lotomania", "megasena"];
-        const div = document.getElementById("lotteryResults");
+        async function carregarResultados() {
+          const apiURL = "https://servicebus2.caixa.gov.br/portaldeloterias/api/";
+          const loterias = ["lotofacil", "lotomania", "megasena"];
+          const div = document.getElementById("lotteryResults");
 
-        // Função utilitária: gera ou lê o número salvo por 24 h
-        function getPremiados(nome) {
-          const chave = `premiados_${nome}`;
-          const agora = Date.now();
-          const salvo = localStorage.getItem(chave);
+          // Função utilitária: gera ou lê o número salvo por 24 h
+          function getPremiados(nome) {
+            const chave = `premiados_${nome}`;
+            const agora = Date.now();
+            const salvo = localStorage.getItem(chave);
 
-          if (salvo) {
-            const { valor, data } = JSON.parse(salvo);
-            // 24 h = 86 400 000 ms
-            if (agora - data < 86400000) return valor;
+            if (salvo) {
+              const { valor, data } = JSON.parse(salvo);
+              // 24 h = 86 400 000 ms
+              if (agora - data < 86400000) return valor;
+            }
+
+            // novo sorteio e grava
+            const novoValor = Math.floor(Math.random() * 8) + 1;
+            localStorage.setItem(chave, JSON.stringify({ valor: novoValor, data: agora }));
+            return novoValor;
           }
 
-          // novo sorteio e grava
-          const novoValor = Math.floor(Math.random() * 8) + 1;
-          localStorage.setItem(chave, JSON.stringify({ valor: novoValor, data: agora }));
-          return novoValor;
-        }
+          for (let nome of loterias) {
+            try {
+              const r = await fetch(apiURL + nome, { cache: "no-store" });
+              const j = await r.json();
+              const dezenas = j.dezenas || [];
+              const concurso = j.numero_concurso || j.numero;
+              const data = j.dataApuracao || j.dataApuracaoStr;
+              const premiados = getPremiados(nome);
 
-        for (let nome of loterias) {
-          try {
-            const r = await fetch(apiURL + nome, { cache: "no-store" });
-            const j = await r.json();
-            const dezenas = j.dezenas || [];
-            const concurso = j.numero_concurso || j.numero;
-            const data = j.dataApuracao || j.dataApuracaoStr;
-            const premiados = getPremiados(nome);
-
-            const box = document.createElement("div");
-            box.className =
-              "bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1";
-            box.innerHTML = `
-              <h3 class="text-2xl font-bold mb-2 text-green-400">${nome.toUpperCase()}</h3>
-              <p class="text-gray-400 mb-1">Concurso ${concurso} - ${data}</p>
-              <div class="flex flex-wrap justify-center gap-2 mb-4">
-                ${dezenas
-                  .map(
-                    (d) =>
-                      `<span class="w-9 h-9 rounded-full bg-green-600 flex items-center justify-center">${d}</span>`
-                  )
-                  .join("")}
-              </div>
-              <p class="text-sm text-gray-300">💰 Palpites premiados: 
-                <span class="text-yellow-400">${premiados}</span>
-              </p>
-            `;
-            div.appendChild(box);
-          } catch (e) {
-            console.error("Erro ao buscar " + nome, e);
+              const box = document.createElement("div");
+              box.className =
+                "bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1";
+              box.innerHTML = `
+                <h3 class="text-2xl font-bold mb-2 text-green-400">${nome.toUpperCase()}</h3>
+                <p class="text-gray-400 mb-1">Concurso ${concurso} - ${data}</p>
+                <div class="flex flex-wrap justify-center gap-2 mb-4">
+                  ${dezenas
+                    .map(
+                      (d) =>
+                        `<span class="w-9 h-9 rounded-full bg-green-600 flex items-center justify-center">${d}</span>`
+                    )
+                    .join("")}
+                </div>
+                <p class="text-sm text-gray-300">💰 Palpites premiados: 
+                  <span class="text-yellow-400">${premiados}</span>
+                </p>
+              `;
+              div.appendChild(box);
+            } catch (e) {
+              console.error("Erro ao buscar " + nome, e);
+            }
           }
         }
-      }
 
-      document.addEventListener("DOMContentLoaded", carregarResultados);
+        document.addEventListener("DOMContentLoaded", carregarResultados);
       </script>
 
       <!-- PLANOS -->
@@ -686,8 +676,6 @@
             <ul class="plan-features">
               <li>100 Palpites semana</li
               <li>Modelo LS16 (Ensemble híbrido)</li>
-              >
-
               <li>Precisão 13–14 acertos</li>
               <li>3 Loterias incluídas</li>
               <li>Telemetria de desempenho</li>
@@ -839,7 +827,7 @@
       </style>
 
       <!-- Blog Section -->
-        <section class="py-20 px-6 bg-gray-900" id="blog">
+      <section class="py-20 px-6 bg-gray-900" id="blog">
           <div class="max-w-6xl mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">
               Últimas do <span class="text-blue-400">fAIxaBlog</span>
@@ -931,7 +919,7 @@
               </a>
             </div>
           </div>
-        </section>
+      </section>
 
       <!-- App Section -->
       <section id="app" class="py-20 px-6 bg-gray-900 bg-opacity-50 relative overflow-hidden">
@@ -1083,7 +1071,6 @@
         </script>
       </section>
 
-
         <section id="app" class="py-20">
           <div class="container mx-auto px-4 text-center">
             <h2 class="text-3xl font-bold mb-6">App fAIxaBet</h2>
@@ -1191,8 +1178,8 @@
           </div>
         </div>
 
-          <!-- Estilo do botão inicial-->
-          <style>
+        <!-- Estilo do botão inicial-->
+        <style>
             .generate-btn {
               background: linear-gradient(145deg, #1e40af, #3b82f6);
               color: white;
@@ -1308,16 +1295,16 @@
               margin-top: 10px;
               color: #4a5568;
             }
-          </style>
+        </style>
 
-          <script>
+        <script>
             function toggleAnswer(button) {
               const answer = button.nextElementSibling;
               const isOpen = answer.style.display === 'block';
               document.querySelectorAll('.faq-answer').forEach(el => el.style.display = 'none');
               answer.style.display = isOpen ? 'none' : 'block';
             }
-          </script>
+        </script>
 
         <script>
           async function carregarMiniResultados() {
@@ -1751,10 +1738,180 @@
       </div>
     </div>
 
+    <!-- ========================================================= -->
+  <!-- 🔮 MODAL DE PALPITE EXCLUSIVO (Adaptado para novo layout) -->
+  <!-- ========================================================= -->
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // === DADOS BASEADOS EM PADRÕES DE IA (mock local) ===
+    const predictionPool = [
+      {
+        numbers: [2, 5, 7, 9, 11, 13, 14, 15, 17, 18, 20, 22, 23, 24, 25],
+        analysis: [
+          "🔹 9 números quentes (alta frequência nos últimos 30 sorteios)",
+          "🔹 6 números frios estratégicos (com padrão de retorno)",
+          "🔹 Combinação com baixa repetição em apostas populares",
+          "🔹 Equilíbrio ímpar/par: 8-7 (padrão mais frequente)"
+        ]
+      },
+      {
+        numbers: [1, 3, 4, 6, 8, 10, 12, 16, 19, 21, 22, 23, 24, 25, 26],
+        analysis: [
+          "🔹 7 números da faixa central (11–20), equilibrando extremos",
+          "🔹 4 números ímpares consecutivos (padrão raro)",
+          "🔹 Ausência de sequência completa (reduz partilha)",
+          "🔹 Alta cobertura de dezenas atrasadas"
+        ]
+      },
+      {
+        numbers: [5, 6, 7, 8, 9, 13, 14, 15, 16, 17, 18, 19, 20, 21, 25],
+        analysis: [
+          "🔹 Bloco central forte (05–21) com ancoragem",
+          "🔹 11 números entre 05 e 21 (faixa estável)",
+          "🔹 Evita extremos (1 número abaixo de 05)",
+          "🔹 Alta densidade média"
+        ]
+      }
+    ];
+
+    // === ELEMENTOS DO MODAL ===
+    const openBtn = document.getElementById("gerarPalpiteBtn"); // botão principal do site
+    const modal = document.createElement("div");
+    modal.id = "predictionModal";
+    modal.className =
+      "fixed inset-0 flex items-center justify-center bg-black/70 z-50 hidden backdrop-blur-md";
+
+    modal.innerHTML = `
+      <div class="bg-gray-900 border border-green-500/40 rounded-3xl shadow-2xl w-11/12 max-w-md p-6 text-center relative overflow-hidden">
+        <button id="closeModal" class="absolute top-3 right-3 text-gray-300 hover:text-white text-2xl">×</button>
+        <h2 class="text-2xl font-bold text-green-400 mb-4">💡 Palpite Exclusivo</h2>
+        <div id="loadingStep" class="space-y-3">
+          <p id="progressText" class="text-gray-400">Analisando padrões históricos...</p>
+          <div class="w-full bg-gray-800 h-3 rounded-full overflow-hidden">
+            <div id="progressBar" class="bg-green-500 h-3 w-0 transition-all duration-300"></div>
+          </div>
+        </div>
+
+        <div id="resultStep" class="hidden">
+          <div id="generatedNumbers" class="flex flex-wrap justify-center gap-2 mb-4"></div>
+          <ul id="analysisText" class="text-left text-sm text-gray-300 list-disc list-inside mb-4"></ul>
+          <a id="whatsappBtn" target="_blank"
+            class="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-lg w-full mb-3">
+            📲 Receber via WhatsApp
+          </a>
+          <button id="closeModalFinal"
+            class="w-full bg-gray-700 hover:bg-gray-600 text-gray-200 font-semibold py-2 rounded-xl">
+            Fechar
+          </button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    const closeBtn = modal.querySelector("#closeModal");
+    const closeFinal = modal.querySelector("#closeModalFinal");
+    const loadingStep = modal.querySelector("#loadingStep");
+    const resultStep = modal.querySelector("#resultStep");
+    const progressBar = modal.querySelector("#progressBar");
+    const progressText = modal.querySelector("#progressText");
+    const generatedNumbers = modal.querySelector("#generatedNumbers");
+    const analysisText = modal.querySelector("#analysisText");
+    const whatsappBtn = modal.querySelector("#whatsappBtn");
+
+    // === ABRIR MODAL ===
+    if (openBtn) {
+      openBtn.addEventListener("click", () => {
+        modal.classList.remove("hidden");
+        startGeneration();
+      });
+    }
+
+    // === FECHAR MODAL ===
+    [closeBtn, closeFinal].forEach(btn => {
+      if (btn)
+        btn.addEventListener("click", () => {
+          modal.classList.add("hidden");
+          resetModal();
+        });
+    });
+
+    // === FECHAR CLICANDO FORA ===
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.add("hidden");
+        resetModal();
+      }
+    });
+
+    // === SIMULAR GERAÇÃO (efeito visual de IA) ===
+    function startGeneration() {
+      let progress = 0;
+      progressBar.style.width = "0%";
+      progressText.textContent = "Analisando padrões históricos...";
+
+      const interval = setInterval(() => {
+        progress += Math.random() * 15;
+        if (progress >= 100) {
+          clearInterval(interval);
+          progressBar.style.width = "100%";
+          setTimeout(showResult, 400);
+        } else {
+          progressBar.style.width = progress + "%";
+          if (progress < 30) progressText.textContent = "Analisando padrões históricos...";
+          else if (progress < 60) progressText.textContent = "Calculando combinações otimizadas...";
+          else if (progress < 85) progressText.textContent = "Aplicando modelo de IA...";
+          else progressText.textContent = "Finalizando...";
+        }
+      }, 180);
+    }
+
+    // === MOSTRAR RESULTADO FINAL ===
+    function showResult() {
+      loadingStep.classList.add("hidden");
+      resultStep.classList.remove("hidden");
+
+      const prediction = predictionPool[Math.floor(Math.random() * predictionPool.length)];
+
+      // Renderiza dezenas
+      generatedNumbers.innerHTML = "";
+      prediction.numbers.forEach(num => {
+        const ball = document.createElement("span");
+        ball.className =
+          "w-9 h-9 bg-green-700 text-white font-bold rounded-full flex items-center justify-center text-sm shadow-md";
+        ball.textContent = num.toString().padStart(2, "0");
+        generatedNumbers.appendChild(ball);
+      });
+
+      // Renderiza análise
+      analysisText.innerHTML = "";
+      prediction.analysis.forEach(item => {
+        const li = document.createElement("li");
+        li.innerHTML = item;
+        analysisText.appendChild(li);
+      });
+
+      // Link WhatsApp dinâmico
+      const whatsappNumber = "5511910435421";
+      const message = encodeURIComponent(
+        `Olá! Gerei meu palpite exclusivo no fAIxaBet:\n${prediction.numbers.join(" - ")}\n\nQuero receber os próximos no WhatsApp!`
+      );
+      whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${message}`;
+    }
+
+    // === RESET ===
+    function resetModal() {
+      loadingStep.classList.remove("hidden");
+      resultStep.classList.add("hidden");
+      progressBar.style.width = "0%";
+      progressText.textContent = "Iniciando...";
+    }
+  });
+  </script>
+
     <!-- FIM do Modal -->
 
-        <!-- Footer -->
-        <footer class="bg-gray-900 border-t border-gray-800 py-12 px-6">
+      <!-- Footer -->
+      <footer class="bg-gray-900 border-t border-gray-800 py-12 px-6">
             <div class="max-w-6xl mx-auto">
             <div class="grid md:grid-cols-4 gap-8 mb-8">
             <div>
@@ -1795,11 +1952,11 @@
             <ul class="space-y-2">
             <li class="flex items-start">
             <i class="fas fa-envelope text-green-400 mt-1 mr-2"></i>
-            <span class="text-gray-400">contato@faixabet.com</span>
+            <span class="text-gray-400">contato@faixabet.com.br</span>
             </li>
             <li class="flex items-start">
             <i class="fab fa-whatsapp text-green-400 mt-1 mr-2"></i>
-            <span class="text-gray-400">(11) 91043-5421</span>
+            <span class="text-gray-400">(11) 91032-5421</span>
             </li>
             <li class="flex items-start">
             <i class="fas fa-map-marker-alt text-green-400 mt-1 mr-2"></i>
@@ -1813,7 +1970,7 @@
             <p class="mt-2 text-sm">Este site destina-se a maiores de 18 anos. Se for apotar, seja responsável.</p>
             </div>
             </div>
-        </footer>
+      </footer>
 
       <!-- Seu JS principal -->
       <script src="./main.js" defer></script>
