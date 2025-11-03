@@ -200,58 +200,149 @@
   <body class="gradient-bg text-white font-sans">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Header -->
-    <header class="fixed top-0 left-0 w-full bg-gray-900/90 backdrop-blur-sm z-50 transition-all duration-300 min-h-[80px]">
-      <div class="container mx-auto px-4">
-        <nav class="flex items-center justify-between py-5">
-    <!-- Logo --> <a href="#" class="text-3xl font-bold flex items-center space-x-1" style="font-family: 'Montserrat Alternates', sans-serif;"> 
-      <span class="text-white-400">f</span>
-      <span class="text-purple-400">A</span>
-      <span class="text-yellow-400">I</span> 
-      <span class="text-blue-400">x</span> 
-      <span class="text-green-600">a</span>
-      <span class="font-light">Bet</span> </a>
+<!-- ================= HEADER + MENU MOBILE (versão aprimorada) ================= -->
+<header class="fixed top-0 left-0 w-full bg-gray-900/90 backdrop-blur-sm z-50 transition-all duration-300 min-h-[80px]">
+  <div class="container mx-auto px-4">
+    <nav class="flex items-center justify-between py-5">
+      <!-- Logo -->
+      <a href="#" class="text-3xl font-bold flex items-center space-x-1" style="font-family: 'Montserrat Alternates', sans-serif;">
+        <span class="text-white">f</span>
+        <span class="text-purple-400">A</span>
+        <span class="text-yellow-400">I</span>
+        <span class="text-blue-400">x</span>
+        <span class="text-green-600">a</span>
+        <span class="font-light text-white">Bet</span>
+      </a>
+
+      <!-- Menu Desktop -->
+      <div class="hidden md:flex flex-1 justify-center space-x-8 text-lg font-[Montserrat]">
+        <a href="#hero" class="text-white hover:text-green-400 transition">Home</a>
+        <a href="#como-funciona" class="text-white hover:text-green-400 transition">Como Funciona</a>
+        <a href="simulador-faixabet.html" target="_blank" class="text-white hover:text-green-400 transition">Simulador</a>
+        <a href="#planos" class="text-white hover:text-green-400 transition">Planos</a>
+        <a href="#blog" class="text-white hover:text-green-400 transition">Blog</a>
+        <a href="#app" class="text-white hover:text-green-400 transition">App fAIxaBet</a>
+      </div>
+
+      <!-- Botão Mobile -->
+      <button id="mobileMenuButton" class="md:hidden text-3xl text-white focus:outline-none transition-transform duration-300">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </div>
+
+  <!-- ================= MENU MOBILE ================= -->
+  <div id="mobileMenu"
+      class="fixed inset-0 hidden flex-col justify-start items-center z-[9999] 
+              opacity-0 pointer-events-none transition-all duration-500 ease-in-out
+              bg-[#111827] shadow-[0_0_25px_rgba(0,0,0,0.6)] rounded-t-3xl md:hidden">
+
+    <div class="w-[90%] max-w-md mx-auto mt-24 px-6 py-8 flex flex-col space-y-6 text-lg font-[Poppins] text-white animate-fadeIn
+                bg-[#1f2937] rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.4)] border border-gray-700">
       
-          <!-- Menu Desktop -->
-          <div class="hidden md:flex flex-1 justify-center space-x-8 text-lg font-[Montserrat]">
-            <a href="#hero" class="text-white hover:text-green-400 transition">Home</a>
-            <a href="#como-funciona" class="text-white hover:text-green-400 transition">Como Funciona</a>
-            <a href="simulador-faixabet.html" target="_blank" class="text-white hover:text-green-400 transition">Simulador</a>
-            <a href="#planos" class="text-white hover:text-green-400 transition">Planos</a>
-            <a href="#blog" class="text-white hover:text-green-400 transition">Blog</a>
-            <a href="#app" class="text-white hover:text-green-400 transition">App fAIxaBet</a>
-          </div>
+      <a href="#hero" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">🏠 Home</a>
+      <a href="#como-funciona" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">🧠 Como Funciona</a>
+      <a href="simulador-faixabet.html" target="_blank" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">🎯 Simulador</a>
+      <a href="#planos" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">💰 Planos</a>
+      <a href="#blog" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">📰 Blog</a>
+      <a href="#app" class="menu-link py-2 hover:text-green-400 transition">📱 App fAIxaBet</a>
+    </div>
+  </div>
 
-          <!-- Botão Mobile -->
-          <button class="md:hidden text-3xl text-white focus:outline-none" id="mobileMenuButton">
-            <i class="fas fa-bars"></i>
-          </button>
-        </nav>
-      </div>
+</header>
 
-      <!-- Menu Mobile -->
-      <div class="mobile-menu bg-[#666666] md:hidden hidden" id="mobileMenu">
-        <div class="container mx-auto px-4 py-4 flex flex-col space-y-4 text-lg font-[Poppins]">
-          <a href="#hero" class="py-2 border-b border-gray-700 text-white hover:text-green-400 transition">Home</a>
-          <a href="#como-funciona" class="py-2 border-b border-gray-700 text-white hover:text-green-400 transition">Como Funciona</a>
-          <a href="simulador-faixabet.html" target="_blank" class="py-2 border-b border-gray-700 text-white hover:text-green-400 transition">Simulador</a>
-          <a href="#planos" class="py-2 border-b border-gray-700 text-white hover:text-green-400 transition">Planos</a>
-          <a href="#blog" class="py-2 border-b border-gray-700 text-white hover:text-green-400 transition">Blog</a>
-          <a href="#app" class="py-2 border-b border-gray-700 text-white hover:text-green-400 transition">App fAIxaBet</a>
-        </div>
-      </div>
-    </header>
+<!-- ================= SCRIPT DO MENU MOBILE ================= -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("mobileMenuButton");
+  const menu = document.getElementById("mobileMenu");
+  let isOpen = false;
 
-     <script>
-      // Toggle menu mobile
-      document.getElementById('mobileMenuButton').addEventListener('click', () => {
-        document.getElementById('mobileMenu').classList.toggle('hidden');
-      });
-    </script>
+  if (!btn || !menu) {
+    console.warn("[DEBUG] Botão ou menu mobile não encontrados.");
+    return;
+  }
+
+  btn.addEventListener("click", () => {
+    console.log("[DEBUG] Hamburger clicked. Current classes:", menu.className);
+
+    if (!isOpen) {
+      // --- ABRIR MENU ---
+      menu.classList.remove("hidden", "opacity-0", "pointer-events-none");
+      menu.classList.add("flex", "opacity-100");
+      btn.innerHTML = '<i class="fas fa-times"></i>';
+      console.log("[DEBUG] Menu aberto.");
+      isOpen = true;
+    } else {
+      // --- FECHAR MENU ---
+      menu.classList.add("opacity-0", "pointer-events-none");
+      setTimeout(() => {
+        menu.classList.add("hidden");
+        menu.classList.remove("flex", "opacity-100");
+      }, 300);
+      btn.innerHTML = '<i class="fas fa-bars"></i>';
+      console.log("[DEBUG] Menu fechado.");
+      isOpen = false;
+    }
+
+    console.log("[DEBUG] After toggle:", menu.className);
+  });
+
+  // Fecha ao clicar em link
+  document.querySelectorAll("#mobileMenu a").forEach(link => {
+    link.addEventListener("click", () => {
+      menu.classList.add("opacity-0", "pointer-events-none", "hidden");
+      btn.innerHTML = '<i class="fas fa-bars"></i>';
+      isOpen = false;
+      console.log("[DEBUG] Menu fechado via link.");
+    });
+  });
+});
+</script>
+<style>
+#mobileMenu {
+  transition: opacity 0.4s ease, transform 0.3s ease;
+}
+#mobileMenu.opacity-100 {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+</style>
+
+<style>
+#mobileMenu {
+  backdrop-filter: blur(6px);
+  background: rgba(17, 24, 39, 0.98); /* Fundo sólido escuro */
+}
+
+#mobileMenu .menu-link {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+#mobileMenu .menu-link:hover {
+  background-color: rgba(34, 197, 94, 0.15);
+  transform: scale(1.05);
+}
+</style>
+
+<!-- ================= EFEITOS CSS ================= -->
+<style>
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out;
+}
+</style>
 
 
     <!-- Hero (Mobile-first com slider, subtítulo e botões responsivos) -->
-
     <section id="hero"
       class="min-h-screen flex flex-col items-center justify-center px-4 pt-24 pb-12 sm:px-6 md:pt-28 relative overflow-hidden"
       style="background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url('assets/ceu-paisagem.jpg') center/cover no-repeat;">
@@ -420,30 +511,27 @@
         </script>
     </section>
 
-      <!-- CSS extra (colocar no seu arquivo CSS ou dentro de <style>) -->
-      <style>
+    <!-- CSS extra (colocar no seu arquivo CSS ou dentro de <style>) -->
+    <style>
         .swiper { width:100%; height:auto !important; }
         .swiper-slide { display:flex; justify-content:center; align-items:center; text-align:center; padding:0 0.5rem; }
         /* Opcional: força melhor quebra em iOS/Android */
         html[lang="pt-BR"] p { -webkit-hyphens:auto; -ms-hyphens:auto; hyphens:auto; }
-      </style>
+    </style>
 
-      <!-- Swiper -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
-      <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+     <!-- Swiper -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
       
-      <script>
+     <script>
         var swiper = new Swiper(".mySwiper", {
           loop: true,
           autoplay: { delay: 3000, disableOnInteraction: false },
-          effect: "fade",
+         effect: "fade",
           fadeEffect: { crossFade: true },
         });
-      </script>
-
-      </div>
-    </section>
-
+     </script>
+     
     <!-- SwiperJS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
@@ -656,7 +744,7 @@
             <div class="plan-price">R$ 10,99<span>/mês</span></div>
             <ul class="plan-features">
               <li>30 palpites por semana</li>
-              <li>5 Modelos avançados IA</li>
+              <li>3 Modelos avançados IA</li>
               <li>2 Loterias disponíveis</li>
               <li>Atualizações diárias</li>
               <li>Suporte 24x7</li>
@@ -1326,8 +1414,8 @@
           document.addEventListener("DOMContentLoaded", carregarMiniResultados);
         </script>
 
-        <!-- Formulário -->
-        <section id="formSection" class="form-section">
+    <!-- Formulário -->
+    <section id="formSection" class="form-section">
           <div class="container mx-auto max-w-[1100px] px-4">
             <h2 class="form-title">Quase pronto! Vamos finalizar com proteção total </h2>
 
@@ -1376,18 +1464,18 @@
               <p>Processando seu cadastro e pagamento...</p>
             </div>
           </div>
-        </section>
+    </section>
 
-        <!-- Sucesso -->
-        <section id="successMessage" class="success-message">
+    <!-- Sucesso -->
+    <section id="successMessage" class="success-message">
           <div class="success-icon">🎉</div>
           <h2 class="success-title">Parabéns!</h2>
           <p class="success-text">Você está na única Plataforma que gera palpites de Loteria da Caixa com base em história e com AI do Mundo.</p>
           <button class="btn btn-gold" id="accessApp">Acessar a Plataforma</button>
-        </section>
+    </section>
 
-        <!-- Lógica adicional pequena p/ menu e formulário (não conflita com main.js) -->
-        <script>
+    <!-- Lógica adicional pequena p/ menu e formulário (não conflita com main.js) -->
+    <script>
           // Menu mobile
           const mobileBtn = document.getElementById('mobileMenuButton');
           const mobileMenu = document.getElementById('mobileMenu');
@@ -1441,12 +1529,15 @@
           });
         });
 
-        </script>
+    </script>
 
-      <!-- ============ MODAL DE PALPITE EXCLUSIVO ============ -->
+    <!-- ============ MODAL DE PALPITE EXCLUSIVO ============ -->
     <script>
       // Aguarda o DOM carregar completamente
       document.addEventListener("DOMContentLoaded", function () {
+        const openBtn = document.getElementById("openModalBtn");
+        const modal   = document.getElementById("predictionModal");
+        if (!openBtn || !modal) return; // impede erro se não existir
         // === DADOS DOS JOGOS (pré-gerados pela AI) ===
         const predictionPool = [
           {
@@ -1739,174 +1830,174 @@
     </div>
 
     <!-- ========================================================= -->
-  <!-- 🔮 MODAL DE PALPITE EXCLUSIVO (Adaptado para novo layout) -->
-  <!-- ========================================================= -->
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // === DADOS BASEADOS EM PADRÕES DE IA (mock local) ===
-    const predictionPool = [
-      {
-        numbers: [2, 5, 7, 9, 11, 13, 14, 15, 17, 18, 20, 22, 23, 24, 25],
-        analysis: [
-          "🔹 9 números quentes (alta frequência nos últimos 30 sorteios)",
-          "🔹 6 números frios estratégicos (com padrão de retorno)",
-          "🔹 Combinação com baixa repetição em apostas populares",
-          "🔹 Equilíbrio ímpar/par: 8-7 (padrão mais frequente)"
-        ]
-      },
-      {
-        numbers: [1, 3, 4, 6, 8, 10, 12, 16, 19, 21, 22, 23, 24, 25, 26],
-        analysis: [
-          "🔹 7 números da faixa central (11–20), equilibrando extremos",
-          "🔹 4 números ímpares consecutivos (padrão raro)",
-          "🔹 Ausência de sequência completa (reduz partilha)",
-          "🔹 Alta cobertura de dezenas atrasadas"
-        ]
-      },
-      {
-        numbers: [5, 6, 7, 8, 9, 13, 14, 15, 16, 17, 18, 19, 20, 21, 25],
-        analysis: [
-          "🔹 Bloco central forte (05–21) com ancoragem",
-          "🔹 11 números entre 05 e 21 (faixa estável)",
-          "🔹 Evita extremos (1 número abaixo de 05)",
-          "🔹 Alta densidade média"
-        ]
-      }
-    ];
+    <!-- 🔮 MODAL DE PALPITE EXCLUSIVO (Adaptado para novo layout) -->
+    <!-- ========================================================= -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // === DADOS BASEADOS EM PADRÕES DE IA (mock local) ===
+      const predictionPool = [
+        {
+          numbers: [2, 5, 7, 9, 11, 13, 14, 15, 17, 18, 20, 22, 23, 24, 25],
+          analysis: [
+            "🔹 9 números quentes (alta frequência nos últimos 30 sorteios)",
+            "🔹 6 números frios estratégicos (com padrão de retorno)",
+            "🔹 Combinação com baixa repetição em apostas populares",
+            "🔹 Equilíbrio ímpar/par: 8-7 (padrão mais frequente)"
+          ]
+        },
+        {
+          numbers: [1, 3, 4, 6, 8, 10, 12, 16, 19, 21, 22, 23, 24, 25, 26],
+          analysis: [
+            "🔹 7 números da faixa central (11–20), equilibrando extremos",
+            "🔹 4 números ímpares consecutivos (padrão raro)",
+            "🔹 Ausência de sequência completa (reduz partilha)",
+            "🔹 Alta cobertura de dezenas atrasadas"
+          ]
+        },
+        {
+          numbers: [5, 6, 7, 8, 9, 13, 14, 15, 16, 17, 18, 19, 20, 21, 25],
+          analysis: [
+            "🔹 Bloco central forte (05–21) com ancoragem",
+            "🔹 11 números entre 05 e 21 (faixa estável)",
+            "🔹 Evita extremos (1 número abaixo de 05)",
+            "🔹 Alta densidade média"
+          ]
+        }
+      ];
 
-    // === ELEMENTOS DO MODAL ===
-    const openBtn = document.getElementById("gerarPalpiteBtn"); // botão principal do site
-    const modal = document.createElement("div");
-    modal.id = "predictionModal";
-    modal.className =
-      "fixed inset-0 flex items-center justify-center bg-black/70 z-50 hidden backdrop-blur-md";
+      // === ELEMENTOS DO MODAL ===
+      const openBtn = document.getElementById("gerarPalpiteBtn"); // botão principal do site
+      const modal = document.createElement("div");
+      modal.id = "predictionModal";
+      modal.className =
+        "fixed inset-0 flex items-center justify-center bg-black/70 z-50 hidden backdrop-blur-md";
 
-    modal.innerHTML = `
-      <div class="bg-gray-900 border border-green-500/40 rounded-3xl shadow-2xl w-11/12 max-w-md p-6 text-center relative overflow-hidden">
-        <button id="closeModal" class="absolute top-3 right-3 text-gray-300 hover:text-white text-2xl">×</button>
-        <h2 class="text-2xl font-bold text-green-400 mb-4">💡 Palpite Exclusivo</h2>
-        <div id="loadingStep" class="space-y-3">
-          <p id="progressText" class="text-gray-400">Analisando padrões históricos...</p>
-          <div class="w-full bg-gray-800 h-3 rounded-full overflow-hidden">
-            <div id="progressBar" class="bg-green-500 h-3 w-0 transition-all duration-300"></div>
+      modal.innerHTML = `
+        <div class="bg-gray-900 border border-green-500/40 rounded-3xl shadow-2xl w-11/12 max-w-md p-6 text-center relative overflow-hidden">
+          <button id="closeModal" class="absolute top-3 right-3 text-gray-300 hover:text-white text-2xl">×</button>
+          <h2 class="text-2xl font-bold text-green-400 mb-4">💡 Palpite Exclusivo</h2>
+          <div id="loadingStep" class="space-y-3">
+            <p id="progressText" class="text-gray-400">Analisando padrões históricos...</p>
+            <div class="w-full bg-gray-800 h-3 rounded-full overflow-hidden">
+              <div id="progressBar" class="bg-green-500 h-3 w-0 transition-all duration-300"></div>
+            </div>
+          </div>
+
+          <div id="resultStep" class="hidden">
+            <div id="generatedNumbers" class="flex flex-wrap justify-center gap-2 mb-4"></div>
+            <ul id="analysisText" class="text-left text-sm text-gray-300 list-disc list-inside mb-4"></ul>
+            <a id="whatsappBtn" target="_blank"
+              class="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-lg w-full mb-3">
+              📲 Receber via WhatsApp
+            </a>
+            <button id="closeModalFinal"
+              class="w-full bg-gray-700 hover:bg-gray-600 text-gray-200 font-semibold py-2 rounded-xl">
+              Fechar
+            </button>
           </div>
         </div>
+      `;
+      document.body.appendChild(modal);
 
-        <div id="resultStep" class="hidden">
-          <div id="generatedNumbers" class="flex flex-wrap justify-center gap-2 mb-4"></div>
-          <ul id="analysisText" class="text-left text-sm text-gray-300 list-disc list-inside mb-4"></ul>
-          <a id="whatsappBtn" target="_blank"
-            class="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-lg w-full mb-3">
-            📲 Receber via WhatsApp
-          </a>
-          <button id="closeModalFinal"
-            class="w-full bg-gray-700 hover:bg-gray-600 text-gray-200 font-semibold py-2 rounded-xl">
-            Fechar
-          </button>
-        </div>
-      </div>
-    `;
-    document.body.appendChild(modal);
+      const closeBtn = modal.querySelector("#closeModal");
+      const closeFinal = modal.querySelector("#closeModalFinal");
+      const loadingStep = modal.querySelector("#loadingStep");
+      const resultStep = modal.querySelector("#resultStep");
+      const progressBar = modal.querySelector("#progressBar");
+      const progressText = modal.querySelector("#progressText");
+      const generatedNumbers = modal.querySelector("#generatedNumbers");
+      const analysisText = modal.querySelector("#analysisText");
+      const whatsappBtn = modal.querySelector("#whatsappBtn");
 
-    const closeBtn = modal.querySelector("#closeModal");
-    const closeFinal = modal.querySelector("#closeModalFinal");
-    const loadingStep = modal.querySelector("#loadingStep");
-    const resultStep = modal.querySelector("#resultStep");
-    const progressBar = modal.querySelector("#progressBar");
-    const progressText = modal.querySelector("#progressText");
-    const generatedNumbers = modal.querySelector("#generatedNumbers");
-    const analysisText = modal.querySelector("#analysisText");
-    const whatsappBtn = modal.querySelector("#whatsappBtn");
+      // === ABRIR MODAL ===
+      if (openBtn) {
+        openBtn.addEventListener("click", () => {
+          modal.classList.remove("hidden");
+          startGeneration();
+        });
+      }
 
-    // === ABRIR MODAL ===
-    if (openBtn) {
-      openBtn.addEventListener("click", () => {
-        modal.classList.remove("hidden");
-        startGeneration();
+      // === FECHAR MODAL ===
+      [closeBtn, closeFinal].forEach(btn => {
+        if (btn)
+          btn.addEventListener("click", () => {
+            modal.classList.add("hidden");
+            resetModal();
+          });
       });
-    }
 
-    // === FECHAR MODAL ===
-    [closeBtn, closeFinal].forEach(btn => {
-      if (btn)
-        btn.addEventListener("click", () => {
+      // === FECHAR CLICANDO FORA ===
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
           modal.classList.add("hidden");
           resetModal();
-        });
-    });
+        }
+      });
 
-    // === FECHAR CLICANDO FORA ===
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        modal.classList.add("hidden");
-        resetModal();
+      // === SIMULAR GERAÇÃO (efeito visual de IA) ===
+      function startGeneration() {
+        let progress = 0;
+        progressBar.style.width = "0%";
+        progressText.textContent = "Analisando padrões históricos...";
+
+        const interval = setInterval(() => {
+          progress += Math.random() * 15;
+          if (progress >= 100) {
+            clearInterval(interval);
+            progressBar.style.width = "100%";
+            setTimeout(showResult, 400);
+          } else {
+            progressBar.style.width = progress + "%";
+            if (progress < 30) progressText.textContent = "Analisando padrões históricos...";
+            else if (progress < 60) progressText.textContent = "Calculando combinações otimizadas...";
+            else if (progress < 85) progressText.textContent = "Aplicando modelo de IA...";
+            else progressText.textContent = "Finalizando...";
+          }
+        }, 180);
+      }
+
+      // === MOSTRAR RESULTADO FINAL ===
+      function showResult() {
+        loadingStep.classList.add("hidden");
+        resultStep.classList.remove("hidden");
+
+        const prediction = predictionPool[Math.floor(Math.random() * predictionPool.length)];
+
+        // Renderiza dezenas
+        generatedNumbers.innerHTML = "";
+        prediction.numbers.forEach(num => {
+          const ball = document.createElement("span");
+          ball.className =
+            "w-9 h-9 bg-green-700 text-white font-bold rounded-full flex items-center justify-center text-sm shadow-md";
+          ball.textContent = num.toString().padStart(2, "0");
+          generatedNumbers.appendChild(ball);
+        });
+
+        // Renderiza análise
+        analysisText.innerHTML = "";
+        prediction.analysis.forEach(item => {
+          const li = document.createElement("li");
+          li.innerHTML = item;
+          analysisText.appendChild(li);
+        });
+
+        // Link WhatsApp dinâmico
+        const whatsappNumber = "5511910435421";
+        const message = encodeURIComponent(
+          `Olá! Gerei meu palpite exclusivo no fAIxaBet:\n${prediction.numbers.join(" - ")}\n\nQuero receber os próximos no WhatsApp!`
+        );
+        whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${message}`;
+      }
+
+      // === RESET ===
+      function resetModal() {
+        loadingStep.classList.remove("hidden");
+        resultStep.classList.add("hidden");
+        progressBar.style.width = "0%";
+        progressText.textContent = "Iniciando...";
       }
     });
-
-    // === SIMULAR GERAÇÃO (efeito visual de IA) ===
-    function startGeneration() {
-      let progress = 0;
-      progressBar.style.width = "0%";
-      progressText.textContent = "Analisando padrões históricos...";
-
-      const interval = setInterval(() => {
-        progress += Math.random() * 15;
-        if (progress >= 100) {
-          clearInterval(interval);
-          progressBar.style.width = "100%";
-          setTimeout(showResult, 400);
-        } else {
-          progressBar.style.width = progress + "%";
-          if (progress < 30) progressText.textContent = "Analisando padrões históricos...";
-          else if (progress < 60) progressText.textContent = "Calculando combinações otimizadas...";
-          else if (progress < 85) progressText.textContent = "Aplicando modelo de IA...";
-          else progressText.textContent = "Finalizando...";
-        }
-      }, 180);
-    }
-
-    // === MOSTRAR RESULTADO FINAL ===
-    function showResult() {
-      loadingStep.classList.add("hidden");
-      resultStep.classList.remove("hidden");
-
-      const prediction = predictionPool[Math.floor(Math.random() * predictionPool.length)];
-
-      // Renderiza dezenas
-      generatedNumbers.innerHTML = "";
-      prediction.numbers.forEach(num => {
-        const ball = document.createElement("span");
-        ball.className =
-          "w-9 h-9 bg-green-700 text-white font-bold rounded-full flex items-center justify-center text-sm shadow-md";
-        ball.textContent = num.toString().padStart(2, "0");
-        generatedNumbers.appendChild(ball);
-      });
-
-      // Renderiza análise
-      analysisText.innerHTML = "";
-      prediction.analysis.forEach(item => {
-        const li = document.createElement("li");
-        li.innerHTML = item;
-        analysisText.appendChild(li);
-      });
-
-      // Link WhatsApp dinâmico
-      const whatsappNumber = "5511910435421";
-      const message = encodeURIComponent(
-        `Olá! Gerei meu palpite exclusivo no fAIxaBet:\n${prediction.numbers.join(" - ")}\n\nQuero receber os próximos no WhatsApp!`
-      );
-      whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${message}`;
-    }
-
-    // === RESET ===
-    function resetModal() {
-      loadingStep.classList.remove("hidden");
-      resultStep.classList.add("hidden");
-      progressBar.style.width = "0%";
-      progressText.textContent = "Iniciando...";
-    }
-  });
-  </script>
+    </script>
 
     <!-- FIM do Modal -->
 
@@ -1974,6 +2065,122 @@
 
       <!-- Seu JS principal -->
       <script src="./main.js" defer></script>
-    </body>
+    
+ <script>
+// ==== DEBUG LOGGING ENABLED ====
+console.log('[DEBUG] index_debug.html loaded successfully');
 
-  </html>
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('[DEBUG] DOM fully loaded');
+  const btn = document.getElementById('gerarPalpiteBtn');
+  const mobileBtn = document.getElementById('mobileMenuButton');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  console.log('[DEBUG] Elements check:', {
+    gerarPalpiteBtn: !!btn,
+    mobileMenuButton: !!mobileBtn,
+    mobileMenu: !!mobileMenu
+  });
+
+  // --- MENU MOBILE ---
+  if (mobileBtn && mobileMenu) {
+    console.log('[DEBUG] Binding mobile menu toggle listener');
+    mobileBtn.addEventListener('click', () => {
+      console.log('[DEBUG] Hamburger clicked. Current classes:', mobileMenu.className);
+      mobileMenu.classList.toggle('show');
+      mobileMenu.classList.toggle('hide');
+      mobileMenu.classList.remove('hidden');
+      console.log('[DEBUG] After toggle:', mobileMenu.className);
+    });
+  } else {
+    console.warn('[DEBUG] mobileBtn or mobileMenu not found');
+  }
+
+  // --- BOTÃO "GERAR PALPITE EXCLUSIVO" ---
+  if (btn) {
+    console.log('[DEBUG] Binding click to gerarPalpiteBtn');
+    btn.addEventListener('click', () => {
+      console.log('[DEBUG] "Gerar Palpite Exclusivo" clicked');
+      const modal = document.getElementById('exclusiveModal');
+      if (!modal) {
+        console.warn('[DEBUG] Modal element not found');
+        return;
+      }
+
+      modal.style.display = 'flex';
+      console.log('[DEBUG] Modal found. Display set to flex');
+
+      // === GERAR 15 DEZENAS ALEATÓRIAS ===
+      const set = new Set();
+      while (set.size < 15) set.add(1 + Math.floor(Math.random() * 25));
+      const nums = [...set].sort((a, b) => a - b);
+      console.log('[DEBUG] Números gerados:', nums);
+
+      // === EXIBIR NO MODAL ===
+      const output = document.getElementById('exclusiveNumbers');
+      if (output) {
+        output.innerHTML = '';
+        nums.forEach(n => {
+          const b = document.createElement('span');
+          b.textContent = String(n).padStart(2, '0');
+          b.className =
+            'flex items-center justify-center w-10 h-10 md:w-12 md:h-12 ' +
+            'rounded-full font-bold text-white bg-green-600 shadow-md ' +
+            'transition-transform transform hover:scale-110';
+          output.appendChild(b);
+        });
+        console.log('[DEBUG] Bolinhas renderizadas com sucesso');
+      } else {
+        console.warn('[DEBUG] exclusiveNumbers não encontrado');
+      }
+    });
+  } else {
+    console.warn('[DEBUG] gerarPalpiteBtn not found');
+  }
+
+  // --- FECHAR MODAL ---
+  document.addEventListener('click', e => {
+    const modal = document.getElementById('exclusiveModal');
+    if (!modal) return;
+    if (e.target.id === 'closeExclusiveModal' || e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+});
+</script>
+
+<!-- =================== MODAL EXCLUSIVO (IA) =================== -->
+<div id="exclusiveModal"
+     class="modal hidden fixed inset-0 flex items-center justify-center z-[9999]"
+     style="background: rgba(0,0,0,0.55); backdrop-filter: blur(10px);">
+  <div class="bg-[#101522]/95 text-gray-100 rounded-2xl p-6 shadow-2xl text-center w-11/12 md:w-1/2 border border-gray-700">
+  <h2 class="text-xl font-bold text-yellow-400 mb-3">
+    Palpite Exclusivo para Lotofácil
+  </h2>
+    <p class="text-gray-300 mb-4">Seu palpite exclusivo da AI:</p>
+
+    <!-- grade de dezenas -->
+    <div id="exclusiveNumbers"
+         class="flex flex-wrap justify-center items-center gap-3 mb-6 transition-all"></div>
+
+    <button id="closeExclusiveModal"
+            class="mt-2 bg-purple-500 hover:bg-blue-400 text-white font-semibold py-2 px-6 rounded-lg shadow-md transition">
+      Fechar
+    </button>
+  </div>
+</div>
+
+<script>
+// --- Fechar modal ao clicar fora ou no botão ---
+document.addEventListener('click', e => {
+  const modal = document.getElementById('exclusiveModal');
+  if (!modal) return;
+  if (e.target.id === 'closeExclusiveModal' || e.target === modal) {
+    modal.style.display = 'none';
+  }
+});
+</script>
+
+</body>
+
+</html>
