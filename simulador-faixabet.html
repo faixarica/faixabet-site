@@ -58,22 +58,22 @@
     gap: 12px;
     margin-top: 20px;
   }
-
+  /* --- Botões principais (reduzido ~30%) --- */
   .main-button {
     background: linear-gradient(90deg,#00d4ff,#8a2be2);
     border: none;
-    border-radius: 50px;
-    padding: 14px 28px;
+    border-radius: 40px;
+    padding: 10px 20px;             /* antes: 14px 28px */
     color: #fff;
-    font-size: 1.1rem;
+    font-size: 0.9rem;              /* antes: 1.1rem */
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 0 15px rgba(138,43,226,.5);
+    box-shadow: 0 0 12px rgba(138,43,226,.45);
     transition: all .3s ease;
-    flex: 1 1 220px;
-    min-width: 180px;
+    flex: 1 1 160px;                /* antes: 220px */
+    min-width: 130px;               /* antes: 180px */
   }
-  .main-button:hover { transform: scale(1.05); }
+  .main-button:hover { transform: scale(1.07); }
 
   .click-count { margin-top:10px; margin-bottom:15px; color:#a0a0c0; animation:pulse 2s infinite; }
 
@@ -114,160 +114,170 @@
 </head>
 
 <body>
+  <div class="container">
+
+    <div class="container">
 <div class="container">
 
   <!-- LOGO COM REDIRECIONAMENTO -->
-  <a href="https://faixabet.com.br" class="logo-faixabet">
+  <a href="https://faixabet.com.br"
+     class="logo-faixabet flex items-center justify-center px-4 py-2 rounded-xl"
+     style="
+       background: rgba(245, 245, 245, 0.9);        /* fundo claro translúcido */
+       box-shadow: 0 0 12px rgba(0,0,0,0.15);       /* sombra suave */
+       text-shadow: 0 0 8px rgba(128,128,128,0.5);  /* fumê leve nas letras */
+       font-family: 'Montserrat Alternates', sans-serif;
+     ">
     <span class="text-white-400">f</span>
     <span class="text-purple-400">A</span>
     <span class="text-yellow-400">I</span>
     <span class="text-blue-400">x</span>
     <span class="text-green-600">a</span>
-    <span class="font-light">Bet</span>
+    <span class="text-white font-light">Bet</span>
   </a>
 
   <h1>Simulador de Palpites IA</h1>
   <p>Compare o desempenho da nossa Inteligência Artificial com um jogador comum.</p>
 
   <div class="buttons-row">
-    <button class="main-button" id="simularBtn">🔄 Gerar Nova Simulação</button>
-    <button class="main-button" id="enviarEmailBtn" style="display:none;">📩 Enviar por E-mail</button>
+    <button class="main-button" id="simularBtn">Gerar Nova Simulação</button>
+    <button class="main-button" id="enviarEmailBtn" style="display:none;">Enviar por E-mail</button>
   </div>
 
   <div class="click-count" id="contador">Simulações Realizadas: 0</div>
   <div id="cards"></div>
 </div>
 
-<!-- Modal -->
-<div class="modal" id="emailModal" style="display:none;">
-  <div class="modal-content">
-    <button type="button" id="closeEmailModal"
-      style="position:absolute;right:12px;top:10px;background:transparent;border:0;color:#fff;font-size:22px;cursor:pointer"
-      aria-label="Fechar">×</button>
+  <!-- Modal -->
+  <div class="modal" id="emailModal" style="display:none;">
+    <div class="modal-content">
+      <button type="button" id="closeEmailModal"
+        style="position:absolute;right:12px;top:10px;background:transparent;border:0;color:#fff;font-size:22px;cursor:pointer"
+        aria-label="Fechar">×</button>
 
-    <h3>📨 Enviar palpite por e-mail</h3>
-    <p>Informe seu e-mail para receber este resultado.</p>
+      <h3>📨 Enviar palpite por e-mail</h3>
+      <p>Informe seu e-mail para receber este resultado.</p>
 
-    <form id="emailForm">
-      <input type="email" id="emailInput" placeholder="seuemail@exemplo.com" required />
-      <button id="emailSubmitBtn" type="submit">Enviar</button>
-    </form>
+      <form id="emailForm">
+        <input type="email" id="emailInput" placeholder="seuemail@exemplo.com" required />
+        <button id="emailSubmitBtn" type="submit">Enviar</button>
+      </form>
 
-    <div id="emailMsg" style="margin-top:10px;font-size:.9rem;"></div>
+      <div id="emailMsg" style="margin-top:10px;font-size:.9rem;"></div>
+    </div>
   </div>
-</div>
 
-<script>
-// === CONTROLE DE MODAL ===
-function openEmailModal() {
-  const modal = document.getElementById('emailModal');
-  modal.style.display = 'flex';
-}
-
-function closeEmailModal() {
-  const modal = document.getElementById('emailModal');
-  modal.style.display = 'none';
-  document.getElementById('emailMsg').textContent = '';
-}
-
-// Abrir pelo botão principal
-document.getElementById('enviarEmailBtn')?.addEventListener('click', openEmailModal);
-
-// Fechar pelo X
-document.getElementById('closeEmailModal')?.addEventListener('click', closeEmailModal);
-
-// Fechar clicando fora do conteúdo
-document.getElementById('emailModal')?.addEventListener('click', (e)=>{
-  if(e.target.id === 'emailModal') closeEmailModal();
-});
-
-// Fechar com ESC
-window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeEmailModal(); });
-
-// Submeter formulário -> chama a função enviarEmail() que já existe
-document.getElementById('emailForm')?.addEventListener('submit', async (e)=>{
-  e.preventDefault();
-  const btn = document.getElementById('emailSubmitBtn');
-  const msg = document.getElementById('emailMsg');
-  btn.disabled = true;
-  btn.textContent = 'Enviando...';
-  msg.textContent = '';
-  try {
-    await enviarEmail();
-  } finally {
-    btn.disabled = false;
-    btn.textContent = 'Enviar';
+  <script>
+  // === CONTROLE DE MODAL ===
+  function openEmailModal() {
+    const modal = document.getElementById('emailModal');
+    modal.style.display = 'flex';
   }
-});
-</script>
 
-
-<script>
-
-let cliques=0, ultimoSorteio=[], ultimoPalpiteAI=[], ultimoPalpiteJogador=[];
-
-function gerarPalpite(qtd=15){
-  const nums=[];
-  while(nums.length<qtd){
-    const n=Math.floor(Math.random()*25)+1;
-    if(!nums.includes(n)) nums.push(n);
+  function closeEmailModal() {
+    const modal = document.getElementById('emailModal');
+    modal.style.display = 'none';
+    document.getElementById('emailMsg').textContent = '';
   }
-  return nums.sort((a,b)=>a-b);
-}
-function contarAcertos(palpite,sorteio){return palpite.filter(n=>sorteio.includes(n)).length;}
-function formatarNumeros(numeros,sorteio,anteriores=[]){
-  return numeros.map(n=>{
-    const isAcerto=sorteio.includes(n);
-    const isNovo=anteriores.length && !anteriores.includes(n);
-    let cls='numero';
-    if(isAcerto) cls+=' acerto';
-    if(isNovo) cls+=' novo-numero';
-    return `<div class="${cls}">${String(n).padStart(2,'0')}</div>`;
-  }).join('');
-}
 
-async function rodarSimulacao(){
-  cliques++;
-  document.getElementById('contador').innerText=`Simulações Realizadas: ${cliques}`;
-  const sorteio=gerarPalpite(15);
-  const iaAcertos=sorteio.slice(0,10);
-  const resto=gerarPalpite(25).filter(n=>!iaAcertos.includes(n));
-  while(iaAcertos.length<15) iaAcertos.push(resto.pop());
-  const ia=iaAcertos.sort((a,b)=>a-b);
-  const jogador=gerarPalpite(15);
+  // Abrir pelo botão principal
+  document.getElementById('enviarEmailBtn')?.addEventListener('click', openEmailModal);
 
-  ultimoPalpiteAI=ia; ultimoPalpiteJogador=jogador; ultimoSorteio=sorteio;
+  // Fechar pelo X
+  document.getElementById('closeEmailModal')?.addEventListener('click', closeEmailModal);
 
-  const acertosIA=contarAcertos(ia,sorteio);
-  const acertosJogador=contarAcertos(jogador,sorteio);
+  // Fechar clicando fora do conteúdo
+  document.getElementById('emailModal')?.addEventListener('click', (e)=>{
+    if(e.target.id === 'emailModal') closeEmailModal();
+  });
 
-  let resultado='',classe='';
-  if(acertosIA>acertosJogador){resultado='🤖 AI Superou o Jogador! ✅';classe='vitoria-ia';}
-  else if(acertosIA<acertosJogador){resultado='🎉 Você Superou a AI!';classe='vitoria-jogador';}
-  else{resultado='🤝 Empate!';classe='empate';}
+  // Fechar com ESC
+  window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeEmailModal(); });
 
-  document.getElementById('cards').innerHTML=`
-    <div class="card">
-      <div class="card-title">🎯 Sorteio Oficial (Simulado)</div>
-      <div class="numero-container">${formatarNumeros(sorteio,[],ultimoSorteio)}</div>
-    </div>
-    <div class="card">
-      <div class="card-title">🧠 AI</div>
-      <div class="numero-container">${formatarNumeros(ia,sorteio)}</div>
-      <p>Acertos: <strong>${acertosIA}</strong></p>
-    </div>
-    <div class="card">
-      <div class="card-title">👤 Jogador Comum</div>
-      <div class="numero-container">${formatarNumeros(jogador,sorteio)}</div>
-      <p>Acertos: <strong>${acertosJogador}</strong></p>
-      <div class="resultado-final ${classe}">${resultado}</div>
-    </div>`;
-  const emailBtn=document.getElementById('enviarEmailBtn');
-  emailBtn.style.display='inline-block';
-}
+  // Submeter formulário -> chama a função enviarEmail() que já existe
+  document.getElementById('emailForm')?.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const btn = document.getElementById('emailSubmitBtn');
+    const msg = document.getElementById('emailMsg');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    msg.textContent = '';
+    try {
+      await enviarEmail();
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Enviar';
+    }
+  });
+  </script>
 
-document.getElementById('simularBtn').addEventListener('click',rodarSimulacao);
-window.addEventListener('load',()=>setTimeout(rodarSimulacao,500));
-</script>
+
+  <script>
+
+  let cliques=0, ultimoSorteio=[], ultimoPalpiteAI=[], ultimoPalpiteJogador=[];
+
+  function gerarPalpite(qtd=15){
+    const nums=[];
+    while(nums.length<qtd){
+      const n=Math.floor(Math.random()*25)+1;
+      if(!nums.includes(n)) nums.push(n);
+    }
+    return nums.sort((a,b)=>a-b);
+  }
+  function contarAcertos(palpite,sorteio){return palpite.filter(n=>sorteio.includes(n)).length;}
+  function formatarNumeros(numeros,sorteio,anteriores=[]){
+    return numeros.map(n=>{
+      const isAcerto=sorteio.includes(n);
+      const isNovo=anteriores.length && !anteriores.includes(n);
+      let cls='numero';
+      if(isAcerto) cls+=' acerto';
+      if(isNovo) cls+=' novo-numero';
+      return `<div class="${cls}">${String(n).padStart(2,'0')}</div>`;
+    }).join('');
+  }
+
+  async function rodarSimulacao(){
+    cliques++;
+    document.getElementById('contador').innerText=`Simulações Realizadas: ${cliques}`;
+    const sorteio=gerarPalpite(15);
+    const iaAcertos=sorteio.slice(0,10);
+    const resto=gerarPalpite(25).filter(n=>!iaAcertos.includes(n));
+    while(iaAcertos.length<15) iaAcertos.push(resto.pop());
+    const ia=iaAcertos.sort((a,b)=>a-b);
+    const jogador=gerarPalpite(15);
+
+    ultimoPalpiteAI=ia; ultimoPalpiteJogador=jogador; ultimoSorteio=sorteio;
+
+    const acertosIA=contarAcertos(ia,sorteio);
+    const acertosJogador=contarAcertos(jogador,sorteio);
+
+    let resultado='',classe='';
+    if(acertosIA>acertosJogador){resultado='🤖 AI Superou o Jogador! ✅';classe='vitoria-ia';}
+    else if(acertosIA<acertosJogador){resultado='🎉 Você Superou a AI!';classe='vitoria-jogador';}
+    else{resultado='🤝 Empate!';classe='empate';}
+
+    document.getElementById('cards').innerHTML=`
+      <div class="card">
+        <div class="card-title">🎯 Sorteio Oficial (Simulado)</div>
+        <div class="numero-container">${formatarNumeros(sorteio,[],ultimoSorteio)}</div>
+      </div>
+      <div class="card">
+        <div class="card-title">🧠 AI</div>
+        <div class="numero-container">${formatarNumeros(ia,sorteio)}</div>
+        <p>Acertos: <strong>${acertosIA}</strong></p>
+      </div>
+      <div class="card">
+        <div class="card-title">👤 Jogador Comum</div>
+        <div class="numero-container">${formatarNumeros(jogador,sorteio)}</div>
+        <p>Acertos: <strong>${acertosJogador}</strong></p>
+        <div class="resultado-final ${classe}">${resultado}</div>
+      </div>`;
+    const emailBtn=document.getElementById('enviarEmailBtn');
+    emailBtn.style.display='inline-block';
+  }
+
+  document.getElementById('simularBtn').addEventListener('click',rodarSimulacao);
+  window.addEventListener('load',()=>setTimeout(rodarSimulacao,500));
+  </script>
 </body>
 </html>

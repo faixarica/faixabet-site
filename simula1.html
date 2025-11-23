@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador FaixaBet</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #28a745;
+      --primary-dark: #218838;
+      --secondary: #1d3557;
+      --background: #f8f9fa;
+      --card-bg: #ffffff;
+      --text: #333333;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --highlight: #007bff;
+      --acerto-bg: #28a745;
+      --acerto-text: #ffffff;
+      --numero-bg: #e9ecef;
+      --border-radius: 14.4px; /* 16px * 0.9 */
+      --spacing-xs: 7.2px; /* 8px * 0.9 */
+      --spacing-sm: 10.8px; /* 12px * 0.9 */
+      --spacing-md: 14.4px; /* 16px * 0.9 */
+      --spacing-lg: 21.6px; /* 24px * 0.9 */
+      --spacing-xl: 28.8px; /* 32px * 0.9 */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      padding: var(--spacing-md);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1080px; /* 1200px * 0.9 */
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-lg);
+    }
+
+    header {
+      text-align: center;
+      padding: var(--spacing-md) 0;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 1.62rem; /* 1.8rem * 0.9 */
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .subtitle {
+      color: var(--secondary);
+      font-size: 0.9rem; /* 1rem * 0.9 */
+      opacity: 0.9;
+      max-width: 540px; /* 600px * 0.9 */
+      margin: 0 auto;
+    }
+
+    .main-button {
+      background-color: var(--primary);
+      color: white;
+      font-size: 0.99rem; /* 1.1rem * 0.9 */
+      font-weight: 500;
+      padding: var(--spacing-md) var(--spacing-lg);
+      border: none;
+      border-radius: 45px; /* 50px * 0.9 */
+      cursor: pointer;
+      margin: var(--spacing-md) auto;
+      display: block;
+      box-shadow: 0 4px 12px var(--shadow);
+      transition: all 0.3s ease;
+      width: 90%;
+      max-width: 270px; /* 300px * 0.9 */
+    }
+
+    .main-button:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .main-button:active {
+      transform: translateY(0);
+    }
+
+    .click-count {
+      text-align: center;
+      font-size: 0.81rem; /* 0.9rem * 0.9 */
+      color: #666;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 12px var(--shadow);
+      padding: var(--spacing-lg);
+      width: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-title {
+      font-size: 1.08rem; /* 1.2rem * 0.9 */
+      margin-bottom: var(--spacing-md);
+      font-weight: 700;
+      color: var(--secondary);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-xs);
+    }
+
+    .result {
+      text-align: center;
+    }
+
+    .result p {
+      margin: var(--spacing-sm) 0;
+      font-size: 0.9rem; /* 1rem * 0.9 */
+    }
+
+    .highlight {
+      font-weight: 700;
+      color: var(--highlight);
+    }
+
+    .numero-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--spacing-xs);
+      margin: var(--spacing-sm) 0;
+    }
+
+    .numero {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32.4px; /* 36px * 0.9 */
+      height: 32.4px; /* 36px * 0.9 */
+      border-radius: 50%;
+      font-size: 0.81rem; /* 0.9rem * 0.9 */
+      font-weight: 500;
+      background-color: var(--numero-bg);
+      color: var(--text);
+    }
+
+    .acerto {
+      background-color: var(--acerto-bg);
+      color: var(--acerto-text);
+      font-weight: 700;
+    }
+
+    .resultado-final {
+      font-size: 0.99rem; /* 1.1rem * 0.9 */
+      font-weight: 700;
+      margin-top: var(--spacing-md);
+      padding: var(--spacing-sm);
+      border-radius: var(--border-radius);
+    }
+
+    .vitoria-ia {
+      background-color: rgba(40, 167, 69, 0.1);
+      color: var(--primary);
+    }
+
+    .vitoria-jogador {
+      background-color: rgba(0, 123, 255, 0.1);
+      color: var(--highlight);
+    }
+
+    .empate {
+      background-color: rgba(108, 117, 125, 0.1);
+      color: #6c757d;
+    }
+
+    /* Layout para telas maiores */
+    @media (min-width: 768px) {
+      h1 {
+        font-size: 1.98rem; /* 2.2rem * 0.9 */
+      }
+      
+      .subtitle {
+        font-size: 0.99rem; /* 1.1rem * 0.9 */
+      }
+      
+      .cards-container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-xl);
+      }
+      
+      .card.comparacao {
+        max-width: 720px; /* 800px * 0.9 */
+        margin: 0 auto;
+      }
+      
+      @media (min-width: 1024px) {
+        .cards-container {
+          flex-direction: column;
+        }
+        
+        .card.sorteio {
+          margin-bottom: var(--spacing-xl);
+        }
+      }
+      
+      .numero {
+        width: 36px; /* 40px * 0.9 */
+        height: 36px; /* 40px * 0.9 */
+        font-size: 0.9rem; /* 1rem * 0.9 */
+      }
+    }
+
+    /* Animações */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card.animar {
+      animation: fadeIn 0.5s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🎲 Simulador FaixaBet</h1>
+      <p class="subtitle">Veja Como Nossa IA Supera Bolões e Palpites Comuns</p>
+    </header>
+
+    <button class="main-button" onclick="rodarSimulacao()">🔄 Gerar Nova Simulação</button>
+    
+    <div class="click-count" id="contador">Simulações Realizadas: 0</div>
+
+    <div class="cards-container">
+      <!-- Card Sorteio Oficial -->
+      <div class="card sorteio animar">
+        <div class="card-title">🎯 Sorteio Oficial (Simulado)</div>
+        <div class="result" id="sorteio"></div>
+      </div>
+
+      <!-- Card Comparação (Centralizado) -->
+      <div class="card comparacao animar">
+        <div class="card-title">🧠 IA x Jogador</div>
+        <div class="result" id="comparacao"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let cliques = 0;
+
+    function gerarPalpite(qtd) {
+      const numeros = [];
+      while (numeros.length < qtd) {
+        const n = Math.floor(Math.random() * 25) + 1;
+        if (!numeros.includes(n)) numeros.push(n);
+      }
+      return numeros.sort((a, b) => a - b);
+    }
+
+    function contarAcertos(palpite, sorteio) {
+      return palpite.filter(n => sorteio.includes(n)).length;
+    }
+
+    function formatarNumeros(numeros, sorteio) {
+      return numeros.map(n => {
+        const isAcerto = sorteio.includes(n);
+        const classe = isAcerto ? 'numero acerto' : 'numero';
+        return `<div class="${classe}">${n}</div>`;
+      }).join('');
+    }
+
+    function rodarSimulacao() {
+      cliques++;
+      document.getElementById('contador').innerText = `Simulações Realizadas: ${cliques}`;
+
+      const sorteio = gerarPalpite(15);
+
+      // Gera palpite da IA (com 10 números do sorteio + 5 aleatórios)
+      const iaAcertos = sorteio.slice(0, 10);
+      const resto = gerarPalpite(25).filter(n => !iaAcertos.includes(n));
+      while (iaAcertos.length < 15) {
+        const n = resto.pop();
+        if (n && !iaAcertos.includes(n)) iaAcertos.push(n);
+      }
+      const ia = iaAcertos.sort((a, b) => a - b);
+
+      const jogador = gerarPalpite(15);
+
+      const acertosIA = contarAcertos(ia, sorteio);
+      const acertosJogador = contarAcertos(jogador, sorteio);
+
+      let resultadoFinal = '';
+      let classeResultado = '';
+      
+      if (acertosIA > acertosJogador) {
+        resultadoFinal = '✅ IA Superou o Jogador!';
+        classeResultado = 'vitoria-ia';
+      } else if (acertosIA < acertosJogador) {
+        resultadoFinal = '🎉 Você Superou a IA!';
+        classeResultado = 'vitoria-jogador';
+      } else {
+        resultadoFinal = '🤝 Empate!';
+        classeResultado = 'empate';
+      }
+
+      document.getElementById('sorteio').innerHTML = `
+        <div class="numero-container">
+          ${formatarNumeros(sorteio, [])}
+        </div>
+      `;
+
+      document.getElementById('comparacao').innerHTML = `
+        <p><span class="highlight">IA:</span></p>
+        <div class="numero-container">
+          ${formatarNumeros(ia, sorteio)}
+        </div>
+        <p>Acertos: <strong>${acertosIA}</strong></p>
+        
+        <p style="margin-top: var(--spacing-lg);"><span class="highlight">Jogador:</span></p>
+        <div class="numero-container">
+          ${formatarNumeros(jogador, sorteio)}
+        </div>
+        <p>Acertos: <strong>${acertosJogador}</strong></p>
+        
+        <div class="resultado-final ${classeResultado}">
+          ${resultadoFinal}
+        </div>
+      `;
+
+      // Adiciona animação
+      document.querySelectorAll('.card').forEach(card => {
+        card.classList.remove('animar');
+        // Força o reflow
+        void card.offsetWidth;
+        card.classList.add('animar');
+      });
+    }
+
+    // Gera uma simulação inicial ao carregar a página
+    window.onload = function() {
+      setTimeout(rodarSimulacao, 500);
+    };
+  </script>
+</body>
+</html>

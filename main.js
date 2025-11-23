@@ -4,7 +4,7 @@
 const API_BASE = "https://backend-v8.onrender.com/api";
 let selectedPlan = null;
 
-// Cache da instância do Stripe
+// Cache da instância do Stripe (futuro; hoje não está sendo usada)
 let stripeInstance = null;
 async function getStripe() {
   if (stripeInstance) return stripeInstance;
@@ -17,6 +17,7 @@ async function getStripe() {
   stripeInstance = Stripe(data.publishableKey);
   return stripeInstance;
 }
+
 // ========================
 // Seleção de plano
 // ========================
@@ -37,14 +38,17 @@ document.querySelectorAll("[data-plan]").forEach((el) => {
 
     // Mostrar formulário
     const formSection = document.getElementById("formSection");
-    formSection.classList.add("active");
-    document.getElementById("selectedPlan").value =
-      selectedPlan.charAt(0).toUpperCase() + selectedPlan.slice(1);
-
-    formSection.scrollIntoView({ behavior: "smooth" });
+    if (formSection) {
+      formSection.classList.add("active");
+      const inputPlan = document.getElementById("selectedPlan");
+      if (inputPlan) {
+        inputPlan.value =
+          selectedPlan.charAt(0).toUpperCase() + selectedPlan.slice(1);
+      }
+      formSection.scrollIntoView({ behavior: "smooth" });
+    }
   });
 });
-
 
 // ========================
 // Envio do formulário
@@ -52,8 +56,10 @@ document.querySelectorAll("[data-plan]").forEach((el) => {
 async function enviarFormulario(event) {
   event.preventDefault();
 
-  document.getElementById("loading").style.display = "block";
-  document.querySelector(".submit-btn").disabled = true;
+  const loading = document.getElementById("loading");
+  const submitBtn = document.querySelector(".submit-btn");
+  if (loading) loading.style.display = "block";
+  if (submitBtn) submitBtn.disabled = true;
 
   const form = event.target;
   const formData = new FormData(form);
@@ -72,22 +78,31 @@ async function enviarFormulario(event) {
     // 1) Validação de email
     const emailResp = await fetch(`${API_BASE}/check-email`, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
       body: JSON.stringify({ email: payload.email }),
     });
-    if (!emailResp.ok) throw new Error(`Erro check-email (${emailResp.status})`);
+    if (!emailResp.ok) {
+      throw new Error(`Erro check-email (${emailResp.status})`);
+    }
     const emailResult = await emailResp.json();
-    if (emailResult.exists) throw new Error("Este email já está cadastrado.");
+    if (emailResult.exists) {
+      throw new Error("Este email já está cadastrado.");
+    }
 
     // 2) Registrar usuário e (se pago) criar checkout
     const res = await fetch(`${API_BASE}/register-and-checkout`, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
       body: JSON.stringify(payload),
     });
 
     if (!res.ok) {
-      // tenta extrair JSON; se não der, usa texto
       let msg = `Erro backend (${res.status})`;
       try {
         const j = await res.json();
@@ -101,50 +116,49 @@ async function enviarFormulario(event) {
 
     const data = await res.json();
 
-    // Plano Free → ativado
+    // Plano Free → ativado direto
     if (data.userId && !data.checkoutUrl) {
       showSuccessMessage();
       return;
     }
 
-    // Plano Pago → redirecionar para Stripe
+    // Plano Pago → redireciona Stripe
     if (data.checkoutUrl) {
-      window.location.href = data.checkoutUrl; // redireciona direto
+      window.location.href = data.checkoutUrl;
       return;
     }
 
-    // Se nada acima, algo está errado
+    // Se nada disso, algo estranho
     throw new Error("Resposta inesperada do backend");
   } catch (err) {
     alert("Erro: " + err.message);
-    document.getElementById("loading").style.display = "none";
-    document.querySelector(".submit-btn").disabled = false;
+    if (loading) loading.style.display = "none";
+    if (submitBtn) submitBtn.disabled = false;
   }
 }
 
 // ========================
-// Confirmar pagamento (feedback visual)
-// ========================
-// Confirmar pagamento (feedback visual)
-// ========================
-// ========================
-// Confirmar pagamento (feedback visual)
+// Confirmar pagamento (Stripe success_url)
 // ========================
 async function confirmarPagamento() {
   const urlParams = new URLSearchParams(window.location.search);
-  const sessionId = urlParams.get("session_id"); // Stripe já manda isso no success_url
+  const sessionId = urlParams.get("session_id"); // Stripe manda isso no success_url
   if (!sessionId) return;
 
   try {
-    const res = await fetch(`${API_BASE}/payment-success?session_id=${encodeURIComponent(sessionId)}`);
+    const res = await fetch(
+      `${API_BASE}/payment-success?session_id=${encodeURIComponent(sessionId)}`
+    );
     if (!res.ok) throw new Error("Não foi possível confirmar pagamento");
     const data = await res.json();
 
     if (data?.status === "complete") {
       showSuccessMessage();
     } else {
-      document.getElementById("successMessage").innerHTML =
-        "<p>⚠️ Pagamento não confirmado.</p>";
+      const success = document.getElementById("successMessage");
+      if (success) {
+        success.innerHTML = "<p>⚠️ Pagamento não confirmado.</p>";
+      }
     }
   } catch (err) {
     console.error("Erro ao confirmar pagamento:", err);
@@ -152,16 +166,21 @@ async function confirmarPagamento() {
 }
 
 function showSuccessMessage() {
-  document.getElementById("formSection").style.display = "none";
-  document.getElementById("successMessage").style.display = "block";
-  document.getElementById("successMessage").scrollIntoView({ behavior: "smooth" });
+  const formSection = document.getElementById("formSection");
+  const success = document.getElementById("successMessage");
+  if (formSection) formSection.style.display = "none";
+  if (success) {
+    success.style.display = "block";
+    success.scrollIntoView({ behavior: "smooth" });
+  }
 }
 
+// Acessar App
 document.getElementById("accessApp")?.addEventListener("click", function () {
-  // ajuste para a URL real da sua aplicação
   window.location.href = "https://faixabet.streamlit.app/";
 });
 
+// Bootstrap do main.js
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("registerForm");
   if (form) form.addEventListener("submit", enviarFormulario);

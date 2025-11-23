@@ -1,48 +1,62 @@
-// modals.js - Modal "Gerar Palpite Exclusivo" (versão nova)
-document.addEventListener("DOMContentLoaded", function () {
-  // === DADOS BASEADOS EM PADRÕES DE IA (mock local) ===
+// modals.js – Modal "Gerar Palpite Exclusivo" (versão final)
+document.addEventListener("DOMContentLoaded", () => {
+  
+  // ========================
+  // BASE DE DADOS (MOCK DE IA)
+  // ========================
   const predictionPool = [
     {
       numbers: [2, 5, 7, 9, 11, 13, 14, 15, 17, 18, 20, 22, 23, 24, 25],
       analysis: [
-        "🔹 9 números quentes (alta frequência nos últimos 30 sorteios)",
-        "🔹 6 números frios estratégicos (com padrão de retorno)",
-        "🔹 Combinação com baixa repetição em apostas populares",
-        "🔹 Equilíbrio ímpar/par: 8-7 (padrão mais frequente)",
-      ],
+        "🔹 9 números quentes nos últimos 30 sorteios",
+        "🔹 6 números frios estratégicos",
+        "🔹 Baixa repetição em apostas populares",
+        "🔹 Equilíbrio ímpar/par: 8-7"
+      ]
     },
     {
       numbers: [1, 3, 4, 6, 8, 10, 12, 16, 19, 21, 22, 23, 24, 25, 26],
       analysis: [
-        "🔹 7 números da faixa central (11–20), equilibrando extremos",
-        "🔹 4 números ímpares consecutivos (padrão raro)",
-        "🔹 Ausência de sequência completa (reduz partilha)",
-        "🔹 Alta cobertura de dezenas atrasadas",
-      ],
+        "🔹 Forte faixa central (11–20)",
+        "🔹 4 ímpares consecutivos — padrão raro",
+        "🔹 Sem sequência longa — evita partilha",
+        "🔹 Alta cobertura de dezenas atrasadas"
+      ]
     },
     {
       numbers: [5, 6, 7, 8, 9, 13, 14, 15, 16, 17, 18, 19, 20, 21, 25],
       analysis: [
-        "🔹 Bloco central forte (05–21) com ancoragem",
-        "🔹 11 números entre 05 e 21 (faixa estável)",
-        "🔹 Evita extremos (1 número abaixo de 05)",
-        "🔹 Alta densidade média",
-      ],
-    },
+        "🔹 Bloco central poderoso (05–21)",
+        "🔹 11 dezenas na zona quente",
+        "🔹 Apenas 1 dezena abaixo de 05",
+        "🔹 Alta densidade estatística"
+      ]
+    }
   ];
 
+  // ========================
+  // BOTÃO QUE ABRE O MODAL
+  // ========================
   const openBtn = document.getElementById("gerarPalpiteBtn");
-  if (!openBtn) return;
+  if (!openBtn) return; // página sem o botão → ignora
 
-  // Cria o modal dinamicamente
+  // ========================
+  // CRIAÇÃO DINÂMICA DO MODAL
+  // ========================
   const modal = document.createElement("div");
   modal.id = "predictionModal";
   modal.className =
-    "fixed inset-0 flex items-center justify-center bg-black/70 z-50 hidden backdrop-blur-md";
+    "fixed inset-0 hidden flex items-center justify-center bg-black/70 z-50 backdrop-blur-md";
 
   modal.innerHTML = `
-    <div class="bg-gray-900 border border-green-500/40 rounded-3xl shadow-2xl w-11/12 max-w-md p-6 text-center relative overflow-hidden">
-      <button id="closeModal" class="absolute top-3 right-3 text-gray-300 hover:text-white text-2xl">×</button>
+    <div class="bg-gray-900 border border-green-500/40 rounded-3xl shadow-2xl 
+                w-11/12 max-w-md p-6 text-center relative overflow-hidden">
+
+      <button id="closeModal" 
+              class="absolute top-3 right-3 text-gray-300 hover:text-white text-2xl">
+        ×
+      </button>
+
       <h2 class="text-2xl font-bold text-green-400 mb-4">💡 Palpite Exclusivo</h2>
 
       <div id="loadingStep" class="space-y-3">
@@ -53,11 +67,16 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
 
       <div id="resultStep" class="hidden">
-        <div id="generatedNumbers" class="flex flex-wrap justify-center gap-2 mb-4"></div>
-        <ul id="analysisText" class="text-left text-sm text-gray-300 list-disc list-inside mb-4"></ul>
+
+        <div id="generatedNumbers" 
+             class="flex flex-wrap justify-center gap-2 mb-4"></div>
+
+        <ul id="analysisText" 
+            class="text-left text-sm text-gray-300 list-disc list-inside mb-4"></ul>
 
         <a id="whatsappBtn" target="_blank"
-          class="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-lg w-full mb-3">
+          class="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 
+                 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-lg w-full mb-3">
           📲 Receber via WhatsApp
         </a>
 
@@ -70,6 +89,9 @@ document.addEventListener("DOMContentLoaded", function () {
   `;
   document.body.appendChild(modal);
 
+  // ========================
+  // ELEMENTOS DO MODAL
+  // ========================
   const closeBtn = modal.querySelector("#closeModal");
   const closeFinal = modal.querySelector("#closeModalFinal");
   const loadingStep = modal.querySelector("#loadingStep");
@@ -80,57 +102,58 @@ document.addEventListener("DOMContentLoaded", function () {
   const analysisText = modal.querySelector("#analysisText");
   const whatsappBtn = modal.querySelector("#whatsappBtn");
 
-  // Abrir modal
+  // ========================
+  // ABRIR MODAL
+  // ========================
   openBtn.addEventListener("click", () => {
     modal.classList.remove("hidden");
     startGeneration();
   });
 
-  // Fechar modal
-  [closeBtn, closeFinal].forEach((btn) => {
-    if (btn) {
-      btn.addEventListener("click", () => {
-        modal.classList.add("hidden");
-        resetModal();
-      });
-    }
-  });
+  // ========================
+  // FECHAR MODAL
+  // ========================
+  const fecharModal = () => {
+    modal.classList.add("hidden");
+    resetModal();
+  };
 
-  // Fechar clicando fora
+  closeBtn.addEventListener("click", fecharModal);
+  closeFinal.addEventListener("click", fecharModal);
   modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.classList.add("hidden");
-      resetModal();
-    }
+    if (e.target === modal) fecharModal();
   });
 
-  // Simular “IA pensando”
+  // ========================
+  // SIMULAÇÃO "IA PROCESSANDO"
+  // ========================
   function startGeneration() {
     let progress = 0;
     progressBar.style.width = "0%";
-    progressText.textContent = "Analisando padrões históricos...";
+    progressText.textContent = "Analisando padrões...";
 
     const interval = setInterval(() => {
       progress += Math.random() * 15;
+
       if (progress >= 100) {
         clearInterval(interval);
         progressBar.style.width = "100%";
-        setTimeout(showResult, 400);
-      } else {
-        progressBar.style.width = progress + "%";
-
-        if (progress < 30)
-          progressText.textContent = "Analisando padrões históricos...";
-        else if (progress < 60)
-          progressText.textContent = "Calculando combinações otimizadas...";
-        else if (progress < 85)
-          progressText.textContent = "Aplicando modelo de IA...";
-        else progressText.textContent = "Finalizando...";
+        setTimeout(showResult, 350);
+        return;
       }
+
+      progressBar.style.width = progress + "%";
+
+      if (progress < 30) progressText.textContent = "Analisando padrões...";
+      else if (progress < 60) progressText.textContent = "Gerando combinações...";
+      else if (progress < 85) progressText.textContent = "Aplicando IA...";
+      else progressText.textContent = "Finalizando...";
     }, 180);
   }
 
-  // Mostrar resultado
+  // ========================
+  // MOSTRAR RESULTADO GERADO
+  // ========================
   function showResult() {
     loadingStep.classList.add("hidden");
     resultStep.classList.remove("hidden");
@@ -138,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const prediction =
       predictionPool[Math.floor(Math.random() * predictionPool.length)];
 
-    // Dezenas
+    // dezenas
     generatedNumbers.innerHTML = "";
     prediction.numbers.forEach((num) => {
       const ball = document.createElement("span");
@@ -148,11 +171,11 @@ document.addEventListener("DOMContentLoaded", function () {
       generatedNumbers.appendChild(ball);
     });
 
-    // Análise
+    // análise
     analysisText.innerHTML = "";
     prediction.analysis.forEach((item) => {
       const li = document.createElement("li");
-      li.innerHTML = item;
+      li.textContent = item;
       analysisText.appendChild(li);
     });
 
@@ -166,6 +189,9 @@ document.addEventListener("DOMContentLoaded", function () {
     whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${message}`;
   }
 
+  // ========================
+  // RESET DO MODAL
+  // ========================
   function resetModal() {
     loadingStep.classList.remove("hidden");
     resultStep.classList.add("hidden");
