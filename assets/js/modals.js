@@ -1,6 +1,5 @@
-// modals.js – Modal "Gerar Palpite Exclusivo" (versão final)
+// assets/js/modals.js – Modal "Gerar Palpite Exclusivo" (versão estável)
 document.addEventListener("DOMContentLoaded", () => {
-  
   // ========================
   // BASE DE DADOS (MOCK DE IA)
   // ========================
@@ -8,41 +7,37 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       numbers: [2, 5, 7, 9, 11, 13, 14, 15, 17, 18, 20, 22, 23, 24, 25],
       analysis: [
-        "🔹 9 números quentes nos últimos 30 sorteios",
-        "🔹 6 números frios estratégicos",
-        "🔹 Baixa repetição em apostas populares",
-        "🔹 Equilíbrio ímpar/par: 8-7"
+        "🔹 9 números quentes (alta frequência nos últimos 30 sorteios)",
+        "🔹 6 números frios estratégicos (com padrão de retorno)",
+        "🔹 Combinação com baixa repetição em apostas populares",
+        "🔹 Equilíbrio ímpar/par: 8-7 (padrão mais frequente)"
       ]
     },
     {
       numbers: [1, 3, 4, 6, 8, 10, 12, 16, 19, 21, 22, 23, 24, 25, 26],
       analysis: [
-        "🔹 Forte faixa central (11–20)",
-        "🔹 4 ímpares consecutivos — padrão raro",
-        "🔹 Sem sequência longa — evita partilha",
+        "🔹 7 números da faixa central (11–20), equilibrando extremos",
+        "🔹 4 números ímpares consecutivos (padrão raro)",
+        "🔹 Ausência de sequência completa (reduz partilha)",
         "🔹 Alta cobertura de dezenas atrasadas"
       ]
     },
     {
       numbers: [5, 6, 7, 8, 9, 13, 14, 15, 16, 17, 18, 19, 20, 21, 25],
       analysis: [
-        "🔹 Bloco central poderoso (05–21)",
-        "🔹 11 dezenas na zona quente",
-        "🔹 Apenas 1 dezena abaixo de 05",
-        "🔹 Alta densidade estatística"
+        "🔹 Bloco central forte (05–21) com ancoragem",
+        "🔹 11 números entre 05 e 21 (faixa estável)",
+        "🔹 Evita extremos (1 número abaixo de 05)",
+        "🔹 Alta densidade média"
       ]
     }
   ];
 
-  // ========================
   // BOTÃO QUE ABRE O MODAL
-  // ========================
   const openBtn = document.getElementById("gerarPalpiteBtn");
   if (!openBtn) return; // página sem o botão → ignora
 
-  // ========================
   // CRIAÇÃO DINÂMICA DO MODAL
-  // ========================
   const modal = document.createElement("div");
   modal.id = "predictionModal";
   modal.className =
@@ -61,13 +56,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       <div id="loadingStep" class="space-y-3">
         <p id="progressText" class="text-gray-400">Analisando padrões históricos...</p>
+
         <div class="w-full bg-gray-800 h-3 rounded-full overflow-hidden">
           <div id="progressBar" class="bg-green-500 h-3 w-0 transition-all duration-300"></div>
         </div>
       </div>
 
       <div id="resultStep" class="hidden">
-
         <div id="generatedNumbers" 
              class="flex flex-wrap justify-center gap-2 mb-4"></div>
 
@@ -89,9 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
   `;
   document.body.appendChild(modal);
 
-  // ========================
   // ELEMENTOS DO MODAL
-  // ========================
   const closeBtn = modal.querySelector("#closeModal");
   const closeFinal = modal.querySelector("#closeModalFinal");
   const loadingStep = modal.querySelector("#loadingStep");
@@ -102,35 +95,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const analysisText = modal.querySelector("#analysisText");
   const whatsappBtn = modal.querySelector("#whatsappBtn");
 
-  // ========================
-  // ABRIR MODAL
-  // ========================
-  openBtn.addEventListener("click", () => {
+  // ABRIR / FECHAR
+  const abrirModal = () => {
+    resetModal();
     modal.classList.remove("hidden");
     startGeneration();
-  });
-
-  // ========================
-  // FECHAR MODAL
-  // ========================
+  };
   const fecharModal = () => {
     modal.classList.add("hidden");
     resetModal();
   };
 
+  openBtn.addEventListener("click", abrirModal);
   closeBtn.addEventListener("click", fecharModal);
   closeFinal.addEventListener("click", fecharModal);
   modal.addEventListener("click", (e) => {
     if (e.target === modal) fecharModal();
   });
 
-  // ========================
   // SIMULAÇÃO "IA PROCESSANDO"
-  // ========================
   function startGeneration() {
     let progress = 0;
     progressBar.style.width = "0%";
-    progressText.textContent = "Analisando padrões...";
+    progressText.textContent = "Analisando padrões históricos...";
 
     const interval = setInterval(() => {
       progress += Math.random() * 15;
@@ -144,16 +131,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
       progressBar.style.width = progress + "%";
 
-      if (progress < 30) progressText.textContent = "Analisando padrões...";
-      else if (progress < 60) progressText.textContent = "Gerando combinações...";
-      else if (progress < 85) progressText.textContent = "Aplicando IA...";
-      else progressText.textContent = "Finalizando...";
+      if (progress < 30)
+        progressText.textContent = "Analisando padrões históricos...";
+      else if (progress < 60)
+        progressText.textContent = "Calculando combinações otimizadas...";
+      else if (progress < 85)
+        progressText.textContent = "Aplicando modelo de IA...";
+      else
+        progressText.textContent = "Finalizando...";
     }, 180);
   }
 
-  // ========================
   // MOSTRAR RESULTADO GERADO
-  // ========================
   function showResult() {
     loadingStep.classList.add("hidden");
     resultStep.classList.remove("hidden");
@@ -189,9 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
     whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${message}`;
   }
 
-  // ========================
   // RESET DO MODAL
-  // ========================
   function resetModal() {
     loadingStep.classList.remove("hidden");
     resultStep.classList.add("hidden");

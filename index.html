@@ -1180,20 +1180,44 @@
         { id: "lotofacil", el: "lotofacilResultado", nome: "Lotofácil" },
         { id: "megasena", el: "megasenaResultado", nome: "Mega-Sena" }
       ];
+
+      function extrairDezenas(payload) {
+        if (!payload) return [];
+        return (
+          payload.dezenas ||
+          payload.listaDezenas ||
+          payload.listaDezenasOrdemSorteio ||
+          []
+        );
+      }
+
       for (let l of loterias) {
         try {
-          const r = await fetch(apiURL + l.id);
+          const r = await fetch(apiURL + l.id, { cache: "no-store" });
           const j = await r.json();
-          const dezenas = j.dezenas.slice(0, 15).join(" ");
+          const dezenasArr = extrairDezenas(j);
+          const dezenasTxt = Array.isArray(dezenasArr)
+            ? dezenasArr.slice(0, 15).join(" ")
+            : "";
+
           const alvo = document.getElementById(l.el);
           if (alvo) {
-            alvo.innerHTML = `<strong>${l.nome}:</strong> ${dezenas}`;
+            if (dezenasTxt) {
+              alvo.innerHTML = `<strong>${l.nome}:</strong> ${dezenasTxt}`;
+            } else {
+              alvo.innerHTML = `<strong>${l.nome}:</strong> dados indisponíveis no momento`;
+            }
           }
         } catch (e) {
           console.error("Erro", l.id, e);
+          const alvo = document.getElementById(l.el);
+          if (alvo) {
+            alvo.innerHTML = `<strong>${l.nome}:</strong> erro ao consultar resultados`;
+          }
         }
       }
     }
+
     document.addEventListener("DOMContentLoaded", carregarMiniResultados);
   </script>
 
@@ -1258,45 +1282,6 @@
   </section>
 
   <!-- LÓGICA DO FORM + PLANOS (sem mexer no menu mobile) -->
-  <script>
-    if (!window.toggleForm) {
-      window.toggleForm = function (show) {
-        const sec = document.getElementById('formSection');
-        if (!sec) return;
-
-        if (show) {
-          const selectedPlan = document.getElementById('selectedPlan').value;
-          if (!selectedPlan) {
-            alert('Por favor, selecione um plano antes de prosseguir.');
-            return;
-          }
-          sec.classList.add('active');
-          sec.scrollIntoView({ behavior: 'smooth' });
-        } else {
-          sec.classList.remove('active');
-        }
-      }
-    }
-
-    function selectPlan(planName) {
-      document.getElementById('selectedPlan').value = planName;
-
-      document.querySelectorAll('.plan-card').forEach(card => {
-        card.classList.remove('selected');
-      });
-      const selectedCard = document.querySelector(`.plan-card[data-plan="${planName.toLowerCase()}"]`);
-      if (selectedCard) selectedCard.classList.add('selected');
-
-      toggleForm(true);
-    }
-
-    document.querySelectorAll('.plans-container .btn').forEach(button => {
-      button.addEventListener('click', () => {
-        const plan = button.getAttribute('data-plan');
-        selectPlan(plan.charAt(0).toUpperCase() + plan.slice(1));
-      });
-    });
-  </script>
 
   <!-- FOOTER -->
   <footer class="bg-gray-900 border-t border-gray-800 py-12 px-6">
@@ -1354,7 +1339,7 @@
         </div>
       </div>
       <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
-        <p>© 2025 fAIxaBet. Todos os direitos reservados - 11.0</p>
+        <p>© 2025 fAIxaBet. Todos os direitos reservados - 11.1</p>
         <p class="mt-2 text-sm">Este site destina-se a maiores de 18 anos. Se for apostar, seja responsável.</p>
       </div>
     </div>
@@ -1375,82 +1360,13 @@
     });
   </script>
 
-  <!-- Seu JS principal (mantido) -->
-  <script src="./main.js" defer></script>
+  <!-- JS principal: planos + formulário + checkout -->
+  <script src="assets/js/main.js" defer></script>
 
-  <!-- JS do Modal A (novo) - manter aqui e garantir que o arquivo exista -->
-  <script src="./modals.js" defer></script>
+  <!-- Modal "Gerar Palpite Exclusivo" -->
+  <script src="assets/js/modals.js" defer></script>
 
-  <!-- BREVO + COOKIES (pode ir para brevo.js no futuro se quiser) -->
-  <script>
-    window.brevoTrackerLoaded = false;
-
-    function loadBrevoTracker() {
-      if (window.brevoTrackerLoaded) return;
-      window.brevoTrackerLoaded = true;
-
-      var sdkScript = document.createElement("script");
-      sdkScript.src = "https://cdn.brevo.com/js/sdk-loader.js";
-      sdkScript.async = true;
-      document.head.appendChild(sdkScript);
-
-      window.Brevo = window.Brevo || [];
-      Brevo.push([
-        "init",
-        {
-          client_key: "g8hmydu90ttp1b95werp9qad"
-        }
-      ]);
-    }
-
-    function setConsent(status) {
-      try {
-        localStorage.setItem("cookiesConsentFaixabet", status);
-      } catch (e) {
-        console.warn("Não foi possível acessar localStorage:", e);
-      }
-    }
-
-    function getConsent() {
-      try {
-        return localStorage.getItem("cookiesConsentFaixabet");
-      } catch (e) {
-        console.warn("Não foi possível ler localStorage:", e);
-        return null;
-      }
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const banner = document.getElementById("cookie-banner");
-      const btnAceitar = document.getElementById("acceptCookies");
-      const btnRecusar = document.getElementById("rejectCookies");
-
-      const consent = getConsent();
-
-      if (consent === "accepted") {
-        loadBrevoTracker();
-      } else if (consent === "rejected") {
-        // nada
-      } else {
-        if (banner) banner.style.display = "flex";
-      }
-
-      if (btnAceitar) {
-        btnAceitar.addEventListener("click", () => {
-          setConsent("accepted");
-          if (banner) banner.style.display = "none";
-          loadBrevoTracker();
-        });
-      }
-
-      if (btnRecusar) {
-        btnRecusar.addEventListener("click", () => {
-          setConsent("rejected");
-          if (banner) banner.style.display = "none";
-        });
-      }
-    });
-  </script>
-
+  <!-- Brevo + Cookies -->
+  <script src="assets/js/brevo.js" defer></script>
 </body>
 </html>
