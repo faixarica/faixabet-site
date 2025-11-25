@@ -1,4 +1,4 @@
-// assets/js/brevo.js – Cookie banner + Brevo Tracker
+// assets/js/brevo.js – Cookie banner + Brevo Tracker (CORRIGIDO)
 window.brevoTrackerLoaded = false;
 
 function loadBrevoTracker() {
@@ -14,12 +14,13 @@ function loadBrevoTracker() {
   window.Brevo.push([
     "init",
     {
-      client_key: "g8hmydu90ttp1b95werp9qad",
-    },
+      client_key: "g8hmydu90ttp1b95werp9qad"
+    }
   ]);
 }
 
 function setConsent(status) {
+  // status = "aceito" ou "negado"
   try {
     localStorage.setItem("cookiesConsentFaixabet", status);
   } catch (e) {
@@ -43,26 +44,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const consent = getConsent();
 
-  if (consent === "accepted") {
+  // SE O USUÁRIO JÁ ACEITOU — carregue automaticamente
+  if (consent === "aceito") {
     loadBrevoTracker();
-  } else if (consent === "rejected") {
-    // não carrega nada
-  } else if (banner) {
+  }
+
+  // SE NÃO HOUVE DECISÃO — mostrar banner
+  else if (!consent && banner) {
     banner.style.display = "flex";
   }
 
+  // EVENTO: ACEITAR
   if (btnAceitar) {
     btnAceitar.addEventListener("click", () => {
-      setConsent("accepted");
+      setConsent("aceito");
       if (banner) banner.style.display = "none";
-      loadBrevoTracker();
+      loadBrevoTracker(); // aqui carrega o SDK
     });
   }
 
+  // EVENTO: RECUSAR
   if (btnRecusar) {
     btnRecusar.addEventListener("click", () => {
-      setConsent("rejected");
+      setConsent("negado");
       if (banner) banner.style.display = "none";
+      // não carrega o tracker
     });
   }
 });
