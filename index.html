@@ -413,8 +413,107 @@
         min-height: auto;
       }
     }
+    /*style heatmap*/
+    /* ============================
+    MAPA DE GANHADORES – UI
+  ============================ */
+
+  .mapa-section {
+    padding: 80px 5%;
+    background: linear-gradient(180deg, #0b1220, #0f1a2f);
+    color: #fff;
+  }
+
+  .mapa-header {
+    max-width: 900px;
+    margin-bottom: 30px;
+  }
+
+  .mapa-header h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+  }
+
+  .mapa-header p {
+    color: #cbd5e1;
+    font-size: 1rem;
+  }
+
+  /* Filtros */
+  .mapa-filtros {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .mapa-select,
+  .mapa-input {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    color: #e5e7eb;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    min-width: 180px;
+  }
+
+  .mapa-select option {
+    background: #0f172a;
+    color: #e5e7eb;
+  }
+
+  /* Remove aparência feia padrão */
+  .mapa-select:focus,
+  .mapa-input:focus {
+    outline: none;
+    border-color: #22c55e;
+    box-shadow: 0 0 0 1px #22c55e;
+  }
+
+  /* Botão */
+  .mapa-btn {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    border: none;
+    color: #052e16;
+    font-weight: 600;
+    padding: 12px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .mapa-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(34, 197, 94, 0.4);
+  }
+
+  /* Mapa */
+  .mapa-container {
+    width: 100%;
+    height: 520px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #1e293b;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .mapa-filtros {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .mapa-select,
+    .mapa-input,
+    .mapa-btn {
+      width: 100%;
+    }
+  }
 
   </style>
+  
 </head>
 
 <body class="gradient-bg text-white font-sans">
@@ -467,10 +566,10 @@
         <div class="hidden md:flex flex-1 justify-center space-x-8 text-lg font-[Montserrat]">
           <a href="#hero" class="text-white hover:text-green-400 transition">Home</a>
           <a href="#como-funciona" class="text-white hover:text-green-400 transition">Como Funciona</a>
-          <a href="simulador-faixabet.html" target="_blank" class="text-white hover:text-green-400 transition">Simulador</a>
+          <a href="#mapa-ganhadores" target="_blank" class="text-white hover:text-green-400 transition">Mapa de Ganhadores</a>
           <a href="#planos" class="text-white hover:text-green-400 transition">Planos</a>
           <a href="#blog" class="text-white hover:text-green-400 transition">Blog</a>
-          <a href="#app" class="text-white hover:text-green-400 transition">App fAIxaBet</a>
+          <a href="#app" class="text-white hover:text-green-400 transition">Usar fAIxaBet</a>
         </div>
 
         <!-- Botão Mobile -->
@@ -491,7 +590,7 @@
 
         <a href="#hero" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">🏠 Home</a>
         <a href="#como-funciona" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">🧠 Como Funciona</a>
-        <a href="simulador-faixabet.html" target="_blank" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">🎯 Simulador</a>
+        <a href="#mapa-ganhadores"_blank" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">Mapa de Ganhadores</a>
         <a href="#planos" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">💰 Planos</a>
         <a href="#blog" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">📰 Blog</a>
         <a href="#app" class="menu-link py-2 hover:text-green-400 transition">📱 App fAIxaBet</a>
@@ -761,8 +860,8 @@
         <h4 class="plan-subtitle">Básico para começar</h4>
         <div class="plan-price">R$ 0,00</div>
         <ul class="plan-features">
-          <li>3 palpites por semana</li>
-          <li>1 Modelos de geração Bets</li>
+          <li>3 palpites semanais</li>
+          <li>1 Modelos de geração palpites</li>
           <li>1 Loteria disponível</li>
           <li>Histórico simples de palpites</li>
           <li>Validação de palpites</li>
@@ -778,8 +877,8 @@
         <h4 class="plan-subtitle">Controle e performance</h4>
         <div class="plan-price">R$ 5,99<span>/mês</span></div>
         <ul class="plan-features">
-          <li>18 palpites por semana</li>
-          <li>2 Modelos de geração Bets IA</li>
+          <li>18 palpites semanais</li>
+          <li>2 Modelos de geração palpites IA</li>
           <li>2 Loterias disponíveis</li>
           <li>Atualizações semanais</li>
           <li>Suporte por email</li>
@@ -795,8 +894,8 @@
         <h4 class="plan-subtitle">Experiência completa</h4>
         <div class="plan-price">R$ 10,99<span>/mês</span></div>
         <ul class="plan-features">
-          <li>30 palpites por semana</li>
-          <li>3 Modelos avançados IA</li>
+          <li>30 palpites semanais</li>
+          <li>Modelo avançados IA</li>
           <li>2 Loterias disponíveis</li>
           <li>Atualizações diárias</li>
           <li>Suporte 24x7</li>
@@ -814,16 +913,46 @@
         <h4 class="plan-subtitle">AI Híbrida Neural + Estatística</h4>
         <div class="plan-price">R$ 19,99<span>/mês</span></div>
         <ul class="plan-features">
-          <li>100 Palpites semana</li>
+          <li>60 Palpites semanais</li>
           <li>Modelo LS16 (Ensemble híbrido)</li>
-          <li>Precisão 13–14 acertos</li>
-          <li>3 Loterias incluídas</li>
+          <li>Todas loterias incluídas</li>
           <li>Telemetria de desempenho</li>
           <li>Acesso antecipado a recursos beta</li>
         </ul>
         <button class="btn bg-gray-700 text-white opacity-70 cursor-not-allowed" disabled>Disponível em breve</button>
       </div>
     </div>
+  </section>
+
+  <!-- heatmap ganhadores -->
+  <section id="mapa-ganhadores" class="mapa-section">
+  <div class="mapa-header">
+    <h2>Mapa de Ganhadores (Brasil)</h2>
+    <p>
+      Veja onde saíram apostas ganhadoras da Lotofácil e Mega-Sena.
+      Transparência, dados reais e análise visual.
+    </p>
+  </div>
+
+  <div class="mapa-filtros">
+    <select id="loteria" class="mapa-select">
+      <option value="lotofacil">Lotofácil</option>
+      <option value="megasena">Mega-Sena</option>
+    </select>
+
+    <input
+      type="number"
+      id="concurso"
+      class="mapa-input"
+      placeholder="Número do concurso"
+    />
+
+    <button class="mapa-btn" onclick="loadHeatmap()">
+      🔥   Carregar ganhadores
+    </button>
+  </div>
+
+  <div id="map" class="mapa-container"></div>
   </section>
 
   <!-- BLOG -->
@@ -960,7 +1089,7 @@
               <span class="absolute inset-0 bg-gradient-to-r from-lime-400 via-emerald-500 to-green-600 opacity-0 group-hover:opacity-100 blur-md transition duration-700"></span>
               <span class="relative z-10 flex items-center space-x-2">
                 <i class="fas fa-robot text-xl text-lime-300"></i>
-                <span>Abrir App fAIxaBet</span>
+                <span>Usar aplicação fAIxaBet</span>
               </span>
             </a>
           </div>
@@ -1308,7 +1437,7 @@
             <li><a class="text-gray-400 hover:text-green-400" href="#como-funciona">Como usar</a></li>
             <li><a class="text-gray-400 hover:text-green-400" href="#planos">Planos</a></li>
             <li><a class="text-gray-400 hover:text-green-400" href="#blog">Blog</a></li>
-            <li><a class="text-gray-400 hover:text-green-400" href="#app">App</a></li>
+            <li><a class="text-gray-400 hover:text-green-400" href="#app">Usar fAIxaBet</a></li>
           </ul>
         </div>
         <div>
@@ -1339,11 +1468,80 @@
         </div>
       </div>
       <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
-        <p>© 2025 fAIxaBet. Todos os direitos reservados - 11.1</p>
+        <p>© 2025 fAIxaBet. Todos os direitos reservados - 11.5</p>
         <p class="mt-2 text-sm">Este site destina-se a maiores de 18 anos. Se for apostar, seja responsável.</p>
       </div>
     </div>
   </footer>
+
+  <script>
+const API_BASE = "https://backend-v8.onrender.com";
+
+let map;
+let heatLayer;
+
+function initMap() {
+  if (map) return;
+
+  map = L.map("map").setView([-14.2, -51.9], 4);
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "© OpenStreetMap"
+  }).addTo(map);
+}
+
+async function loadHeatmap() {
+  initMap();
+
+  const loteria = document.getElementById("loteria").value;
+  const concurso = document.getElementById("concurso").value;
+
+  if (!concurso) {
+    alert("Informe o número do concurso");
+    return;
+  }
+
+  if (heatLayer) {
+    map.removeLayer(heatLayer);
+  }
+
+  const res = await fetch(
+    `${API_BASE}/api/winners?loteria=${loteria}&concurso=${concurso}`
+  );
+
+  const data = await res.json();
+
+  if (!data.length) {
+    alert("Nenhum ganhador encontrado para este concurso.");
+    return;
+  }
+
+  const pontos = data.map(p => [
+    p.lat,
+    p.lon,
+    p.acertos === 15 ? 1 : 0.6
+  ]);
+
+  heatLayer = L.heatLayer(pontos, {
+    radius: 25,
+    blur: 15,
+    maxZoom: 6
+  }).addTo(map);
+
+  // Tooltips individuais (opcional)
+  data.forEach(p => {
+    L.circleMarker([p.lat, p.lon], {
+      radius: 4,
+      opacity: 0
+    })
+    .addTo(map)
+    .bindTooltip(
+      `${p.municipio}/${p.uf}<br>${p.acertos} acertos`,
+      { direction: "top" }
+    );
+  });
+}
+  </script>
 
   <!-- Swiper JS (único) -->
   <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
@@ -1368,5 +1566,14 @@
 
   <!-- Brevo + Cookies -->
   <script src="assets/js/brevo.js" defer></script>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+
 </body>
 </html>
