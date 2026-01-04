@@ -878,7 +878,7 @@
         <div class="plan-price">R$ 5,99<span>/mês</span></div>
         <ul class="plan-features">
           <li>18 palpites semanais</li>
-          <li>2 Modelos de geração palpites IA</li>
+          <li>1 Modelos de geração palpites IA</li>
           <li>2 Loterias disponíveis</li>
           <li>Atualizações semanais</li>
           <li>Suporte por email</li>
@@ -1473,78 +1473,207 @@
       </div>
     </div>
   </footer>
-
+  
   <script>
-const API_BASE = "https://backend-v8.onrender.com";
+  (function () {
+    // ====== CONFIG ======
+    // Troque pelo seu backend real (Render) que expõe o endpoint do Stripe
+    // Exemplo: https://seu-backend.onrender.com
+    const BACKEND_BASE = "https://backend-v8.onrender.com";
 
-let map;
-let heatLayer;
+    // Se seu server.js usa outro endpoint, ajuste aqui:
+    // /create-checkout-session (ou /api/stripe/checkout, etc.)
+    const CHECKOUT_ENDPOINT = "/create-checkout-session";
 
-function initMap() {
-  if (map) return;
+    // ====== ELEMENTOS ======
+    const formSection = document.getElementById("formSection");
+    const selectedPlanInput = document.getElementById("selectedPlan");
+    const registerForm = document.getElementById("registerForm");
+    const loading = document.getElementById("loading");
 
-  map = L.map("map").setView([-14.2, -51.9], 4);
+    // Botões "Assinar/Começar" (tem data-plan no HTML)
+    const planButtons = document.querySelectorAll("button[data-plan]");
+    const planCards = document.querySelectorAll(".plan-card[data-plan]");
 
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "© OpenStreetMap"
-  }).addTo(map);
-}
+    function prettyPlan(p) {
+      const map = { free: "Free", silver: "Silver", gold: "Gold", platinum: "Platinum" };
+      return map[p] || p;
+    }
 
-async function loadHeatmap() {
-  initMap();
+    function openFormForPlan(plan) {
+      if (!formSection || !selectedPlanInput) return;
 
-  const loteria = document.getElementById("loteria").value;
-  const concurso = document.getElementById("concurso").value;
+      // marca card selecionado
+      planCards.forEach(c => c.classList.toggle("selected", c.dataset.plan === plan));
 
-  if (!concurso) {
-    alert("Informe o número do concurso");
-    return;
-  }
+      selectedPlanInput.value = prettyPlan(plan);
 
-  if (heatLayer) {
-    map.removeLayer(heatLayer);
-  }
+      formSection.classList.add("active");
+      formSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
 
-  const res = await fetch(
-    `${API_BASE}/api/winners?loteria=${loteria}&concurso=${concurso}`
-  );
+    // ====== CLIQUE NOS BOTÕES ======
+    planButtons.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const plan = btn.getAttribute("data-plan");
+        if (!plan) return;
 
-  const data = await res.json();
+        // Evita qualquer comportamento inesperado
+        e.preventDefault();
+        e.stopPropagation();
 
-  if (!data.length) {
-    alert("Nenhum ganhador encontrado para este concurso.");
-    return;
-  }
+        // Platinum é "em breve" (se algum dia tiver botão ativo)
+        if (plan === "platinum") return;
 
-  const pontos = data.map(p => [
-    p.lat,
-    p.lon,
-    p.acertos === 15 ? 1 : 0.6
-  ]);
+        openFormForPlan(plan);
+      }, { passive: false });
+    });
 
-  heatLayer = L.heatLayer(pontos, {
-    radius: 25,
-    blur: 15,
-    maxZoom: 6
-  }).addTo(map);
+    // (Opcional) Clique no card inteiro também seleciona
+    planCards.forEach(card => {
+      card.addEventListener("click", () => {
+        const plan = card.dataset.plan;
+        if (!plan || plan === "platinum") return;
+        openFormForPlan(plan);
+      });
+    });
 
-  // Tooltips individuais (opcional)
-  data.forEach(p => {
-    L.circleMarker([p.lat, p.lon], {
-      radius: 4,
-      opacity: 0
-    })
-    .addTo(map)
-    .bindTooltip(
-      `${p.municipio}/${p.uf}<br>${p.acertos} acertos`,
-      { direction: "top" }
+    // ====== SUBMIT: CADASTRO + CHECKOUT ======
+    if (registerForm) {
+      registerForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const plan = (selectedPlanInput?.value || "").toLowerCase(); // "free", "silver", "gold" etc.
+
+        // coleta dados do form
+        const fd = new FormData(registerForm);
+        const payload = Object.fromEntries(fd.entries());
+
+        // Normaliza o plano para o backend (ex: "Silver" -> "silver")
+        // Se você preferir, guarde o plan original num data attr.
+        payload.plan = (selectedPlanInput?.value || "").trim().toLowerCase();
+
+        try {
+          if (loading) loading.style.display = "block";
+
+          const res = await fetch(BACKEND_BASE + CHECKOUT_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+
+          if (!res.ok) {
+            const txt = await res.text().catch(() => "");
+            throw new Error(`Checkout falhou (${res.status}). ${txt}`);
+          }
+
+          const data = await res.json();
+
+          // Padrão comum: backend retorna { url } ou { sessionId }
+          if (data.url) {
+            window.location.href = data.url;
+            return;
+          }
+
+          // Se você usa Stripe.js com sessionId:
+          if (data.sessionId && window.Stripe) {
+            // IMPORTANTE: se você realmente quiser usar Stripe.js aqui,
+            // você precisa da publishable key (pk_live.../pk_test...)
+            // Exemplo:
+            // const stripe = Stripe("pk_live_...");
+            // await stripe.redirectToCheckout({ sessionId: data.sessionId });
+
+            console.warn("Backend retornou sessionId, mas não há Stripe(pk) configurado neste fallback.");
+            alert("Checkout criado, mas falta configurar Stripe(pk) no front. Veja console.");
+            return;
+          }
+
+          throw new Error("Resposta do backend não contém 'url' nem 'sessionId'.");
+        } catch (err) {
+          console.error(err);
+          alert("Não foi possível iniciar o pagamento agora. Tente novamente em instantes.");
+        } finally {
+          if (loading) loading.style.display = "none";
+        }
+      });
+    }
+  })();
+</script>
+
+
+  <!-- MAPA DE CALOR DOS GANHADORES -->
+  <script>
+    const API_BASE = "https://backend-v8.onrender.com";
+
+    let map;
+    let heatLayer;
+
+    function initMap() {
+      if (map) return;
+
+      map = L.map("map").setView([-14.2, -51.9], 4);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap"
+      }).addTo(map);
+    }
+
+    async function loadHeatmap() {
+      initMap();
+
+      const loteria = document.getElementById("loteria").value;
+      const concurso = document.getElementById("concurso").value;
+
+      if (!concurso) {
+        alert("Informe o número do concurso");
+        return;
+      }
+
+      if (heatLayer) {
+        map.removeLayer(heatLayer);
+      }
+
+    const res = await fetch(
+      `${API_BASE}/api/winners?loteria=${loteria}&concurso=${concurso}`
     );
-  });
-}
+
+    const data = await res.json();
+
+    if (!data.length) {
+      alert("Nenhum ganhador encontrado para este concurso.");
+      return;
+    }
+
+    const pontos = data.map(p => [
+      p.lat,
+      p.lon,
+      p.acertos === 15 ? 1 : 0.6
+    ]);
+
+    heatLayer = L.heatLayer(pontos, {
+      radius: 25,
+      blur: 15,
+      maxZoom: 6
+    }).addTo(map);
+
+    // Tooltips individuais (opcional)
+    data.forEach(p => {
+      L.circleMarker([p.lat, p.lon], {
+        radius: 4,
+        opacity: 0
+      })
+      .addTo(map)
+      .bindTooltip(
+        `${p.municipio}/${p.uf}<br>${p.acertos} acertos`,
+        { direction: "top" }
+      );
+    });
+  }
   </script>
 
   <!-- Swiper JS (único) -->
   <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       new Swiper(".mySwiper", {
