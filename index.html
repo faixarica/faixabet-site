@@ -413,7 +413,105 @@
         min-height: auto;
       }
     }
+    /*style heatmap*/
+    /* ============================
+    MAPA DE GANHADORES – UI
+    ============================ */
 
+    .mapa-section {
+      padding: 80px 5%;
+      background: linear-gradient(180deg, #0b1220, #0f1a2f);
+      color: #fff;
+    }
+
+    .mapa-header {
+      max-width: 900px;
+      margin-bottom: 30px;
+    }
+
+    .mapa-header h2 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    .mapa-header p {
+      color: #cbd5e1;
+      font-size: 1rem;
+    }
+
+    /* Filtros */
+    .mapa-filtros {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .mapa-select,
+    .mapa-input {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      color: #e5e7eb;
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      min-width: 180px;
+    }
+
+    .mapa-select option {
+      background: #0f172a;
+      color: #e5e7eb;
+    }
+
+    /* Remove aparência feia padrão */
+    .mapa-select:focus,
+    .mapa-input:focus {
+      outline: none;
+      border-color: #22c55e;
+      box-shadow: 0 0 0 1px #22c55e;
+    }
+
+    /* Botão */
+    .mapa-btn {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border: none;
+      color: #052e16;
+      font-weight: 600;
+      padding: 12px 22px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .mapa-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(34, 197, 94, 0.4);
+    }
+
+    /* Mapa */
+    .mapa-container {
+      width: 100%;
+      height: 520px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #1e293b;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .mapa-filtros {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .mapa-select,
+      .mapa-input,
+      .mapa-btn {
+        width: 100%;
+      }
+    }
+  
   </style>
 </head>
 
@@ -467,10 +565,10 @@
         <div class="hidden md:flex flex-1 justify-center space-x-8 text-lg font-[Montserrat]">
           <a href="#hero" class="text-white hover:text-green-400 transition">Home</a>
           <a href="#como-funciona" class="text-white hover:text-green-400 transition">Como Funciona</a>
-          <a href="simulador-faixabet.html" target="_blank" class="text-white hover:text-green-400 transition">Simulador</a>
+          <a href="mapa-ganhadores" target="_blank" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">Mapa de Ganhadores </a>
           <a href="#planos" class="text-white hover:text-green-400 transition">Planos</a>
           <a href="#blog" class="text-white hover:text-green-400 transition">Blog</a>
-          <a href="#app" class="text-white hover:text-green-400 transition">App fAIxaBet</a>
+          <a href="#app" class="text-white hover:text-green-400 transition">Aplicação fAIxaBet</a>
         </div>
 
         <!-- Botão Mobile -->
@@ -489,12 +587,12 @@
       <div class="w-[90%] max-w-md mx-auto mt-24 px-6 py-8 flex flex-col space-y-6 text-lg font-[Poppins] text-white animate-fadeIn
                   bg-[#1f2937] rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.4)] border border-gray-700">
 
-        <a href="#hero" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">🏠 Home</a>
-        <a href="#como-funciona" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">🧠 Como Funciona</a>
-        <a href="simulador-faixabet.html" target="_blank" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">🎯 Simulador</a>
-        <a href="#planos" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">💰 Planos</a>
-        <a href="#blog" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">📰 Blog</a>
-        <a href="#app" class="menu-link py-2 hover:text-green-400 transition">📱 App fAIxaBet</a>
+        <a href="#hero" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition"> Home</a>
+        <a href="#como-funciona" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition"> Como Funciona</a>
+        <a href="mapa-ganhadores" target="_blank" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">Mapa de Ganhadores </a>
+        <a href="#planos" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition"> Planos</a>
+        <a href="#blog" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition"> Blog</a>
+        <a href="#app" class="menu-link py-2 hover:text-green-400 transition"> Aplicação fAIxaBet</a>
       </div>
     </div>
   </header>
@@ -761,8 +859,8 @@
         <h4 class="plan-subtitle">Básico para começar</h4>
         <div class="plan-price">R$ 0,00</div>
         <ul class="plan-features">
-          <li>3 palpites por semana</li>
-          <li>1 Modelos de geração Bets</li>
+          <li>3 palpites semanais</li>
+          <li>Modelo IA Essencial</li>
           <li>1 Loteria disponível</li>
           <li>Histórico simples de palpites</li>
           <li>Validação de palpites</li>
@@ -779,7 +877,7 @@
         <div class="plan-price">R$ 5,99<span>/mês</span></div>
         <ul class="plan-features">
           <li>18 palpites semanais</li>
-          <li>1 Modelos de geração Palpites IA</li>
+          <li>Modelo IA Estratégica</li>
           <li>1 Loterias disponíveis</li>
           <li>Atualizações semanais</li>
           <li>Suporte por email</li>
@@ -796,7 +894,7 @@
         <div class="plan-price">R$ 10,99<span>/mês</span></div>
         <ul class="plan-features">
           <li>30 palpites semanais</li>
-          <li>1 Modelos avançados IA</li>
+          <li>Modelo IA Laboratório</li>
           <li>2 Loterias disponíveis</li>
           <li>Atualizações diárias</li>
           <li>Suporte 24x7</li>
@@ -814,18 +912,47 @@
         <h4 class="plan-subtitle">AI Híbrida Neural + Estatística</h4>
         <div class="plan-price">R$ 19,99<span>/mês</span></div>
         <ul class="plan-features">
-          <li>100 Palpites semanais</li>
-          <li>Modelo LS16 (Ensemble híbrido)</li>
-          <li>Precisão 13–14 acertos</li>
-          <li>2 Loterias incluídas</li>
+          <li>60 Palpites semanais</li>
+          <li>Modelo IA Orquestrada</li>
+          <li> 2+ loterias incluídas</li>
           <li>Telemetria de desempenho</li>
-          <li>Acesso antecipado a recursos beta</li>
         </ul>
         <button class="btn bg-gray-700 text-white opacity-70 cursor-not-allowed" disabled>Disponível em breve</button>
       </div>
     </div>
   </section>
 
+  <!-- heatmap ganhadores -->
+  <section id="mapa-ganhadores" class="mapa-section">
+  <div class="mapa-header">
+    <h2>Mapa de Ganhadores (Brasil)</h2>
+    <p>
+      Veja onde saíram apostas ganhadoras da Lotofácil e Mega-Sena.
+      Transparência, dados reais e análise visual.
+    </p>
+  </div>
+
+  <div class="mapa-filtros">
+    <select id="loteria" class="mapa-select">
+      <option value="lotofacil">Lotofácil</option>
+      <option value="megasena">Mega-Sena</option>
+    </select>
+
+    <input
+      type="number"
+      id="concurso"
+      class="mapa-input"
+      placeholder="Número do concurso"
+    />
+
+    <button class="mapa-btn" onclick="loadHeatmap()">
+        Carregar ganhadores
+    </button>
+  </div>
+
+  <div id="map" class="mapa-container"></div>
+  </section>
+  
   <!-- BLOG -->
   <section class="py-20 px-6 bg-gray-900" id="blog">
     <div class="max-w-6xl mx-auto">
@@ -1344,6 +1471,76 @@
       </div>
     </div>
   </footer>
+
+  <!-- MAPA DE CALOR DOS GANHADORES -->
+  <script>
+    const API_BASE = "https://backend-v8.onrender.com";
+
+    let map;
+    let heatLayer;
+
+    function initMap() {
+      if (map) return;
+
+      map = L.map("map").setView([-14.2, -51.9], 4);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap"
+      }).addTo(map);
+    }
+
+    async function loadHeatmap() {
+      initMap();
+
+      const loteria = document.getElementById("loteria").value;
+      const concurso = document.getElementById("concurso").value;
+
+      if (!concurso) {
+        alert("Informe o número do concurso");
+        return;
+      }
+
+      if (heatLayer) {
+        map.removeLayer(heatLayer);
+      }
+
+    const res = await fetch(
+      `${API_BASE}/api/winners?loteria=${loteria}&concurso=${concurso}`
+    );
+
+    const data = await res.json();
+
+    if (!data.length) {
+      alert("Nenhum ganhador encontrado para este concurso.");
+      return;
+    }
+
+    const pontos = data.map(p => [
+      p.lat,
+      p.lon,
+      p.acertos === 15 ? 1 : 0.6
+    ]);
+
+    heatLayer = L.heatLayer(pontos, {
+      radius: 25,
+      blur: 15,
+      maxZoom: 6
+    }).addTo(map);
+
+    // Tooltips individuais (opcional)
+    data.forEach(p => {
+      L.circleMarker([p.lat, p.lon], {
+        radius: 4,
+        opacity: 0
+      })
+      .addTo(map)
+      .bindTooltip(
+        `${p.municipio}/${p.uf}<br>${p.acertos} acertos`,
+        { direction: "top" }
+      );
+    });
+  }
+  </script>
 
   <!-- Swiper JS (único) -->
   <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
