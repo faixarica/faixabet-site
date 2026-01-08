@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <!-- SEO BÁSICO -->
   <title>fAIxaBet | Palpites inteligentes para Lotofácil, Lotomania e Mega-Sena</title>
-  <meta name="description" content="fAIxaBet usa Inteligência Artificial para gerar palpites vencedores na Lotofácil, Lotomania e Mega-Sena. Aqui não é sorte, é IA.">
-  
+  <meta name="description"
+    content="fAIxaBet usa Inteligência Artificial para gerar palpites vencedores na Lotofácil, Lotomania e Mega-Sena. Aqui não é sorte, é IA.">
+
   <!-- Google tag (gtag.js) 02/09/2025 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-R09Y7V5J5T"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-R09Y7V5J5T');
   </script>
@@ -22,13 +24,16 @@
 
   <!-- SEO AVANÇADO -->
   <meta name="robots" content="index, follow">
-  <meta name="keywords" content="Palpites lotofácil, Palpites lotomania, jogar na loteria, estatísticas loteria, apostas inteligentes, IA para loteria, fAIxaBet">
+  <meta name="keywords"
+    content="Palpites lotofácil, Palpites lotomania, jogar na loteria, estatísticas loteria, apostas inteligentes, IA para loteria, fAIxaBet">
   <meta name="author" content="fAIxaBet">
   <link rel="canonical" href="https://faixabet.com.br/">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="fAIxaBet | Palpites de Loteria com Inteligência Artificial (Lotofácil e Lotomania)" />
-  <meta property="og:description" content="Receba palpites de loteria com Inteligência Artificial. Aumente suas chances na Lotofácil, Lotomania e muito mais com o fAIxaBet." />
+  <meta property="og:title"
+    content="fAIxaBet | Palpites de Loteria com Inteligência Artificial (Lotofácil e Lotomania)" />
+  <meta property="og:description"
+    content="Receba palpites de loteria com Inteligência Artificial. Aumente suas chances na Lotofácil, Lotomania e muito mais com o fAIxaBet." />
   <meta property="og:image" content="https://faixabet.com.br/imagem-capa.png" />
   <meta property="og:url" content="https://faixabet.com.br" />
   <meta property="og:type" content="website" />
@@ -45,6 +50,11 @@
   <!-- Tailwind + Font Awesome -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
 
   <!-- Swiper CSS (único) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
@@ -73,27 +83,55 @@
       --accent: #f59e0b;
     }
 
-    body { scroll-behavior: smooth; }
-    section { scroll-margin-top: 90px; }
+    body {
+      scroll-behavior: smooth;
+    }
 
-    .gradient-bg { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+    section {
+      scroll-margin-top: 90px;
+    }
+
+    .gradient-bg {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+
     .btn-primary {
       background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
       transition: .3s;
     }
+
     .btn-primary:hover {
       transform: translateY(-3px);
       box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .3);
     }
 
-    .mobile-menu { max-height: 0; overflow: hidden; transition: max-height .5s ease-out; }
-    .mobile-menu.active { max-height: 500px; }
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .5s ease-out;
+    }
 
-    .bg-primary { background: var(--primary); }
-    .bg-secondary { background: var(--secondary); }
-    .bg-accent   { background: var(--accent); }
+    .mobile-menu.active {
+      max-height: 500px;
+    }
 
-    .container-original { max-width: 1200px; margin: 0 auto; }
+    .bg-primary {
+      background: var(--primary);
+    }
+
+    .bg-secondary {
+      background: var(--secondary);
+    }
+
+    .bg-accent {
+      background: var(--accent);
+    }
+
+    .container-original {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
     .plans-section {
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
@@ -102,12 +140,14 @@
       margin: 60px auto 80px auto;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
+
     .section-title {
       text-align: center;
       font-size: 2rem;
       margin-bottom: 30px;
       color: #4ade80;
     }
+
     .plans-container {
       display: flex;
       justify-content: center;
@@ -125,12 +165,17 @@
       border: 2px solid transparent;
       cursor: pointer;
     }
+
     .plan-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 30px rgba(0, 0, 0, .4);
     }
 
-    .plan-free  { background: rgba(255, 255, 255, .15); color: #1e293b; }
+    .plan-free {
+      background: rgba(255, 255, 255, .15);
+      color: #1e293b;
+    }
+
     .plan-silver {
       background: linear-gradient(135deg, #c0c0c0, #e0e0e0);
       color: #1e293b;
@@ -138,16 +183,36 @@
       box-shadow: 0 15px 35px rgba(255, 255, 255, .4);
       border: 2px solid #fbbf24;
     }
-    .plan-gold  { background: linear-gradient(135deg, #ffd700, #ffcc00); color: #1e293b; }
 
-    .plan-name    { font-size: 1.5rem; font-weight: 700; margin-bottom: 15px; }
-    .plan-price   { font-size: 2rem; font-weight: 700; margin-bottom: 20px; }
-    .plan-features { list-style: none; margin-bottom: 25px; text-align: left; }
+    .plan-gold {
+      background: linear-gradient(135deg, #ffd700, #ffcc00);
+      color: #1e293b;
+    }
+
+    .plan-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .plan-price {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .plan-features {
+      list-style: none;
+      margin-bottom: 25px;
+      text-align: left;
+    }
+
     .plan-features li {
       padding: 8px 0;
       display: flex;
       align-items: center;
     }
+
     .plan-features li:before {
       content: "✓";
       color: #4ade80;
@@ -165,10 +230,21 @@
       font-size: 1rem;
       width: 100%;
     }
-    .btn-free   { background: #94a3b8; color: #1e293b; }
+
+    .btn-free {
+      background: #94a3b8;
+      color: #1e293b;
+    }
+
     .btn-silver,
-    .btn-gold   { background: #5dbf0d; color: #fff; }
-    .btn:hover  { transform: scale(1.05); }
+    .btn-gold {
+      background: #5dbf0d;
+      color: #fff;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
 
     .popular-tag {
       position: absolute;
@@ -195,13 +271,22 @@
       display: none;
       max-width: 1200px;
     }
+
     .form-section.active {
       display: block;
       animation: fadeIn .5s ease;
     }
+
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .form-title {
@@ -212,14 +297,24 @@
       font-family: 'Poppins', sans-serif;
       font-weight: 500;
     }
+
     .form-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 15px;
       margin-bottom: 20px;
     }
-    .form-group { margin-bottom: 20px; }
-    .form-label { display: block; margin-bottom: 8px; font-weight: 500; }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
     .form-input {
       width: 100%;
       padding: 5px;
@@ -230,10 +325,12 @@
       font-size: 1rem;
       transition: border-color .3s;
     }
+
     .form-input:focus {
       outline: none;
       border-color: #4ade80;
     }
+
     .submit-btn {
       background: linear-gradient(45deg, #4ade80, #22d3ee);
       color: #ffffff !important;
@@ -248,12 +345,18 @@
       transition: .3s;
       font-family: 'Poppins';
     }
+
     .submit-btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, .3);
     }
 
-    .loading { display: none; text-align: center; padding: 20px; }
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+
     .spinner {
       border: 4px solid rgba(255, 255, 255, .3);
       border-radius: 50%;
@@ -263,14 +366,35 @@
       animation: spin 1s linear infinite;
       margin: 0 auto 20px;
     }
+
     @keyframes spin {
-      0%   { transform: rotate(0); }
-      100% { transform: rotate(360deg); }
+      0% {
+        transform: rotate(0);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
 
-    .success-message { text-align: center; padding: 40px; display: none; }
-    .success-icon { font-size: 4rem; color: #4ade80; margin-bottom: 20px; }
-    .success-title { font-size: 2rem; margin-bottom: 20px; color: #4ade80; }
+    .success-message {
+      text-align: center;
+      padding: 40px;
+      display: none;
+    }
+
+    .success-icon {
+      font-size: 4rem;
+      color: #4ade80;
+      margin-bottom: 20px;
+    }
+
+    .success-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #4ade80;
+    }
+
     .success-text {
       font-size: 1.2rem;
       margin-bottom: 30px;
@@ -287,16 +411,28 @@
     }
 
     @media (max-width: 750px) {
-      .plans-container { flex-direction: column; align-items: center; }
-      .form-grid       { grid-template-columns: 1fr; }
+      .plans-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 768px) {
-      .form-title { font-size: 1.6rem; }
+      .form-title {
+        font-size: 1.6rem;
+      }
     }
 
     /* Swiper helper */
-    .swiper { width: 100%; height: auto !important; }
+    .swiper {
+      width: 100%;
+      height: auto !important;
+    }
+
     .swiper-slide {
       display: flex;
       justify-content: center;
@@ -311,10 +447,12 @@
       backdrop-filter: blur(6px);
       background: rgba(17, 24, 39, 0.98);
     }
+
     #mobileMenu.opacity-100 {
       opacity: 1 !important;
       pointer-events: auto !important;
     }
+
     #mobileMenu .menu-link {
       display: block;
       width: 100%;
@@ -323,34 +461,61 @@
       border-radius: 8px;
       transition: all 0.3s ease;
     }
+
     #mobileMenu .menu-link:hover {
       background-color: rgba(34, 197, 94, 0.15);
       transform: scale(1.05);
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    .animate-fadeIn { animation: fadeIn 0.6s ease-out; }
+
+    .animate-fadeIn {
+      animation: fadeIn 0.6s ease-out;
+    }
 
     @keyframes pulse-slow {
-      0%, 100% { opacity: .7; }
-      50%      { opacity: 1; }
+
+      0%,
+      100% {
+        opacity: .7;
+      }
+
+      50% {
+        opacity: 1;
+      }
     }
 
     .swiper-slide h1 {
       animation: fadeUp 0.8s ease forwards;
     }
+
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .swiper-pagination-bullet {
       background: #22c55e !important;
       opacity: 0.4;
     }
+
     .swiper-pagination-bullet-active {
       opacity: 1;
       background: #00ffcc !important;
@@ -361,9 +526,17 @@
     .popular-tag {
       animation: fadeDown 0.6s ease;
     }
+
     @keyframes fadeDown {
-      from { opacity: 0; transform: translate(-50%, -15px); }
-      to   { opacity: 1; transform: translate(-50%, 0); }
+      from {
+        opacity: 0;
+        transform: translate(-50%, -15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
     }
 
     .plans-container {
@@ -373,6 +546,7 @@
       justify-items: center;
       align-items: stretch;
     }
+
     .plan-card {
       display: flex;
       flex-direction: column;
@@ -384,35 +558,44 @@
       padding: 18px;
       transition: all .3s ease;
     }
+
     .plan-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
+
     .plan-features {
       flex-grow: 1;
       margin-bottom: 18px;
     }
+
     .plan-price {
       font-size: 1.9rem;
       font-weight: 700;
       margin-bottom: 15px;
     }
-    .plan-card .btn { align-self: stretch; }
+
+    .plan-card .btn {
+      align-self: stretch;
+    }
 
     @media (max-width: 1200px) {
       .plans-container {
         grid-template-columns: repeat(2, 1fr);
       }
     }
+
     @media (max-width: 768px) {
       .plans-container {
         grid-template-columns: 1fr;
       }
+
       .plan-card {
         max-width: 100%;
         min-height: auto;
       }
     }
+
     /*style heatmap*/
     /* ============================
     MAPA DE GANHADORES – UI
@@ -511,15 +694,13 @@
         width: 100%;
       }
     }
-  
   </style>
 </head>
 
 <body class="gradient-bg text-white font-sans">
 
   <!-- BANNER DE COOKIES / PRIVACIDADE -->
-  <div id="cookie-banner"
-    style="display:none; position:fixed; bottom:1rem; left:50%; transform:translateX(-50%);
+  <div id="cookie-banner" style="display:none; position:fixed; bottom:1rem; left:50%; transform:translateX(-50%);
            max-width:600px; width:90%; padding:1rem 1.25rem; background:#111827;
            color:#F9FAFB; border-radius:0.75rem; box-shadow:0 10px 25px rgba(0,0,0,0.4);
            z-index:9999; align-items:center; gap:1rem; flex-wrap:wrap;">
@@ -528,18 +709,17 @@
       <strong>Usamos cookies e rastreamento</strong> para melhorar sua experiência no
       <span style="color:#A855F7; font-weight:bold;">fAIxaBet</span>,
       gerar estatísticas e campanhas pela Brevo. Você pode aceitar ou recusar.
-      Veja nossa <a href="/politica-privacidade" style="color:#60A5FA; text-decoration:underline;">Política de Privacidade</a>.
+      Veja nossa <a href="/politica-privacidade" style="color:#60A5FA; text-decoration:underline;">Política de
+        Privacidade</a>.
     </div>
 
     <div style="display:flex; gap:0.5rem; flex-wrap:wrap; justify-content:flex-end;">
-      <button id="rejectCookies"
-        style="padding:0.4rem 0.8rem; border-radius:999px; border:1px solid #4B5563;
+      <button id="rejectCookies" style="padding:0.4rem 0.8rem; border-radius:999px; border:1px solid #4B5563;
                background:transparent; color:#E5E7EB; cursor:pointer; font-size:0.85rem;">
         Recusar
       </button>
 
-      <button id="acceptCookies"
-        style="padding:0.4rem 0.8rem; border-radius:999px; border:none;
+      <button id="acceptCookies" style="padding:0.4rem 0.8rem; border-radius:999px; border:none;
                background:linear-gradient(90deg,#22C55E,#A855F7);
                color:#111827; cursor:pointer; font-size:0.85rem; font-weight:600;">
         Aceitar e continuar
@@ -548,11 +728,13 @@
   </div>
 
   <!-- ================= HEADER + MENU MOBILE ================= -->
-  <header class="fixed top-0 left-0 w-full bg-gray-900/90 backdrop-blur-sm z-50 transition-all duration-300 min-h-[80px]">
+  <header
+    class="fixed top-0 left-0 w-full bg-gray-900/90 backdrop-blur-sm z-50 transition-all duration-300 min-h-[80px]">
     <div class="container mx-auto px-4">
       <nav class="flex items-center justify-between py-5">
         <!-- Logo -->
-        <a href="#" class="text-3xl font-bold flex items-center space-x-1" style="font-family: 'Montserrat Alternates', sans-serif;">
+        <a href="#" class="text-3xl font-bold flex items-center space-x-1"
+          style="font-family: 'Montserrat Alternates', sans-serif;">
           <span class="text-white">f</span>
           <span class="text-purple-400">A</span>
           <span class="text-yellow-400">I</span>
@@ -565,22 +747,23 @@
         <div class="hidden md:flex flex-1 justify-center space-x-8 text-lg font-[Montserrat]">
           <a href="#hero" class="text-white hover:text-green-400 transition">Home</a>
           <a href="#como-funciona" class="text-white hover:text-green-400 transition">Como Funciona</a>
-          <a href="mapa-ganhadores" target="_blank" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">Mapa de Ganhadores </a>
+          <a href="#mapa-ganhadores"
+            class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">Mapa de Ganhadores</a>
           <a href="#planos" class="text-white hover:text-green-400 transition">Planos</a>
           <a href="#blog" class="text-white hover:text-green-400 transition">Blog</a>
           <a href="#app" class="text-white hover:text-green-400 transition">Aplicação fAIxaBet</a>
         </div>
 
         <!-- Botão Mobile -->
-        <button id="mobileMenuButton" class="md:hidden text-3xl text-white focus:outline-none transition-transform duration-300">
+        <button id="mobileMenuButton"
+          class="md:hidden text-3xl text-white focus:outline-none transition-transform duration-300">
           <i class="fas fa-bars"></i>
         </button>
       </nav>
     </div>
 
     <!-- MENU MOBILE -->
-    <div id="mobileMenu"
-      class="fixed inset-0 hidden flex-col justify-start items-center z-[9999]
+    <div id="mobileMenu" class="fixed inset-0 hidden flex-col justify-start items-center z-[9999]
              opacity-0 pointer-events-none transition-all duration-500 ease-in-out
              bg-[#111827] shadow-[0_0_25px_rgba(0,0,0,0.6)] rounded-t-3xl md:hidden">
 
@@ -588,8 +771,10 @@
                   bg-[#1f2937] rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.4)] border border-gray-700">
 
         <a href="#hero" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition"> Home</a>
-        <a href="#como-funciona" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition"> Como Funciona</a>
-        <a href="mapa-ganhadores" target="_blank" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">Mapa de Ganhadores </a>
+        <a href="#como-funciona" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition"> Como
+          Funciona</a>
+        <a href="mapa-ganhadores" target="_blank"
+          class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition">Mapa de Ganhadores </a>
         <a href="#planos" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition"> Planos</a>
         <a href="#blog" class="menu-link py-2 border-b border-gray-700 hover:text-green-400 transition"> Blog</a>
         <a href="#app" class="menu-link py-2 hover:text-green-400 transition"> Aplicação fAIxaBet</a>
@@ -642,7 +827,9 @@
     style="background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url('assets/ceu-paisagem.jpg') center/cover no-repeat;">
 
     <!-- Fundo animado -->
-    <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-green-400/10 to-blue-500/20 blur-3xl animate-pulse-slow"></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-emerald-500/20 via-green-400/10 to-blue-500/20 blur-3xl animate-pulse-slow">
+    </div>
 
     <div class="max-w-3xl w-full text-center relative z-10 px-3">
 
@@ -651,7 +838,8 @@
         <div class="swiper-wrapper">
 
           <div class="swiper-slide px-2">
-            <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-6 leading-snug sm:leading-tight text-center text-white">
+            <h1
+              class="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-6 leading-snug sm:leading-tight text-center text-white">
               <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-400">
                 Inteligência Artificial que Aprende a Acertar
               </span><br class="hidden sm:block"> Agora a sorte tem lógica!
@@ -659,21 +847,25 @@
           </div>
 
           <div class="swiper-slide px-2">
-            <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-6 leading-snug sm:leading-tight text-center text-gray-100">
-              Palpites certeiros para <span class="text-green-400">Lotofácil</span> e <span class="text-yellow-400">Mega-Sena</span><br class="hidden sm:block">
+            <h1
+              class="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-6 leading-snug sm:leading-tight text-center text-gray-100">
+              Palpites certeiros para <span class="text-green-400">Lotofácil</span> e <span
+                class="text-yellow-400">Mega-Sena</span><br class="hidden sm:block">
               direto da mente da <span class="text-emerald-300">IA</span>.
             </h1>
           </div>
 
           <div class="swiper-slide px-2">
-            <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-6 leading-snug sm:leading-tight text-center text-white">
+            <h1
+              class="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-6 leading-snug sm:leading-tight text-center text-white">
               <span class="text-blue-300">Acredite na evolução</span><br class="hidden sm:block">
               com <span class="text-green-400">dados, ciência e sorte</span> do seu lado.
             </h1>
           </div>
 
           <div class="swiper-slide px-2">
-            <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-6 leading-snug sm:leading-tight text-center text-white">
+            <h1
+              class="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-6 leading-snug sm:leading-tight text-center text-white">
               <span class="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-emerald-500">
                 Quem usa IA, aposta com vantagem.
               </span><br class="hidden sm:block">
@@ -688,11 +880,11 @@
       <!-- Subtítulo -->
       <p class="mx-auto max-w-2xl px-3 text-sm sm:text-base md:text-lg lg:text-xl 
         leading-snug sm:leading-relaxed text-gray-100 break-words font-light
-        mb-6 sm:mb-8 md:mb-10"
-        style="-webkit-hyphens:auto; hyphens:auto;">
+        mb-6 sm:mb-8 md:mb-10" style="-webkit-hyphens:auto; hyphens:auto;">
         Crie <span class="font-semibold text-[#00BFFF]">palpites baseados em dados reais</span>
         e aumente suas chances de vencer com a força da
-        <span class="font-bold text-[#00FFFF] drop-shadow-[0_0_6px_#00FFFF] animate-pulse">Inteligência Artificial</span>.
+        <span class="font-bold text-[#00FFFF] drop-shadow-[0_0_6px_#00FFFF] animate-pulse">Inteligência
+          Artificial</span>.
       </p>
 
       <!-- Botões principais -->
@@ -732,18 +924,25 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <!-- Etapa 1 -->
-        <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20">
-          <div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-xl font-bold mb-4 flex-shrink-0">1</div>
+        <div
+          class="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20">
+          <div
+            class="w-16 h-16 rounded-full bg-primary flex items-center justify-center text-xl font-bold mb-4 flex-shrink-0">
+            1</div>
           <h3 class="text-xl font-semibold mb-2">Escolha seu plano</h3>
           <small class="text-gray-400">Aposte com inteligência, do seu jeito.</small>
           <p class="text-gray-300">
-            Comece com o <strong>Free</strong> e teste a AI, suba para o <strong>Silver</strong> com mais palpites ou domine com o <strong>Gold</strong> — o plano mais completo, em tempo real.
+            Comece com o <strong>Free</strong> e teste a AI, suba para o <strong>Silver</strong> com mais palpites ou
+            domine com o <strong>Gold</strong> — o plano mais completo, em tempo real.
           </p>
         </div>
 
         <!-- Etapa 2 -->
-        <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20">
-          <div class="w-16 h-16 rounded-full bg-secondary flex items-center justify-center text-xl font-bold mb-4 flex-shrink-0">2</div>
+        <div
+          class="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20">
+          <div
+            class="w-16 h-16 rounded-full bg-secondary flex items-center justify-center text-xl font-bold mb-4 flex-shrink-0">
+            2</div>
           <h3 class="text-xl font-semibold mb-2">Registre-se</h3>
           <small class="text-gray-400">Comece em menos de 1 minuto.</small>
           <p class="text-gray-300">
@@ -752,8 +951,11 @@
         </div>
 
         <!-- Etapa 3 -->
-        <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20">
-          <div class="w-16 h-16 rounded-full bg-accent flex items-center justify-center text-xl font-bold mb-4 flex-shrink-0">3</div>
+        <div
+          class="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20">
+          <div
+            class="w-16 h-16 rounded-full bg-accent flex items-center justify-center text-xl font-bold mb-4 flex-shrink-0">
+            3</div>
           <h3 class="text-xl font-semibold mb-2">Acesse o App</h3>
           <small class="text-gray-400">Tudo na palma da sua mão.</small>
           <p class="text-gray-300">
@@ -762,12 +964,16 @@
         </div>
 
         <!-- Etapa 4 -->
-        <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20">
-          <div class="w-16 h-16 rounded-full bg-purple-500 flex items-center justify-center text-xl font-bold mb-4 flex-shrink-0">4</div>
+        <div
+          class="bg-gray-800 bg-opacity-50 rounded-xl p-6 border border-gray-700 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/20">
+          <div
+            class="w-16 h-16 rounded-full bg-purple-500 flex items-center justify-center text-xl font-bold mb-4 flex-shrink-0">
+            4</div>
           <h3 class="text-xl font-semibold mb-2">Gere seus Palpites</h3>
           <small class="text-gray-400">Inteligência Artificial a favor da sua banca.</small>
           <p class="text-gray-300">
-            Com um toque, a AI analisa dados em tempo real e gera palpites com alta precisão — prontos para você apostar com mais segurança.
+            Com um toque, a AI analisa dados em tempo real e gera palpites com alta precisão — prontos para você apostar
+            com mais segurança.
           </p>
         </div>
       </div>
@@ -825,8 +1031,8 @@
             <p class="text-gray-400 mb-1">Concurso ${concurso} - ${data}</p>
             <div class="flex flex-wrap justify-center gap-2 mb-4">
               ${dezenas
-                .map(d => `<span class="w-9 h-9 rounded-full bg-green-600 flex items-center justify-center">${d}</span>`)
-                .join("")}
+              .map(d => `<span class="w-9 h-9 rounded-full bg-green-600 flex items-center justify-center">${d}</span>`)
+              .join("")}
             </div>
             <p class="text-sm text-gray-300">💰 Palpites premiados: 
               <span class="text-yellow-400">${premiados}</span>
@@ -906,7 +1112,8 @@
       </div>
 
       <!-- Platinum -->
-      <div class="plan-card plan-platinum" data-plan="platinum" style="background:linear-gradient(135deg,#9b59b6,#8e44ad); color:#fff;">
+      <div class="plan-card plan-platinum" data-plan="platinum"
+        style="background:linear-gradient(135deg,#9b59b6,#8e44ad); color:#fff;">
         <div class="popular-tag" style="background:#9b59b6;">Em breve</div>
         <h3 class="plan-name">Plano Platinum</h3>
         <h4 class="plan-subtitle">AI Híbrida Neural + Estatística</h4>
@@ -924,35 +1131,30 @@
 
   <!-- heatmap ganhadores -->
   <section id="mapa-ganhadores" class="mapa-section">
-  <div class="mapa-header">
-    <h2>Mapa de Ganhadores (Brasil)</h2>
-    <p>
-      Veja onde saíram apostas ganhadoras da Lotofácil e Mega-Sena.
-      Transparência, dados reais e análise visual.
-    </p>
-  </div>
+    <div class="mapa-header">
+      <h2>Mapa de Ganhadores (Brasil)</h2>
+      <p>
+        Veja onde saíram apostas ganhadoras da Lotofácil e Mega-Sena.
+        Transparência, dados reais e análise visual.
+      </p>
+    </div>
 
-  <div class="mapa-filtros">
-    <select id="loteria" class="mapa-select">
-      <option value="lotofacil">Lotofácil</option>
-      <option value="megasena">Mega-Sena</option>
-    </select>
+    <div class="mapa-filtros">
+      <select id="loteria" class="mapa-select">
+        <option value="lotofacil">Lotofácil</option>
+        <option value="megasena">Mega-Sena</option>
+      </select>
 
-    <input
-      type="number"
-      id="concurso"
-      class="mapa-input"
-      placeholder="Número do concurso"
-    />
+      <input type="number" id="concurso" class="mapa-input" placeholder="Número do concurso" />
 
-    <button class="mapa-btn" onclick="loadHeatmap()">
+      <button class="mapa-btn" onclick="loadHeatmap()">
         Carregar ganhadores
-    </button>
-  </div>
+      </button>
+    </div>
 
-  <div id="map" class="mapa-container"></div>
+    <div id="map" class="mapa-container"></div>
   </section>
-  
+
   <!-- BLOG -->
   <section class="py-20 px-6 bg-gray-900" id="blog">
     <div class="max-w-6xl mx-auto">
@@ -1034,7 +1236,8 @@
       </div>
 
       <div class="text-center mt-12">
-        <a class="inline-block bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-xl transition" href="#blog">
+        <a class="inline-block bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-xl transition"
+          href="#blog">
           Ver todos os artigos
         </a>
       </div>
@@ -1043,7 +1246,8 @@
 
   <!-- APP SECTION (única, mantendo a versão mais completa) -->
   <section id="app" class="py-20 px-6 bg-gray-900 bg-opacity-50 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10 bg-gradient-to-tr from-green-600 via-emerald-500 to-blue-600 blur-3xl"></div>
+    <div class="absolute inset-0 opacity-10 bg-gradient-to-tr from-green-600 via-emerald-500 to-blue-600 blur-3xl">
+    </div>
 
     <div class="max-w-6xl mx-auto relative z-10">
       <div class="flex flex-col md:flex-row items-center">
@@ -1079,12 +1283,12 @@
           </ul>
 
           <div class="text-center md:text-left">
-            <a href="https://faixabet9.streamlit.app/" target="_blank" rel="noopener"
-              class="relative inline-flex items-center justify-center w-full md:w-auto px-10 py-4 
+            <a href="https://faixabet9.streamlit.app/" target="_blank" rel="noopener" class="relative inline-flex items-center justify-center w-full md:w-auto px-10 py-4 
                      text-lg font-extrabold text-white tracking-wide rounded-2xl 
                      bg-gradient-to-r from-emerald-400 via-green-500 to-lime-400
                      shadow-[0_0_25px_rgba(34,197,94,0.6)] transition-all duration-500 ease-out group overflow-hidden">
-              <span class="absolute inset-0 bg-gradient-to-r from-lime-400 via-emerald-500 to-green-600 opacity-0 group-hover:opacity-100 blur-md transition duration-700"></span>
+              <span
+                class="absolute inset-0 bg-gradient-to-r from-lime-400 via-emerald-500 to-green-600 opacity-0 group-hover:opacity-100 blur-md transition duration-700"></span>
               <span class="relative z-10 flex items-center space-x-2">
                 <i class="fas fa-robot text-xl text-lime-300"></i>
                 <span>Abrir App fAIxaBet</span>
@@ -1100,7 +1304,8 @@
 
             <div class="relative bg-gray-800 border border-gray-700 rounded-[40px] p-4 w-full h-[600px] shadow-xl">
               <div class="bg-gray-900 h-full rounded-[32px] overflow-hidden relative">
-                <div class="absolute top-0 left-0 w-full h-12 bg-gray-800 rounded-t-[32px] flex items-center justify-center">
+                <div
+                  class="absolute top-0 left-0 w-full h-12 bg-gray-800 rounded-t-[32px] flex items-center justify-center">
                   <div class="h-1 w-24 bg-gray-700 rounded"></div>
                 </div>
 
@@ -1108,7 +1313,8 @@
                   <div class="text-2xl font-bold mb-1 text-white">fAIxaBet</div>
                   <div class="text-green-400 mb-6 text-sm">Palpites Inteligentes em tempo real</div>
 
-                  <div id="painelLoterias" class="bg-gradient-to-r from-blue-500 to-green-500 p-4 rounded-xl mb-4 text-white shadow-lg">
+                  <div id="painelLoterias"
+                    class="bg-gradient-to-r from-blue-500 to-green-500 p-4 rounded-xl mb-4 text-white shadow-lg">
                     <div class="font-bold mb-2">Últimos Resultados</div>
 
                     <div class="mb-3">
@@ -1135,9 +1341,17 @@
 
     <style>
       @keyframes pulse-glow {
-        0%, 100% { opacity: .8; }
-        50%      { opacity: 1; }
+
+        0%,
+        100% {
+          opacity: .8;
+        }
+
+        50% {
+          opacity: 1;
+        }
       }
+
       #painelLoterias span {
         animation: pulse-glow 2s ease-in-out infinite;
         border-radius: 50%;
@@ -1204,7 +1418,9 @@
           1. A fAIxaBet é um site de apostas?
         </button>
         <div class="faq-answer" style="display: none; margin-top: 10px;">
-          <p>Não. A fAIxaBet não é uma casa de apostas. Somos uma plataforma de Inteligência Artificial para análise de loterias oficiais. O foco é gerar Palpites com base em dados históricos e modelos de IA, e não intermediar apostas.</p>
+          <p>Não. A fAIxaBet não é uma casa de apostas. Somos uma plataforma de Inteligência Artificial para análise de
+            loterias oficiais. O foco é gerar Palpites com base em dados históricos e modelos de IA, e não intermediar
+            apostas.</p>
         </div>
       </div>
 
@@ -1214,7 +1430,11 @@
           2. Como a fAIxaBet melhora meus Palpites na Lotofácil?
         </button>
         <div class="faq-answer" style="display: none; margin-top: 10px;">
-          <p>Nossa Inteligência Artificial, equipada com modelos neurais treinados diariamente, não chuta números. Ela aprende com cada resultado da Lotofácil, aprimorando continuamente sua capacidade de identificar padrões estatísticos significativos. Esse aprendizado poderoso é convertido em até 20 Palpites exclusivos por usuário, cada um otimizado para visar os prestigiados 14 acertos ou mais, superando facilmente a eficácia da geração aleatória.</p>
+          <p>Nossa Inteligência Artificial, equipada com modelos neurais treinados diariamente, não chuta números. Ela
+            aprende com cada resultado da Lotofácil, aprimorando continuamente sua capacidade de identificar padrões
+            estatísticos significativos. Esse aprendizado poderoso é convertido em até 20 Palpites exclusivos por
+            usuário, cada um otimizado para visar os prestigiados 14 acertos ou mais, superando facilmente a eficácia da
+            geração aleatória.</p>
         </div>
       </div>
 
@@ -1224,7 +1444,11 @@
           3. Qual a diferença da fAIxaBet para os bolões?
         </button>
         <div class="faq-answer" style="display: none; margin-top: 10px;">
-          <p>Os bolões comuns são limitados pela combinação aleatória de números. A fAIxaBet utiliza tecnologia de ponta em Inteligência Artificial (IA), especificamente modelos neurais treinados exclusivamente com os resultados oficiais da Lotofácil. Essa IA processa dados e identifica tendências de forma muito mais poderosa e precisa do que métodos tradicionais. E para transparência total, cada palpite gerado por nossos algoritmos fica salvo, permitindo que você consulte e valide os resultados futuramente.</p>
+          <p>Os bolões comuns são limitados pela combinação aleatória de números. A fAIxaBet utiliza tecnologia de ponta
+            em Inteligência Artificial (IA), especificamente modelos neurais treinados exclusivamente com os resultados
+            oficiais da Lotofácil. Essa IA processa dados e identifica tendências de forma muito mais poderosa e precisa
+            do que métodos tradicionais. E para transparência total, cada palpite gerado por nossos algoritmos fica
+            salvo, permitindo que você consulte e valide os resultados futuramente.</p>
         </div>
       </div>
 
@@ -1234,7 +1458,8 @@
           4. A fAIxaBet armazena meus Palpites?
         </button>
         <div class="faq-answer" style="display: none; margin-top: 10px;">
-          <p>Sim! Todos os Palpites ficam registrados na sua conta, funcionando como um repositório eterno de jogos e apostas feitas via IA.</p>
+          <p>Sim! Todos os Palpites ficam registrados na sua conta, funcionando como um repositório eterno de jogos e
+            apostas feitas via IA.</p>
         </div>
       </div>
 
@@ -1244,7 +1469,8 @@
           5. Quais são os planos e limites?
         </button>
         <div class="faq-answer" style="display: none; margin-top: 10px;">
-          <p>Temos planos com 30 até 240 Palpites/mês. O plano Free permite 15 dezenas, Silver vai até 17 dezenas e o Gold até 20 dezenas por volante. Mais liberdade e estratégia que bolões prontos.</p>
+          <p>Temos planos com 30 até 240 Palpites/mês. O plano Free permite 15 dezenas, Silver vai até 17 dezenas e o
+            Gold até 20 dezenas por volante. Mais liberdade e estratégia que bolões prontos.</p>
         </div>
       </div>
 
@@ -1254,7 +1480,8 @@
           6. Quais dados pessoais preciso informar?
         </button>
         <div class="faq-answer" style="display: none; margin-top: 10px;">
-          <p>Somente os essenciais: nome completo, e-mail, telefone e data de nascimento. Tudo armazenado com segurança.</p>
+          <p>Somente os essenciais: nome completo, e-mail, telefone e data de nascimento. Tudo armazenado com segurança.
+          </p>
         </div>
       </div>
 
@@ -1264,7 +1491,8 @@
           7. O pagamento é seguro?
         </button>
         <div class="faq-answer" style="display: none; margin-top: 10px;">
-          <p>Sim! Usamos uma das maiores plataforma de pagamento, a Stripe (https://stripe.com/br), a mesma solução utilizada por empresas como Amazon e Shopify. A cobrança é feita em ambiente seguro e criptografado.</p>
+          <p>Sim! Usamos uma das maiores plataforma de pagamento, a Stripe (https://stripe.com/br), a mesma solução
+            utilizada por empresas como Amazon e Shopify. A cobrança é feita em ambiente seguro e criptografado.</p>
         </div>
       </div>
 
@@ -1274,7 +1502,8 @@
           8. A fAIxaBet vai funcionar com outras loterias além da Lotofácil?
         </button>
         <div class="faq-answer" style="display: none; margin-top: 10px;">
-          <p>Sim! Em breve, a plataforma terá suporte para Lotomania, Mega-Sena e Quina, com AI personalizada para cada tipo de jogo.</p>
+          <p>Sim! Em breve, a plataforma terá suporte para Lotomania, Mega-Sena e Quina, com AI personalizada para cada
+            tipo de jogo.</p>
         </div>
       </div>
 
@@ -1284,7 +1513,8 @@
           9. A fAIxaBet terá aplicativo para celular?
         </button>
         <div class="faq-answer" style="display: none; margin-top: 10px;">
-          <p>Não. A plataforma foi projetada 100% para web, com design responsivo. Funciona perfeitamente em celulares e tablets, sem necessidade de aplicativo.</p>
+          <p>Não. A plataforma foi projetada 100% para web, com design responsivo. Funciona perfeitamente em celulares e
+            tablets, sem necessidade de aplicativo.</p>
         </div>
       </div>
 
@@ -1404,7 +1634,8 @@
   <section id="successMessage" class="success-message">
     <div class="success-icon">🎉</div>
     <h2 class="success-title">Parabéns!</h2>
-    <p class="success-text">Você está na única Plataforma que gera palpites de Loteria da Caixa com base em história e com AI do Mundo.</p>
+    <p class="success-text">Você está na única Plataforma que gera palpites de Loteria da Caixa com base em história e
+      com AI do Mundo.</p>
     <button class="btn btn-gold" id="accessApp">Acessar a Plataforma</button>
   </section>
 
@@ -1416,7 +1647,9 @@
       <div class="grid md:grid-cols-4 gap-8 mb-8">
         <div>
           <h3 class="text-xl font-bold mb-4 flex items-center">
-            <span class="text-blue-400">f</span><span class="text-green-400">A</span><span class="text-yellow-400">I</span><span class="text-blue-400">x</span><span class="text-green-400">a</span><span class="font-light">Bet</span>
+            <span class="text-blue-400">f</span><span class="text-green-400">A</span><span
+              class="text-yellow-400">I</span><span class="text-blue-400">x</span><span
+              class="text-green-400">a</span><span class="font-light">Bet</span>
           </h3>
           <p class="text-gray-400 mb-4">
             Palpites certeiros baseados em análise de dados para aumentar suas chances de ganhar.
@@ -1441,9 +1674,12 @@
         <div>
           <h4 class="text-lg font-semibold mb-4">Legal</h4>
           <ul class="space-y-2">
-            <li><a class="text-gray-400 hover:text-green-400" href="termo.html" target="_blank">Termos de Uso e LGPD</a></li>
-            <li><a class="text-gray-400 hover:text-green-400" href="privacidade.html" target="_blank">Política de Privacidade</a></li>
-            <li><a class="text-gray-400 hover:text-green-400" href="responsabilidade.html" target="_blank">Responsabilidade</a></li>
+            <li><a class="text-gray-400 hover:text-green-400" href="termo.html" target="_blank">Termos de Uso e LGPD</a>
+            </li>
+            <li><a class="text-gray-400 hover:text-green-400" href="privacidade.html" target="_blank">Política de
+                Privacidade</a></li>
+            <li><a class="text-gray-400 hover:text-green-400" href="responsabilidade.html"
+                target="_blank">Responsabilidade</a></li>
             <li><a class="text-gray-400 hover:text-green-400" href="#faq">FAQ</a></li>
           </ul>
         </div>
@@ -1472,9 +1708,15 @@
     </div>
   </footer>
 
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- Leaflet Heat -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
+
   <!-- MAPA DE CALOR DOS GANHADORES -->
   <script>
-    const API_BASE = "https://backend-v8.onrender.com";
+    const HEATMAP_API_BASE = "https://faixabet-heatmap.onrender.com";
 
     let map;
     let heatLayer;
@@ -1504,42 +1746,53 @@
         map.removeLayer(heatLayer);
       }
 
-    const res = await fetch(
-      `${API_BASE}/api/winners?loteria=${loteria}&concurso=${concurso}`
-    );
+      try {
+        const res = await fetch(
+          `${HEATMAP_API_BASE}/api/winners?loteria=${loteria}&concurso=${concurso}`
+        );
 
-    const data = await res.json();
+        if (!res.ok) throw new Error("Erro na API");
 
-    if (!data.length) {
-      alert("Nenhum ganhador encontrado para este concurso.");
-      return;
+        const json = await res.json();
+        // O backend retorna { meta: ..., ganhadores: [...] }
+        const data = json.ganhadores || [];
+
+        if (!data.length) {
+          alert("Nenhum ganhador encontrado para este concurso.");
+          return;
+        }
+
+        const pontos = data.map(p => [
+          p.lat,
+          p.lon,
+          p.acertos === 15 ? 1 : 0.6
+        ]);
+
+        heatLayer = L.heatLayer(pontos, {
+          radius: 25,
+          blur: 15,
+          maxZoom: 6
+        }).addTo(map);
+
+        // Tooltips individuais (opcional)
+        data.forEach(p => {
+          L.circleMarker([p.lat, p.lon], {
+            radius: 4,
+            opacity: 0
+          })
+            .addTo(map)
+            .bindTooltip(
+              `${p.municipio}/${p.uf}<br>${p.acertos} acertos`,
+              { direction: "top" }
+            );
+        });
+      } catch (err) {
+        console.error(err);
+        alert("Erro ao carregar dados. Verifique se o backend está rodando em " + HEATMAP_API_BASE);
+      }
     }
 
-    const pontos = data.map(p => [
-      p.lat,
-      p.lon,
-      p.acertos === 15 ? 1 : 0.6
-    ]);
 
-    heatLayer = L.heatLayer(pontos, {
-      radius: 25,
-      blur: 15,
-      maxZoom: 6
-    }).addTo(map);
-
-    // Tooltips individuais (opcional)
-    data.forEach(p => {
-      L.circleMarker([p.lat, p.lon], {
-        radius: 4,
-        opacity: 0
-      })
-      .addTo(map)
-      .bindTooltip(
-        `${p.municipio}/${p.uf}<br>${p.acertos} acertos`,
-        { direction: "top" }
-      );
-    });
-  }
   </script>
 
   <!-- Swiper JS (único) -->
@@ -1566,4 +1819,5 @@
   <!-- Brevo + Cookies -->
   <script src="assets/js/brevo.js" defer></script>
 </body>
+
 </html>
