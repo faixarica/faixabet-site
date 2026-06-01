@@ -1,5 +1,7 @@
 // assets/js/main.js – Planos + Formulário + Checkout Stripe
-const API_BASE = "https://backend-v8.onrender.com/api";
+const API_BASE = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+  ? "http://localhost:3001/api"
+  : "https://backend-v8.onrender.com/api";
 
 let selectedPlan = null;
 let isSubmitting = false;
