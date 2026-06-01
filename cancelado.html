@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>fAIxaBet | Cadastro Interrompido</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec", // Electric Blue
+                        "background-dark": "#0f172a", // Deep slate
+                        "accent-green": "#00d26a",
+                        "accent-yellow": "#fcd535",
+                        "accent-purple": "#8b5cf6",
+                        "accent-orange": "#f97316",
+                        "surface-dark": "#1e293b",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "Montserrat", "sans-serif"],
+                        "body": ["Space Grotesk", "Montserrat", "sans-serif"],
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: "Space Grotesk", sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+        }
+
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.65);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .neon-border {
+            box-shadow: 0 0 25px rgba(249, 115, 22, 0.15), inset 0 0 20px rgba(19, 91, 236, 0.1);
+        }
+    </style>
+</head>
+
+<body class="text-white min-h-screen flex items-center justify-center p-4">
+    
+    <div class="relative w-full max-w-xl rounded-2xl glass-panel neon-border p-8 md:p-10 flex flex-col gap-6 text-center animate-[sweep_0.4s_ease-out]">
+        <!-- Gradient top border -->
+        <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-accent-orange via-primary to-accent-green rounded-t-2xl"></div>
+
+        <!-- Warning icon -->
+        <div class="mx-auto size-16 rounded-full bg-accent-orange/10 flex items-center justify-center text-accent-orange border border-accent-orange/20 shadow-[0_0_15px_rgba(249,115,22,0.2)]">
+            <span class="material-symbols-outlined text-4xl">warning</span>
+        </div>
+
+        <div class="flex flex-col gap-2">
+            <h1 class="text-3xl font-bold tracking-tight text-white md:text-4xl">Opa! Pagamento Interrompido ⚡</h1>
+            <p class="text-slate-400 text-sm md:text-base font-light leading-relaxed">
+                Detectamos que a transação no Stripe foi cancelada ou não pôde ser concluída.
+            </p>
+        </div>
+
+        <!-- Info box -->
+        <div class="bg-background-dark/60 rounded-xl p-5 border border-white/5 text-left flex flex-col gap-3">
+            <div class="flex items-center gap-2 text-accent-yellow font-bold text-sm">
+                <span class="material-symbols-outlined text-sm">security</span>
+                  Seus dados estão seguros!
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+                Salvamos suas informações básicas de cadastro temporariamente. Um e-mail com instruções foi enviado para você finalizar quando desejar. Se preferir concluir agora, seus dados não precisarão ser digitados novamente!
+            </p>
+        </div>
+
+        <!-- Benefits checklist -->
+        <div class="text-left flex flex-col gap-3">
+            <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest">Benefícios que te aguardam no VIP:</h3>
+            <ul class="grid grid-cols-1 gap-2 text-sm text-slate-300">
+                <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-accent-green text-[18px]">check_circle</span>
+                    Palpites ilimitados com IA otimizada (Mission-Up V9)
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-accent-green text-[18px]">check_circle</span>
+                    Índice de assertividade técnica de até 89%
+                </li>
+                <li class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-accent-green text-[18px]">check_circle</span>
+                    Histórico estatístico e suporte prioritário
+                </li>
+            </ul>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 mt-2">
+            <a href="index-2.html#planos-faixabet"
+                class="flex-1 h-12 rounded-xl bg-gradient-to-r from-accent-yellow to-accent-green text-slate-950 font-bold flex items-center justify-center gap-2 hover:scale-[1.02] shadow-[0_4px_15px_rgba(252,213,53,0.3)] transition-all">
+                Tentar Novamente
+                <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span>
+            </a>
+            <a href="index-2.html"
+                class="h-12 px-6 rounded-xl bg-surface-dark border border-white/10 hover:bg-white/5 flex items-center justify-center text-slate-300 transition-all font-medium text-sm">
+                Ir para a Home
+            </a>
+        </div>
+
+        <p class="text-[10px] text-slate-500 font-mono">
+            fAIxaBet © 2026 • Tecnologia e Inteligência Aplicada
+        </p>
+    </div>
+
+    <!-- Script to call the background API -->
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const userId = urlParams.get("user_id");
+
+            if (!userId) {
+                console.warn("[fAIxaBet] Nenhum user_id especificado na URL. E-mail de cadastro interrompido não será enviado.");
+                return;
+            }
+
+            // Detecta o endereço da API baseado no ambiente
+            const API_BASE = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+                ? "http://localhost:3001/api"
+                : "https://backend-v8.onrender.com/api";
+
+            try {
+                console.log(`[fAIxaBet] Disparando e-mail de interrupção para o usuário ${userId}...`);
+                const response = await fetch(`${API_BASE}/payment-cancel?user_id=${userId}`);
+                const data = await response.json();
+                console.log("[fAIxaBet] Resposta da API de cancelamento:", data);
+            } catch (err) {
+                console.error("[fAIxaBet] Erro ao comunicar cancelamento de pagamento:", err);
+            }
+        });
+    </script>
+</body>
+
+</html>
