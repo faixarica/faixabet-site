@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>fAIxaBet | Palpites de Loteria com Inteligência Artificial</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec", // Electric Blue
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0f172a", // Deep slate/black
+                        "accent-green": "#00d26a",
+                        "accent-yellow": "#fcd535",
+                        "accent-purple": "#8b5cf6",
+                        "accent-orange": "#f97316",
+                        "surface-dark": "#1e293b",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Space Grotesk", "sans-serif"],
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #1e293b 1px, transparent 1px), linear-gradient(to bottom, #1e293b 1px, transparent 1px)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Space Grotesk", sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }.hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .neon-border {
+            box-shadow: 0 0 10px rgba(19, 91, 236, 0.15);
+        }
+        .lottery-ball {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            box-shadow: 3px 3px 6px #0b111f, -3px -3px 6px #253349;
+        }details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary ~ * {
+            animation: sweep .3s ease-in-out;
+        }
+        @keyframes sweep {
+            0%    {opacity: 0; transform: translateY(-10px)}
+            100%  {opacity: 1; transform: translateY(0)}
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white transition-colors duration-300">
+<input class="peer hidden" id="simulador-toggle" type="checkbox"/>
+<div class="fixed inset-0 z-[100] hidden peer-checked:flex items-center justify-center p-4">
+<div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="document.getElementById('simulador-toggle').checked = false"></div>
+<div class="relative w-full max-w-lg rounded-2xl bg-surface-dark border border-white/10 shadow-[0_0_50px_rgba(139,92,246,0.2)] p-6 md:p-8 flex flex-col gap-6 animate-[sweep_0.3s_ease-out]">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-accent-purple text-3xl">smart_toy</span>
+<h3 class="text-2xl font-bold text-white">Simulador Lotofácil IA</h3>
+</div>
+<label class="cursor-pointer text-slate-400 hover:text-white transition-colors" for="simulador-toggle">
+<span class="material-symbols-outlined text-2xl">close</span>
+</label>
+</div>
+<div class="bg-background-dark/50 rounded-xl p-4 border border-white/5">
+<p class="text-sm text-slate-400 mb-2">Probabilidade Calculada: <span class="text-accent-green font-bold">89.4%</span></p>
+<div class="h-2 w-full bg-surface-dark rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-accent-purple to-accent-green w-[89%]"></div>
+</div>
+</div>
+<div class="grid grid-cols-5 gap-3 justify-items-center">
+<div class="size-10 rounded-full bg-gradient-to-br from-accent-purple to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg border border-white/20">02</div>
+<div class="size-10 rounded-full bg-gradient-to-br from-accent-purple to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg border border-white/20">04</div>
+<div class="size-10 rounded-full bg-gradient-to-br from-accent-purple to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg border border-white/20">05</div>
+<div class="size-10 rounded-full bg-gradient-to-br from-accent-purple to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg border border-white/20">09</div>
+<div class="size-10 rounded-full bg-gradient-to-br from-accent-purple to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg border border-white/20">11</div>
+<div class="size-10 rounded-full bg-gradient-to-br from-accent-purple to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg border border-white/20">12</div>
+<div class="size-10 rounded-full bg-gradient-to-br from-accent-purple to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg border border-white/20">14</div>
+<div class="size-10 rounded-full bg-gradient-to-br from-accent-purple to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg border border-white/20">17</div>
+<div class="size-10 rounded-full bg-gradient-to-br from-accent-purple to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg border border-white/20">19</div>
+<div class="size-10 rounded-full bg-gradient-to-br from-accent-purple to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg border border-white/20">20</div>
+<div class="size-10 rounded-full bg-gradient-to-br from-accent-purple to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg border border-white/20">21</div>
+<div class="size-10 rounded-full bg-gradient-to-br from-accent-purple to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg border border-white/20">22</div>
+<div class="size-10 rounded-full bg-gradient-to-br from-accent-purple to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg border border-white/20">23</div>
+<div class="size-10 rounded-full bg-gradient-to-br from-accent-purple to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg border border-white/20">24</div>
+<div class="size-10 rounded-full bg-gradient-to-br from-accent-purple to-indigo-600 flex items-center justify-center text-white font-bold shadow-lg border border-white/20">25</div>
+</div>
+<div class="flex gap-4 mt-2">
+<button class="flex-1 h-12 rounded-lg bg-primary hover:bg-primary/90 text-white font-bold flex items-center justify-center gap-2 transition-all">
+                Jogar Esses Números
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+<button class="h-12 w-12 rounded-lg bg-surface-dark border border-white/10 hover:bg-white/5 flex items-center justify-center text-white transition-all">
+<span class="material-symbols-outlined">refresh</span>
+</button>
+</div>
+<p class="text-xs text-center text-slate-500">
+            Gerado pelo algoritmo fAIxaBet v2.0. Resultados passados não garantem ganhos futuros.
+        </p>
+</div>
+</div>
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<header class="sticky top-0 z-50 glass-panel border-b border-white/5 px-4 py-3 lg:px-10">
+<div class="mx-auto flex max-w-7xl items-center justify-between gap-4">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-primary hover:text-white transition-colors cursor-pointer group">
+<div class="relative flex items-center justify-center size-8 rounded bg-primary/20 group-hover:bg-primary/40 transition-all">
+<span class="material-symbols-outlined text-primary group-hover:text-white">casino</span>
+<div class="absolute -right-1 -top-1 size-2 rounded-full bg-accent-green animate-pulse"></div>
+</div>
+<h2 class="text-white text-xl font-bold tracking-tight">fAIxaBet</h2>
+</div>
+<label class="hidden md:flex flex-col min-w-40 h-10 w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg bg-surface-dark/50 border border-white/5 focus-within:border-primary/50 transition-all">
+<div class="text-slate-400 flex items-center justify-center pl-3">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 bg-transparent px-3 text-sm text-white focus:outline-0 placeholder:text-slate-500" placeholder="Buscar concurso ou loteria..."/>
+</div>
+</label>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors flex items-center gap-2" href="#planos">
+<span class="material-symbols-outlined text-[18px]">workspace_premium</span> Planos
+            </a>
+<a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors flex items-center gap-2" href="#mapa">
+<span class="material-symbols-outlined text-[18px]">public</span> Mapa
+            </a>
+<a class="text-white text-sm font-medium transition-colors flex items-center gap-2 relative" href="#resultados">
+<span class="material-symbols-outlined text-[18px] text-accent-green">check_circle</span> Resultados
+                <span class="absolute -top-3 -right-3 px-1.5 py-0.5 rounded text-[10px] font-bold bg-accent-green/20 text-accent-green">NOVOS</span>
+</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="hidden sm:flex h-9 items-center justify-center rounded-lg bg-surface-dark hover:bg-surface-dark/80 text-white text-sm font-bold px-4 border border-white/5 transition-all">
+                Entrar
+            </button>
+<button class="h-9 items-center justify-center rounded-lg bg-primary hover:bg-primary/90 text-white text-sm font-bold px-4 shadow-[0_0_15px_rgba(19,91,236,0.4)] transition-all flex items-center gap-2">
+                Acessar fAIxaBet
+                <span class="material-symbols-outlined text-[16px]">login</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center w-full px-4 lg:px-10 py-6">
+<div class="w-full max-w-7xl flex flex-col gap-12">
+<div class="w-full overflow-hidden bg-surface-dark/30 border-y border-white/5 py-2">
+<div class="flex gap-8 animate-marquee whitespace-nowrap text-xs font-medium text-slate-400">
+<span class="flex items-center gap-2"><span class="text-accent-green">●</span> MEGA-SENA: Acumulou R$ 32M</span>
+<span class="flex items-center gap-2"><span class="text-accent-purple">●</span> LOTOFÁCIL: Próx. Sorteio Hoje 20h</span>
+<span class="flex items-center gap-2"><span class="text-accent-orange">●</span> LOTOMANIA: Prêmio R$ 5.5M</span>
+<span class="flex items-center gap-2"><span class="text-accent-yellow">♦</span> IA Pick: Lotofácil - Alta Probabilidade (89%)</span>
+<span class="flex items-center gap-2"><span class="text-primary">●</span> QUINA: Saiu para SP</span>
+</div>
+</div>
+<div class="relative w-full rounded-2xl overflow-hidden min-h-[500px] flex items-center">
+<div class="absolute inset-0 z-0 bg-cover bg-center" data-alt="Abstract futuristic data visualization background with neon blue lights" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCq3yNkfSW2slo0SgTsrmk-W276rNA5vuzgoojlLAfoIsfHzPaG8AyZnrp9BzkNVNixaxP0raTwI_sReew7bQIW0Q8Rmy7n0NJp8PC-cbCbBjWbdwFvXonp3HWymBTSyPnq8-SZUxl9qdULmfLyBKFd3VIwpWyeFy8FsYUul-8cPvkDo3LoBk6XzgfEjW_hO-S_VqNEaXWtXJudiN4szPC4sVspe9t1nH1JaFuuAXzC6TfXT5-Ahxmnic1_TdGURhvZxzbI-MmgKFB3");'></div>
+<div class="absolute inset-0 z-10 bg-gradient-to-r from-background-dark via-background-dark/90 to-transparent"></div>
+<div class="relative z-20 flex flex-col gap-6 px-6 md:px-12 max-w-2xl">
+<div class="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 w-fit backdrop-blur-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="text-xs font-semibold text-primary uppercase tracking-wide">Tecnologia fAIxaBet v2.0</span>
+</div>
+<h1 class="text-4xl md:text-6xl font-bold leading-tight tracking-tight text-white">
+                Palpites de Loteria com <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-purple">Precisão da IA</span>
+</h1>
+<p class="text-slate-300 text-lg md:text-xl font-light max-w-lg">
+                Potencialize suas chances na Mega-Sena, Lotofácil e muito mais com nossos algoritmos preditivos avançados.
+            </p>
+<div class="flex flex-wrap gap-4 mt-2">
+<label class="cursor-pointer h-12 px-8 rounded-lg bg-primary hover:bg-primary/90 text-white font-bold tracking-wide shadow-[0_0_20px_rgba(19,91,236,0.5)] transition-all flex items-center gap-2" for="simulador-toggle">
+                    Gerar Palpites Grátis
+                    <span class="material-symbols-outlined text-sm">auto_awesome</span>
+</label>
+<a class="h-12 px-8 rounded-lg bg-surface-dark/50 hover:bg-surface-dark border border-white/10 backdrop-blur-md text-white font-medium transition-all flex items-center gap-2" href="#planos">
+                    Ver Planos VIP
+                </a>
+</div>
+<div class="flex items-center gap-4 mt-4 pt-4 border-t border-white/5">
+<span class="text-xs text-slate-500 uppercase tracking-widest">Powered by</span>
+<div class="flex items-center gap-3 opacity-70 grayscale hover:grayscale-0 transition-all">
+<div class="flex items-center gap-1 font-bold text-white text-lg italic tracking-tighter">stripe</div>
+<div class="h-4 w-px bg-slate-700"></div>
+<div class="flex items-center gap-1 text-xs text-slate-400">
+<span class="material-symbols-outlined text-sm">lock</span>
+                        SSL Secure
+                    </div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="group relative overflow-hidden rounded-xl bg-surface-dark border border-white/5 p-6 transition-all hover:border-primary/50">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative z-10 flex flex-col gap-4">
+<div class="size-12 rounded-lg bg-surface-dark border border-white/10 flex items-center justify-center text-accent-green shadow-lg">
+<span class="material-symbols-outlined text-3xl">trending_up</span>
+</div>
+<div>
+<h3 class="text-lg font-bold text-white mb-1">Palpites Otimizados</h3>
+<p class="text-sm text-slate-400">Combinações geradas matematicamente para aumentar sua probabilidade de acerto.</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl bg-surface-dark border border-white/5 p-6 transition-all hover:border-accent-purple/50">
+<div class="absolute inset-0 bg-gradient-to-br from-accent-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative z-10 flex flex-col gap-4">
+<div class="size-12 rounded-lg bg-surface-dark border border-white/10 flex items-center justify-center text-accent-purple shadow-lg">
+<span class="material-symbols-outlined text-3xl">psychology</span>
+</div>
+<div>
+<h3 class="text-lg font-bold text-white mb-1">Análise de IA</h3>
+<p class="text-sm text-slate-400">Nossa IA analisa milhões de resultados históricos para identificar padrões ocultos.</p>
+</div>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-xl bg-surface-dark border border-white/5 p-6 transition-all hover:border-primary/50">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative z-10 flex flex-col gap-4">
+<div class="size-12 rounded-lg bg-surface-dark border border-white/10 flex items-center justify-center text-primary shadow-lg">
+<span class="material-symbols-outlined text-3xl">credit_card</span>
+</div>
+<div>
+<h3 class="text-lg font-bold text-white mb-1">Assinatura Simplificada</h3>
+<p class="text-sm text-slate-400">Pagamento seguro via Stripe para acesso contínuo aos melhores palpites.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="py-4" id="planos">
+<div class="flex flex-col gap-2 mb-8 text-center">
+<h2 class="text-2xl md:text-3xl font-bold text-white">Planos fAIxaBet</h2>
+<p class="text-slate-400 max-w-xl mx-auto">Escolha o nível de inteligência que você precisa. Cancele a qualquer momento.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="flex flex-col gap-4 rounded-xl border border-white/5 bg-surface-dark p-6 hover:border-white/20 transition-all h-full">
+<div class="flex flex-col gap-4 flex-1">
+<div class="flex items-center justify-between">
+<h3 class="text-lg font-bold text-white">Free</h3>
+<span class="text-xs font-bold bg-white/10 text-white px-2 py-1 rounded">Grátis</span>
+</div>
+<div class="flex items-baseline gap-1 text-white">
+<span class="text-3xl font-bold">R$0</span>
+<span class="text-sm text-slate-400">/mês</span>
+</div>
+<ul class="flex flex-col gap-3 my-2 text-sm text-slate-400">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-slate-500 text-[18px]">check</span> 1 Palpite Semanal</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-slate-500 text-[18px]">check</span> Apenas Mega-Sena</li>
+</ul>
+</div>
+<label class="mt-4 w-full py-3 rounded-lg border border-white/10 hover:bg-white/5 hover:border-white/30 text-white text-center font-bold text-sm cursor-pointer transition-all shadow-sm" for="p_free">
+                        Selecionar Grátis
+                    </label>
+</div>
+<div class="flex flex-col gap-4 rounded-xl border border-white/10 bg-surface-dark p-6 hover:border-slate-300 transition-all h-full">
+<div class="flex flex-col gap-4 flex-1">
+<div class="flex items-center justify-between">
+<h3 class="text-lg font-bold text-slate-200">Silver</h3>
+<span class="text-xs font-bold bg-slate-600/20 text-slate-300 px-2 py-1 rounded">Mensal</span>
+</div>
+<div class="flex items-baseline gap-1 text-white">
+<span class="text-3xl font-bold">R$29</span>
+<span class="text-sm text-slate-400">/mês</span>
+</div>
+<ul class="flex flex-col gap-3 my-2 text-sm text-slate-300">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-green text-[18px]">check_circle</span> 5 Palpites Semanais</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-green text-[18px]">check_circle</span> Lotofácil e Mega</li>
+</ul>
+</div>
+<label class="mt-4 w-full py-3 rounded-lg bg-surface-dark border border-white/10 hover:bg-slate-700/50 hover:border-slate-500 text-slate-200 text-center font-bold text-sm cursor-pointer transition-all shadow-sm" for="p_silver">
+                        Assinar Silver
+                    </label>
+</div>
+<div class="relative flex flex-col gap-4 rounded-xl border border-accent-yellow bg-surface-dark p-6 shadow-[0_0_20px_rgba(252,213,53,0.15)] hover:-translate-y-1 transition-transform h-full">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent-yellow text-black text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide">Recomendado</div>
+<div class="flex flex-col gap-4 flex-1 mt-1">
+<div class="flex items-center justify-between">
+<h3 class="text-lg font-bold text-accent-yellow">Gold</h3>
+<span class="text-xs font-bold bg-accent-yellow/20 text-accent-yellow px-2 py-1 rounded">Semestral</span>
+</div>
+<div class="flex items-baseline gap-1 text-white">
+<span class="text-3xl font-bold">R$89</span>
+<span class="text-sm text-slate-400">/sem</span>
+</div>
+<ul class="flex flex-col gap-3 my-2 text-sm text-white">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-yellow text-[18px]">verified</span> Palpites Diários</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-yellow text-[18px]">verified</span> Todas as Loterias</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-yellow text-[18px]">verified</span> IA Avançada</li>
+</ul>
+</div>
+<label class="mt-4 w-full py-3 rounded-lg bg-accent-yellow text-black hover:bg-accent-yellow/90 font-bold text-sm text-center cursor-pointer transition-all shadow-[0_0_15px_rgba(252,213,53,0.3)]" for="p_gold">
+                        Assinar Gold
+                    </label>
+</div>
+<div class="flex flex-col gap-4 rounded-xl border border-accent-purple/50 bg-surface-dark p-6 hover:border-accent-purple transition-all h-full">
+<div class="flex flex-col gap-4 flex-1">
+<div class="flex items-center justify-between">
+<h3 class="text-lg font-bold text-accent-purple">Platinum</h3>
+<span class="text-xs font-bold bg-accent-purple/20 text-accent-purple px-2 py-1 rounded">Anual</span>
+</div>
+<div class="flex items-baseline gap-1 text-white">
+<span class="text-3xl font-bold">R$149</span>
+<span class="text-sm text-slate-400">/ano</span>
+</div>
+<ul class="flex flex-col gap-3 my-2 text-sm text-slate-300">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-purple text-[18px]">diamond</span> Acesso Vitalício IA</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-accent-purple text-[18px]">diamond</span> Grupo VIP WhatsApp</li>
+</ul>
+</div>
+<label class="mt-4 w-full py-3 rounded-lg bg-accent-purple text-white hover:bg-accent-purple/90 font-bold text-sm text-center cursor-pointer transition-all shadow-[0_0_15px_rgba(139,92,246,0.3)]" for="p_platinum">
+                        Assinar Platinum
+                    </label>
+</div>
+</div>
+</div>
+<div class="w-full max-w-4xl mx-auto transition-all duration-1000 ease-in-out max-h-0 opacity-0 overflow-hidden has-[:checked]:max-h-[2000px] has-[:checked]:opacity-100" id="subscription-form">
+<div class="relative rounded-2xl bg-surface-dark border border-white/10 shadow-[0_0_50px_rgba(19,91,236,0.15)] overflow-hidden mt-8">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent-purple/5"></div>
+<div class="relative z-10 p-6 md:p-10">
+<div class="mb-8 text-center md:text-left">
+<div class="flex items-center justify-center md:justify-start gap-3 mb-2">
+<span class="size-8 rounded bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">edit_document</span>
+</span>
+<h2 class="text-2xl font-bold text-white">Finalize sua Assinatura</h2>
+</div>
+<p class="text-slate-400">Preencha seus dados abaixo para liberar o acesso imediato à plataforma.</p>
+</div>
+<form class="flex flex-col gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Nome Completo</label>
+<input class="w-full bg-background-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none placeholder:text-slate-600 transition-all" placeholder="Seu nome completo" type="text"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Usuário</label>
+<input class="w-full bg-background-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none placeholder:text-slate-600 transition-all" placeholder="@usuario" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-400 uppercase tracking-wider">E-mail</label>
+<input class="w-full bg-background-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none placeholder:text-slate-600 transition-all" placeholder="seu@email.com" type="email"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Telefone</label>
+<input class="w-full bg-background-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none placeholder:text-slate-600 transition-all" placeholder="(00) 00000-0000" type="tel"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Data de Nascimento</label>
+<input class="w-full bg-background-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none placeholder:text-slate-600 [color-scheme:dark] transition-all" type="date"/>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                                    Senha <span class="material-symbols-outlined text-[14px] text-primary">lock</span>
+</label>
+<div class="relative group">
+<input class="w-full bg-background-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none placeholder:text-slate-600 transition-all" placeholder="Mínimo 8 caracteres" required="" type="password"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm">visibility_off</span>
+</div>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Confirme o Plano Selecionado</label>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<input class="peer/free sr-only" id="p_free" name="plan" type="radio" value="free"/>
+<label class="cursor-pointer rounded-lg border border-white/10 bg-background-dark/50 px-2 py-3 text-center transition-all hover:border-primary/50 hover:bg-white/5 peer-checked/free:border-primary peer-checked/free:bg-primary/20 peer-checked/free:shadow-[0_0_15px_rgba(19,91,236,0.3)]" for="p_free">
+<div class="text-xs font-bold text-slate-400 peer-checked/free:text-primary uppercase">Free</div>
+<div class="text-white font-bold">R$0</div>
+</label>
+<input class="peer/silver sr-only" id="p_silver" name="plan" type="radio" value="silver"/>
+<label class="cursor-pointer rounded-lg border border-white/10 bg-background-dark/50 px-2 py-3 text-center transition-all hover:border-primary/50 hover:bg-white/5 peer-checked/silver:border-primary peer-checked/silver:bg-primary/20 peer-checked/silver:shadow-[0_0_15px_rgba(19,91,236,0.3)]" for="p_silver">
+<div class="text-xs font-bold text-slate-400 peer-checked/silver:text-primary uppercase">Silver</div>
+<div class="text-white font-bold">R$29</div>
+</label>
+<input class="peer/gold sr-only" id="p_gold" name="plan" type="radio" value="gold"/>
+<label class="relative cursor-pointer rounded-lg border border-white/10 bg-background-dark/50 px-2 py-3 text-center transition-all hover:border-accent-yellow/50 hover:bg-white/5 peer-checked/gold:border-accent-yellow peer-checked/gold:bg-accent-yellow/10 peer-checked/gold:shadow-[0_0_15px_rgba(252,213,53,0.3)]" for="p_gold">
+<div class="absolute -top-2 -right-2 text-[8px] bg-accent-yellow text-black font-bold px-1.5 py-0.5 rounded-full">POP</div>
+<div class="text-xs font-bold text-slate-400 peer-checked/gold:text-accent-yellow uppercase">Gold</div>
+<div class="text-white font-bold">R$89</div>
+</label>
+<input class="peer/platinum sr-only" id="p_platinum" name="plan" type="radio" value="platinum"/>
+<label class="cursor-pointer rounded-lg border border-white/10 bg-background-dark/50 px-2 py-3 text-center transition-all hover:border-accent-purple/50 hover:bg-white/5 peer-checked/platinum:border-accent-purple peer-checked/platinum:bg-accent-purple/20 peer-checked/platinum:shadow-[0_0_15px_rgba(139,92,246,0.3)]" for="p_platinum">
+<div class="text-xs font-bold text-slate-400 peer-checked/platinum:text-accent-purple uppercase">Platinum</div>
+<div class="text-white font-bold">R$149</div>
+</label>
+</div>
+</div>
+<div class="pt-4">
+<button class="h-14 w-full rounded-xl bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-600/90 text-white font-bold text-lg shadow-[0_0_25px_rgba(19,91,236,0.4)] transition-all flex items-center justify-center gap-3 transform hover:scale-[1.01]" type="button">
+                            Assinar fAIxaBet Agora
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="text-xs text-center text-slate-500 mt-3">
+                            Pagamento processado de forma segura. Seus dados estão protegidos.
+                        </p>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full bg-surface-dark border border-white/5 rounded-2xl overflow-hidden" id="mapa">
+<div class="p-6 md:p-8 border-b border-white/5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h2 class="text-2xl font-bold text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-accent-yellow">trophy</span>
+                    Mapa de Ganhadores
+                </h2>
+<p class="text-slate-400 text-sm mt-1">Veja onde saíram os últimos prêmios da fAIxaBet.</p>
+</div>
+<div class="flex flex-wrap gap-3">
+<div class="relative">
+<select class="appearance-none bg-background-dark text-white border border-white/10 rounded-lg pl-4 pr-10 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+<option>Mega-Sena</option>
+<option>Lotofácil</option>
+<option>Quina</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 text-sm pointer-events-none">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none bg-background-dark text-white border border-white/10 rounded-lg pl-4 pr-10 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+<option>Concurso 2724</option>
+<option>Concurso 2723</option>
+<option>Concurso 2722</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 text-sm pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<div class="relative h-[400px] w-full bg-[#0f172a] overflow-hidden">
+<div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 20px 20px;"></div>
+<svg class="absolute inset-0 w-full h-full opacity-30 stroke-slate-600" fill="none">
+<path d="M100,200 Q250,100 400,200 T700,200" stroke-dasharray="5,5" stroke-width="0.5"></path>
+<path d="M50,100 Q200,300 350,150 T600,250" stroke-dasharray="5,5" stroke-width="0.5"></path>
+</svg>
+<div class="absolute top-[40%] left-[30%] group cursor-pointer">
+<div class="size-3 rounded-full bg-accent-green animate-ping absolute"></div>
+<div class="relative size-3 rounded-full bg-accent-green border-2 border-white shadow-[0_0_15px_rgba(0,210,106,0.8)]"></div>
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-surface-dark border border-accent-green/30 px-3 py-1 rounded-lg text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="text-accent-green font-bold">R$ 45.000</span><br/>São Paulo, SP
+                </div>
+</div>
+<div class="absolute top-[60%] left-[65%] group cursor-pointer">
+<div class="size-3 rounded-full bg-accent-purple animate-ping absolute animation-delay-500"></div>
+<div class="relative size-3 rounded-full bg-accent-purple border-2 border-white shadow-[0_0_15px_rgba(139,92,246,0.8)]"></div>
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-surface-dark border border-accent-purple/30 px-3 py-1 rounded-lg text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="text-accent-purple font-bold">R$ 12.000</span><br/>Rio de Janeiro, RJ
+                </div>
+</div>
+<div class="absolute top-[35%] left-[50%] group cursor-pointer">
+<div class="size-3 rounded-full bg-accent-yellow animate-ping absolute animation-delay-1000"></div>
+<div class="relative size-3 rounded-full bg-accent-yellow border-2 border-white shadow-[0_0_15px_rgba(252,213,53,0.8)]"></div>
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-surface-dark border border-accent-yellow/30 px-3 py-1 rounded-lg text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="text-accent-yellow font-bold">R$ 8.500</span><br/>Brasília, DF
+                </div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6" id="resultados">
+<div class="flex items-center justify-between">
+<h2 class="text-2xl font-bold flex items-center gap-3">
+<span class="size-2 rounded-full bg-accent-green animate-pulse"></span>
+                Últimos Resultados
+            </h2>
+<a class="text-primary hover:text-white text-sm font-medium flex items-center gap-1 transition-colors" href="#">
+                Ver histórico <span class="material-symbols-outlined text-sm">chevron_right</span>
+</a>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="relative group flex flex-col rounded-xl bg-surface-dark border border-white/5 overflow-hidden hover:border-accent-purple/50 transition-all shadow-lg hover:shadow-accent-purple/10">
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent-purple to-purple-400"></div>
+<div class="p-6 flex flex-col gap-5 h-full">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-accent-purple/10 flex items-center justify-center text-accent-purple border border-accent-purple/20 shadow-[0_0_10px_rgba(139,92,246,0.2)]">
+<span class="material-symbols-outlined">filter_drama</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white tracking-tight">Lotofácil</h3>
+<p class="text-xs font-mono text-slate-400">CONCURSO 3089</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] text-slate-500 uppercase tracking-wider font-bold">Data</p>
+<p class="text-sm font-medium text-slate-300">14/05/2024</p>
+</div>
+</div>
+<div class="flex-1">
+<div class="grid grid-cols-5 gap-2 justify-items-center">
+<span class="flex size-8 items-center justify-center rounded-full bg-surface-dark border border-accent-purple/40 text-white text-sm font-bold shadow-sm">01</span>
+<span class="flex size-8 items-center justify-center rounded-full bg-surface-dark border border-accent-purple/40 text-white text-sm font-bold shadow-sm">02</span>
+<span class="flex size-8 items-center justify-center rounded-full bg-surface-dark border border-accent-purple/40 text-white text-sm font-bold shadow-sm">05</span>
+<span class="flex size-8 items-center justify-center rounded-full bg-surface-dark border border-accent-purple/40 text-white text-sm font-bold shadow-sm">07</span>
+<span class="flex size-8 items-center justify-center rounded-full bg-surface-dark border border-accent-purple/40 text-white text-sm font-bold shadow-sm">09</span>
+<span class="flex size-8 items-center justify-center rounded-full bg-surface-dark border border-accent-purple/40 text-white text-sm font-bold shadow-sm">11</span>
+<span class="flex size-8 items-center justify-center rounded-full bg-surface-dark border border-accent-purple/40 text-white text-sm font-bold shadow-sm">13</span>
+<span class="flex size-8 items-center justify-center rounded-full bg-surface-dark border border-accent-purple/40 text-white text-sm font-bold shadow-sm">14</span>
+<span class="flex size-8 items-center justify-center rounded-full bg-surface-dark border border-accent-purple/40 text-white text-sm font-bold shadow-sm">16</span>
+<span class="flex size-8 items-center justify-center rounded-full bg-surface-dark border border-accent-purple/40 text-white text-sm font-bold shadow-sm">18</span>
+<span class="flex size-8 items-center justify-center rounded-full bg-surface-dark border border-accent-purple/40 text-white text-sm font-bold shadow-sm">19</span>
+<span class="flex size-8 items-center justify-center rounded-full bg-surface-dark border border-accent-purple/40 text-white text-sm font-bold shadow-sm">20</span>
+<span class="flex size-8 items-center justify-center rounded-full bg-surface-dark border border-accent-purple/40 text-white text-sm font-bold shadow-sm">22</span>
+<span class="flex size-8 items-center justify-center rounded-full bg-surface-dark border border-accent-purple/40 text-white text-sm font-bold shadow-sm">23</span>
+<span class="flex size-8 items-center justify-center rounded-full bg-surface-dark border border-accent-purple/40 text-white text-sm font-bold shadow-sm">25</span>
+</div>
+</div>
+</div>
+</div>
+<div class="relative group flex flex-col rounded-xl bg-surface-dark border border-white/5 overflow-hidden hover:border-accent-green/50 transition-all shadow-lg hover:shadow-accent-green/10">
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent-green to-emerald-400"></div>
+<div class="p-6 flex flex-col gap-5 h-full">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-accent-green/10 flex items-center justify-center text-accent-green border border-accent-green/20 shadow-[0_0_10px_rgba(0,210,106,0.2)]">
+<span class="material-symbols-outlined">paid</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white tracking-tight">Mega-Sena</h3>
+<p class="text-xs font-mono text-slate-400">CONCURSO 2724</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] text-slate-500 uppercase tracking-wider font-bold">Data</p>
+<p class="text-sm font-medium text-slate-300">15/05/2024</p>
+</div>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<div class="flex flex-wrap gap-3 justify-center">
+<span class="flex size-10 items-center justify-center rounded-full bg-surface-dark border border-accent-green text-white text-lg font-bold shadow-[0_0_15px_rgba(0,210,106,0.15)]">04</span>
+<span class="flex size-10 items-center justify-center rounded-full bg-surface-dark border border-accent-green text-white text-lg font-bold shadow-[0_0_15px_rgba(0,210,106,0.15)]">12</span>
+<span class="flex size-10 items-center justify-center rounded-full bg-surface-dark border border-accent-green text-white text-lg font-bold shadow-[0_0_15px_rgba(0,210,106,0.15)]">32</span>
+<span class="flex size-10 items-center justify-center rounded-full bg-surface-dark border border-accent-green text-white text-lg font-bold shadow-[0_0_15px_rgba(0,210,106,0.15)]">45</span>
+<span class="flex size-10 items-center justify-center rounded-full bg-surface-dark border border-accent-green text-white text-lg font-bold shadow-[0_0_15px_rgba(0,210,106,0.15)]">49</span>
+<span class="flex size-10 items-center justify-center rounded-full bg-surface-dark border border-accent-green text-white text-lg font-bold shadow-[0_0_15px_rgba(0,210,106,0.15)]">58</span>
+</div>
+<div class="mt-6 text-center">
+<span class="inline-block px-3 py-1 bg-accent-green/20 border border-accent-green/30 rounded-full text-xs font-bold text-accent-green">ACUMULOU!</span>
+</div>
+</div>
+</div>
+</div>
+<div class="relative group flex flex-col rounded-xl bg-surface-dark border border-white/5 overflow-hidden hover:border-accent-orange/50 transition-all shadow-lg hover:shadow-accent-orange/10">
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent-orange to-orange-400"></div>
+<div class="p-6 flex flex-col gap-5 h-full">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-accent-orange/10 flex items-center justify-center text-accent-orange border border-accent-orange/20 shadow-[0_0_10px_rgba(249,115,22,0.2)]">
+<span class="material-symbols-outlined">casino</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white tracking-tight">Lotomania</h3>
+<p class="text-xs font-mono text-slate-400">CONCURSO 2621</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] text-slate-500 uppercase tracking-wider font-bold">Data</p>
+<p class="text-sm font-medium text-slate-300">13/05/2024</p>
+</div>
+</div>
+<div class="flex-1">
+<div class="grid grid-cols-5 gap-2 justify-items-center">
+<span class="flex size-7 items-center justify-center rounded-full bg-surface-dark border border-accent-orange/40 text-white text-xs font-bold">01</span>
+<span class="flex size-7 items-center justify-center rounded-full bg-surface-dark border border-accent-orange/40 text-white text-xs font-bold">04</span>
+<span class="flex size-7 items-center justify-center rounded-full bg-surface-dark border border-accent-orange/40 text-white text-xs font-bold">12</span>
+<span class="flex size-7 items-center justify-center rounded-full bg-surface-dark border border-accent-orange/40 text-white text-xs font-bold">15</span>
+<span class="flex size-7 items-center justify-center rounded-full bg-surface-dark border border-accent-orange/40 text-white text-xs font-bold">18</span>
+<span class="flex size-7 items-center justify-center rounded-full bg-surface-dark border border-accent-orange/40 text-white text-xs font-bold">22</span>
+<span class="flex size-7 items-center justify-center rounded-full bg-surface-dark border border-accent-orange/40 text-white text-xs font-bold">35</span>
+<span class="flex size-7 items-center justify-center rounded-full bg-surface-dark border border-accent-orange/40 text-white text-xs font-bold">39</span>
+<span class="flex size-7 items-center justify-center rounded-full bg-surface-dark border border-accent-orange/40 text-white text-xs font-bold">41</span>
+<span class="flex size-7 items-center justify-center rounded-full bg-surface-dark border border-accent-orange/40 text-white text-xs font-bold">44</span>
+<span class="flex size-7 items-center justify-center rounded-full bg-surface-dark border border-accent-orange/40 text-white text-xs font-bold">50</span>
+<span class="flex size-7 items-center justify-center rounded-full bg-surface-dark border border-accent-orange/40 text-white text-xs font-bold">56</span>
+<span class="flex size-7 items-center justify-center rounded-full bg-surface-dark border border-accent-orange/40 text-white text-xs font-bold">61</span>
+<span class="flex size-7 items-center justify-center rounded-full bg-surface-dark border border-accent-orange/40 text-white text-xs font-bold">67</span>
+<span class="flex size-7 items-center justify-center rounded-full bg-surface-dark border border-accent-orange/40 text-white text-xs font-bold">72</span>
+<span class="flex size-7 items-center justify-center rounded-full bg-surface-dark border border-accent-orange/40 text-white text-xs font-bold">78</span>
+<span class="flex size-7 items-center justify-center rounded-full bg-surface-dark border border-accent-orange/40 text-white text-xs font-bold">81</span>
+<span class="flex size-7 items-center justify-center rounded-full bg-surface-dark border border-accent-orange/40 text-white text-xs font-bold">88</span>
+<span class="flex size-7 items-center justify-center rounded-full bg-surface-dark border border-accent-orange/40 text-white text-xs font-bold">92</span>
+<span class="flex size-7 items-center justify-center rounded-full bg-surface-dark border border-accent-orange/40 text-white text-xs font-bold">99</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full pt-8">
+<div class="flex flex-col gap-6">
+<h2 class="text-2xl font-bold text-white mb-2">Blog &amp; Dicas</h2>
+<div class="flex flex-col gap-4">
+<div class="group flex gap-4 p-4 rounded-xl bg-surface-dark border border-white/5 hover:border-primary/30 transition-all cursor-pointer">
+<div class="w-24 h-24 rounded-lg bg-cover bg-center shrink-0" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCq3yNkfSW2slo0SgTsrmk-W276rNA5vuzgoojlLAfoIsfHzPaG8AyZnrp9BzkNVNixaxP0raTwI_sReew7bQIW0Q8Rmy7n0NJp8PC-cbCbBjWbdwFvXonp3HWymBTSyPnq8-SZUxl9qdULmfLyBKFd3VIwpWyeFy8FsYUul-8cPvkDo3LoBk6XzgfEjW_hO-S_VqNEaXWtXJudiN4szPC4sVspe9t1nH1JaFuuAXzC6TfXT5-Ahxmnic1_TdGURhvZxzbI-MmgKFB3");'></div>
+<div class="flex flex-col justify-center">
+<span class="text-xs text-primary font-bold uppercase mb-1">Estratégia</span>
+<h4 class="text-white font-bold group-hover:text-primary transition-colors">Como usar desdobramentos a seu favor</h4>
+<p class="text-sm text-slate-400 mt-1 line-clamp-2">Entenda a matemática por trás dos fechamentos e aumente suas chances gastando menos.</p>
+</div>
+</div>
+<div class="group flex gap-4 p-4 rounded-xl bg-surface-dark border border-white/5 hover:border-accent-green/30 transition-all cursor-pointer">
+<div class="w-24 h-24 rounded-lg bg-slate-800 shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-accent-green">paid</span>
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-xs text-accent-green font-bold uppercase mb-1">Notícias</span>
+<h4 class="text-white font-bold group-hover:text-accent-green transition-colors">Mega da Virada 2024: O que esperar?</h4>
+<p class="text-sm text-slate-400 mt-1 line-clamp-2">Projeções de prêmio e dicas exclusivas da nossa IA para o maior sorteio do ano.</p>
+</div>
+</div>
+</div>
+<a class="text-primary hover:text-white text-sm font-medium flex items-center gap-1 mt-2" href="#">
+                Ver todos os artigos <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="flex flex-col gap-6">
+<h2 class="text-2xl font-bold text-white mb-2">Perguntas Frequentes</h2>
+<div class="flex flex-col gap-4">
+<details class="group bg-surface-dark border border-white/5 rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/30">
+<summary class="flex items-center justify-between p-4 cursor-pointer">
+<span class="text-white font-medium text-sm">Como a IA da fAIxaBet gera os palpites?</span>
+<span class="material-symbols-outlined text-slate-400 transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-4 pb-4 text-slate-400 text-sm leading-relaxed">
+                        Nossa inteligência artificial analisa milhões de dados de concursos passados, identificando padrões de frequência, atrasos e correlações estatísticas para sugerir as combinações com maior probabilidade matemática de acerto.
+                    </div>
+</details>
+<details class="group bg-surface-dark border border-white/5 rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/30">
+<summary class="flex items-center justify-between p-4 cursor-pointer">
+<span class="text-white font-medium text-sm">Posso cancelar a assinatura quando quiser?</span>
+<span class="material-symbols-outlined text-slate-400 transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-4 pb-4 text-slate-400 text-sm leading-relaxed">
+                        Sim. Você tem total controle sobre sua assinatura e pode cancelar a renovação automática a qualquer momento através do seu painel de usuário, sem multas ou taxas escondidas.
+                    </div>
+</details>
+<details class="group bg-surface-dark border border-white/5 rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/30">
+<summary class="flex items-center justify-between p-4 cursor-pointer">
+<span class="text-white font-medium text-sm">Quais formas de pagamento são aceitas?</span>
+<span class="material-symbols-outlined text-slate-400 transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-4 pb-4 text-slate-400 text-sm leading-relaxed">
+                        Aceitamos cartões de crédito das principais bandeiras e PIX. Todas as transações são processadas de forma segura e criptografada pela Stripe.
+                    </div>
+</details>
+</div>
+</div>
+</div>
+<div class="w-full relative rounded-2xl overflow-hidden mb-4 border border-white/10">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent-purple/20 backdrop-blur-md"></div>
+<div class="relative z-10 flex flex-col md:flex-row items-center justify-between p-8 gap-6">
+<div class="flex flex-col gap-2 text-center md:text-left">
+<h3 class="text-2xl font-bold text-white">Pronto para aumentar suas chances?</h3>
+<p class="text-slate-300">Junte-se a milhares de ganhadores que usam a tecnologia a seu favor.</p>
+</div>
+<button class="h-12 px-8 rounded-lg bg-white text-primary hover:bg-slate-200 font-bold tracking-wide shadow-lg transition-all flex items-center gap-2 whitespace-nowrap">
+                Acessar fAIxaBet
+                <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span>
+</button>
+</div>
+</div>
+</main></div>
+<footer class="w-full border-t border-white/5 bg-background-dark pt-10 pb-6 px-4 lg:px-10 mt-auto">
+<div class="mx-auto max-w-7xl flex flex-col gap-8">
+<div class="flex flex-col md:flex-row justify-between gap-8">
+<div class="flex flex-col gap-4 max-w-xs">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-2xl">casino</span>
+<h2 class="text-white text-lg font-bold">fAIxaBet</h2>
+</div>
+<p class="text-sm text-slate-400 leading-relaxed">
+                    A plataforma de inteligência artificial mais avançada para geração de palpites de loteria no Brasil.
+                </p>
+<button class="mt-2 h-10 w-fit px-6 rounded-lg bg-primary hover:bg-primary/90 text-white font-bold text-sm shadow-md transition-all flex items-center gap-2">
+                    Acessar fAIxaBet
+                </button>
+</div>
+<div class="flex gap-12 flex-wrap">
+<div class="flex flex-col gap-3">
+<h4 class="text-white font-bold text-sm uppercase tracking-wider">Loterias</h4>
+<a class="text-sm text-slate-400 hover:text-primary" href="#">Mega-Sena</a>
+<a class="text-sm text-slate-400 hover:text-primary" href="#">Lotofácil</a>
+<a class="text-sm text-slate-400 hover:text-primary" href="#">Lotomania</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="text-white font-bold text-sm uppercase tracking-wider">Suporte</h4>
+<a class="text-sm text-slate-400 hover:text-primary" href="#">Como Funciona</a>
+<a class="text-sm text-slate-400 hover:text-primary" href="#">Planos</a>
+<a class="text-sm text-slate-400 hover:text-primary" href="#">Contato</a>
+</div>
+</div>
+</div>
+<div class="h-px w-full bg-white/5"></div>
+<div class="flex flex-col md:flex-row items-center justify-between gap-4">
+<p class="text-xs text-slate-500">© 2024 fAIxaBet. Todos os direitos reservados.</p>
+<div class="flex items-center gap-4">
+<div class="bg-white/5 px-2 py-1 rounded text-slate-400 text-xs font-bold border border-white/5">18+</div>
+<div class="flex items-center gap-1 text-slate-400 opacity-60">
+<span class="material-symbols-outlined text-sm">lock</span>
+<span class="text-xs">Secure Payments by Stripe</span>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
