@@ -128,6 +128,26 @@
             border: 2px solid #00FF7F !important;
             box-shadow: 0 0 25px rgba(0, 255, 127, 0.45) !important;
         }
+
+        /* Ticker Marquee Animation */
+        .animate-marquee {
+            display: inline-flex;
+            gap: 0;
+            animation: ticker-move 25s linear infinite;
+        }
+
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes ticker-move {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+            100% {
+                transform: translate3d(-50%, 0, 0);
+            }
+        }
     </style>
 </head>
 
@@ -231,63 +251,46 @@
                             <div class="absolute -right-1 -top-1 size-2 rounded-full bg-accent-green animate-pulse">
                             </div>
                         </div>
-                        <h2 class="text-white text-xl font-bold tracking-tight">fAIxaBet</h2>
+                        <h2 class="text-white text-xl font-bold tracking-tight hidden sm:block">fAIxaBet</h2>
                     </div>
-                    <label class="hidden md:flex flex-col min-w-40 h-10 w-64">
-                        <div
-                            class="flex w-full flex-1 items-stretch rounded-lg bg-surface-dark/50 border border-white/5 focus-within:border-primary/50 transition-all">
-                            <div class="text-slate-400 flex items-center justify-center pl-3">
-                                <span class="material-symbols-outlined text-[20px]">search</span>
-                            </div>
-                            <input
-                                class="flex w-full min-w-0 flex-1 bg-transparent px-3 text-sm text-white focus:outline-0 placeholder:text-slate-500"
-                                placeholder="Buscar concurso ou loteria..." />
-                        </div>
-                    </label>
                 </div>
-                <nav class="hidden lg:flex items-center gap-8">
-                    <a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors flex items-center gap-2"
+                <nav class="flex items-center gap-4 md:gap-8">
+                    <a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors flex items-center gap-1.5"
                         href="#mapa-ganhadores">
-                        <span class="material-symbols-outlined text-[18px]">format_list_numbered</span> Loterias
+                        <span class="material-symbols-outlined text-[20px] text-accent-yellow">trophy</span>
+                        <span class="hidden md:inline">Ganhadores</span>
                     </a>
-                    <a class="text-white text-sm font-medium transition-colors flex items-center gap-2 relative"
+                    <a class="text-white text-sm font-medium transition-colors flex items-center gap-1.5 relative"
                         href="#ultimos-resultados">
-                        <span class="material-symbols-outlined text-[18px] text-accent-green">check_circle</span>
-                        Resultados
+                        <span class="material-symbols-outlined text-[20px] text-accent-green">check_circle</span>
+                        <span class="hidden md:inline">Resultados</span>
                         <span
-                            class="absolute -top-3 -right-3 px-1.5 py-0.5 rounded text-[10px] font-bold bg-accent-green/20 text-accent-green">NOVOS</span>
+                            class="hidden md:inline-block absolute -top-3 -right-3 px-1.5 py-0.5 rounded text-[10px] font-bold bg-accent-green/20 text-accent-green">NOVOS</span>
                     </a>
-                    <a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors flex items-center gap-2"
+                    <a class="hidden lg:flex text-slate-300 hover:text-primary text-sm font-medium transition-colors items-center gap-1.5"
                         href="#como-funciona">
-                        <span class="material-symbols-outlined text-[18px]">help</span> Como Funciona
+                        <span class="material-symbols-outlined text-[20px]">help</span>
+                        <span>Como Funciona</span>
                     </a>
-                    <a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors flex items-center gap-2"
+                    <a class="text-slate-300 hover:text-primary text-sm font-medium transition-colors flex items-center gap-1.5"
                         href="#planos-faixabet">
-                        <span class="material-symbols-outlined text-[18px]">workspace_premium</span> Planos Faixabet IA
+                        <span class="material-symbols-outlined text-[20px]">workspace_premium</span>
+                        <span class="hidden md:inline">Planos</span>
                     </a>
-
                 </nav>
                 <div class="flex items-center gap-3">
-                    <button
-                        class="hidden sm:flex h-9 items-center justify-center rounded-lg bg-surface-dark hover:bg-surface-dark/80 text-white text-sm font-bold px-4 border border-white/5 transition-all">
-                        Entrar
-                    </button>
                     <a href="https://faixabet9.streamlit.app/" target="_blank" rel="noopener noreferrer"
                         class="h-9 items-center justify-center rounded-lg bg-primary hover:bg-primary/90 text-white text-sm font-bold px-4 shadow-[0_0_15px_rgba(19,91,236,0.4)] transition-all flex items-center gap-2">
-                        Acessar fAIxaBet
+                        Login
                         <span class="material-symbols-outlined text-[16px]">login</span>
                     </a>
-                    <button
-                        class="flex h-9 w-9 items-center justify-center rounded-lg bg-surface-dark text-white hover:bg-surface-dark/80 border border-white/5">
-                        <span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
-                    </button>
                 </div>
             </div>
         </header>
         <main class="flex-1 flex flex-col items-center w-full px-4 lg:px-10 py-6">
             <div class="w-full max-w-7xl flex flex-col gap-8">
                 <div class="w-full overflow-hidden bg-surface-dark/30 border-y border-white/5 py-2">
-                    <div id="marqueeContent" class="flex gap-8 animate-marquee whitespace-nowrap text-xs font-medium text-slate-400">
+                    <div id="marqueeContent" class="flex animate-marquee whitespace-nowrap text-xs font-medium text-slate-400">
                         <!-- Conteúdo Dinâmico via JS -->
                         <span class="flex items-center gap-2">Carregando dados oficiais...</span>
                     </div>
@@ -1237,7 +1240,8 @@
 
             // Atualizar Marquee com duplicação para loop
             if (marqueeItems.length > 0) {
-                marquee.innerHTML = marqueeItems.join('') + marqueeItems.join('');
+                const halfHtml = `<div class="flex gap-8 pr-8 shrink-0">${marqueeItems.join('')}</div>`;
+                marquee.innerHTML = halfHtml + halfHtml;
             }
         }
 
